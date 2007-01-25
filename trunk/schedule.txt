@@ -1,0 +1,22 @@
+
+-----------------------------------------------------------------------------
+ Iquomi Schedule
+ $Id: schedule.txt 23 2006-04-18 20:36:48Z peter $
+-----------------------------------------------------------------------------
+
++ Figure out why the web services can't be called from the Windows Iquomi 
+  clients. The error message is "ArgumentException, Parameter Name: s can't
+  be null" => The issue is related to an error in the web service. Try to
+  recompile web service or debug it - it's probably throwing an NRE.
+  
++ Fix roles implementation in XmlStore.
+
++ Reimplementation roles setup through web site.
+
++ Remove use of "IqProfile.cs" from Windows client - use IqProfile web 
+  service instead.
+  
++ Remove use of "IqPresence.cs" from Windows client and use IqPresence web
+  service instead.
+  
++ 

@@ -1,0 +1,12 @@
+
+ ------------------------------------------------------------------------------
+  Iquomi TODO
+ ------------------------------------------------------------------------------
+
+  + Add "Methods" functionality to subscriptions instead of just services.
+  + Update "IqSms" plugin to support "ChangeNumber"/"Id" on inserted nodes.
+  + Mobile Client Sdk must have hook allowing plugins to call "IqCore" without
+    having to make their own reference. This web reference should be prefilled
+    with information about currently logged on user.
+  + Inspect why "alerts.soap" for sending Alerts doesn't work when used over
+    WAN when it works properly on LAN.
