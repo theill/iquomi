@@ -1,0 +1,15 @@
+<hs:insertRequest select="/myFavoriteWebSites" 
+   xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core"
+   xmlns="http://schemas.microsoft.com/hs/2001/10/myFavoriteWebSites">
+   <favoriteWebSite >
+      <url>http://www.wrox.com</url>
+   </favoriteWebSite>
+   <favoriteWebSite >
+      <url>http://www.asptoday.com</url>
+   </favoriteWebSite>
+   <subscription  >
+     <hs:trigger select="/myFavoriteWebSites/favoriteWebSite" mode="includeData" />
+     <hs:context uri="http://www.wrox.com" />
+     <hs:to>hs:myAlerts</hs:to>
+   </subscription> 
+</hs:insertRequest>

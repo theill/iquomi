@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://schemas.xmlsoap.org/rp/" xmlns:xdb="urn:schemas-microsoft-com:xdb" finalDefault="#all" elementFormDefault="qualified" targetNamespace="http://schemas.xmlsoap.org/rp/" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:annotation>
+    <xsd:documentation>
+        XML Schema for SOAP-RP
+        (c) 2001 Microsoft Corporation. All rights reserved.
+
+        The presentation, distribution or other dissemination of the
+        information contained herein by Microsoft is not a license, either
+        expressly or implied, to any intellectual property owned or
+        controlled by Microsoft.
+
+        This document and the information contained herein is provided on an
+        "AS IS" basis and to the maximum extent permitted by applicable law,
+        Microsoft provides the document AS IS AND WITH ALL FAULTS, and hereby
+        disclaims all other warranties and conditions, either express, implied
+        or statutory, including, but not limited to, any (if any) implied
+        warranties, duties or conditions of merchantability, of fitness for a
+        particular purpose, of accuracy or completeness of responses, of
+        results, of workmanlike effort, of lack of viruses, and of lack of
+        negligence, all with regard to the document. ALSO, THERE IS NO
+        WARRANTY OR CONDITION OF TITLE, QUIET ENJOYMENT, QUIET POSSESSION,
+        CORRESPONDENCE TO DESCRIPTION OR NON-INFRINGEMENT WITH REGARD TO THE
+        DOCUMENT.
+
+        IN NO EVENT WILL MICROSOFT BE LIABLE TO ANY OTHER PARTY FOR THE COST
+        OF PROCURING SUBSTITUTE GOODS OR SERVICES, LOST PROFITS, LOSS OF USE,
+        LOSS OF DATA, OR ANY INCIDENTAL, CONSEQUENTIAL, DIRECT, INDIRECT, OR
+        SPECIAL DAMAGES WHETHER UNDER CONTRACT, TORT, WARRANTY, OR OTHERWISE,
+        ARISING IN ANY WAY OUT OF THIS OR ANY OTHER AGREEMENT RELATING TO THIS
+        DOCUMENT, WHETHER OR NOT SUCH PARTY HAD ADVANCE NOTICE OF THE
+        POSSIBILITY OF SUCH DAMAGES.
+        </xsd:documentation>
+    <xsd:appinfo>
+      <xdb:namespaceMap xmlns:xdb="urn:schemas-microsoft-com:xdb">
+        <xdb:mapping uri="http://schemas.xmlsoap.org/rp/" alias="srp" />
+      </xdb:namespaceMap>
+    </xsd:appinfo>
+  </xsd:annotation>
+  <xsd:element name="path" type="pathType" />
+  <xsd:complexType name="pathType">
+    <xsd:annotation>
+      <xsd:documentation>
+        This element specifies how a message is
+        to be transferred along the forward message
+        path. In addition, an optional reverse path can be
+        built to provide a mechanism for returning a
+        response (if any). The <b xmlns="http://schemas.xmlsoap.org/rp/">path</b> element is
+        required in every message regardless of
+        whether it is a request or a response.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="action" type="xsd:anyURI">
+        <xsd:annotation>
+          <xsd:documentation>
+                    The <b xmlns="http://schemas.xmlsoap.org/rp/">action</b> element is used to indicate the intent
+                    of the message in a manner similar
+                    to the <b xmlns="http://schemas.xmlsoap.org/rp/">SOAPAction</b> HTTP header field defined for
+                    the SOAP HTTP binding. The value is an absolute
+                    URI and similar to the HTTP SOAPAction header
+                    field. Each application's use of SOAP-RP will 
+                    define its own set of values for <b xmlns="http://schemas.xmlsoap.org/rp/">action</b>. SOAP-RP
+                    itself defines a value for <b xmlns="http://schemas.xmlsoap.org/rp/">action</b> when a SOAP-RP specific
+                    fault condition occurs (http://schemas.xmlsoap.org/sp/#fault). 
+                    For .NET My Services messages, the following
+                    values may occur:
+                    <dl xmlns="http://schemas.xmlsoap.org/rp/"><dt>
+                        http://schemas.microsoft.com/hs/2001/10/core#request
+                        </dt><dd>
+                        This <b>action</b> URI specifies that the message is a
+                        .NET My Services request message. Detailed routing information
+                        for the request is located in the request header element.
+                        When the request is transmitted by HTTP, the <b>SOAPAction</b>
+                        HTTP header field must contain this URI.
+                        </dd><dt>
+                        http://schemas.microsoft.com/hs/2001/10/core#response
+                        </dt><dd>
+                        This <b>action</b> URI specifies that the message is a
+                        .NET My Services response message.
+                        </dd><dt>
+                        http://schemas.microsoft.com/hs/2001/10/core#notification
+                        </dt><dd>
+                        This <b>action</b> URI specifies that the message is a
+                        .NET My Services notification message.
+                        </dd><dt>
+                        http://schemas.microsoft.com/hs/2001/10/core#fault
+                        </dt><dd>
+                        This <b>action</b> URI specifies that the message is a .NET My Services
+                        fault message.
+                        </dd></dl></xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="to" type="xsd:anyURI">
+        <xsd:annotation>
+          <xsd:documentation>
+                    The <b xmlns="http://schemas.xmlsoap.org/rp/">to</b> element contains the ultimate destination
+                    of a message in the form of an absolute
+                    URI.
+                    The
+                    <a href="myServices.html" xmlns="http://schemas.xmlsoap.org/rp/">.NET Services</a> service is responsible
+                    for providing the value of this element to the initial sender.
+                    This element must be present in all .NET My Services request
+                    messages. In this sense, it is similar to the
+                    HTTP Request-URI in that it designates where the
+                    message is going. However, the <b xmlns="http://schemas.xmlsoap.org/rp/">to</b> element may also
+                    be present in .NET My Services response messages allowing
+                    .NET My Services to send responses to end-clients that
+                    have a name in their own right. This can be used, for
+                    example, to indicate the destination of a
+                    response in case it was directed to an arbitrary
+                    URI. The value of the <b xmlns="http://schemas.xmlsoap.org/rp/">to</b> element is an absolute
+                    URI and must be determined by the initial sender,
+                    and must not be modified along the message path.
+                    <p xmlns="http://schemas.xmlsoap.org/rp/" />
+                    .NET My Services requires that the <b xmlns="http://schemas.xmlsoap.org/rp/">to</b> element contain the following pieces
+                    of information using a format dictated by the scheme of the URI:
+                    <p xmlns="http://schemas.xmlsoap.org/rp/" /><tt xmlns="http://schemas.xmlsoap.org/rp/"><i>protocol</i>://[<i>cluster</i>.]<i>service</i>.<i>domain</i>/[<i>instance</i>]</tt><p xmlns="http://schemas.xmlsoap.org/rp/" />
+                    An example would be:
+                    <p xmlns="http://schemas.xmlsoap.org/rp/" /><tt xmlns="http://schemas.xmlsoap.org/rp/">http://vbe1.vfe2.myProfile.microsoft.com/2376187213</tt><p xmlns="http://schemas.xmlsoap.org/rp/" />
+                    where:
+                    <dl xmlns="http://schemas.xmlsoap.org/rp/"><dt><i>protocol</i>  <tt>http</tt></dt><dd>
+                            This component specifies the message-transfer protocol carrying the
+                            message that contains this <b>path</b> element.
+                            </dd><dt><i>cluster</i>  <tt>vbe1.vfe2</tt></dt><dd>
+                            This optional component specifies the virtual front end (vfe2) and virtual
+                            back end (vbe1) addresses for the cluster hosting this .NET My Services
+                            service. This information is useful for routing the .NET My Services message
+                            to its ultimate destination, as well as for providing an input to the partitioning
+                            system used to locate the .NET My Services data within the service endpoint.
+                            </dd><dt><i>service</i>  <tt>myProfile</tt></dt><dd>
+                            This component specifies the .NET Profile service.
+                            </dd><dt><i>domain</i>  <tt>microsoft.com</tt></dt><dd>
+                            This component specifies the domain that hosts the service.
+                            </dd><dt><i>instance</i>  <tt>2376187213</tt></dt><dd>
+                            This optional component specifies the instance of the service. In some services
+                            this will be a unique number, and in others, a unique name.
+                            </dd></dl></xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="fwd" type="viaChainType">
+        <xsd:annotation>
+          <xsd:documentation>
+                    The optional <b xmlns="http://schemas.xmlsoap.org/rp/">fwd</b> element contains an ordered list of
+                    intermediaries that the message must pass through
+                    along the forward message path. Like the ultimate
+                    destination, intermediaries are identified by an
+                    absolute URI carried within the <b xmlns="http://schemas.xmlsoap.org/rp/">fwd/via</b> element,
+                    listed in the top-down order in which they are to be
+                    contacted.
+                </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="rev" type="viaChainType">
+        <xsd:annotation>
+          <xsd:documentation>
+                    The <b xmlns="http://schemas.xmlsoap.org/rp/">rev</b> element is used to indicate a reverse path
+                    for returning a potential .NET My Services response to
+                    the initial sender. The rev element describes the
+                    reverse path that the response must follow, in the
+                    same manner as the <b xmlns="http://schemas.xmlsoap.org/rp/">fwd</b> element describes the forward
+                    path. Each party in the reverse message path,
+                    including the initial sender, is listed in a
+                    top-down order using the <b xmlns="http://schemas.xmlsoap.org/rp/">via</b> element.
+                </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="from" type="xsd:anyURI">
+        <xsd:annotation>
+          <xsd:documentation>
+                    The <b xmlns="http://schemas.xmlsoap.org/rp/">from</b> element contains the address of the responder
+                    of a message in the form of an absolute URI.
+                    This element must be present in all .NET My Services response
+                    messages. In this sense, it is similar to the
+                    HTTP Request-URI, but in this case it designates where the
+                    message is from. This is used to indicate the origin
+                    of a response. The value of the <b xmlns="http://schemas.xmlsoap.org/rp/">from</b> element is an absolute
+                    URI and must be determined by the service itself,
+                    and must not be modified along the message path.
+                    <p xmlns="http://schemas.xmlsoap.org/rp/" />
+                    .NET My Services requires that the <b xmlns="http://schemas.xmlsoap.org/rp/">from</b> element contain the following pieces
+                    of information using a format dictated by the scheme of the URI:
+                    <p xmlns="http://schemas.xmlsoap.org/rp/" /><tt xmlns="http://schemas.xmlsoap.org/rp/"><i>protocol</i>://[<i>cluster</i>.]<i>service</i>.<i>domain</i>/[<i>instance</i>]</tt><p xmlns="http://schemas.xmlsoap.org/rp/" />
+                    An example would be:
+                    <p xmlns="http://schemas.xmlsoap.org/rp/" /><tt xmlns="http://schemas.xmlsoap.org/rp/">http://vbe1.vfe2.myProfile.microsoft.com/2376187213</tt><p xmlns="http://schemas.xmlsoap.org/rp/" />
+                    where:
+                    <dl xmlns="http://schemas.xmlsoap.org/rp/"><dt><i>protocol</i>  <tt>http</tt></dt><dd>
+                            This component specifies the message transfer protocol carrying the
+                            message that contains this <b>path</b> element.
+                            </dd><dt><i>cluster</i>  <tt>vbe1.vfe2</tt></dt><dd>
+                            This optional component specifies the virtual front end (vfe2) and virtual
+                            back end (vbe1) addresses for the cluster hosting this .NET My Services
+                            service. This information is useful for routing the .NET My Services message
+                            to its ultimate destination. It is also useful for providing an input to the partitioning
+                            system used to locate the .NET My Services data within the service endpoint.
+                            </dd><dt><i>service</i>  <tt>.NET Profile</tt></dt><dd>
+                            This component specifies the .NET Profile service.
+                            </dd><dt><i>domain</i>  <tt>microsoft.com</tt></dt><dd>
+                            This component specifies the domain that hosts the service.
+                            </dd><dt><i>instance</i>  <tt>2376187213</tt></dt><dd>
+                            This optional component specifies the instance of the service. In some services
+                            this will be a unique number, and in others, a unique name.
+                            </dd></dl></xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="id" type="xsd:anyURI">
+        <xsd:annotation>
+          <xsd:documentation>
+                    This element specifies the message ID that
+                    uniquely identifies this .NET My Services message over
+                    time and space. The <b xmlns="http://schemas.xmlsoap.org/rp/">id</b> element enables .NET My Services
+                    applications to keep track of messages, and
+                    together with the <b xmlns="http://schemas.xmlsoap.org/rp/">relatesTo</b> element, allows for
+                    simple request/response correlation. The <b xmlns="http://schemas.xmlsoap.org/rp/">id</b>
+                    element must be present in all .NET My Services messages
+                    and must be generated by the initial sender. 
+                    <p xmlns="http://schemas.xmlsoap.org/rp/" />
+		    The
+                    value of the <b xmlns="http://schemas.xmlsoap.org/rp/">id</b> element is a globally unique,
+                    absolute URI. The uniqueness of this URI is
+                    guaranteed by the initial sender. It is strongly recommended
+                    that the URI be a Universally Unique
+                    Identifier (UUID), or be generated from message
+                    content using cryptographic hash algorithms such
+                    as MD5. The value MUST NOT be reused in any other
+                    message and in particular MUST NOT be shared
+                    between requests and responses.
+                </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="relatesTo" type="xsd:anyURI">
+        <xsd:annotation>
+          <xsd:documentation>
+                    The <b xmlns="http://schemas.xmlsoap.org/rp/">relatesTo</b> element is used to indicate that one
+                    .NET My Services message is related to another .NET My Services
+                    message in some way. The <b xmlns="http://schemas.xmlsoap.org/rp/">relatesTo</b> element must be
+                    present in all .NET My Services responses, providing a
+                    simple request/response correlation mechanism
+                    independent of the message path used for the
+                    request and response. The <b xmlns="http://schemas.xmlsoap.org/rp/">relatesTo</b> element in a
+                    .NET My Services response must be generated by the
+                    end-server and the value must be the exact value
+                    of the corresponding <b xmlns="http://schemas.xmlsoap.org/rp/">id</b> element in the .NET My Services
+                    request for which the message is a response. The
+                    <b xmlns="http://schemas.xmlsoap.org/rp/">relatesTo</b> element can be used in .NET My Services
+                    requests but in this case its meaning is not
+                    defined by .NET My Services. Note that the <b xmlns="http://schemas.xmlsoap.org/rp/">id</b> element
+                    must be present regardless of whether a <b xmlns="http://schemas.xmlsoap.org/rp/">relatesTo</b>
+                    element is present or not.
+                </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="fault">
+        <xsd:complexType>
+          <xsd:annotation>
+            <xsd:documentation>
+                        This optional element is present when the SOAP-RP header
+                        is carrying a SOAP-RP specific fault. The <b xmlns="http://schemas.xmlsoap.org/rp/">action</b> element
+                        must indicate that a SOAP-RP specific fault is being carried
+                        in the header and that this element is expected. If the <b xmlns="http://schemas.xmlsoap.org/rp/">action</b>
+                        element does not indicate a SOAP_RP specific fault, this element
+                        has no meaning. If it does, then this element describes the SOAP-RP
+                        specific fault.
+                    </xsd:documentation>
+          </xsd:annotation>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="faultcode" type="xsd:int">
+              <xsd:annotation>
+                <xsd:documentation />
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="1" maxOccurs="1" name="faultreason" type="xsd:string">
+              <xsd:annotation>
+                <xsd:documentation />
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" maxOccurs="1" name="endpoint" type="xsd:anyURI">
+              <xsd:annotation>
+                <xsd:documentation />
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" maxOccurs="1" name="found">
+              <xsd:complexType>
+                <xsd:annotation>
+                  <xsd:documentation />
+                </xsd:annotation>
+                <xsd:sequence>
+                  <xsd:element minOccurs="1" maxOccurs="unbounded" name="at" type="xsd:anyURI">
+                    <xsd:annotation>
+                      <xsd:documentation />
+                    </xsd:annotation>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element minOccurs="0" maxOccurs="1" name="maxsize" type="xsd:int">
+              <xsd:annotation>
+                <xsd:documentation />
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" maxOccurs="1" name="maxtime" type="xsd:int">
+              <xsd:annotation>
+                <xsd:documentation />
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" maxOccurs="1" name="retryAfter" type="xsd:int">
+              <xsd:annotation>
+                <xsd:documentation />
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="viaChainType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="via">
+        <xsd:annotation>
+          <xsd:documentation>
+                    The <b xmlns="http://schemas.xmlsoap.org/rp/">via</b> element is used to indicate that a
+                    message is to go through the intermediary
+                    identified by the value of the <b xmlns="http://schemas.xmlsoap.org/rp/">via</b> element. The
+                    value of a <b xmlns="http://schemas.xmlsoap.org/rp/">via</b> element can be either empty or an
+                    absolute URI. A non-empty value indicates the
+                    explicit endpoint of the intermediary that is to
+                    receive the message at a given point in the
+                    forward or reverse message path. An empty value (normally
+                    only occuring in a <b xmlns="http://schemas.xmlsoap.org/rp/">rev/via</b> construct)
+                    indicates an
+                    implicit endpoint provided by the underlying
+                    protocol binding, typically as a result of a
+                    previous message having built a reverse message
+                    path using that underlying communication
+                    channel. For example, an empty value used in a
+                    .NET My Services request carried in an HTTP request
+                    message would indicate that the reverse path for
+                    the .NET My Services response (if any) is the
+                    corresponding HTTP response.
+                </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:simpleContent>
+            <xsd:extension base="xsd:anyURI">
+              <xsd:attribute name="vid" type="xsd:anyURI" use="optional">
+                <xsd:annotation>
+                  <xsd:documentation>
+                                This optional attribute can be used within empty <b xmlns="http://schemas.xmlsoap.org/rp/">via</b> elements to
+                                allow an intermediary to identify implicit <b xmlns="http://schemas.xmlsoap.org/rp/">path</b> elements and to correlate
+                                this implicit <b xmlns="http://schemas.xmlsoap.org/rp/">path</b> with a <b xmlns="http://schemas.xmlsoap.org/rp/">path</b> addressable only to that intermediary.
+                                </xsd:documentation>
+                </xsd:annotation>
+              </xsd:attribute>
+            </xsd:extension>
+          </xsd:simpleContent>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

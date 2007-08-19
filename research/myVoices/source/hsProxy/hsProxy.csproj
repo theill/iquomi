@@ -1,0 +1,552 @@
+<VisualStudioProject>
+    <CSHARP
+        ProjectType = "Local"
+        ProductVersion = "7.0.9372"
+        SchemaVersion = "1.0"
+        ProjectGuid = "{9394A006-5114-4C65-8868-1B895901C1BD}"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = ""
+                AssemblyKeyContainerName = ""
+                AssemblyName = "hsProxy"
+                AssemblyOriginatorKeyFile = ""
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "Library"
+                RootNamespace = "hsProxy"
+                StartupObject = ""
+            >
+                <Config
+                    Name = "Debug"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "DEBUG;TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "true"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "true"
+                    Optimize = "false"
+                    OutputPath = "bin\Debug\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+                <Config
+                    Name = "Release"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "false"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    Optimize = "true"
+                    OutputPath = "bin\Release\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.XML"
+                />
+                <Reference
+                    Name = "HsSoapExtension"
+                    Project = "{24127554-954D-4E8F-9C84-17AA36EE74A5}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "ServiceLocator"
+                    Project = "{6235D52D-0B3D-429D-8054-138C21F0851F}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "System.Web.Services"
+                    AssemblyName = "System.Web.Services"
+                />
+                <Reference
+                    Name = "System.Web"
+                    AssemblyName = "System.Web"
+                />
+                <Reference
+                    Name = "System.Windows.Forms"
+                    AssemblyName = "System.Windows.Forms"
+                />
+            </References>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "AssemblyInfo.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "genericProxy.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "hsEnum.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "hsProxy.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "hsUtility.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Web References\dnMyServicesNs\myAlerts.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\dnMyServicesNs\myApplicationSettings.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\dnMyServicesNs\myCalendar.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\dnMyServicesNs\myCategories.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\dnMyServicesNs\myContacts.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\dnMyServicesNs\myDevices.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\dnMyServicesNs\myFavoriteWebSites.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\dnMyServicesNs\myLists.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\dnMyServicesNs\myLocation.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\dnMyServicesNs\myPresence.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\dnMyServicesNs\myProfile.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\dnMyServicesNs\myServices.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\dnMyServicesNs\myWallet.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\dnMyServicesNs\NETMyServices.disco"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\dnMyServicesNs\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                />
+                <File
+                    RelPath = "Web References\dnMyServicesNs\soaprp.xsd"
+                    BuildAction = "None"
+                />
+                <Folder
+                    RelPath = "Web References\dnMyServicesNs\"
+                    WebReferenceUrl = "http://localhost/WSDL/NETMyServices.disco"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\myAlertsNs\myAlerts.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\myAlertsNs\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.cs"
+                />
+                <File
+                    RelPath = "Web References\myAlertsNs\Reference.cs"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "Web References\myAlertsNs\soaprp.xsd"
+                    BuildAction = "None"
+                />
+                <Folder
+                    RelPath = "Web References\myAlertsNs\"
+                    WebReferenceUrl = "http://localhost/WSDL/myAlerts.wsdl"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\myApplicationSettingsNs\myApplicationSettings.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\myApplicationSettingsNs\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.cs"
+                />
+                <File
+                    RelPath = "Web References\myApplicationSettingsNs\Reference.cs"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "Web References\myApplicationSettingsNs\soaprp.xsd"
+                    BuildAction = "None"
+                />
+                <Folder
+                    RelPath = "Web References\myApplicationSettingsNs\"
+                    WebReferenceUrl = "http://localhost/WSDL/myapplicationsettings.wsdl"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\myCalendarNs\myCalendar.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\myCalendarNs\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.cs"
+                />
+                <File
+                    RelPath = "Web References\myCalendarNs\Reference.cs"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "Web References\myCalendarNs\soaprp.xsd"
+                    BuildAction = "None"
+                />
+                <Folder
+                    RelPath = "Web References\myCalendarNs\"
+                    WebReferenceUrl = "http://localhost/WSDL/mycalendar.wsdl"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\myCategoriesNs\myCategories.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\myCategoriesNs\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.cs"
+                />
+                <File
+                    RelPath = "Web References\myCategoriesNs\Reference.cs"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "Web References\myCategoriesNs\soaprp.xsd"
+                    BuildAction = "None"
+                />
+                <Folder
+                    RelPath = "Web References\myCategoriesNs\"
+                    WebReferenceUrl = "http://localhost/WSDL/mycategories.wsdl"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\myContactsNs\myContacts.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\myContactsNs\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.cs"
+                />
+                <File
+                    RelPath = "Web References\myContactsNs\Reference.cs"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "Web References\myContactsNs\soaprp.xsd"
+                    BuildAction = "None"
+                />
+                <Folder
+                    RelPath = "Web References\myContactsNs\"
+                    WebReferenceUrl = "http://localhost/WSDL/mycontacts.wsdl"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\myDevicesNs\myDevices.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\myDevicesNs\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.cs"
+                />
+                <File
+                    RelPath = "Web References\myDevicesNs\Reference.cs"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "Web References\myDevicesNs\soaprp.xsd"
+                    BuildAction = "None"
+                />
+                <Folder
+                    RelPath = "Web References\myDevicesNs\"
+                    WebReferenceUrl = "http://localhost/WSDL/myDevices.wsdl"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\myFavoriteWebSitesNs\myFavoriteWebSites.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\myFavoriteWebSitesNs\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.cs"
+                />
+                <File
+                    RelPath = "Web References\myFavoriteWebSitesNs\Reference.cs"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "Web References\myFavoriteWebSitesNs\soaprp.xsd"
+                    BuildAction = "None"
+                />
+                <Folder
+                    RelPath = "Web References\myFavoriteWebSitesNs\"
+                    WebReferenceUrl = "http://localhost/WSDL/myfavoritewebsites.wsdl"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\myListsNs\myLists.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\myListsNs\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.cs"
+                />
+                <File
+                    RelPath = "Web References\myListsNs\Reference.cs"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "Web References\myListsNs\soaprp.xsd"
+                    BuildAction = "None"
+                />
+                <Folder
+                    RelPath = "Web References\myListsNs\"
+                    WebReferenceUrl = "http://localhost/WSDL/mylists.wsdl"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\myLocationNs\myLocation.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\myLocationNs\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.cs"
+                />
+                <File
+                    RelPath = "Web References\myLocationNs\Reference.cs"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "Web References\myLocationNs\soaprp.xsd"
+                    BuildAction = "None"
+                />
+                <Folder
+                    RelPath = "Web References\myLocationNs\"
+                    WebReferenceUrl = "http://localhost/WSDL/mylocation.wsdl"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\myPresenceNs\myPresence.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\myPresenceNs\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.cs"
+                />
+                <File
+                    RelPath = "Web References\myPresenceNs\Reference.cs"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "Web References\myPresenceNs\soaprp.xsd"
+                    BuildAction = "None"
+                />
+                <Folder
+                    RelPath = "Web References\myPresenceNs\"
+                    WebReferenceUrl = "http://localhost/WSDL/mypresence.wsdl"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\myProfileNs\myProfile.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\myProfileNs\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.cs"
+                />
+                <File
+                    RelPath = "Web References\myProfileNs\Reference.cs"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "Web References\myProfileNs\soaprp.xsd"
+                    BuildAction = "None"
+                />
+                <Folder
+                    RelPath = "Web References\myProfileNs\"
+                    WebReferenceUrl = "http://localhost/WSDL/myprofile.wsdl"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\myServicesNs\myServices.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\myServicesNs\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.cs"
+                />
+                <File
+                    RelPath = "Web References\myServicesNs\Reference.cs"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "Web References\myServicesNs\soaprp.xsd"
+                    BuildAction = "None"
+                />
+                <Folder
+                    RelPath = "Web References\myServicesNs\"
+                    WebReferenceUrl = "http://localhost/WSDL/myservices.wsdl"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\myWalletNs\myWallet.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\myWalletNs\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.cs"
+                />
+                <File
+                    RelPath = "Web References\myWalletNs\Reference.cs"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "Web References\myWalletNs\soaprp.xsd"
+                    BuildAction = "None"
+                />
+                <Folder
+                    RelPath = "Web References\myWalletNs\"
+                    WebReferenceUrl = "http://localhost/WSDL/mywallet.wsdl"
+                    UrlBehavior = "Static"
+                />
+                <Folder
+                    RelPath = "Web References\"
+                    WebReferences = "TRUE"
+                />
+            </Include>
+        </Files>
+    </CSHARP>
+</VisualStudioProject>
+

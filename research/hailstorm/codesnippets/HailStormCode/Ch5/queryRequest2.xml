@@ -1,0 +1,7 @@
+<hs:queryRequest xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core" 
+    xmlns="http://schemas.microsoft.com/hs/2001/10/myProfile">
+  <hs:changeQuery select="/myProfile" baseChangeNumber="1"/>
+  <hs:xpQuery select="myProfile/memberInformation" minOccurs="1"/>
+  <hs:xpQuery select="/myProfile/myName"/>
+</hs:queryRequest>
+

@@ -1,0 +1,17 @@
+
+<vxml version="1.0">
+	<form id="form">
+		<field name="url">
+			<prompt>
+				Choose a web site <enumerate />
+			</prompt>
+			<option dtmf="1" value="http://www.brains-n-brawn.com">brains-n-brawn</option><option dtmf="2" value="http://www.dnug.net">D N U G</option>
+			<filled>
+				<prompt>
+					the url is <value expr="url" />
+				</prompt>
+				<goto next="services.aspx" />
+			</filled>
+		</field>
+	</form>
+</vxml>

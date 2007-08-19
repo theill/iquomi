@@ -1,0 +1,103 @@
+<html>
+	<head>
+		<title>Messenger Contact List</title>
+		<script language="javascript">
+		<!--
+		
+        function getStatus(state) {
+            switch (state) {
+                case 1: return "Offline";
+                case 2: return "Online";
+                case 6: return "Invisible";
+                case 10: return "Busy";
+                case 14: return "Be Right Back";
+                case 18: return "Idle";
+                case 34: return "Away";
+                case 50: return "On the Phone";
+                case 66: return "Out to Lunch";
+            }
+
+            return "Unknown";
+        }
+        
+        function setLink(user) {
+            if ('undefined' == typeof(msgrUI)) {
+                return name.FriendlyName;
+						}
+						
+						return "<a href=\"#\" onclick=\"instantMessage('" + user.EmailAddress + "');\">" + user.FriendlyName + "</a>";
+        }
+        
+        function instantMessage(email) {
+            if ("undefined" != typeof(msgrUI)) {
+                msgrUI.InstantMessage(email);
+						}
+        }
+
+        function signIn() {
+            if ("undefined" != typeof(msgrUI)) {
+                msgrUI.AutoSignin();
+                window.setTimeout(location.reload, 2000);
+            }
+        }
+
+        function writeListError() {
+            document.all.msgrList.innerHTML = "<span style=\"color: red;\">Unable "
+                + "to retrieve your Messenger buddy list. Make sure you are <a "
+                + "href=\"#\" onclick=\"signIn();\">signed-in</a>.</span>";
+        }
+        //-->
+        </script>
+        
+        <script language="javascript" event="onload" for="window">
+        <!--
+        
+        if ("undefined" == typeof(msgr) || msgr.LocalState == 1) {
+            writeListError();
+            return;
+        }
+
+        var me = msgr.LocalFriendlyName;
+        if ("undefined" != typeof(me)) {
+            document.all.welcome.innerText = me + "'s Messenger Buddies";
+				}
+            
+        var users = msgr.List(0);
+        if ("undefined" == typeof(users)) {
+            writeListError();
+            return;
+        }
+
+        for (var i = 0; i < users.Count; i++) {
+            var user = users.Item(i);
+            if (user.EmailAddress) {
+            	alert('yep');
+            }
+            try { alert(user.EmailAddress); } catch (x) { continue; }
+            document.all.msgrBuds.innerHTML += "<li>" + setLink(user) + " (" + user.EmailAddress + ") - " + getStatus(user.State);
+        }
+        
+        //-->
+		</script>
+	</head>
+    
+	<body>
+		
+		<!-- Initialize the MSN Messenger object -->
+		<object classid="clsid:B69003B3-C55E-4B48-836C-BC5946FC3B28" codetype="application/x-oleobject" id="MsgrObj" width="0" height="0"></object>
+		
+		<!-- Add a contact -->
+		<a href="#" onclick="MsgrObj.AddContact(0, 'peter@theill.com'); return false;">Add Me!</a>
+		
+		<!-- Send a message -->
+		<a href="#" onclick="MsgrObj.InstantMessage('peter@theill.com'); return false;">Message me!</a>
+	    
+		<p><b id="welcome">Messenger Contacts</b></p>
+		<p id="msgrList"><ol id="msgrBuds"></ol></p>
+		
+		<object classid="clsid:F3A614DC-ABE0-11d2-A441-00C04F795683" id="msgr" width="1" height="1" style="display: none;"></object>
+		<object classid="clsid:B69003B3-C55E-4B48-836C-BC5946FC3B28" id="msgrUI" width="1" height="1" style="display: none;"></object>
+		
+	</body>
+	
+</html>

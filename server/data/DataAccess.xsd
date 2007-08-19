@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataAccess" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" GeneratorTypeConverterClassName="Converter" Modifier="AutoLayout, AnsiClass, NotPublic, Public" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="iquomiConnection" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Public" Name="iquomiConnection (Settings)" PropertyReference="&lt;SOAP-ENV:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:clr=&quot;http://schemas.microsoft.com/soap/encoding/clr/1.0&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&#xD;&#xA;&lt;SOAP-ENV:Body&gt;&#xD;&#xA;&lt;a1:CodePropertyReferenceExpression id=&quot;ref-1&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.3600.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;targetObject href=&quot;#ref-3&quot;/&gt;&#xD;&#xA;&lt;propertyName id=&quot;ref-4&quot;&gt;iquomiConnection&lt;/propertyName&gt;&#xD;&#xA;&lt;parameters href=&quot;#ref-5&quot;/&gt;&#xD;&#xA;&lt;CodeObject_x002B_userData xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;/a1:CodePropertyReferenceExpression&gt;&#xD;&#xA;&lt;a1:CodePropertyReferenceExpression id=&quot;ref-3&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.3600.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;targetObject href=&quot;#ref-6&quot;/&gt;&#xD;&#xA;&lt;propertyName id=&quot;ref-7&quot;&gt;Value&lt;/propertyName&gt;&#xD;&#xA;&lt;parameters href=&quot;#ref-8&quot;/&gt;&#xD;&#xA;&lt;CodeObject_x002B_userData xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;/a1:CodePropertyReferenceExpression&gt;&#xD;&#xA;&lt;a1:CodeExpressionCollection id=&quot;ref-5&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.3600.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;CollectionBase_x002B_list href=&quot;#ref-9&quot;/&gt;&#xD;&#xA;&lt;/a1:CodeExpressionCollection&gt;&#xD;&#xA;&lt;a1:CodeTypeReferenceExpression id=&quot;ref-6&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.3600.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;type href=&quot;#ref-10&quot;/&gt;&#xD;&#xA;&lt;CodeObject_x002B_userData xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;/a1:CodeTypeReferenceExpression&gt;&#xD;&#xA;&lt;a1:CodeExpressionCollection id=&quot;ref-8&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.3600.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;CollectionBase_x002B_list href=&quot;#ref-11&quot;/&gt;&#xD;&#xA;&lt;/a1:CodeExpressionCollection&gt;&#xD;&#xA;&lt;a2:ArrayList id=&quot;ref-9&quot; xmlns:a2=&quot;http://schemas.microsoft.com/clr/ns/System.Collections&quot;&gt;&#xD;&#xA;&lt;_items href=&quot;#ref-12&quot;/&gt;&#xD;&#xA;&lt;_size&gt;0&lt;/_size&gt;&#xD;&#xA;&lt;_version&gt;0&lt;/_version&gt;&#xD;&#xA;&lt;/a2:ArrayList&gt;&#xD;&#xA;&lt;a1:CodeTypeReference id=&quot;ref-10&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.3600.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;baseType id=&quot;ref-13&quot;&gt;Commanigy.Iquomi.Properties.Settings&lt;/baseType&gt;&#xD;&#xA;&lt;arrayRank&gt;0&lt;/arrayRank&gt;&#xD;&#xA;&lt;arrayElementType xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;typeArguments xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;referenceOptions&gt;0&lt;/referenceOptions&gt;&#xD;&#xA;&lt;CodeObject_x002B_userData xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;/a1:CodeTypeReference&gt;&#xD;&#xA;&lt;a2:ArrayList id=&quot;ref-11&quot; xmlns:a2=&quot;http://schemas.microsoft.com/clr/ns/System.Collections&quot;&gt;&#xD;&#xA;&lt;_items href=&quot;#ref-12&quot;/&gt;&#xD;&#xA;&lt;_size&gt;0&lt;/_size&gt;&#xD;&#xA;&lt;_version&gt;0&lt;/_version&gt;&#xD;&#xA;&lt;/a2:ArrayList&gt;&#xD;&#xA;&lt;SOAP-ENC:Array id=&quot;ref-12&quot; SOAP-ENC:arrayType=&quot;xsd:anyType[0]&quot;&gt;&#xD;&#xA;&lt;/SOAP-ENC:Array&gt;&#xD;&#xA;&lt;/SOAP-ENV:Body&gt;&#xD;&#xA;&lt;/SOAP-ENV:Envelope&gt;&#xD;&#xA;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <DbTable BaseClass="System.ComponentModel.Component" DataAccessorName="AccountEntityTableAdapter" GeneratorDataComponentClassName="AccountEntityTableAdapter" GeneratorDataComponentInterfaceName="IAccountEntityTableAdapter" Modifier="AutoLayout, AnsiClass, NotPublic, Public" Name="AccountEntity" UserDataComponentName="AccountEntityTableAdapter" WebServiceAttribute="False">
+            <MainSource>
+              <DbSource ConnectionRef="iquomiConnection (Settings)" DbObjectName="iquomi.dbo.iqReadAccount" DbObjectType="StoredProcedure" EnableWebMethods="False" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GeneratePagingMethods="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodName="GetData" ParameterList="@id" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="False">
+                    <CommandText>dbo.iqDeleteAccount</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" Scale="0" Size="4" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@id" Precision="10" Scale="0" Size="4" SourceColumn="id" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="False">
+                    <CommandText>dbo.iqCreateAccount</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" Scale="0" Size="4" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@owner_account_id" Precision="10" Scale="0" Size="4" SourceColumn="owner_account_id" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@group_id" Precision="10" Scale="0" Size="4" SourceColumn="group_id" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@iqid" Precision="0" Scale="0" Size="128" SourceColumn="iqid" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@email" Precision="0" Scale="0" Size="128" SourceColumn="email" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@password" Precision="0" Scale="0" Size="128" SourceColumn="password" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="False">
+                    <CommandText>dbo.iqReadAccount</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" Scale="0" Size="4" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@id" Precision="10" Scale="0" Size="4" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="False">
+                    <CommandText>dbo.iqUpdateAccount</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" Scale="0" Size="4" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@id" Precision="10" Scale="0" Size="4" SourceColumn="id" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@owner_account_id" Precision="10" Scale="0" Size="4" SourceColumn="owner_account_id" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@group_id" Precision="10" Scale="0" Size="4" SourceColumn="group_id" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@iqid" Precision="0" Scale="0" Size="128" SourceColumn="iqid" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@email" Precision="0" Scale="0" Size="128" SourceColumn="email" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@password" Precision="0" Scale="0" Size="128" SourceColumn="password" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="Id" />
+              <Mapping SourceColumn="owner_account_id" DataSetColumn="OwnerAccountId" />
+              <Mapping SourceColumn="group_id" DataSetColumn="GroupId" />
+              <Mapping SourceColumn="iqid" DataSetColumn="Iqid" />
+              <Mapping SourceColumn="email" DataSetColumn="Email" />
+              <Mapping SourceColumn="password" DataSetColumn="Password" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </DbTable>
+          <DbTable BaseClass="System.ComponentModel.Component" DataAccessorName="ServiceEntityTableAdapter" GeneratorDataComponentClassName="ServiceEntityTableAdapter" GeneratorDataComponentInterfaceName="IServiceEntityTableAdapter" Modifier="AutoLayout, AnsiClass, NotPublic, Public" Name="ServiceEntity" UserDataComponentName="ServiceEntityTableAdapter" WebServiceAttribute="False">
+            <MainSource>
+              <DbSource ConnectionRef="iquomiConnection (Settings)" DbObjectName="iquomi.dbo.iqReadService" DbObjectType="StoredProcedure" EnableWebMethods="False" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GeneratePagingMethods="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodName="GetData" ParameterList="@id, @language_id" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="False">
+                    <CommandText>dbo.iqDeleteService</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" Scale="0" Size="4" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@id" Precision="10" Scale="0" Size="4" SourceColumn="id" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="False">
+                    <CommandText>dbo.iqCreateService</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" Scale="0" Size="4" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@author_id" Precision="10" Scale="0" Size="4" SourceColumn="author_id" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" Scale="0" Size="64" SourceColumn="name" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@version" Precision="0" Scale="0" Size="16" SourceColumn="version" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@xsd" Precision="0" Scale="0" Size="16" SourceColumn="xsd" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@url_xsd" Precision="0" Scale="0" Size="320" SourceColumn="url_xsd" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@url_icon" Precision="0" Scale="0" Size="128" SourceColumn="url_icon" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@url_homepage" Precision="0" Scale="0" Size="128" SourceColumn="url_homepage" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@state" Precision="0" Scale="0" Size="1" SourceColumn="state" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="False">
+                    <CommandText>dbo.iqReadService</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" Scale="0" Size="4" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@id" Precision="10" Scale="0" Size="4" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@language_id" Precision="10" Scale="0" Size="4" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="False">
+                    <CommandText>dbo.iqUpdateService</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" Scale="0" Size="4" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@id" Precision="10" Scale="0" Size="4" SourceColumn="id" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@author_id" Precision="10" Scale="0" Size="4" SourceColumn="author_id" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" Scale="0" Size="64" SourceColumn="name" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@version" Precision="0" Scale="0" Size="16" SourceColumn="version" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@xsd" Precision="0" Scale="0" Size="16" SourceColumn="xsd" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@url_xsd" Precision="0" Scale="0" Size="320" SourceColumn="url_xsd" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@url_icon" Precision="0" Scale="0" Size="128" SourceColumn="url_icon" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@url_homepage" Precision="0" Scale="0" Size="128" SourceColumn="url_homepage" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@state" Precision="0" Scale="0" Size="1" SourceColumn="state" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="Id" />
+              <Mapping SourceColumn="author_id" DataSetColumn="AuthorId" />
+              <Mapping SourceColumn="name" DataSetColumn="Name" />
+              <Mapping SourceColumn="version" DataSetColumn="Version" />
+              <Mapping SourceColumn="xsd" DataSetColumn="Xsd" />
+              <Mapping SourceColumn="url_xsd" DataSetColumn="UrlXsd" />
+              <Mapping SourceColumn="url_icon" DataSetColumn="UrlIcon" />
+              <Mapping SourceColumn="url_homepage" DataSetColumn="UrlHomepage" />
+              <Mapping SourceColumn="state" DataSetColumn="State" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </DbTable>
+          <DbTable BaseClass="System.ComponentModel.Component" DataAccessorName="SubscriptionEntityTableAdapter" GeneratorDataComponentClassName="SubscriptionEntityTableAdapter" GeneratorDataComponentInterfaceName="ISubscriptionEntityTableAdapter" Modifier="AutoLayout, AnsiClass, NotPublic, Public" Name="SubscriptionEntity" UserDataComponentName="SubscriptionEntityTableAdapter" WebServiceAttribute="False">
+            <MainSource>
+              <DbSource ConnectionRef="iquomiConnection (Settings)" DbObjectName="iquomi.dbo.iqReadSubscription" DbObjectType="StoredProcedure" EnableWebMethods="False" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GeneratePagingMethods="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodName="GetData" ParameterList="@id" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="False">
+                    <CommandText>dbo.iqDeleteSubscription</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" Scale="0" Size="4" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@service_id" Precision="10" Scale="0" Size="4" SourceColumn="service_id" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@account_id" Precision="10" Scale="0" Size="4" SourceColumn="account_id" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="False">
+                    <CommandText>dbo.iqCreateSubscription</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" Scale="0" Size="4" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@id" Precision="0" Scale="0" Size="16" SourceColumn="id" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@account_id" Precision="10" Scale="0" Size="4" SourceColumn="account_id" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@service_id" Precision="10" Scale="0" Size="4" SourceColumn="service_id" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@xml" Precision="0" Scale="0" Size="16" SourceColumn="xml" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="False">
+                    <CommandText>dbo.iqReadSubscription</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" Scale="0" Size="4" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@id" Precision="0" Scale="0" Size="16" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="False">
+                    <CommandText>dbo.iqUpdateSubscription</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" Scale="0" Size="4" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@service_id" Precision="10" Scale="0" Size="4" SourceColumn="service_id" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@account_id" Precision="10" Scale="0" Size="4" SourceColumn="account_id" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@xml" Precision="0" Scale="0" Size="16" SourceColumn="xml" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="Id" />
+              <Mapping SourceColumn="account_id" DataSetColumn="AccountId" />
+              <Mapping SourceColumn="service_id" DataSetColumn="ServiceId" />
+              <Mapping SourceColumn="xml" DataSetColumn="Xml" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </DbTable>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataAccess" msdata:IsDataSet="true" msdata:EnforceConstraints="False" msprop:User_DataSetName="DataAccess" msprop:DSGenerator_DataSetName="DataAccess">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AccountEntity" msdata:Locale="en-US" msprop:Generator_SuspendValidationVarName="m_suspendValidation" msprop:Generator_SuspendValidationPropName="SuspendValidation" msprop:User_TableName="AccountEntity" msprop:Generator_RowClassName="AccountEntityRow" msprop:Generator_RowEvArgName="AccountEntityRowChangeEvent" msprop:Generator_RowEvHandlerName="AccountEntityRowChangeEventHandler" msprop:Generator_TableClassName="AccountEntityDataTable" msprop:Generator_TableVarName="tableAccountEntity" msprop:Generator_TablePropName="AccountEntity">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:Caption="id" msprop:Generator_DelegateName="IdChangeEventHandler" msprop:Generator_ChangingEventName="IdChanging" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_EventArgName="IdChangeEventArg" msprop:User_ColumnName="Id" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ChangedEventName="IdChanged" msprop:Generator_ColumnPropNameInTable="IdColumn" type="xs:int" />
+              <xs:element name="OwnerAccountId" msdata:Caption="owner_account_id" msprop:Generator_DelegateName="OwnerAccountIdChangeEventHandler" msprop:Generator_ChangingEventName="OwnerAccountIdChanging" msprop:Generator_ColumnVarNameInTable="columnOwnerAccountId" msprop:Generator_EventArgName="OwnerAccountIdChangeEventArg" msprop:User_ColumnName="OwnerAccountId" msprop:Generator_ColumnPropNameInRow="OwnerAccountId" msprop:Generator_ChangedEventName="OwnerAccountIdChanged" msprop:Generator_ColumnPropNameInTable="OwnerAccountIdColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="GroupId" msprop:Generator_DelegateName="GroupIdChangeEventHandler" msprop:Generator_ChangingEventName="GroupIdChanging" msprop:Generator_ColumnVarNameInTable="columnGroupId" msprop:Generator_EventArgName="GroupIdChangeEventArg" msprop:User_ColumnName="GroupId" msprop:Generator_ColumnPropNameInRow="GroupId" msprop:Generator_ChangedEventName="GroupIdChanged" msprop:Generator_ColumnPropNameInTable="GroupIdColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Iqid" msprop:Generator_DelegateName="IqidChangeEventHandler" msprop:Generator_ChangingEventName="IqidChanging" msprop:Generator_ColumnVarNameInTable="columnIqid" msprop:Generator_EventArgName="IqidChangeEventArg" msprop:User_ColumnName="Iqid" msprop:Generator_ColumnPropNameInRow="Iqid" msprop:Generator_ChangedEventName="IqidChanged" msprop:Generator_ColumnPropNameInTable="IqidColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Email" msprop:Generator_DelegateName="EmailChangeEventHandler" msprop:Generator_ChangingEventName="EmailChanging" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_EventArgName="EmailChangeEventArg" msprop:User_ColumnName="Email" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ChangedEventName="EmailChanged" msprop:Generator_ColumnPropNameInTable="EmailColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Password" msprop:Generator_DelegateName="PasswordChangeEventHandler" msprop:Generator_ChangingEventName="PasswordChanging" msprop:Generator_ColumnVarNameInTable="columnPassword" msprop:Generator_EventArgName="PasswordChangeEventArg" msprop:User_ColumnName="Password" msprop:Generator_ColumnPropNameInRow="Password" msprop:Generator_ChangedEventName="PasswordChanged" msprop:Generator_ColumnPropNameInTable="PasswordColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ServiceEntity" msdata:Locale="en-US" msprop:Generator_SuspendValidationVarName="m_suspendValidation" msprop:Generator_SuspendValidationPropName="SuspendValidation" msprop:User_TableName="ServiceEntity" msprop:Generator_RowClassName="ServiceEntityRow" msprop:Generator_RowEvArgName="ServiceEntityRowChangeEvent" msprop:Generator_RowEvHandlerName="ServiceEntityRowChangeEventHandler" msprop:Generator_TableClassName="ServiceEntityDataTable" msprop:Generator_TableVarName="tableServiceEntity" msprop:Generator_TablePropName="ServiceEntity">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_DelegateName="IdChangeEventHandler" msprop:Generator_ChangingEventName="IdChanging" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_EventArgName="IdChangeEventArg" msprop:User_ColumnName="Id" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ChangedEventName="IdChanged" msprop:Generator_ColumnPropNameInTable="IdColumn" type="xs:int" />
+              <xs:element name="AuthorId" msprop:Generator_DelegateName="AuthorIdChangeEventHandler" msprop:Generator_ChangingEventName="AuthorIdChanging" msprop:Generator_ColumnVarNameInTable="columnAuthorId" msprop:Generator_EventArgName="AuthorIdChangeEventArg" msprop:User_ColumnName="AuthorId" msprop:Generator_ColumnPropNameInRow="AuthorId" msprop:Generator_ChangedEventName="AuthorIdChanged" msprop:Generator_ColumnPropNameInTable="AuthorIdColumn" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_DelegateName="NameChangeEventHandler" msprop:Generator_ChangingEventName="NameChanging" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_EventArgName="NameChangeEventArg" msprop:User_ColumnName="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ChangedEventName="NameChanged" msprop:Generator_ColumnPropNameInTable="NameColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="64" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Version" msprop:Generator_DelegateName="VersionChangeEventHandler" msprop:Generator_ChangingEventName="VersionChanging" msprop:Generator_ColumnVarNameInTable="columnVersion" msprop:Generator_EventArgName="VersionChangeEventArg" msprop:User_ColumnName="Version" msprop:Generator_ColumnPropNameInRow="Version" msprop:Generator_ChangedEventName="VersionChanged" msprop:Generator_ColumnPropNameInTable="VersionColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="16" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Xsd" msprop:Generator_DelegateName="XsdChangeEventHandler" msprop:Generator_ChangingEventName="XsdChanging" msprop:Generator_ColumnVarNameInTable="columnXsd" msprop:Generator_EventArgName="XsdChangeEventArg" msprop:User_ColumnName="Xsd" msprop:Generator_ColumnPropNameInRow="Xsd" msprop:Generator_ChangedEventName="XsdChanged" msprop:Generator_ColumnPropNameInTable="XsdColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UrlXsd" msprop:Generator_DelegateName="UrlXsdChangeEventHandler" msprop:Generator_ChangingEventName="UrlXsdChanging" msprop:Generator_ColumnVarNameInTable="columnUrlXsd" msprop:Generator_EventArgName="UrlXsdChangeEventArg" msprop:User_ColumnName="UrlXsd" msprop:Generator_ColumnPropNameInRow="UrlXsd" msprop:Generator_ChangedEventName="UrlXsdChanged" msprop:Generator_ColumnPropNameInTable="UrlXsdColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="160" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UrlIcon" msprop:Generator_DelegateName="UrlIconChangeEventHandler" msprop:Generator_ChangingEventName="UrlIconChanging" msprop:Generator_ColumnVarNameInTable="columnUrlIcon" msprop:Generator_EventArgName="UrlIconChangeEventArg" msprop:User_ColumnName="UrlIcon" msprop:Generator_ColumnPropNameInRow="UrlIcon" msprop:Generator_ChangedEventName="UrlIconChanged" msprop:Generator_ColumnPropNameInTable="UrlIconColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UrlHomepage" msprop:Generator_DelegateName="UrlHomepageChangeEventHandler" msprop:Generator_ChangingEventName="UrlHomepageChanging" msprop:Generator_ColumnVarNameInTable="columnUrlHomepage" msprop:Generator_EventArgName="UrlHomepageChangeEventArg" msprop:User_ColumnName="UrlHomepage" msprop:Generator_ColumnPropNameInRow="UrlHomepage" msprop:Generator_ChangedEventName="UrlHomepageChanged" msprop:Generator_ColumnPropNameInTable="UrlHomepageColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="State" msprop:Generator_DelegateName="StateChangeEventHandler" msprop:Generator_ChangingEventName="StateChanging" msprop:Generator_ColumnVarNameInTable="columnState" msprop:Generator_EventArgName="StateChangeEventArg" msprop:User_ColumnName="State" msprop:Generator_ColumnPropNameInRow="State" msprop:Generator_ChangedEventName="StateChanged" msprop:Generator_ColumnPropNameInTable="StateColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SubscriptionEntity" msdata:Locale="en-US" msprop:Generator_SuspendValidationVarName="m_suspendValidation" msprop:Generator_SuspendValidationPropName="SuspendValidation" msprop:User_TableName="SubscriptionEntity" msprop:Generator_RowClassName="SubscriptionEntityRow" msprop:Generator_RowEvArgName="SubscriptionEntityRowChangeEvent" msprop:Generator_RowEvHandlerName="SubscriptionEntityRowChangeEventHandler" msprop:Generator_TableClassName="SubscriptionEntityDataTable" msprop:Generator_TableVarName="tableSubscriptionEntity" msprop:Generator_TablePropName="SubscriptionEntity">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:DataType="System.Guid, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_DelegateName="IdChangeEventHandler" msprop:Generator_ChangingEventName="IdChanging" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_EventArgName="IdChangeEventArg" msprop:User_ColumnName="Id" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ChangedEventName="IdChanged" msprop:Generator_ColumnPropNameInTable="IdColumn" type="xs:anyType" />
+              <xs:element name="AccountId" msprop:Generator_DelegateName="AccountIdChangeEventHandler" msprop:Generator_ChangingEventName="AccountIdChanging" msprop:Generator_ColumnVarNameInTable="columnAccountId" msprop:Generator_EventArgName="AccountIdChangeEventArg" msprop:User_ColumnName="AccountId" msprop:Generator_ColumnPropNameInRow="AccountId" msprop:Generator_ChangedEventName="AccountIdChanged" msprop:Generator_ColumnPropNameInTable="AccountIdColumn" type="xs:int" />
+              <xs:element name="ServiceId" msprop:Generator_DelegateName="ServiceIdChangeEventHandler" msprop:Generator_ChangingEventName="ServiceIdChanging" msprop:Generator_ColumnVarNameInTable="columnServiceId" msprop:Generator_EventArgName="ServiceIdChangeEventArg" msprop:User_ColumnName="ServiceId" msprop:Generator_ColumnPropNameInRow="ServiceId" msprop:Generator_ChangedEventName="ServiceIdChanged" msprop:Generator_ColumnPropNameInTable="ServiceIdColumn" type="xs:int" />
+              <xs:element name="Xml" msprop:Generator_DelegateName="XmlChangeEventHandler" msprop:Generator_ChangingEventName="XmlChanging" msprop:Generator_ColumnVarNameInTable="columnXml" msprop:Generator_EventArgName="XmlChangeEventArg" msprop:User_ColumnName="Xml" msprop:Generator_ColumnPropNameInRow="Xml" msprop:Generator_ChangedEventName="XmlChanged" msprop:Generator_ColumnPropNameInTable="XmlColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:AccountEntity" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="ServiceEntity_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ServiceEntity" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="SubscriptionEntity_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SubscriptionEntity" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

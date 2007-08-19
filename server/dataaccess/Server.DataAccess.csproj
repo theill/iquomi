@@ -1,0 +1,110 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BA1A3AEA-C6B9-4FB3-9963-DD9C2AB47BAB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Commanigy.Iquomi.Data</RootNamespace>
+    <AssemblyName>Commanigy.Iquomi.Data</AssemblyName>
+    <WarningLevel>4</WarningLevel>
+    <StartupObject>
+    </StartupObject>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\3rdparty\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataStore.cs" />
+    <Compile Include="DbAccount.cs" />
+    <Compile Include="DbAuthor.cs" />
+    <Compile Include="DbChargeUnit.cs" />
+    <Compile Include="DbColumnAdapter.cs" />
+    <Compile Include="DbDeleteLog.cs" />
+    <Compile Include="DbHelper.cs" />
+    <Compile Include="DbMethodHistory.cs" />
+    <Compile Include="DbMethodType.cs" />
+    <Compile Include="DbPackage.cs" />
+    <Compile Include="DbPackageItem.cs" />
+    <Compile Include="DbPlatform.cs" />
+    <Compile Include="DbRole.cs" />
+    <Compile Include="DbRoleMap.cs" />
+    <Compile Include="DbRoleTemplate.cs" />
+    <Compile Include="DbRoleTemplateDescription.cs" />
+    <Compile Include="DbRoleTemplateMethod.cs" />
+    <Compile Include="DbScope.cs" />
+    <Compile Include="DbService.cs" />
+    <Compile Include="DbServiceCharge.cs" />
+    <Compile Include="DbServiceMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DbServiceScope.cs" />
+    <Compile Include="DbShape.cs" />
+    <Compile Include="DbSubscription.cs" />
+    <Compile Include="DbSubscriptionListener.cs" />
+    <Compile Include="DbSubscriptionScope.cs" />
+    <Compile Include="DbUtility.cs" />
+    <Compile Include="IDbObject.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\sdk\Sdk.csproj">
+      <Project>{9DA163A8-5A9C-422E-88C7-E76ACB23B144}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+      <Name>Sdk</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DatabaseDiagram.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
+</Project>

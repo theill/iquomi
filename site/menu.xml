@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mainMenu xmlns:m="http://schemas.iquomi.com/iqMenu">
+	<menu id="admin"
+				text="Admin"
+				visible="true">
+		<menuItem id="adminLogon1"
+							text="peter@theill.com"
+							link="logon.aspx?email=peter@theill.com&amp;password=g5zTb4oNXBR1VWyUqhNdcQ==&amp;NoHashing=True"
+							visible="true" />
+		<menuItem id="adminLogon2"
+							text="ptheill@commanigy.com"
+							link="logon.aspx?email=ptheill@commanigy.com&amp;password=g5zTb4oNXBR1VWyUqhNdcQ==&amp;NoHashing=True"
+							visible="true" />
+		<menuItem id="adminLogon3"
+							text="test1@iquomi.com"
+							link="logon.aspx?email=test1@iquomi.com&amp;password=test1"
+							visible="true" />
+		<menuItem id="adminLogon4"
+							text="test2@iquomi.com"
+							link="logon.aspx?email=test2@iquomi.com&amp;password=test2"
+							visible="true"
+						 />
+	</menu>
+	<menu id="members"
+				text="Members"
+				visible="true">
+		<menuItem id="signUp"
+							text="Sign Up"
+							title="Sign Up for a free account now."
+							link="signup.aspx"
+							visible="false" />
+		<menuItem id="logOn"
+							text="Log On"
+							link="logon.aspx"
+							visible="true" />
+		<menuItem id="logOff"
+							text="Log Off"
+							link="logoff.aspx"
+							visible="false" />
+	</menu>
+	<menu id="myAccount"
+				text="My Account"
+				link="account.aspx"
+				visible="false">
+		<menuItem text="Personal Information"
+							link=""
+							visible="true"
+							disabled="true" />
+		<menuItem text="Financial Information"
+							link=""
+							visible="true"
+							disabled="true" />
+		<menuItem text="Activity Report"
+							link="account.report.aspx"
+							visible="true" />
+	</menu>
+	<menu id="mySubscriptions"
+				text="My Subscriptions"
+				link="subscriptions.aspx"
+				visible="false">
+		<menuItem text="Subscribe..."
+							link="subscription.create.aspx"
+							visible="true" />
+		<menuItem text="Notes"
+							link="services.notes.aspx"
+							visible="true"
+							debug="true" />
+		<menuItem text="Bookmarks"
+							link="services.bookmarksync.aspx"
+							visible="true"
+							debug="true" />
+		<menuItem text="Favorites"
+							link="services.iqfavorites.aspx"
+							visible="true"
+							debug="true" />
+		<menuItem text="Alerts"
+							link="services.iqalerts.aspx"
+							visible="true"
+							debug="true" />
+		<menuItem text="Profile"
+							link="services.iqprofile.aspx"
+							visible="true"
+							debug="true" />
+		<menuItem text="Presence"
+							link="services.iqpresence.aspx"
+							visible="true"
+							debug="true" />
+		<menuItem text="Sms" link="services.iqsms.aspx" visible="true" debug="true" />
+		<menuItem text="Contacts" link="services.iqcontacts.aspx" visible="true" debug="true" />
+		<menuItemSeparator visible="true" />
+		<menuItem text="Mail"
+							link=""
+							visible="false" />
+		<menuItem text="Calendar"
+							link=""
+							visible="false" />
+		<menuItem text="Contacts"
+							link=""
+							visible="false" />
+		<menuItem text="Tasks"
+							link=""
+							visible="false" />
+		<menuItem text="Bookmarks"
+							link=""
+							visible="false" />
+		<menuItem text="POP3Client"
+							link=""
+							visible="false" />
+	</menu>
+	<menu id="myServices"
+				text="My Services"
+				link="services.aspx"
+				visible="false">
+		<menuItem id="servicesCreate"
+							text="Create..."
+							link="service.create.aspx"
+							visible="true" />
+		<menuItem id="servicesExtend"
+							text="Extend..."
+							link="service.extend.aspx"
+							visible="true" />
+	</menu>
+	<menu id="myPackages"
+				text="My Packages"
+				link="packages.aspx"
+				visible="false">
+		<menuItem text="Create..."
+							link="package.create.aspx"
+							visible="true" />
+		<menuItem text="Release..."
+							link="#/package.release.aspx"
+							visible="true" />
+	</menu>
+	<menu id="software"
+				text="Software"
+				link="software.aspx"
+				visible="true">
+		<menuItem text="Download"
+							link="software.download.aspx"
+							visible="true" />
+	</menu>
+	<menu id="aboutUs"
+				text="About Us"
+				link="about.aspx"
+				visible="true">
+		<menuItem text="Press Releases"
+							link="#/about.press_releases.aspx"
+							visible="true"
+							disabled="true" />
+		<menuItem text="Privacy Policy"
+							link="about.privacy-policy.aspx"
+							visible="true" />
+		<menuItem text="Terms of Use"
+							link="about.terms-of-use.aspx"
+							visible="true" />
+		<menuItem text="Contact Us"
+							link="#/about.contact_us.aspx"
+							visible="true"
+							disabled="true" />
+		<menuItem text="Logos"
+							link="about.logos.aspx"
+							visible="true" />
+		<menuItem text="History"
+							link="about.history.aspx"
+							visible="true" />
+		<menuItem text="Discuss (yahoo)"
+							link="http://groups.yahoo.com/group/iquomi/"
+							target="_blank"
+							visible="true" />
+		<menuItem text="Iq Project Blog"
+							link="http://www.theill.com/iquomi/blog.html"
+							target="_blank"
+							visible="true" />
+	</menu>
+</mainMenu>

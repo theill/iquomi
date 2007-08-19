@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<workflow name="Web Site" baseUri="http://www.iquomi.com/">
+	<!--
+		
+		This is subject for a new "iqWorkflow" service allowing users to
+		manage workflows!
+        
+        TODO Figure out, if this file is being used anymore and if so, make
+        changes so it's using "Web.sitemap" instead.
+		
+	-->
+
+	<page id="logon" file="~/logon.aspx">
+		<title xml:lang="en-US">Log On</title>
+	</page>
+	
+	<page id="logon.success" file="~/logon.success.aspx" />
+	<page id="logoff.success" file="~/generic.success.aspx" />
+	<page id="signup.success" file="~/signup.success.aspx" />
+
+	<page id="account.author_setup" file="~/account.author_setup.aspx?referrer={0}" />
+
+	<page id="package.create.success" file="~/generic.success.aspx" />
+	<page id="service.create.success" file="~/service.create.success.aspx" />
+	<page id="service.update" file="~/service.update.aspx?id={0}" />
+	<page id="service.charges" file="~/service.charges.aspx?id={0}" />
+	<page id="service.role_templates" file="~/service.role_templates.aspx?id={0}">
+		<title xml:lang="en-US">Service Role Templates</title>
+		<next ref="service.role_template.create" />
+	</page>
+	
+	<page id="service.charge.create" file="~/service.charge.create.aspx?service_id={0}" />
+	<page id="service.charge.create.success" file="~/generic.success.aspx" />
+
+	<page id="service.charge.update" file="~/service.charge.update.aspx?id={0}&#038;service_id={1}" />
+	<page id="service.charge.update.success" file="~/generic.success.aspx" />
+	
+	<page id="service.role_template.create" file="~/service.role_template.create.aspx?service_id={0}" />
+	<page id="service.role_template.create.success" file="~/generic.success.aspx" />
+	
+	<page id="service.role_template.update" file="~/service.role_template.update.aspx?id={0}" />
+	
+	<page id="service.role_template_method.create" file="~/service.role_template_method.create.aspx?id={0}">
+		<back ref="service.role_template.update" />
+	</page>
+
+	<page id="service.role_template_description.create" file="~/service.role_template_description.create.aspx?id={0}">
+		<title xml:lang="en-US">Role Template Description</title>
+	</page>
+	
+	<page id="service.role_template_description.create.success" file="~/generic.success.aspx" />
+	
+	<page id="services" file="~/services.aspx">
+		<next ref="service.read" />
+	</page>
+	
+	<page id="service.read" file="~/service.read.aspx">
+		<title xml:lang="en-US">Service</title>
+		
+		<back ref="/" />
+		<next ref="service.update" />
+		<next ref="service.role_templates" />
+	</page>
+	
+	<page id="service.role_template_method.create.success" file="~/generic.success.aspx" />
+	
+	<page id="service.scopes" file="~/service.scopes.aspx" />
+	<page id="service.scope.create" file="~/service.scope.create.aspx?id={0}" />
+	<page id="service.scope.update" file="~/service.scope.update.aspx?id={0}" />
+
+	<page id="service.shape.create" file="~/service.shape.create.aspx?id={0}" />
+	<page id="service.shape.update" file="~/service.shape.update.aspx?id={0}" />
+	
+	<page id="service.upgrade" file="~/service.upgrade.aspx?id={0}" />
+	
+	<page id="package.items" file="~/package_items.aspx?id={0}" />
+	<page id="package_item.create" file="~/package_item.create.aspx?package_id={0}" />
+	<page id="package_item.create.success" file="~/generic.success.aspx" />
+	
+	<page id="subscription.delete.success" file="~/generic.success.aspx" />
+	<page id="subscription.roles" file="~/subscription.roles.aspx?id={0}" />
+	<page id="subscription.role.create" file="~/subscription.role.create.aspx?id={0}" />
+	<page id="subscription.role.update" file="~/subscription.role.update.aspx?id={0}&amp;subscription_id={1}" />
+
+	<page id="subscription.scopes" file="~/subscription.scopes.aspx?id={0}" />
+    <page id="subscription.scope.create" file="~/subscription.scope.create.aspx?id={0}" />
+    <page id="subscription.scope.update" file="~/subscription.scope.update.aspx?id={0}" />
+
+    <page id="subscription.listeners" file="~/subscription.listeners.aspx?id={0}" />
+	<page id="subscription.listener.create" file="~/subscription.listener.create.aspx?id={0}" />
+	<page id="subscription.listener.update" file="~/subscription.listener.update.aspx?id={0}" />
+	
+</workflow>

@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Commanigy.Iquomi.Services.IqProfile.Client.Windows.Outlook.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Services_IqProfile_Client_Windows_Outlook_IqProfileRef_IqProfile" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:4081/webservices/IqProfile.asmx</Value>
+    </Setting>
+    <Setting Name="Iqid" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

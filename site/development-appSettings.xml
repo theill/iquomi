@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<appSettings>
+		<add key="GridView.PageSize" value="15"/>
+		<add key="GridView.GridLines" value="None"/>
+		<add key="Debug.Username" value="peter@theill.com"/>
+		<add key="Debug.Password" value="g5zTb4oNXBR1VWyUqhNdcQ=="/>
+		<add key="IqAlertsRef.IqAlerts" value="http://localhost:4081/webservices/IqAlerts.asmx"/>
+		<add key="IqProfileRef.IqProfile" value="http://localhost:4081/webservices/IqProfile.asmx"/>
+		<add key="IqContactsRef.IqContacts" value="http://localhost:4081/webservices/IqContacts.asmx"/>
+		<add key="IqServicesRef.IqContacts" value="http://localhost:4081/webservices/IqContacts.asmx"/>
+		<add key="IqServicesRef.IqProfile" value="http://localhost:4081/webservices/IqProfile.asmx"/>
+		<add key="IqServicesRef.IqAlerts" value="http://localhost:4081/webservices/IqAlerts.asmx"/>
+		<add key="IqServicesRef.IqCore" value="http://localhost:4081/webservices/IqCore.asmx"/>
+		<add key="IqServicesRef.IqPresence" value="http://localhost:4081/webservices/IqPresence.asmx"/>
+		<add key="IqPresenceRef.IqPresence" value="http://localhost:4081/webservices/IqPresence.asmx"/>
+		<add key="IqCoreRef.IqCore" value="http://localhost:4081/webservices/IqCore.asmx"/>
+</appSettings>

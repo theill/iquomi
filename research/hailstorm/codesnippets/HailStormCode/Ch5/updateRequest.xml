@@ -1,0 +1,26 @@
+<hs:updateRequest xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core" 
+ xmlns="http://schemas.microsoft.com/hs/2001/10/myContacts" xmlns:mp="http://schemas.microsoft.com/hs/2001/10/myProfile">
+  <hs:updateBlock 
+       select="/myContacts/contact[name/mp:surName='Plank']"
+       onError="rollbackBlockAndContinue">
+     <hs:deleteRequest select="name/mp:givenName" minOccurs="1"/>
+    <hs:insertRequest select=".">
+    <emailAddress>
+      <mp:email>
+        ben@hotmail.com
+      </mp:email>
+    </emailAddress>
+  </hs:insertRequest>
+  </hs:updateBlock>
+  <hs:updateBlock select="/myContacts" onError="rollbackBlockAndContinue">
+  <hs:insertRequest select=".">
+  <contact>
+      <name>
+        <mp:givenName xml:lang="en">Ben</mp:givenName>
+        <mp:surName xml:lang="en">Eisenberg</mp:surName>
+      </name>
+      </contact>
+  </hs:insertRequest>
+  </hs:updateBlock>
+</hs:updateRequest>
+

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RoleList>
+	<Scope id="1"></Scope>
+	<Role RoleTemplateRef="rt0">
+		<Subject></Subject>
+	</Role>
+</RoleList>

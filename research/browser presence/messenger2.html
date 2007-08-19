@@ -1,0 +1,595 @@
+ 
+ 
+<!-- BEGIN MICROSOFT PRESENCE INFORMATION -->
+
+<script language="javascript">
+function Browseris () {
+var agt = navigator.userAgent.toLowerCase();
+this.osver = 1.0;
+if (agt)
+{
+var stOSVer = agt.substring(agt.indexOf("windows ") + 11);
+this.osver = parseFloat(stOSVer);
+}
+this.major = parseInt(navigator.appVersion);
+this.nav = ((agt.indexOf('mozilla')!=-1)&&((agt.indexOf('spoofer')==-1) && (agt.indexOf('compatible')==-1)));
+this.nav2 = (this.nav && (this.major == 2));
+this.nav3 = (this.nav && (this.major == 3));
+this.nav4 = (this.nav && (this.major == 4));
+this.nav6 = this.nav && (this.major == 5);
+this.nav6up = this.nav && (this.major >= 5);
+this.nav7up = false;
+if (this.nav6up)
+{
+var navIdx = agt.indexOf("netscape/");
+if (navIdx >=0 )
+this.nav7up = parseInt(agt.substring(navIdx+9)) >= 7;
+}
+this.ie = (agt.indexOf("msie")!=-1);
+this.aol = this.ie && agt.indexOf(" aol ")!=-1;
+if (this.ie)
+{
+var stIEVer = agt.substring(agt.indexOf("msie ") + 5);
+this.iever = parseInt(stIEVer);
+this.verIEFull = parseFloat(stIEVer);
+}
+else
+this.iever = 0;
+this.ie3 = ( this.ie && (this.major == 2));
+this.ie4 = ( this.ie && (this.major == 4));
+this.ie4up = this.ie && (this.major >=4);
+this.ie5up = this.ie && (this.iever >= 5);
+this.ie55up = this.ie && (this.verIEFull >= 5.5);
+this.ie6up = this.ie && (this.iever >= 6);
+this.win16 = ((agt.indexOf("win16")!=-1)
+|| (agt.indexOf("16bit")!=-1) || (agt.indexOf("windows 3.1")!=-1)
+|| (agt.indexOf("windows 16-bit")!=-1) );
+this.win31 = (agt.indexOf("windows 3.1")!=-1) || (agt.indexOf("win16")!=-1) ||
+(agt.indexOf("windows 16-bit")!=-1);
+this.win98 = ((agt.indexOf("win98")!=-1)||(agt.indexOf("windows 98")!=-1));
+this.win95 = ((agt.indexOf("win95")!=-1)||(agt.indexOf("windows 95")!=-1));
+this.winnt = ((agt.indexOf("winnt")!=-1)||(agt.indexOf("windows nt")!=-1));
+this.win32 = this.win95 || this.winnt || this.win98 || 
+((this.major >= 4) && (navigator.platform == "Win32")) ||
+(agt.indexOf("win32")!=-1) || (agt.indexOf("32bit")!=-1);
+this.os2   = (agt.indexOf("os/2")!=-1) 
+|| (navigator.appVersion.indexOf("OS/2")!=-1)  
+|| (agt.indexOf("ibm-webexplorer")!=-1);
+this.mac
+= (agt.indexOf("mac")!=-1);
+this.mac68k = this.mac && ((agt.indexOf("68k")!=-1) || 
+(agt.indexOf("68000")!=-1));
+this.macppc = this.mac && ((agt.indexOf("ppc")!=-1) || 
+(agt.indexOf("powerpc")!=-1));
+this.w3c = this.nav6up;
+}
+var browseris = new Browseris();
+
+var IMNControlObj = null;
+var bIMNControlInited = false;
+var IMNDictionaryObj = null;
+var bIMNSorted = false;
+var bIMNOnloadAttached = false;
+var IMNOrigScrollFunc = null;
+var bIMNInScrollFunc = false;
+var IMNSortableObj = null;
+var IMNHeaderObj = null;
+var IMNNameDictionaryObj = null;
+var IMNShowOfflineObj = null;
+function EnsureIMNControl()
+{
+if (!bIMNControlInited)
+{
+if (browseris.ie5up && browseris.win32)
+{
+//@cc_on
+//@if (@_jscript_version >= 5)
+//@
+
+
+try
+//@
+
+
+{
+//@
+
+
+
+IMNControlObj = new ActiveXObject("Name.NameCtrl.1");
+//@
+
+
+} catch(e)
+//@
+
+
+{
+//@
+
+
+
+
+//@
+
+
+};
+//@else
+//@end
+}
+bIMNControlInited = true;
+if (IMNControlObj)
+{
+IMNControlObj.OnStatusChange = IMNOnStatusChange;
+}
+}
+return IMNControlObj;
+}
+function IMNGetStatusImage(state, showoffline)
+{
+var img = "o_blank.gif";
+switch (state)
+{
+case 0:
+img = "o_imnon.gif";
+break;
+
+case 1:
+if (showoffline)
+{
+img = "o_imnoff.gif";
+}
+else
+{
+img = "o_blank.gif";
+}
+break;  
+case 2:
+img = "o_imnaway.gif";
+break;
+case 3:
+img = "o_imnbusy.gif";
+break;
+case 4:
+img = "o_imnaway.gif";
+break;
+case 5:
+img = "o_imnbusy.gif";
+break;
+case 6:
+img = "o_imnaway.gif";
+break;
+}
+return img;
+}
+function IMNGetHeaderImage()
+{
+return "o_imnhdr.gif";
+}
+function IMNIsOnlineState(state)
+{
+if (state == 1)
+{
+return false;
+}
+return true;
+}
+function IMNSortList(j, oldState, state)
+{
+var objTable = null; 
+var objRow = null;
+if (IMNSortableObj && IMNSortableObj[j])
+{
+objRow = document.getElementById(j);
+while (objRow && !(objRow.tagName == "TR" &&
+typeof(objRow.Sortable) != "undefined"))
+{
+objRow = objRow.parentNode;
+}
+objTable = objRow;
+while (objTable && objTable.tagName != "TABLE")
+{
+objTable = objTable.parentNode;
+}
+if (objTable != null && objRow != null)
+{
+if (objTable.rows[1].style.display == "none")
+{
+for (i=1; i<4; i++)
+{
+objTable.rows[i].style.display = "block";
+}
+}
+if (!IMNIsOnlineState(oldState) && IMNIsOnlineState(state))
+{
+objTable.rows[2].style.display = "none"; 
+i = 3;
+while (objTable.rows[i].id != "Offline" && objTable.rows[i].innerText < objRow.innerText)
+i++;
+objTable.moveRow(objRow.rowIndex, i); 
+if (
+objTable.rows[objTable.rows.length - 3].id == "Offline")
+{   
+objTable.rows[objTable.rows.length - 2].style.display = "block"; 
+}
+}
+else if (IMNIsOnlineState(oldState) && !IMNIsOnlineState(state))
+{
+if (objRow.rowIndex == 3 && 
+objTable.rows[objRow.rowIndex + 1].id == "Offline")
+{   
+objTable.rows[2].style.display = "block"; 
+}
+if (objTable.rows[objTable.rows.length - 3].id == "Offline")
+{   
+objTable.rows[objTable.rows.length - 2].style.display = "none"; 
+}
+i = objTable.rows.length - 2;
+while (objTable.rows[i - 1].id != "Offline" && objTable.rows[i].innerText > objRow.innerText)
+i--;
+objTable.moveRow(objRow.rowIndex, i); 
+}
+}
+}
+}
+function IMNOnStatusChange(name, state, id)
+{
+if (IMNDictionaryObj)
+{
+var img = IMNGetStatusImage(state, IMNSortableObj[id] ||
+IMNShowOfflineObj[id]);
+if (IMNDictionaryObj[id] != state)
+{
+if (bIMNSorted)
+IMNSortList(id, IMNDictionaryObj[id], state);
+IMNUpdateImage(id, img);
+IMNDictionaryObj[id] = state;
+}
+}
+}
+function IMNUpdateImage(id, img)
+{
+var obj = document.images(id);
+if (obj)
+{
+var oldImg = obj.src;
+var index = oldImg.lastIndexOf("/");
+var newImg = oldImg.slice(0, index + 1);
+newImg += img;
+if (oldImg != newImg)
+obj.src = newImg;
+if (obj.altbase)
+{
+obj.alt = obj.altbase;
+}
+}
+}
+function IMNHandleAccelerator()
+{
+if (IMNControlObj)
+{
+if (event.altKey && event.shiftKey &&
+event.keyCode==121)
+{
+IMNControlObj.DoAccelerator();
+}
+}
+}
+function IMNGetOOUILocation(obj)
+{
+var objRet = new Object;
+var objSpan = obj;
+var objOOUI = obj;
+var oouiX = 0, oouiY = 0, objDX = 0;
+var fRtl = document.dir == "rtl";
+while (objSpan && objSpan.tagName != "SPAN" && objSpan.tagName != "TABLE")
+{
+objSpan = objSpan.parentNode;
+}
+if (objSpan)
+{
+var collNodes = objSpan.tagName == "TABLE" ?
+objSpan.rows(0).cells(0).childNodes :
+objSpan.childNodes;
+var i;
+for (i = 0; i < collNodes.length; ++i)
+{   
+if (collNodes.item(i).tagName == "IMG" && collNodes.item(i).id)
+{
+objOOUI = collNodes.item(i);
+break;
+}
+}
+}
+obj = objOOUI;
+while (obj)
+{
+if (fRtl)
+{
+if (obj.scrollWidth >= obj.clientWidth + obj.scrollLeft)
+
+
+
+objDX = obj.scrollWidth - obj.clientWidth - obj.scrollLeft;
+
+
+
+else
+objDX = obj.clientWidth + obj.scrollLeft - obj.scrollWidth;
+oouiX += obj.offsetLeft + objDX;
+}
+else
+oouiX += obj.offsetLeft - obj.scrollLeft;
+oouiY += obj.offsetTop - obj.scrollTop;
+obj = obj.offsetParent;
+
+
+
+}
+try
+{
+obj = window.frameElement;
+while (obj)
+{
+if (fRtl)
+{
+if (obj.scrollWidth >= obj.clientWidth + obj.scrollLeft)
+
+
+
+objDX = obj.scrollWidth - obj.clientWidth - obj.scrollLeft;
+
+
+
+else
+objDX = obj.clientWidth + obj.scrollLeft - obj.scrollWidth;
+oouiX += obj.offsetLeft + objDX;
+}
+else
+oouiX += obj.offsetLeft - obj.scrollLeft;
+oouiY += obj.offsetTop - obj.scrollTop;
+obj = obj.offsetParent;
+}
+} catch(e)
+{
+};
+objRet.objSpan = objSpan;
+objRet.objOOUI = objOOUI;
+objRet.oouiX = oouiX;
+objRet.oouiY = oouiY;
+if (fRtl)
+objRet.oouiX += objOOUI.offsetWidth;
+return objRet;
+}
+function IMNShowOOUIMouse()
+{
+IMNShowOOUI(0);
+}
+function IMNShowOOUIKyb()
+{
+IMNShowOOUI(1);
+}
+function IMNShowOOUI(inputType)
+{
+if (browseris.ie5up && browseris.win32)
+{
+var obj = window.event.srcElement;
+var objSpan = obj;
+var objOOUI = obj;
+var oouiX = 0, oouiY = 0;
+if (EnsureIMNControl() && IMNNameDictionaryObj)
+{
+var objRet = IMNGetOOUILocation(obj);
+objSpan = objRet.objSpan;
+objOOUI = objRet.objOOUI;
+oouiX = objRet.oouiX;
+oouiY = objRet.oouiY;
+var name = IMNNameDictionaryObj[objOOUI.id];
+if (objSpan)
+objSpan.onkeydown = IMNHandleAccelerator;
+IMNControlObj.ShowOOUI(name, inputType, oouiX, oouiY);
+}
+}
+}
+function IMNHideOOUI()
+{
+if (IMNControlObj)
+{
+IMNControlObj.HideOOUI();
+return false;
+}
+return true;
+}
+function IMNScroll()
+{
+if (!bIMNInScrollFunc)
+{
+bIMNInScrollFunc = true;
+IMNHideOOUI();
+}
+bIMNInScrollFunc = false;
+return IMNOrigScrollFunc ? IMNOrigScrollFunc() : true;   
+}
+function IMNRC(name)
+{
+if (name == null || name == '')
+return;
+if (browseris.ie5up && browseris.win32)
+{
+var obj = window.event.srcElement;
+var objSpan = obj;
+var id = obj.id;
+var fFirst = false;
+if (!IMNDictionaryObj)
+{
+IMNDictionaryObj = new Object();
+IMNNameDictionaryObj = new Object();
+IMNSortableObj = new Object();
+IMNShowOfflineObj = new Object();
+if (!IMNOrigScrollFunc)
+{
+IMNOrigScrollFunc = window.onscroll;
+window.onscroll = IMNScroll;
+}
+}
+if (IMNDictionaryObj)
+{
+if (!IMNNameDictionaryObj[id])
+{
+IMNNameDictionaryObj[id] = name;
+fFirst = true;
+}
+if (typeof(IMNDictionaryObj[id]) == "undefined")
+{
+IMNDictionaryObj[id] = 1;
+}
+if (!IMNSortableObj[id] &&
+(typeof(obj.Sortable) != "undefined"))
+{
+IMNSortableObj[id] = obj.Sortable;
+if (!bIMNOnloadAttached)
+{
+if (EnsureIMNControl() && IMNControlObj.PresenceEnabled)
+window.attachEvent("onload", IMNSortTable);
+bIMNOnloadAttached = true;
+}
+}
+if (!IMNShowOfflineObj[id] &&
+(typeof(obj.ShowOfflinePawn) != "undefined"))
+{
+IMNShowOfflineObj[id] = obj.ShowOfflinePawn;
+}
+if (fFirst && EnsureIMNControl() && IMNControlObj.PresenceEnabled)
+{
+var state = 1, img;
+state = IMNControlObj.GetStatus(name, id);
+if (IMNIsOnlineState(state) || IMNSortableObj[id] ||
+IMNShowOfflineObj[id])
+{
+img = IMNGetStatusImage(state, IMNSortableObj[id] ||
+IMNShowOfflineObj[id]);
+IMNUpdateImage(id, img);
+IMNDictionaryObj[id] = state;
+}
+}
+
+
+}
+if (fFirst)
+{
+var objRet = IMNGetOOUILocation(obj);
+objSpan = objRet.objSpan;
+if (objSpan)
+{
+objSpan.onmouseover = IMNShowOOUIMouse;
+objSpan.onfocusin = IMNShowOOUIKyb;
+objSpan.onmouseout = IMNHideOOUI;
+objSpan.onfocusout = IMNHideOOUI;
+}
+}
+}
+}
+function IMNSortTable()
+{
+var id;
+for (id in IMNDictionaryObj)
+{
+IMNSortList(id, 1, IMNDictionaryObj[id]);
+}
+bIMNSorted = true;
+}
+function IMNRegisterHeader()
+{
+if (browseris.ie5up && browseris.win32)
+{
+var obj = window.event.srcElement;
+if (!IMNHeaderObj)
+{
+IMNHeaderObj = new Object();
+}
+if (IMNHeaderObj)
+{
+var id = obj.id;
+if (!IMNHeaderObj[id])
+{
+IMNHeaderObj[id] = id;
+var img;
+img = IMNGetHeaderImage();
+IMNUpdateImage(id, img);
+}
+}
+}
+}
+
+
+</script>
+
+<script type="text/javascript">
+
+
+if (!document.layers&&!document.all&&!document.getElementById)
+event="test"
+function showtip(current,e,text){
+
+if (document.all||document.getElementById){
+thetitle=text.split('<br>')
+if (thetitle.length>1){
+thetitles=''
+for (i=0;i<thetitle.length;i++)
+thetitles+=thetitle[i]
+current.title=thetitles
+}
+else
+current.title=text
+}
+
+else if (document.layers){
+document.tooltip.document.write('<layer bgColor="white" style="border:1px solid #005CB2;font-size:12px;font-family:verdana;">'+text+'</layer>')
+document.tooltip.document.close()
+document.tooltip.left=e.pageX+5
+document.tooltip.top=e.pageY+5
+document.tooltip.visibility="show"
+}
+}
+function hidetip(){
+if (document.layers)
+document.tooltip.visibility="hidden"
+}
+
+</script>
+
+<style type="text/css">
+body {
+scrollbar-face-color: #f4f4f0;
+scrollbar-shadow-color: #d0d0d0;
+scrollbar-highlight-color: #FFFFFF;
+scrollbar-3dlight-color: #4F4F82;
+scrollbar-darkshadow-color: #4F4F82;
+scrollbar-track-color: #ffffff;
+scrollbar-arrow-color: #0066C8;
+}
+
+.sectionHead, .subMenuHead {display: inline-block; FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#D8E8FC,endColorStr=#8F9CB8)}
+.sectionBody {height:100%;}
+.section {border: 1px solid #005CB2; margin-bottom:10px; margin-right:5px; width:120px; background-color:#ffffff;}
+.sectionHead {background-color:#B2C1DA; border-bottom: 1px solid #88ACE3; padding:2px; font-variant: small-caps; font-face: verdana; color:#000F41;}
+.sectionHead a {color: #000F41;}
+.sectionBody {padding:2px; padding-top:4px; padding-bottom:12px; border-bottom: 2px solid #f4f4f0;}
+
+
+</style>
+
+<!--Quick UI by Mark-->
+<div class="section">
+<div class="sectionHead" onMouseover="showtip(this,event,'sample tip')" onMouseout="hidetip()">My MSN Presence:</div>
+<div class="sectionBody">
+<span><font face="verdana" size=1 color=black>
+<img border="0" height="12" width="12" src="http://www.yourwebsite.com/images/o_blank.gif" 
+
+onload="IMNRegisterHeader();IMNRC('peter@theill.com')" id="IMID1" ShowOfflinePawn=1></span> <b>Your Name</b>
+</font>
+</div>
+</div>
+
+<!-- END PRESENCE INFORMATION -->
+

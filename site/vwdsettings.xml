@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualWebDeveloper>
+
+    <!-- 
+	Visual Studio global web project settings.
+    -->
+
+
+	<Globals>
+		<UserProperties PolicyFile=""/></Globals>
+	<ProjTypeGuids>
+		
+		<Guids ID="{FE3BBBB6-72D5-11d2-9ACE-00C04F79A2A4};{E24C65DC-7377-472B-9ABA-BC803B73C61A}"/></ProjTypeGuids></VisualWebDeveloper>

@@ -1,0 +1,266 @@
+<klip>
+	<owner>
+		<author>
+			Global Technologies Corporation
+		</author>
+		<copyright>
+			Copyright (c) 2002 Global Technologies Corporation.
+		</copyright>
+		<email>
+			bfrench@globaltc.com
+		</email>
+		<web>
+			http://www.globaltc.com
+		</web>
+	</owner>
+	<identity>
+		<title>
+			ActiveServer
+		</title>
+		<version>
+			1.0
+		</version>
+		<uniqueid>
+			ActiveServer120102
+		</uniqueid>
+		<lastmodified>
+			2003.05.16:1800
+		</lastmodified>
+		<description>
+			A dynamic desktop server and web site monitor. This klip (and associated source code) may be used for personal use without charge (HonorPay is encouraged however). Any and all commercial uses or reproductions of this source are prohibited. Copyright (c) 2002 Global Technologies Corporation.
+		</description>
+		<keywords>
+         	custom dynamic server monitor
+		</keywords>
+	</identity>
+	<locations>
+		<defaultlink>
+			http://myst-technology.com/mysmartchannels/public/item/7430
+		</defaultlink>
+		<contentsource>
+			http://www.klipfarm.com/serence_klips/rss/out_of_date.food
+		</contentsource>
+		<icon>
+			http://www.globaltc.com/klipfolio/activeserver/activeserver-icon.gif
+		</icon>
+		<banner>
+			http://www.globaltc.com/klipfolio/activeserver/activeserver-banner.jpg
+		</banner>
+		<kliplocation>
+			http://www.globaltc.com/klipfolio/activeserver/ActiveServer.klip
+		</kliplocation>
+	</locations>
+	<setup>
+		<refresh>
+			15
+		</refresh>
+		<country>
+			ca
+		</country>
+		<language>
+			en
+		</language>
+	</setup>
+	<messages>
+		<loading>
+			No results were found in this query.
+		</loading>
+	</messages>
+
+	<klipscript>
+		<![CDATA[
+
+
+			Setup.addTab ("Setup");
+
+			Setup[0].addText ("Enter the domains you want to track (example - cnn.com, oracle.com):");
+			var symbol_txt = Setup[0].addTextField (Prefs.getPref ("symbol"));
+
+			Setup[0].addText ("How often should this klip check these domains (in minutes)?");
+			if (!Prefs.getPref ("rfr"))
+			{
+				Prefs.setPref ("rfr", "" + Prefs.refreshrate);
+			}
+			var rfr_txt = Setup[0].addTextField (Prefs.getPref ("rfr"));
+			Setup[0].addText ("NOTE: Changes are applied after the next refresh.");
+
+			Setup[0].addText ("Enter your AT&T cell # for SMS alerts:");
+			var pin_txt = Setup[0].addTextField (Prefs.getPref ("pin"));
+
+			Setup.addTab ("ActiveServer Log");
+
+			/*
+			if (Prefs.getPref ("spacing") == "true")
+			{
+				var spacing_chk = Setup[0].addCheckbox ("Additional spacing in Klip?", true);
+			} else {
+				var spacing_chk = Setup[0].addCheckbox ("Additional spacing in Klip?", false);
+			}
+			*/
+
+			// for development only
+			// symbol_txt.value = "globaltc.com, myst-technology.com, foonman.com, oracle.com, cnn.com, mysmarttags.com/axis/services/MySmartTags";
+			// pin_txt.value = "";
+
+			// define my refresh handler
+			function myRefreshHandler ()
+			{
+
+				var now = new Date();
+				var cNow = now.toString();
+
+				// save preferences...
+				var old_symbol = Prefs.getPref ("symbol");
+				if (old_symbol != symbol_txt.value)
+				{
+					Prefs.setPref ("symbol", symbol_txt.value);
+					Items.clearItems (true);
+					first_refresh = true;
+				}
+
+				var old_pin = Prefs.getPref ("pin");
+				if (old_pin != pin_txt.value)
+				{
+					Prefs.setPref ("pin", pin_txt.value);
+					Items.clearItems (true);
+					first_refresh = true;
+				}
+
+				// clear all items
+				idx = Items.clearItems(true);
+
+				if (symbol_txt.value.length == 0)
+				{
+
+					idx = Items.addItem ("ActiveServer Setup Instructions", "http://myst-technology.com/mysmartchannels/public/item/7430");
+					idx = Items.addItem ("Other ActiveKlips By Global Technologies", "http://myst-technology.com/mysmartchannels/public/item/7396");
+
+				} else {
+
+					// remove the setup items
+					idx = Items.delItem ("ActiveServer Setup Instructions");
+					idx = Items.delItem ("Other ActiveKlips By Global Technologies");
+
+					// parse the symbol list
+					var symbols = symbol_txt.value.split (",");
+					for (i=0; i < symbols.length; i++)
+					{
+
+						var sym = new String(symbols[i]);
+						var sym = trim(sym);
+						if (sym.length == 0)
+						{
+							continue;
+						}
+
+						var cSymbols = new String(symbol_txt.value);
+						cSymbols = cSymbols.toUpperCase();
+
+						// calc date
+						before = new Date();
+
+						// create my request
+						request = Engines.HTTP.newRequest ("http://" + sym);
+
+						// Klip.Items.altA = "Domains " + cSymbols;
+						// Prefs.defaultlink = "";
+
+						// send my request
+						if (!request.send ())
+						{
+							return false;
+						}
+
+						after = new Date();
+						elapsed = after - before;
+
+						// get the response data from the request
+						data = request.response.data;
+						// alert(data);
+
+						// idx = Items.addItem ("[" + sym + "]", "");
+						idx = Items.addItem (sym.toUpperCase(), "http://" + sym);
+						Klip.Items[idx].note = "Response time (ms): " + elapsed.toString();
+						Klip.Items[idx].canpurge = false;
+						Klip.Items[idx].alerting = false;
+						Klip.Items[idx].visited  = false;
+
+						if (data.length > 0)
+						{
+							idx = Items.addItem ("+ UP @ " + trimGMT(cNow) + " (" + elapsed.toString() + " ms)", "", sym);
+							Klip.Items[idx].canpurge = false;
+							Klip.Items[idx].alerting = false;
+							Klip.Items[idx].visited  = false;
+						} else {
+							idx = Items.addItem ("- DOWN @ " + trimGMT(cNow), "", sym);
+							Klip.Items[idx].canpurge = false;
+							Klip.Items[idx].alerting = true;
+							Klip.Items[idx].visited  = false;
+
+							var cPin = trim(pin_txt.value);
+							if (cPin.length > 0)
+							{
+								smsRequest = Engines.HTTP.newRequest ("http://www.mobile.att.net/messagecenter/pagersend.cgi?pin=" + cPin + "&from=ActiveServer&subject=" + sym + "&message=DOWN: " + trimGMT(cNow) + "&sizebox=75");
+								if (smsRequest.send ())
+								{
+									Setup[0].addText (sym.toUpperCase() + " - DOWN " + trimGMT(cNow) + " (SMS alert sent to " + cPin + ").");
+								} else {
+									Setup[0].addText (sym.toUpperCase() + " - DOWN " + trimGMT(cNow) + " (Unable to send SMS alert sent to " + cPin + ").");
+								}
+							} else {
+								Setup[0].addText (sym.toUpperCase() + " - DOWN " + trimGMT(cNow));
+							}
+
+						}
+
+						idx = Items.addItem ("------------------------", "", "dottedline." + sym);
+						Klip.Items[idx].canpurge = false;
+						Klip.Items[idx].alerting = false;
+						Klip.Items[idx].visited  = false;
+
+
+					}
+				
+				}
+				return true;
+
+			}
+
+			// assign my refresh handler to the Klip's onRefresh event
+			Klip.onRefresh = myRefreshHandler;
+
+			function trimGMT(cString)
+			{
+				return cString.substring(0, cString.indexOf("GMT"));
+			}
+
+
+			function stripTagsAndProcessEntities (t)
+			{
+				r = t;
+				if ((ix = r.indexOf ('<') >= 0) && (r.indexOf ('>') > ix))
+				{
+					r = r.replace (/<[a-zA-Z!\/][^>]*?>/g, "");
+				}
+				if ((ix = r.indexOf ('&') >= 0) && (r.indexOf (';') > ix))
+				{
+					r = r.replace (/&lt;/gi, "<");
+					r = r.replace (/&gt;/gi, ">");
+					r = r.replace (/&nbsp;/gi, " ");
+					r = r.replace (/&/gi, "&");
+					r = r.replace (/&[a-zA-Z0-9#]+;/g, "");
+				}
+				return r;
+			}
+
+			// a helper function to trim strings
+			function trim (t_t)
+			{
+			  // trim leading and trailing whitespace
+			  return t_t.replace (/(^\s*|\s*$)/g, "");
+			}
+
+		]]>
+	</klipscript>
+
+</klip>

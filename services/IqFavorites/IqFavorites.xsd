@@ -1,0 +1,112 @@
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:xdb="urn:schemas-iquomi-com:xdb"
+    xmlns:iq="http://schemas.iquomi.com/2004/01/core" 
+    targetNamespace="http://schemas.iquomi.com/2004/01/iqFavorites"
+    xmlns="http://schemas.iquomi.com/2004/01/iqFavorites"
+    elementFormDefault="qualified" 
+    version="1.0">
+
+    <xsd:annotation>
+        <xsd:documentation>
+            Schema for Iquomi&#174; Favorites service.
+            Copyright (c) 2004 Iquomi. All rights reserved.
+        </xsd:documentation>
+
+        <xsd:appinfo>
+            <xdb:blue select="/IqFavorites"/>
+            <xdb:blue select="/IqFavorites/*"/>
+
+            <xdb:red select="//@ChangeNumber"/>
+            <xdb:red select="//@Id"/>
+            <xdb:red select="//@Creator"/>
+            <xdb:red select="//Cat"/>
+            <xdb:red select="//Cat/@Ref"/>
+            <xdb:red select="/IqFavorites/Favorite/Title"/>
+            <xdb:red select="/IqFavorites/Favorite/Url"/>
+            <xdb:red select="/IqFavorites/Favorite/$any"/>
+
+            <xdb:namespaceMap>
+                <xdb:mapping uri="http://schemas.iquomi.com/2004/01/iqFavorites" alias="m"/>
+                <xdb:mapping uri="http://schemas.iquomi.com/2004/01/core" alias="iq"/>
+            </xdb:namespaceMap>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:import namespace="http://schemas.iquomi.com/2004/01/core" schemaLocation="http://schemas.iquomi.com/2004/01/core/iqcommon.xsd" />
+
+
+    <!--
+    //
+    // iqFavorites
+    //  - root element for the Iquomi Favorites service
+    //
+    -->
+    <xsd:element name="IqFavorites">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element encapsulates the content document for the Iquomi Favorites service. The cache scope
+                for this document is the entire content document. That is, there is a single
+                <b xmlns="http://schemas.iquomi.com/2004/01/iqFavorites">changeNumber</b> attribute, and it occurs at the root element. Any change to the document
+                changes this attribute.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="IqFavoritesType">
+                    <xsd:attributeGroup ref="iq:DocumentRootAttributeGroup"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="IqFavoritesType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element defines the basic <b xmlns="http://schemas.iquomi.com/2004/01/iqFavorites">iqFavoritesType</b>.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="Favorite" type="FavoriteType" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="FavoriteType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element describes a complete favorite Web site, including the title,
+                URL, and free-form extensions. This element may contain 0 or more category elements
+                that are used to organize favorites.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded" />
+
+            <xsd:element
+                name="Cat"
+                type="iq:CatType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:element name="Title" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element specifies the title of the favorite Web site. Typically it is used to fill
+                        this element from the HTML &lt;title&gt; element in the Web site referred to by this
+                        entry.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Url" type="xsd:anyURI" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This required element specifies the URL used to navigate to the Web site referred to by this
+                        entry. Its content should be URL-encoded.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="iq:StandardBlueAttributeGroup"/>
+    </xsd:complexType>
+</xsd:schema>

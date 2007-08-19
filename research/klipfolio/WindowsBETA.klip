@@ -1,0 +1,119 @@
+<klip>
+	
+	<owner>
+
+		<author>
+			PROneTworks Corporation
+		</author>
+
+		<copyright>
+			Copyright 2003 PROneTworks Corporation
+		</copyright>
+
+		<email>
+			AdminF@PROneTworks.org
+		</email>
+
+		<web>
+			http://www.PROneTworks.org
+		</web>
+
+	</owner>
+
+	<identity>
+		
+		<title>
+			PROneT BETA News Klip
+		</title>
+		
+		<uniqueid>
+			PROneT BETA
+		</uniqueid>
+		
+		<version>
+			2.00
+		</version>
+		
+		<lastmodified>
+			2003.02.18:2110
+		</lastmodified>
+
+		<description>
+			Beta News, Downloads, Support, FTP and More
+		</description>
+
+		<keywords>
+			Beta News Windows XP Longhorn Forum Support Downloads
+		</keywords>
+
+	</identity>
+	
+	<locations>
+
+		<defaultlink>
+			http://www.PROneTworks.org
+		</defaultlink>
+
+		<contentsource>
+			http://www.pro-networks.org/forum/news_output.php?f=7
+		</contentsource>
+
+		<icon>
+			http://www.pro-networks.org/KLIP/Cell.gif
+		</icon>
+
+		<banner>
+			http://www.pronetworks.org/KLIP/PROklip.jpg
+		</banner>
+
+		<help>
+			http://www.PROneTworks.org
+		</help>
+
+		<kliplocation>
+			http://www.pro-networks.org/KLIP/WindowsBETA.klip
+		</kliplocation>	
+
+	</locations>
+	
+	<setup>
+
+		<refresh>
+			30
+		</refresh>
+
+		<referer>
+			KlipFolio User
+		</referer>
+
+		<country>
+			<!--
+			the two character ISO country code which identifies where your
+			Klip comes from.  See the dev guide for a list of codes
+			-->
+			us
+		</country>
+
+		<language>
+			<!--
+			the two character ISO language code which identifies what language
+			your Klip uses.  See the dev guide for a list of codes
+			-->
+			en
+		</language>
+
+	</setup>
+
+	<!-- Messages Section
+	Include this section in your Klip to show a different message while your
+	Klip loads or has no data to display
+	
+	<messages>
+		<loading>
+			This Klip is either still loading or has no data, Please refer to PROneTworks.org
+		</loading>
+	</messages>
+	
+	-->
+
+</klip>

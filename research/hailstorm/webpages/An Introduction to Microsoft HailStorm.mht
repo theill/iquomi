@@ -1,0 +1,2461 @@
+From: <Saved by Microsoft Internet Explorer 5>
+Subject: An Introduction to Microsoft HailStorm
+Date: Sat, 20 Sep 2003 09:15:38 +0200
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	boundary="----=_NextPart_000_0000_01C37F57.C16993F0";
+	type="text/html"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.3790.0
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01C37F57.C16993F0
+Content-Type: text/html;
+	charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://web.archive.org/web/20010331083317/http://microsoft.com/net/hailstorm.asp
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>An Introduction to Microsoft HailStorm</TITLE>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Dwindows-1252">
+<META content=3D"The one-stop for all information about .NET" =
+name=3DDescription>
+<META content=3Dall name=3DRobots>
+<META content=3D".NET, Developer, NET, Microsoft.net, Microsoft .NET"=20
+name=3DKeywords>
+<META content=3Den-us name=3DMS.LOCALE>
+<META content=3Dhistory name=3Dsave>
+<META content=3D"Microsoft Corporation" name=3DAuthor><!-- START =
+browdata.inc-->
+<SCRIPT language=3DJavaScript><!--
+
+	// -----------------------------------------------------------
+	// Client-side BrowserData constructor
+	// Populated using data from server-side oBD object to avoid redundancy
+	// -----------------------------------------------------------
+
+	function BrowserData()
+	{
+		this.userAgent =3D "ia_archiver";=0A=
+		this.browser =3D "Other";=0A=
+		this.getsNavBar =3D false;=0A=
+		this.doesActiveX =3D false;=0A=
+		this.doesPersistence =3D false;=0A=
+		this.fullVer =3D NaN;=0A=
+
+	}
+	var oBD =3D new BrowserData();
+
+//--></SCRIPT>
+<!-- STOP browdata.inc--><!-- START styles.inc--><LINK=20
+href=3D"http://web.archive.org/web/20010331083317/http://microsoft.com/ne=
+t/ie3.css"=20
+type=3Dtext/css rel=3Dstylesheet><!-- STOP styles.inc-->
+<SCRIPT language=3DJavascript><!--
+
+	// -----------------------------------------------------------
+	// window_load()
+	// Container function for load.
+	// -----------------------------------------------------------
+
+	function window_load()
+	{
+		if (oBD.getsNavBar)
+		{
+			if ("function" =3D=3D typeof(CommonLoad)) CommonLoad();
+		}
+	}
+	window.onload =3D window_load;
+
+//--></SCRIPT>
+
+<STYLE>TD.toc_gen {
+	CURSOR: hand; backgroundColor: '#F1F1F1'; borderColor: '#F1F1F1'; =
+borderStyle: 'solid'
+}
+TD.toc_sel {
+	BORDER-LEFT-COLOR: #999999; BORDER-BOTTOM-COLOR: #999999; =
+BORDER-TOP-STYLE: solid; BORDER-TOP-COLOR: #999999; BORDER-RIGHT-STYLE: =
+solid; BORDER-LEFT-STYLE: solid; BACKGROUND-COLOR: #ffffff; =
+BORDER-RIGHT-COLOR: #999999; BORDER-BOTTOM-STYLE: solid
+}
+</STYLE>
+
+<META content=3D"MSHTML 6.00.3790.59" name=3DGENERATOR></HEAD>
+<BODY text=3D#000000 bgColor=3D#ffffff leftMargin=3D0 topMargin=3D0 =
+rightMargin=3D15=20
+MARGINHEIGHT=3D"0" MARGINWIDTH=3D"0"><!-- Start: ToolBar V2.0-->
+<SCRIPT language=3DJavaScript=20
+src=3D"http://web.archive.org/web/20010331083317js_/http://microsoft.com/=
+library/toolbar/toolbar.js"></SCRIPT>
+
+<SCRIPT language=3DJavaScript=20
+src=3D"http://web.archive.org/web/20010331083317js_/http://microsoft.com/=
+library/toolbar/en-us/global.js"></SCRIPT>
+
+<SCRIPT language=3DJavaScript=20
+src=3D"http://web.archive.org/web/20010331083317js_/http://microsoft.com/=
+net/global/toolbar.js"></SCRIPT>
+<!-- Start: ToolBar for down-level browsers-->
+<DIV id=3DTBDownLevelDiv>
+<TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" bgColor=3D#ffffff =
+border=3D0>
+  <TBODY>
+  <TR>
+    <TD vAlign=3Dtop height=3D60 rowSpan=3D2><A=20
+      href=3D"http://microsoft.com/net/default.asp"><IMG height=3D60=20
+      alt=3D"Microsoft .NET"=20
+      src=3D"http://microsoft.com/net/images/bnrWindowsNgws1.gif" =
+width=3D250=20
+      border=3D0></A></TD>
+    <TD vAlign=3Dtop align=3Dright height=3D20><IMG height=3D20 alt=3D"" =
+
+      src=3D"http://microsoft.com/library/toolbar/images/curve.gif" =
+width=3D18=20
+      border=3D0></TD>
+    <TD vAlign=3Dcenter noWrap align=3Dright bgColor=3D#000000 =
+colSpan=3D2=20
+      height=3D20><FONT face=3D"Verdana, Arial" color=3D#ffffff=20
+      size=3D1><B>&nbsp;&nbsp;<A style=3D"COLOR: #ffffff; =
+TEXT-DECORATION: none"=20
+      =
+href=3D"http://microsoft.com/isapi/gomscom.asp?target=3D/products/"=20
+      target=3D_top><FONT color=3D#ffffff>All =
+Products</FONT></A>&nbsp;&nbsp;<FONT=20
+      color=3D#ffffff>|</FONT> &nbsp;&nbsp;<A=20
+      style=3D"COLOR: #ffffff; TEXT-DECORATION: none"=20
+      href=3D"http://microsoft.com/isapi/gomscom.asp?target=3D/support/" =
+
+      target=3D_top><FONT =
+color=3D#ffffff>Support</FONT></A>&nbsp;&nbsp;<FONT=20
+      color=3D#ffffff>|</FONT> &nbsp;&nbsp;<A=20
+      style=3D"COLOR: #ffffff; TEXT-DECORATION: none"=20
+      href=3D"http://microsoft.com/isapi/gosearch.asp?target=3D/" =
+target=3D_top><FONT=20
+      color=3D#ffffff>Search</FONT></A>&nbsp;&nbsp;<FONT =
+color=3D#ffffff>|</FONT>=20
+      &nbsp;&nbsp;<A style=3D"COLOR: #ffffff; TEXT-DECORATION: none"=20
+      href=3D"http://microsoft.com/isapi/gomscom.asp?target=3D/" =
+target=3D_top><FONT=20
+      color=3D#ffffff>microsoft.com Home</FONT></A>&nbsp;&nbsp; =
+</B></FONT></TD></TR>
+  <TR>
+    <TD vAlign=3Dtop width=3D19 height=3D40><IMG height=3D40 alt=3D""=20
+      =
+src=3D"http://microsoft.com/library/images/gifs/homepage/1ptrans.gif"=20
+      width=3D19 border=3D0></TD>
+    <TD vAlign=3Dtop noWrap align=3Dright colSpan=3D2 height=3D40><A=20
+      href=3D"http://microsoft.com/isapi/gomscom.asp?target=3D/" =
+target=3D_top><IMG=20
+      height=3D40 alt=3DMicrosoft=20
+      src=3D"http://microsoft.com/library/toolbar/images/mslogo.gif" =
+width=3D112=20
+      border=3D0></A></TD></TR>
+  <TR><!-- Start: Local menus -->
+    <TD vAlign=3Dcenter noWrap bgColor=3D#000000 colSpan=3D4 =
+height=3D20><FONT=20
+      face=3D"Verdana, Arial" color=3D#ffffff size=3D1><B>&nbsp;&nbsp;<A =
+
+      style=3D"COLOR: #ffffff; TEXT-DECORATION: none"=20
+      href=3D"http://microsoft.com/default.asp"><FONT =
+color=3D#ffffff>microsoft.com=20
+      home</FONT></A>&nbsp;&nbsp;<FONT color=3D#ffffff>|</FONT> =
+&nbsp;&nbsp;<A=20
+      style=3D"COLOR: #ffffff; TEXT-DECORATION: none"=20
+      =
+href=3D"http://microsoft.com/presspass/newsroom/net/default.asp"><FONT=20
+      color=3D#ffffff>PressPass</FONT></A>&nbsp;&nbsp;<FONT =
+color=3D#ffffff>|</FONT>=20
+      </B></FONT></TD><!-- End: Local menus =
+--></TR></TBODY></TABLE></DIV><!-- End: ToolBar For down-level =
+browsers-->
+<SCRIPT language=3DJavaScript>
+<!--// Hide from old browsers
+var ToolBar_Supported =3D ToolBar_Supported;
+if (ToolBar_Supported !=3D null && ToolBar_Supported =3D=3D true)
+{
+	TBDownLevelDiv.style.display =3D'none';
+	// To change current page ICP banner, pass the appropriate values to =
+the=20
+	// function: setICPBanner (BannerGif, BannerUrl, BannerAltStr).
+	// For example,
+	//setICPBanner('/library/homepage/images/bnr_all.gif','','microsoft.com =
+Home');
+	drawToolbar();
+	// To highlight current menu button, pass the appropriate values to the =
+
+	// function: setICPMenuColor(MenuIDStr, bgColor, fontColor, =
+mouseoverColor).
+	// For example,
+	// setICPMenuColor('HomeMenu', 'blue', '', '');
+}
+//-->
+</SCRIPT>
+<!-- End: ToolBar V2.0-->
+<TABLE height=3D"100%" cellSpacing=3D0 cellPadding=3D0 width=3D"100%" =
+border=3D0>
+  <TBODY>
+  <TR vAlign=3Dtop>
+    <TD vAlign=3Dtop width=3D170 bgColor=3D#f1f1f1 rowSpan=3D2><!-- =
+TOOLBAR_START --><!-- TOOLBAR_EXEMPT --><!-- TOOLBAR_END --><!-- START =
+inline_tocfunc.inc-->
+      <TABLE borderColor=3D#f1f1f1 height=3D"100%" cellSpacing=3D0 =
+cellPadding=3D2=20
+      width=3D180 bgColor=3D#f1f1f1 border=3D0>
+        <TBODY>
+        <TR>
+          <TD width=3D170 height=3D1><IMG height=3D1 src=3D"" =
+width=3D170></TD></TR>
+        <TR>
+          <TD vAlign=3Dtop height=3D"100%"><FONT size=3D2>&nbsp;<A =
+class=3DLevel2=20
+            =
+href=3D"http://microsoft.com/net/default.asp">.NET&nbsp;Home&nbsp;Page</A=
+></FONT><BR><FONT=20
+            size=3D2>&nbsp;<A class=3DLevel2=20
+            =
+href=3D"http://microsoft.com/net/defining.asp">Overview</A></FONT><BR><FO=
+NT=20
+            size=3D2>&nbsp;<B>Top&nbsp;Story</B></FONT><BR><FONT =
+size=3D2>&nbsp;<A=20
+            class=3DLevel2=20
+            =
+href=3D"http://microsoft.com/net/news.asp">News</A></FONT><BR><FONT=20
+            size=3D2>&nbsp;<A class=3DLevel2=20
+            =
+href=3D"http://microsoft.com/net/qa.asp">Q&amp;A</A></FONT><BR><FONT=20
+            size=3D2>&nbsp;<A class=3DLevel2=20
+            =
+href=3D"http://microsoft.com/net/glossary.asp">Glossary</A></FONT><BR><FO=
+NT=20
+            size=3D2>&nbsp;<A class=3DLevel2=20
+            =
+href=3D"http://microsoft.com/net/whitep.asp">Whitepapers</A></FONT><BR></=
+TD></TR></TBODY></TABLE><!-- STOP inline_tocfunc.inc--></TD>
+    <TD width=3D1 bgColor=3D#999999 rowSpan=3D2><IMG height=3D1 src=3D"" =
+width=3D1></TD></TR>
+  <TR vAlign=3Dtop>
+    <TD width=3D10 rowSpan=3D2>&nbsp;&nbsp;</TD>
+    <TD width=3D"100%" height=3D"100%"><!-- MAIN CONTENT START -->
+      <H2>Building User-Centric Experiences<BR>An Introduction to =
+Microsoft=20
+      HailStorm</H2>
+      <P>Published: March 2001</P>
+      <P>For the latest information, please see <A=20
+      =
+href=3D"http://microsoft.com/net/">http://microsoft.com/net/</A></P>
+      <P>A Microsoft White Paper</P>
+      <UL><A href=3D"http://microsoft.com/net/hailstorm.asp#001">The=20
+        Challenge</A><BR><A=20
+        href=3D"http://microsoft.com/net/hailstorm.asp#002">What Is=20
+        HailStorm?</A><BR>&nbsp;&nbsp;&nbsp;<A=20
+        href=3D"http://microsoft.com/net/hailstorm.asp#003">HailStorm =
+Puts You in=20
+        Control</A><BR>&nbsp;&nbsp;&nbsp;<A=20
+        href=3D"http://microsoft.com/net/hailstorm.asp#004">HailStorm=20
+        Services</A><BR><A =
+href=3D"http://microsoft.com/net/hailstorm.asp#005">The=20
+        HailStorm Architecture</A><BR><A=20
+        href=3D"http://microsoft.com/net/hailstorm.asp#006">The =
+HailStorm=20
+        Business</A><BR>&nbsp;&nbsp;&nbsp;<A=20
+        href=3D"http://microsoft.com/net/hailstorm.asp#007">The =
+Developer=20
+        Opportunity</A><BR><A=20
+        href=3D"http://microsoft.com/net/hailstorm.asp#008">Tenets of =
+the .NET=20
+        World</A><BR>&nbsp;&nbsp;&nbsp;<A=20
+        href=3D"http://microsoft.com/net/hailstorm.asp#009">User in=20
+        Control</A><BR>&nbsp;&nbsp;&nbsp;<A=20
+        href=3D"http://microsoft.com/net/hailstorm.asp#010">Open=20
+        Access</A><BR>&nbsp;&nbsp;&nbsp;<A=20
+        href=3D"http://microsoft.com/net/hailstorm.asp#011">Open Process =
+
+        Extensibility</A><BR><A=20
+        =
+href=3D"http://microsoft.com/net/hailstorm.asp#012">Roadmap</A><BR>&nbsp;=
+&nbsp;&nbsp;<A=20
+        =
+href=3D"http://microsoft.com/net/hailstorm.asp#013">HailStorm</A><BR>&nbs=
+p;&nbsp;&nbsp;<A=20
+        =
+href=3D"http://microsoft.com/net/hailstorm.asp#014">Endpoints</A><BR><A=20
+        href=3D"http://microsoft.com/net/hailstorm.asp#015">More =
+info</A><BR></UL><A=20
+      name=3D001></A>
+      <DIV=20
+      style=3D"BORDER-RIGHT: medium none; PADDING-RIGHT: 0in; =
+BORDER-TOP: medium none; PADDING-LEFT: 0in; PADDING-BOTTOM: 1pt; =
+BORDER-LEFT: medium none; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext =
+0.5pt solid">
+      <H2>The Challenge</H2></DIV>
+      <TABLE cellPadding=3D5 width=3D"100%" bgColor=3D#cccccc =
+border=3D0>
+        <TBODY>
+        <TR>
+          <TD>
+            <P>We have already gone so far down the road of serving =
+computers=20
+            that we=92ve come to accept our servitude as =
+necessary.&nbsp; It=20
+            isn=92t.&nbsp; It is time for us to rise up with a profound =
+demand:=20
+            "Make our computers simpler to use!"&nbsp; Make them talk to =
+us, do=20
+            things for us, get the information we want, help us work =
+with other=20
+            people, and adapt to our individual needs.&nbsp; Only then =
+will=20
+            computers make us productive and truly serve us, instead of =
+the=20
+            other way around.</P>
+            <P>- Michael L. Dertouzos, Director of the MIT Laboratory =
+for=20
+            Computer Science, in his book<I> The Unfinished=20
+        Revolution</I></P></TD></TR></TBODY></TABLE>
+      <P>Over the past 25 years, information technology has provided =
+incredible=20
+      value for users and businesses. Even so, there is room for =
+significant=20
+      improvement. Individual applications and devices are narrowly =
+focused and=20
+      ignore the rest of our world. People today are forced to adapt to =
+their=20
+      technology, when the technology should be adapting to them.</P>
+      <P>People are frustrated and confused. Sometimes it seems that =
+every=20
+      program, every Web site, every device has its own set of rules. =
+For=20
+      instance, entering a friend=92s new phone number into your PC =
+requires a=20
+      particular sequence of keystrokes and mouse clicks.&nbsp; But to =
+enter=20
+      that same information into your Palm Pilot, Pocket PC, or cell =
+phone, you=20
+      have to learn a completely different interface =96 right down to =
+relearning=20
+      how to draw the letters of the alphabet! </P>
+      <P>People are not in control of the technology that surrounds =
+them. We=20
+      have important data and personal information scattered in hundreds =
+of=20
+      places across the technology landscape, locked away in =
+applications,=20
+      product registration databases, cookies, and Web site user =
+tracking=20
+      databases.&nbsp; Having a friend=92s phone number programmed into =
+your cell=20
+      phone doesn=92t make the number available to your PC-based email=20
+      application: those two technologies are unable talk to each =
+other.</P>
+      <P>If you move across the country, you have to enter your new =
+address into=20
+      every Web site that needs it =96 and if you forget to change your=20
+      information with your travel agent or shipping company, the=20
+      once-convenient Internet quickly becomes a headache. Each Web site =
+is an=20
+      isolated island of data that continually reinforces the fact that =
+you=20
+      don=92t control your personal information. You can=92t easily =
+update your own=20
+      data, nor do you control what happens to the data you provide =96 =
+and in=20
+      many cases, you can=92t even see it once you=92ve given it =
+away.</P>
+      <P>The isolation of each application, Web site, or service also =
+makes it=20
+      nearly impossible for technologies to work together. Imagine =
+booking a=20
+      ticket on an online travel reservation system, and wanting that =
+itinerary=20
+      automatically added to their calendar. Unfortunately, that site =
+and that=20
+      application can=92t talk to each other =96 and even if they did, =
+neither would=20
+      have any way of knowing that they were communicating about the =
+same=20
+      person.</P>
+      <P>Because we are forced to adapt to technology instead of =
+technology=20
+      adapting to us, applications, Web sites, and devices are limited =
+in what=20
+      they can do for us. This not only hinders the adoption of new =
+hardware and=20
+      software technologies, it also limits the development of =
+empowering,=20
+      productive and exciting real-world products and services.</P>
+      <P><A href=3D"http://microsoft.com/net/hailstorm.asp#top">Back to=20
+      top...</A></P><A name=3D002></A>
+      <DIV=20
+      style=3D"BORDER-RIGHT: medium none; PADDING-RIGHT: 0in; =
+BORDER-TOP: medium none; PADDING-LEFT: 0in; PADDING-BOTTOM: 1pt; =
+BORDER-LEFT: medium none; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext =
+0.5pt solid">
+      <H2>What Is HailStorm?</H2></DIV>
+      <P>As part of the Microsoft=AE .NET initiative, Microsoft is =
+introducing a=20
+      user-centric architecture and set of XML Web services, codenamed=20
+      "HailStorm." HailStorm will make it easier to integrate the silos =
+of=20
+      information that exist today. HailStorm services are oriented =
+around=20
+      people, instead of around a specific device, application, service, =
+or=20
+      network. They put users in control of their own data and =
+information,=20
+      protecting personal information and providing a new level of ease =
+of use=20
+      and personalization. The HailStorm services take advantage of the =
+.NET=20
+      technologies and architecture that make it possible for =
+applications,=20
+      devices, and services to work together. These services make user =
+consent=20
+      the basis for who can access user information, what they can do =
+with it,=20
+      and how long they have permission.</P>
+      <P>Based on the Passport user authentication system, HailStorm =
+permits=20
+      applications and services to cooperate for the user=92s benefit, =
+as well as=20
+      allowing users, groups, and organizations to share and =
+collaborate. For=20
+      instance, with HailStorm services, booking a flight using an =
+online travel=20
+      reservation service becomes much simpler because with the user=92s =
+consent,=20
+      the travel service automatically access the user=92s preferences =
+and=20
+      payment.&nbsp; If you=92re traveling on business, and your company =
+has=20
+      travel policies you need to adhere to, your individual affiliation =
+with=20
+      your company=92s HailStorm group identity will make it possible =
+for the=20
+      travel service to automatically show you only the choices that =
+meet both=20
+      your preferences and your company=92s requirements.&nbsp; Once =
+you=92ve chosen=20
+      your flight, the travel service can use HailStorm, with your =
+explicit=20
+      permission, to figure out which calendaring service you use and=20
+      automatically schedule the itinerary onto your calendar, =
+automatically=20
+      updating that itinerary and notifying you if your flight will be=20
+      late.&nbsp; And through HailStorm, you can share that live flight=20
+      itinerary with whomever you=92re going to visit so that they will =
+also know=20
+      when and where to expect you.&nbsp; The information in your=20
+      HailStorm-enabled calendar can then be accessed through your PC, =
+someone=20
+      else=92s PC, a smart phone, a PDA, or any other smart connected =
+device.=20
+      </P><A name=3D003></A>
+      <H3>HailStorm Puts You in Control</H3>
+      <P>HailStorm makes the technology in your life work together on =
+your=20
+      behalf and under your control. Compare that with today=92s =
+situation, in=20
+      which you have to adapt to your technology and act as the human =
+bridge=20
+      between the different devices, applications, and Web sites in your =
+life.=20
+      With HailStorm you will no longer have to manually copy common =
+information=20
+      from one service to another. You will no longer have to worry =
+about how=20
+      (or whether) you can update your address in all of the places =
+you=92ve=20
+      entered it.</P>
+      <P>HailStorm also turns the industry debate over online privacy on =
+its=20
+      head. Instead of debating how much organizations can get away with =
+with=20
+      respect to an individual=92s information, HailStorm starts with =
+the=20
+      assumption that the user controls all personal information and =
+gets to=20
+      decide with whom to share any of it and under what terms. By =
+putting=20
+      people in control of their own data, HailStorm relies on an =
+affirmative=20
+      consent model as the way applications, services, and devices =
+interact with=20
+      users. The user owns the data.&nbsp; Any access to that data, any =
+changes=20
+      to that data, and any use of that data requires the explicit =
+consent of=20
+      the user. That consent has limited scope (what data can be =
+accessed?) and=20
+      limited lifetime (when does the permission expire?).&nbsp; =
+HailStorm uses=20
+      legal and technical mechanisms to prohibit any unauthorized use of =
+the=20
+      user=92s data, and that limitation on use will extend beyond the =
+specific=20
+      transaction in which the data was obtained. This emphasis on user =
+control=20
+      stands in stark contrast to the current paradigm, where =
+applications and=20
+      companies own whatever data they can extract from you, with =
+essentially no=20
+      limitations on what they can do with that data, and no way that =
+you as a=20
+      user can regain control of it.</P>
+      <P>HailStorm is the user-centric architecture and set of services =
+for .NET=20
+      that deliver personally relevant information through the Internet =
+to a=20
+      user, to software running on the user's behalf, or to devices =
+working for=20
+      the user. HailStorm services are accessed through SOAP (Simple =
+Object=20
+      Access Protocol) and XML (eXtensible Markup Language), which are =
+open=20
+      access technologies: they can be called from any network-connected =
+device=20
+      that supports SOAP, regardless of operating system or service=20
+      provider.&nbsp; SOAP and XML are the open Internet standards =
+Microsoft has=20
+      helped champion throughout the first phase of the .NET rollout. =
+HailStorm=20
+      is the next logical step: Microsoft began by encouraging the =
+general=20
+      standards and introducing the first Web services tools and =
+infrastructure.=20
+      Now we=92re leading the way to the first set of compelling Web=20
+      services.</P><A name=3D004></A>
+      <H3>HailStorm Services</H3>
+      <P>HailStorm is a set of services that helps manage and protect =
+your=20
+      information and interactions across all the applications, devices, =
+and=20
+      services:</P>
+      <P><A href=3D"http://microsoft.com/net/hailstorm.asp#top">Back to=20
+      top...</A></P><A name=3D005></A>
+      <DIV=20
+      style=3D"BORDER-RIGHT: medium none; PADDING-RIGHT: 0in; =
+BORDER-TOP: medium none; PADDING-LEFT: 0in; PADDING-BOTTOM: 1pt; =
+BORDER-LEFT: medium none; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext =
+0.5pt solid">
+      <H2>The HailStorm Architecture</H2></DIV>
+      <P>For users, HailStorm will be accessed through their =
+applications,=20
+      devices and services (also known as "HailStorm end-points").&nbsp; =
+A=20
+      HailStorm-enabled device or application will, with your consent, =
+connect=20
+      to the appropriate HailStorm services automatically. Because the =
+myriad of=20
+      applications and devices in your life will be connected to a =
+common set of=20
+      information that you control, you=92ll be able to securely share =
+information=20
+      between those different technologies, as well as with other people =
+and=20
+      services.&nbsp; </P>
+      <P>Developers will build applications and services that take =
+advantage of=20
+      HailStorm to provide you with the best possible experience. The =
+HailStorm=20
+      platform uses an open access model, which means it can be used =
+with any=20
+      device, application or services, regardless of the underlying =
+platform,=20
+      operating system, object model, programming language or network =
+provider.=20
+      All HailStorm services are XML Web services, which are based on =
+the open=20
+      industry standards of XML and SOAP; no Microsoft runtime or tool =
+is=20
+      required to call them. Naturally, the .NET infrastructure provided =
+by=20
+      Visual Studio.NET, the .NET Framework, and the .NET Enterprise =
+Servers=20
+      will fully incorporate support for HailStorm to make it as simple =
+as=20
+      possible for developers to use HailStorm services in their=20
+      applications.</P>
+      <P>From a technical perspective, HailStorm is based on Microsoft =
+Passport=20
+      as the basic user credential. The HailStorm architecture defines =
+identity,=20
+      security, and data models that are common to all HailStorm =
+services and=20
+      ensure consistency of development and operation.&nbsp; HailStorm =
+is a=20
+      highly distributed system and can help orchestrate a wide variety =
+of=20
+      applications, devices and services.</P>
+      <P>The core HailStorm services use this architecture to manage =
+such basic=20
+      elements of a user=92s digital experience as a calendar, location, =
+and=20
+      profile information.&nbsp; Any solution using HailStorm can take =
+advantage=20
+      of these elements, saving the user from having to re-enter and =
+redundantly=20
+      store this information and saving every developer from having to =
+create a=20
+      unique system for these basic capabilities.</P>
+      <P>HailStorm is expressed and accessed as a set of industry =
+standard XML=20
+      Web services.&nbsp; HailStorm-enabled solutions interact with =
+specific=20
+      HailStorm facilities via XML message interfaces (XMIs), which are =
+simply a=20
+      set of XML SOAP messages.</P>
+      <P>The initial set of HailStorm services will include:=20
+      <UL type=3Ddisc>
+        <LI>myAddress - electronic and geographic address for an=20
+identity<BR><BR>
+        <LI>myProfile - name, nickname, special dates, picture<BR><BR>
+        <LI>myContacts =96 electronic relationships/address book<BR><BR>
+        <LI>myLocation - electronic and geographical location and=20
+        rendez-vous<BR><BR>
+        <LI>myNotifications =96 notification subscription, management =
+and=20
+        routing<BR><BR>
+        <LI>myInbox - inbox items like e-mail and voice mail, including =
+existing=20
+        mail systems<BR><BR>
+        <LI>myCalendar =96 time and task management<BR><BR>
+        <LI>myDocuments =96 raw document storage<BR><BR>
+        <LI>myApplicationSettings - application settings<BR><BR>
+        <LI>myFavoriteWebSites =96 favorite URLs and other Web =
+identifiers<BR><BR>
+        <LI>myWallet - receipts, payment instruments, coupons and other=20
+        transaction records<BR><BR>
+        <LI>myDevices =96 device settings, capabilities<BR><BR>
+        <LI>myServices =96services provided for an identity<BR><BR>
+        <LI>myUsage =96 usage report for above services </LI></UL>
+      <P>The HailStorm architecture is designed for consistency across =
+services=20
+      and seamless extensibility. It provides common identity, =
+messaging,=20
+      naming, navigation, security, role mapping, data modeling, =
+metering, and=20
+      error handling across all HailStorm services. HailStorm looks and =
+feels=20
+      like a dynamic, partitioned, schematized XML store. It is accessed =
+via XML=20
+      message interfaces (XMIs), where service interfaces are exposed as =
+
+      standard SOAP messages, arguments and return values are XML, and =
+all=20
+      services support HTTP Post as message transfer protocol.</P>
+      <P>HailStorm=92s integral security model is based on =
+Kerberos-based=20
+      authentication. The user controls which entities can access their =
+data,=20
+      and for what purpose. Users can revoke access to data. Users can =
+use a=20
+      service or agent to manage data access on their behalf, and these =
+services=20
+      are simple enough to actually be usable.</P>
+      <P>Reliability will be critical to the success of the HailStorm =
+services,=20
+      and good operations are a core competency required to ensure that=20
+      reliability. Microsoft has lots of experience, both good and bad,=20
+      operating some of the largest sites on the Internet, including =
+Hotmail=AE=20
+      Web-based e-mail service, MSN=AE, Microsoft.com, and Passport, all =
+of which=20
+      number among the ten largest Web sites in the world. Microsoft is =
+also=20
+      making significant operational investments to provide the level of =
+service=20
+      and reliability that will be required for HailStorm services. =
+These=20
+      investments include such things as physically redundant data =
+centers and=20
+      common best practices across services. Additionally, the HailStorm =
+
+      architecture is being designed for operational excellence from the =
+outset=20
+      including a highly distributed model.</P>
+      <P><A href=3D"http://microsoft.com/net/hailstorm.asp#top">Back to=20
+      top...</A></P><A name=3D006></A>
+      <DIV=20
+      style=3D"BORDER-RIGHT: medium none; PADDING-RIGHT: 0in; =
+BORDER-TOP: medium none; PADDING-LEFT: 0in; PADDING-BOTTOM: 1pt; =
+BORDER-LEFT: medium none; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext =
+0.5pt solid">
+      <H2>The HailStorm Business</H2></DIV>
+      <P>The dot-com meltdown provides stark evidence that the Internet =
+business=20
+      model needs a reboot. Giving away services for free and making it =
+up on=20
+      volume just isn=92t a sustainable method for running a business. =
+Microsoft=20
+      .NET will make it possible to create businesses that use the =
+explosion in=20
+      computing power and network connectivity to provide real value, =
+value that=20
+      people are willing to pay for. </P>
+      <P>Microsoft will operate the HailStorm services as a business. =
+The=20
+      HailStorm services will have real operational costs, and rather =
+than risk=20
+      compromising the user-centric model by having someone such as =
+advertisers=20
+      pay for these services, the people receiving the value =96 the end =
+users =96=20
+      will be the primary source of revenue to Microsoft. HailStorm will =
+help=20
+      move the Internet to end-user subscriptions, where users pay for =
+value=20
+      received.</P>
+      <P>Microsoft will also derive some revenue from developers to help =
+cover=20
+      the costs of the services and products they need. These charges =
+will be=20
+      minimized to encourage the broadest possible range of developers =
+to build=20
+      for HailStorm, but the usual costs for tools and support, as well =
+as some=20
+      minimal costs for access to a live test environment, will =
+apply.</P>
+      <P>Service operators will also have a certificate-based license=20
+      relationship with Microsoft that allows them to use HailStorm =
+services,=20
+      which makes it possible to ensure that no service using HailStorm =
+abuses=20
+      the resources involved, affecting other users of the services. =
+That=20
+      certificate will make it possible to filter abusers out of the =
+system.=20
+      Obtaining a certificate and the ongoing right to use HailStorm =
+services=20
+      will have a cost associated with it. Higher levels of support, =
+service=20
+      level agreement and significant system use may result in =
+additional=20
+      charges, as well. We expect, however, that these costs will be=20
+      significantly less than those of independently operating similar=20
+      services.</P>
+      <P>Specific pricing for users, developers, and service operators =
+will be=20
+      announced in future.</P><A name=3D007></A>
+      <H3>The Developer Opportunity</H3>
+      <P>Much of the point of building a platform is providing the =
+opportunity=20
+      for other companies to build value and create business models on =
+that=20
+      platform. Microsoft .NET, of which HailStorm is a part, is =
+designed to=20
+      provide those significant industry opportunities.</P>
+      <P>There will be two broad opportunities for the development =
+community to=20
+      build businesses that take advantage of HailStorm:=20
+      <UL type=3Ddisc>
+        <LI>They can create applications, devices or services that use =
+HailStorm=20
+        services. <BR><BR>
+        <LI>They can expose their own HailStorm-compatible services. =
+</LI></UL>
+      <P>By taking advantage of Microsoft=92s significant investment in =
+HailStorm,=20
+      developers will be able to create user-centric solutions while =
+focusing on=20
+      their core value proposition instead of the plumbing. For example, =
+a phone=20
+      company could offer services like Caller ID, call forwarding, and =
+voice=20
+      mail that could be integrated into a user=92s preferred =
+notification=20
+      environment. If you got a call on your home phone while you were =
+at work=20
+      and you chose not to have it forwarded, you could immediately see =
+the=20
+      Caller ID information on who was calling you. The phone company =
+would need=20
+      to worry only about creating the SOAP and XML necessary to talk to =
+your=20
+      myNotifications service in HailStorm, which has a standard =
+interface to=20
+      SOAP and XML regardless of what application you=92re using on the =
+front end.=20
+      They don=92t have to worry about building a system to authenticate =
+you,=20
+      track user presence, or route notifications, nor about building =
+the=20
+      application that receives these messages, nor about figuring out =
+how to=20
+      consolidate for you the other information you want in your unified =
+
+      environment (such as urgent e-mail or instant messages). Instead, =
+they can=20
+      focus on delivering the services they want to provide, which is =
+faster,=20
+      less expensive, and far easier for them to maintain later.</P>
+      <P>By using HailStorm services, the phone company in this example =
+can=20
+      reach more people (since no custom application installation is =
+required to=20
+      use their services =96 users will already have the software they =
+need).=20
+      Because their solution is integrated with other connected =
+services, it can=20
+      be more valuable than it would be by itself without requiring them =
+to do=20
+      any work to make those value-adding connections happen. A user who =
+wants a=20
+      single place where their home phone, cell phone, work phone, home =
+voice=20
+      mail, cell voice mail, work voice mail, Caller IDs, pager calls, =
+instant=20
+      messages, application notifications, and e-mails come to get =
+prioritized=20
+      automatically according to their preferences can have that even if =
+they=20
+      have seven different providers for that constellation of services. =
+Urgent=20
+      messages won=92t have to wait until the next time you=92re using =
+your home=20
+      phone or some custom application; they can instead be sent to you =
+as=20
+      notifications whenever you=92re using any HailStorm-connected =
+device.&nbsp;=20
+      Bringing together those services into a single solution is far =
+more=20
+      valuable to a user than a half dozen independent solutions could =
+ever=20
+      be.&nbsp; </P>
+      <P>Finally, using HailStorm will make it possible for some =
+application=20
+      developers to reach a far broader audience than they otherwise =
+could.=20
+      Initiating a session in a collaborative application will not =
+require that=20
+      both you and your collaborator currently have that application =
+open, only=20
+      that you=92re both currently using a HailStorm-connected smart =
+device. If=20
+      I=92m a user of a collaborative application and you=92re not, I =
+can still=20
+      invite you to join my application session by using your Passport; =
+you=20
+      don=92t have to have a separate application identity that you=92ve =
+created.=20
+      For the application developer, that means their users can now =
+touch orders=20
+      of magnitude more people, which helps to build momentum for their=20
+      offerings.&nbsp; </P>
+      <P><A href=3D"http://microsoft.com/net/hailstorm.asp#top">Back to=20
+      top...</A></P><A name=3D008></A>
+      <DIV=20
+      style=3D"BORDER-RIGHT: medium none; PADDING-RIGHT: 0in; =
+BORDER-TOP: medium none; PADDING-LEFT: 0in; PADDING-BOTTOM: 1pt; =
+BORDER-LEFT: medium none; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext =
+0.5pt solid">
+      <H2>Tenets of the HailStorm World</H2></DIV><A name=3D009></A>
+      <H3>User in Control</H3>
+      <P>HailStorm is predicated on giving users control over their =
+environment=20
+      and their personal information, which is a new approach to online =
+privacy.=20
+      Like all other Microsoft services, the HailStorm privacy model is =
+in=20
+      compliance with existing privacy legislation and will follow the =
+Code of=20
+      Fair Information Practices that forms the basis of many consumer =
+privacy=20
+      programs, including those of the Online Privacy Alliance, TRUSTe =
+and=20
+      BBBOnLine.&nbsp; </P>
+      <P>HailStorm is designed to allow companies to easily deliver =
+offerings=20
+      that will collaborate and work on behalf of the user to deliver=20
+      compelling, consistent, and personalized services. One of the =
+major=20
+      underlying design philosophies of HailStorm is that the user is in =
+control=20
+      of their own data.&nbsp; Privacy and security are fundamental =
+design=20
+      points in the HailStorm architecture.</P>
+      <P>The HailStorm model is built upon fair information practices,=20
+      including:=20
+      <UL type=3Ddisc>
+        <LI><B>Notice</B>: Consumer notice of how information will be=20
+        used;<BR><BR>
+        <LI><B>Choice</B>: Regarding collection and distribution of =
+personal=20
+        information;<BR><BR>
+        <LI><B>Access</B>: To all information held about you;<BR><BR>
+        <LI><B>Security</B>: The peace of mind to know that protections =
+are=20
+        built in so that no one else can access your information without =
+your=20
+        consent. </LI></UL>
+      <P>Privacy is a key design requirment in the HailStorm =
+architecture, and=20
+      the HailStorm data model is overlaid with a specific security and =
+access=20
+      control model that allows end users to control how and with whom =
+their=20
+      personal information is shared. This intelligent software allows =
+users to:=20
+
+      <UL type=3Ddisc>
+        <LI>Determine who or which services have access rights to their=20
+        data.<BR><BR>
+        <LI>Share data at will with any party. HailStorm will employ a =
+strict=20
+        opt-in platform for user=92s data.<BR><BR>
+        <LI>Revoke sharing/access privileges at will, providing a unique =
+level=20
+        of control not commonly available today on the Web.<BR><BR>
+        <LI>Arrange for sharing that expires at a given time: =
+system-managed,=20
+        time-based data access revocation. </LI></UL>
+      <P>In addition to providing the technical capabilities, Microsoft =
+will=20
+      mandate strict data collection and use practices among HailStorm =
+licensees=20
+      to ensure that user privacy is protected. Specifically, Microsoft =
+intends=20
+      to contractually bind licensees to specific terms of use that =
+control what=20
+      can and cannot be done with user data originating from a HailStorm =
+source.=20
+      Furthermore, Microsoft will electronically and physically secure =
+data=20
+      managed by HailStorm to prevent unauthorized access or use. </P>
+      <P>Finally, Microsoft will not mine, target, sell, or publish any=20
+      HailStorm user data without explicit user consent. Every =
+interaction with=20
+      a user=92s data will always be an affirmative consent opt-in =
+model: personal=20
+      information can be released only with the explicit authorization =
+of the=20
+      owner of the data.</P>
+      <P>To avoid conflict of interest or perceived conflict of interest =
+around=20
+      user privacy and ownership of data, there will be no advertising =
+in=20
+      HailStorm.</P>
+      <P>Microsoft has been a champion of Internet privacy standards and =
+privacy=20
+      organizations for many years. More recently, Microsoft became a =
+member of=20
+      BBBOnline=92s Board of Directors and is on the Board of TRUSTe. =
+Microsoft=20
+      helped spearhead the global Online Privacy Alliance, a coalition =
+of more=20
+      than 80 global corporations and organizations working to promote =
+consumer=20
+      privacy online. Microsoft continues to work closely with =
+government and=20
+      consumer privacy groups worldwide.</P><A name=3D010></A>
+      <H3>Open Access</H3>
+      <P>HailStorm can be accessed from any device, service or =
+application with=20
+      an Internet connection, the ability to authenticate a user, and =
+the=20
+      ability to send and receive SOAP messages. All interactions are =
+text-based=20
+      SOAP messages, regardless of underlying platform, operating =
+system, object=20
+      model, programming language, application or online service. =
+HailStorm is=20
+      accessible from both clients and servers, and no Microsoft runtime =
+is=20
+      required on either the client or the server. Microsoft has already =
+
+      demonstrated HailStorm services being accessed from Windows=AE, =
+Macintosh,=20
+      Palm, Pocket PC and a variety of flavors of UNIX.</P><A =
+name=3D011></A>
+      <H3>Open Process Extensibility</H3>
+      <P>The initial release of HailStorm provides a basic set of =
+possible=20
+      services users and developers might need. Beyond that, new =
+services (for=20
+      example, myPhotos or myPortfolio) and extensions will be defined =
+via the=20
+      Microsoft Open Process with developer community involvement. There =
+will be=20
+      a single schema for each area to avoid conflicts that are =
+detrimental to=20
+      users (like having both myTV and myFavoriteTVShows) and to ensure =
+a=20
+      consistent architectural approach around attributes like security =
+model=20
+      and data manipulation.&nbsp; Microsoft=92s involvement in =
+HailStorm=20
+      extensions will be based on our expertise in a given area.</P>
+      <P><A href=3D"http://microsoft.com/net/hailstorm.asp#top">Back to=20
+      top...</A></P><A name=3D012></A>
+      <DIV=20
+      style=3D"BORDER-RIGHT: medium none; PADDING-RIGHT: 0in; =
+BORDER-TOP: medium none; PADDING-LEFT: 0in; PADDING-BOTTOM: 1pt; =
+BORDER-LEFT: medium none; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext =
+0.5pt solid">
+      <H2>Roadmap</H2></DIV><A name=3D013></A>
+      <H3>HailStorm</H3>
+      <P>The initial set of HailStorm services is scheduled to be =
+available in a=20
+      broad developer beta in late 2001, with full release in 2002. =
+Additional=20
+      namespaces and services will come online as they are completed via =
+the=20
+      Microsoft Open Process. HailStorm is designed so that additional =
+services=20
+      and extensions can come online in an incremental fashion once the =
+core=20
+      infrastructure is in place.</P><A name=3D014></A>
+      <H3>Endpoints</H3>
+      <P>Microsoft is actively working to help the industry create lots =
+of=20
+      third-party endpoints for HailStorm services with broad range of=20
+      evangelism and support programs.&nbsp; </P>
+      <P>Microsoft will, of course, be working to ensure that any =
+Microsoft=20
+      experience a user would like to use will act as a good HailStorm =
+endpoint.=20
+      This means that Microsoft applications, including everything from=20
+      Microsoft Office to the Microsoft games, will support HailStorm. =
+Services=20
+      including MSN and bCentral=99 small business portal will be =
+HailStorm=20
+      endpoints, and a variety of devices powered by Microsoft software =
+will be=20
+      potential HailStorm endpoints, including the Xbox=99 video game =
+console,=20
+      Pocket PC and Microsoft=92s smart phone software platform, =
+currently=20
+      codename =93Stinger=94. A number of Microsoft operating systems, =
+including=20
+      Windows XP and Windows CE, will also be HailStorm endpoints =
+themselves, as=20
+      well as enabling developers to easily create HailStorm-enabled=20
+      applications on those platforms.</P>
+      <P>Windows XP will integrate the Windows authentication system =
+with the=20
+      Passport authentication system, so a user can log onto Windows XP =
+a single=20
+      time and also be logged onto Passport and therefore be able to =
+receive=20
+      HailStorm services without an additional logon process. The =
+release will=20
+      also incorporate support for programmatic notifications, which =
+means users=20
+      of the HailStorm myNotifications service can easily opt to have =
+their=20
+      notifications delivered to their Windows XP-powered PC.</P>
+      <P><A href=3D"http://microsoft.com/net/hailstorm.asp#top">Back to=20
+      top...</A></P><A name=3D015></A>
+      <DIV=20
+      style=3D"BORDER-RIGHT: medium none; PADDING-RIGHT: 0in; =
+BORDER-TOP: medium none; PADDING-LEFT: 0in; PADDING-BOTTOM: 1pt; =
+BORDER-LEFT: medium none; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext =
+0.5pt solid">
+      <H2>More information</H2></DIV>
+      <P>As additional information about HailStorm becomes publicly =
+available,=20
+      it will be posted to Microsoft.com, including at <A=20
+      =
+href=3D"http://www.microsoft.com/net">http://www.microsoft.com/net</A> =
+and=20
+      <A=20
+      =
+href=3D"http://msdn.microsoft.com/net">http://msdn.microsoft.com/net</A>.=
+&nbsp;=20
+      We welcome feedback on HailStorm. Please send feedback mail to <A=20
+      href=3D"mailto:hailstrm@microsoft.com">hailstrm@microsoft.com</A>. =
+</P>
+      <P>This is a preliminary document and may be changed substantially =
+prior=20
+      to final commercial release of the software described herein. </P>
+      <P>The information contained in this document represents the =
+current view=20
+      of Microsoft Corporation on the issues discussed as of the date of =
+
+      publication.&nbsp; Because Microsoft must respond to changing =
+market=20
+      conditions, it should not be interpreted to be a commitment on the =
+part of=20
+      Microsoft, and Microsoft cannot guarantee the accuracy of any =
+information=20
+      presented after the date of publication.</P>
+      <P>This White Paper is for informational purposes only.&nbsp; =
+MICROSOFT=20
+      MAKES NO WARRANTIES, EXPRESS OR IMPLIED, AS TO THE INFORMATION IN =
+THIS=20
+      DOCUMENT.</P>
+      <P>Complying with all applicable copyright laws is the =
+responsibility of=20
+      the user.&nbsp; Without limiting the rights under copyright, no =
+part of=20
+      this document may be reproduced, stored in or introduced into a =
+retrieval=20
+      system, or transmitted in any form or by any means (electronic,=20
+      mechanical, photocopying, recording, or otherwise), or for any =
+purpose,=20
+      without the express written permission of Microsoft Corporation. =
+</P>
+      <P>Microsoft may have patents, patent applications, trademarks,=20
+      copyrights, or other intellectual property rights covering subject =
+matter=20
+      in this document.&nbsp; Except as expressly provided in any =
+written=20
+      license agreement from Microsoft, the furnishing of this document =
+does not=20
+      give you any license to these patents, trademarks, copyrights, or =
+other=20
+      intellectual property.</P>
+      <P>=A9 2001 Microsoft Corporation.&nbsp; All rights reserved.</P>
+      <P>Microsoft, bCentral, Hotmail, MSN, the .NET logo, Windows and =
+Xbox are=20
+      either registered trademarks or trademarks of Microsoft =
+Corporation in the=20
+      United States and/or other countries.</P>
+      <P>The names of actual companies and products mentioned herein may =
+be the=20
+      trademarks of their respective owners.</P>
+      <P>&nbsp;</P><!-- MAIN CONTENT END --></TD>
+    <TD width=3D10>&nbsp;&nbsp;</TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
+  <TBODY>
+  <TR>
+    <TD vAlign=3Dcenter align=3Dmiddle bgColor=3D#f1f1f1 height=3D35><A =
+class=3Dfooter=20
+      href=3D"http://microsoft.com/info/cpyright.htm">=A9 2001 Microsoft =
+
+      Corporation. All rights reserved. Terms of =
+use.</A></TD></TR></TBODY></TABLE><!-- SOME SCRIPT SRC'S ON THIS PAGE =
+HAVE BEEN REWRITTEN BY THE WAYBACK MACHINE=0A=
+OF THE INTERNET ARCHIVE IN ORDER TO PRESERVE THE TEMPORAL INTEGRITY OF =
+THE SESSION. --><!-- SOME LINK HREF'S ON THIS PAGE HAVE BEEN REWRITTEN =
+BY THE WAYBACK MACHINE=0A=
+OF THE INTERNET ARCHIVE IN ORDER TO PRESERVE THE TEMPORAL INTEGRITY OF =
+THE SESSION. -->
+<SCRIPT language=3DJavascript>=0A=
+<!--=0A=
+=0A=
+// FILE ARCHIVED ON 20010331083317 AND RETRIEVED FROM THE=0A=
+// INTERNET ARCHIVE ON 20030920001459.=0A=
+// JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.=0A=
+// ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.=0A=
+// SECTION 108(a)(3)).=0A=
+=0A=
+   var sWayBackCGI =3D "http://web.archive.org/web/20010331083317/";=0A=
+=0A=
+   function xLateUrl(aCollection, sProp) {=0A=
+      var i =3D 0;=0A=
+      for(i =3D 0; i < aCollection.length; i++)=0A=
+         if (aCollection[i][sProp].indexOf("mailto:") =3D=3D -1 &&=0A=
+             aCollection[i][sProp].indexOf("javascript:") =3D=3D -1)=0A=
+            aCollection[i][sProp] =3D sWayBackCGI + =
+aCollection[i][sProp];=0A=
+   }=0A=
+=0A=
+   if (document.links)  xLateUrl(document.links, "href");=0A=
+   if (document.images) xLateUrl(document.images, "src");=0A=
+   if (document.embeds) xLateUrl(document.embeds, "src");=0A=
+=0A=
+   if (document.body && document.body.background)=0A=
+      document.body.background =3D sWayBackCGI + =
+document.body.background;=0A=
+=0A=
+//-->=0A=
+=0A=
+</SCRIPT>
+</BODY></HTML>
+
+------=_NextPart_000_0000_01C37F57.C16993F0
+Content-Type: image/gif
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://microsoft.com/net/images/bnrWindowsNgws1.gif
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" ><html =
+dir=3D"LTR" xmlns-shell=3D"null" xmlns-asp=3D"null"><head><meta =
+name=3D"ROBOTS" content=3D"NOINDEX"/><META name=3D"MS.LOCALE" =
+content=3D"en-us"><META http-equiv=3D"Content-Type" =
+content=3D"text/html; charset=3Diso-8859-1"><title>We&#8217;re sorry, =
+the page you requested could not be found</title><meta =
+name=3D"description" content=3D"We&#8217;re sorry, but there is no =
+Microsoft.com Web page matching your entry.  It is possible that you =
+typed the address incorrectly, or that the page no longer exists.  You =
+may wish to try another entry or to use the links below, which we hope =
+will help provide you with the information you need."><meta =
+name=3D"keywords" content=3D""><link type=3D"text/css" =
+rel=3D"Stylesheet" =
+href=3D"/library/mnp/2/aspx/templatecss.aspx?template=3D%2flibrary%2fgall=
+ery%2ftemplates%2fMNP2.SiteMap&amp;shell=3D%2finfo%2fsmart404%2fConfigura=
+tion.xml&amp;locale=3Den-us">
+<script type=3D'text/javascript' language=3D'Javascript' =
+src=3D'/library/mnp/2/aspx/js.aspx?&amp;name=3DMenu&amp;name=3DMasthead'>=
+</script>
+<script type=3D'text/javascript' language=3D'Javascript' =
+src=3D'/mnp_utility.mspx/mastheadjs?mnpshell=3D%2finfo%2fsmart404%2fConfi=
+guration.xml&amp;'></script>
+<script type=3D'text/javascript' language=3D'Javascript' =
+src=3D'/mnp_utility.mspx/menujs?mnpshell=3D%2finfo%2fsmart404%2fConfigura=
+tion.xml&amp;clicktrax=3DFalse'></script>
+<link type=3D'text/css' rel=3D'Stylesheet' =
+href=3D'/library/mnp/2/aspx/css.aspx?locale=3Den-us&amp;name=3DFooter&amp=
+;name=3DMasthead&amp;name=3DQuickSearch&amp;name=3DMenu&amp;static=3DPage=
+' />
+<script language=3D"Javascript">
+					if (self.name =3D=3D "MNPMainFrame")
+						top.location.href =3D self.location.href;
+				</script></head><body bgcolor=3D"#FFFFFF" topmargin=3D"0" =
+leftmargin=3D"0" marginwidth=3D"0" marginheight=3D"0"><a =
+name=3D"top"></a><table id=3D"mnpMastheadTable" width=3D"100%" =
+cellpadding=3D"0" cellspacing=3D"0" border=3D"0" bgcolor=3D"#0A6CCE" =
+dir=3D"LTR"><tr><td width=3D"100%" valign=3D"top" rowspan=3D"2"><a =
+href=3D"http://www.microsoft.com"><img border=3D"0" =
+src=3D"/library/mnp/2/gif/bnr_microsoft.gif" alt=3D""></a></td><td =
+valign=3D"top" height=3D"20" width=3D"19" align=3D"right"><img alt=3D"*" =
+src=3D"/library/mnp/2/gif/curveLTR.gif"></td><td valign=3D"middle" =
+nowrap colspan=3D"2" class=3D"mnpGlobalToolbar" =
+hover=3D"#FFCC00">&nbsp;&nbsp;<a class=3D"mnpGlobalToolbarLink" =
+dir=3D"LTR" href=3D"/isapi/gomscom.asp?target=3D/catalog/" =
+target=3D"_parent" =
+guid=3D"m71a06c18019585dbc34a9c4c641a3a08">Products</a>&nbsp;&nbsp;|&nbsp=
+;&nbsp;<a class=3D"mnpGlobalToolbarLink" dir=3D"LTR" =
+href=3D"/isapi/gomscom.asp?target=3D/downloads/" target=3D"_parent" =
+guid=3D"medf9a186fb918ffce063d27c6d67cffe">Downloads</a>&nbsp;&nbsp;|&nbs=
+p;&nbsp;<a class=3D"mnpGlobalToolbarLink" dir=3D"LTR" =
+href=3D"http://support.microsoft.com" target=3D"_parent" =
+guid=3D"m1b3560fa9d8189ce386c2508f94c616f">Support</a>&nbsp;&nbsp;|&nbsp;=
+&nbsp;<a class=3D"mnpGlobalToolbarLink" dir=3D"LTR" =
+href=3D"/isapi/gosearch.asp?target=3D/" target=3D"_parent" =
+guid=3D"mc56a833edd4edfae7787c623c8510629">Search</a>&nbsp;&nbsp;|&nbsp;&=
+nbsp;<a class=3D"mnpGlobalToolbarLink" dir=3D"LTR" =
+href=3D"/isapi/gomscom.asp?target=3D/worldwide/" target=3D"_parent" =
+guid=3D"m60638ac32df0e62d79e6bce849e695fe">Worldwide</a>&nbsp;&nbsp;|&nbs=
+p;&nbsp;<a class=3D"mnpGlobalToolbarLink" dir=3D"LTR" =
+href=3D"/isapi/gomscom.asp?target=3D/" target=3D"_parent" =
+guid=3D"m7367a73751f32aeeeff7c8b6363bded0">Microsoft</a>&nbsp;&nbsp;</td>=
+</tr><tr><td width=3D"19">&nbsp;</td><td valign=3D"top" height=3D"40" =
+nowrap>&nbsp;</td><td valign=3D"top" height=3D"40" nowrap =
+class=3D"mnpMastheadLogo" align=3D"right"></td></tr></table><table =
+width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" =
+style=3D"border-bottom: solid 1px white" bgcolor=3D"#0A6CCE"><tr><td =
+height=3D"20" valign=3D"middle" nowrap class=3D"mnpLocalToolbar" =
+style=3D"color: #FFFFFF" hover=3D"#FFCC00">&nbsp;<a style=3D"color: =
+#FFFFFF; text-decoration: none" dir=3D"LTR" =
+href=3D"http://www.microsoft.com" =
+target=3D"_parent"></a>&nbsp;&nbsp;</td></tr></table><table =
+cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%"><tr =
+valign=3D"top"><td height=3D"100%" style=3D"overflow-x: hidden" =
+width=3D"181" xmlns-search=3D"null"><table cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0" width=3D"100%"><tr><td =
+class=3D"mnpQuickSearch" style=3D"background: #0A6CCE; color: #FFFFFF" =
+dir=3D"LTR"><form style=3D"margin: 0px" =
+action=3D"http://www.microsoft.com/info/smart404/redirectsearch.aspx"><no=
+br><font color=3D"#FFFFFF">Search for</font><br><table cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0"><tr><td class=3D"mnpQuickSearch" =
+style=3D"padding: 0px"><input class=3D"mnpSearchBox" type=3D"text" =
+id=3D"qu" name=3D"qu" maxlength=3D"255" style=3D"width: =
+137px"></td><td><input class=3D"mnpSearchButton" type=3D"submit" =
+value=3D"Go"><br></td></tr></table><a =
+href=3D"http://search.microsoft.com/advanced_search.asp?siteid=3Dus" =
+style=3D"color: #FFFFFF">Advanced =
+Search</a></nobr></form></td></tr></table><div id=3D"mnpMenuTop" =
+class=3D"mnpMenuTop" style=3D"overflow-x: hidden; width: 181px" =
+url=3D"/info/smart404/default.mspx" dir=3D"LTR"><div =
+class=3D"mnpInherit"></div></div><div class=3D"mnpAds" style=3D"width: =
+181px; height: 100%; margin-bottom: 20px; background: #F1F1F1; =
+border-style: solid; border-color: #999999; border-width: 0px 1px 0px =
+0px"><center></center></div></td><td width=3D"100%" dir=3D"LTR">
+<div style=3D"padding: 0px 15px 0px 20px"><h1>We&#8217;re =
+sorry,</h1><p>We&#8217;re sorry, but there is no Microsoft.com Web page =
+matching your entry.  It is possible that you typed the address =
+incorrectly, or that the page no longer exists.  You may wish to try =
+another entry or to use the links below, which we hope will help provide =
+you with the information you need.</p>
+
+<br />
+<h4 class=3D"first">Best Bets for=20
+					graphics
+</h4>
+<div style=3D"margin-top: 11px;"><span class=3D"bullet">=95</span><span =
+class=3D"label"><a target=3D"_top" =
+href=3D"http://dgl.microsoft.com/?CAG=3D1">Design Gallery =
+Live</a></span></div>
+<div style=3D"margin-top: 11px;"><span class=3D"bullet">=95</span><span =
+class=3D"label"><a target=3D"_top" =
+href=3D"http://shopping.msn.com/category.aspx?catId=3D128&amp;ptnrid=3D50=
+">Shop Online for Graphics/Video Cards at MSN Shopping</a></span></div>
+<HR style=3D"margin-top: 19px;" />
+
+
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr></tr><tr =
+valign=3D"top"><td width=3D"50%" class=3D"partition"><table =
+cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"headline"><tr =
+valign=3D"top"><td class=3D"bullet">&#8226;</td><td><span =
+class=3D"label">Product<br></span><p class=3D"blurb"><a =
+href=3D"http://www.microsoft.com/catalog/">All Products</a></p><table =
+cellpadding=3D"0" cellspacing=3D"0" border=3D"0" =
+class=3D"subbullets"><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/windows/">Windows</a></td></tr><tr =
+valign=3D"top"><td class=3D"subbullet">&#8226;</td><td =
+class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/office/">Office</a></td></tr><tr =
+valign=3D"top"><td class=3D"subbullet">&#8226;</td><td =
+class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/businesssolutions/">Business =
+Solutions</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/windowsserversystem/">Servers</a></td></=
+tr><tr valign=3D"top"><td class=3D"subbullet">&#8226;</td><td =
+class=3D"sublink"><a href=3D"http://msdn.microsoft.com/vstudio/">Visual =
+Studio</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/games/">Games &amp; =
+Xbox</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/msn">MSN =
+Services=A0</a></td></tr></table></td></tr></table><table =
+cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"headline"><tr =
+valign=3D"top"><td class=3D"bullet">&#8226;</td><td><span =
+class=3D"label">Downloads<br></span><p class=3D"blurb"><a =
+href=3D"http://www.microsoft.com/downloads/">Download =
+Center</a></p><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" =
+class=3D"subbullets"><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://windowsupdate.microsoft.com/">Windows =
+Update</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://office.microsoft.com/productupdates">Office Product =
+Updates</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/downloads/relatedsites.aspx?displaylang=3D=
+en">Related Download Sites</a></td></tr></table></td></tr></table><table =
+cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"headline"><tr =
+valign=3D"top"><td class=3D"bullet">&#8226;</td><td><span =
+class=3D"label">Support<br></span><p class=3D"blurb"><a =
+href=3D"http://support.microsoft.com/">Product Support =
+Services</a></p><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" =
+class=3D"subbullets"><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://support.microsoft.com/search">Knowledge =
+Base</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://support.microsoft.com/faqs">Product Support =
+Centers</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://support.microsoft.com/default.aspx?pr=3Dcsshome&style=3Dho=
+me">Customer Service</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://directory.microsoft.com/resourcedirectory/services.aspx">S=
+ervice Providers</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://msdn.microsoft.com/support/">Support for =
+Developers</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/technet/treeview/default.asp?url=3D/tech=
+net/support/Default.asp">Support for IT Professionals</a></td></tr><tr =
+valign=3D"top"><td class=3D"subbullet">&#8226;</td><td =
+class=3D"sublink"><a =
+href=3D"http://support.microsoft.com/contactus">Contact =
+Microsoft</a></td></tr></table></td></tr></table><table =
+cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"headline"><tr =
+valign=3D"top"><td class=3D"bullet">&#8226;</td><td><span =
+class=3D"label">Communities<br></span><p class=3D"blurb"><a =
+href=3D"http://www.microsoft.com/communities/">Technical =
+Communities</a></p><table cellpadding=3D"0" cellspacing=3D"0" =
+border=3D"0" class=3D"subbullets"><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/communities/newsgroups/default.mspx">New=
+sgroups</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/communities/chats/default.mspx">Technica=
+l Chats</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/communities/usergroups/default.mspx">Use=
+r Groups</a></td></tr></table></td></tr></table></td><td =
+width=3D"10"><div class=3D"gutterPlug"></div></td><td width=3D"1" =
+height=3D"100%"><div class=3D"verticalRule"></div></td><td =
+width=3D"10"><div class=3D"gutterPlug"></div></td><td width=3D"50%" =
+class=3D"partition"><table cellpadding=3D"0" cellspacing=3D"0" =
+border=3D"0" class=3D"headline"><tr valign=3D"top"><td =
+class=3D"bullet">&#8226;</td><td><span class=3D"label">Information =
+for<br></span><p class=3D"blurb"></p><table cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0" class=3D"subbullets"><tr =
+valign=3D"top"><td class=3D"subbullet">&#8226;</td><td =
+class=3D"sublink"><a href=3D"http://www.microsoft.com/insider/">Home =
+Users</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/technet/">IT Professionals =
+(TechNet)</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://msdn.microsoft.com/">Developers (MSDN)</a></td></tr><tr =
+valign=3D"top"><td class=3D"subbullet">&#8226;</td><td =
+class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/partner/">Microsoft =
+Partners</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/homepage/nav.asp?pid=3D4">Business =
+Professionals</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/education/">Education =
+Institutions</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/presspass/">Journalists</a></td></tr></t=
+able></td></tr></table><table cellpadding=3D"0" cellspacing=3D"0" =
+border=3D"0" class=3D"headline"><tr valign=3D"top"><td =
+class=3D"bullet">&#8226;</td><td><span =
+class=3D"label">Resources<br></span><p class=3D"blurb"></p><table =
+cellpadding=3D"0" cellspacing=3D"0" border=3D"0" =
+class=3D"subbullets"><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/traincert/">Training &amp; =
+Certification</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/events/">Events</a></td></tr><tr =
+valign=3D"top"><td class=3D"subbullet">&#8226;</td><td =
+class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/mspress/">Books</a></td></tr><tr =
+valign=3D"top"><td class=3D"subbullet">&#8226;</td><td =
+class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/isapi/goregwiz.asp?target=3D/regsys/pic.=
+asp">Newsletters</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/enable/">Accessibility</a></td></tr><tr =
+valign=3D"top"><td class=3D"subbullet">&#8226;</td><td =
+class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/security/">Security &amp; =
+Privacy</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/isapi/goregwiz.asp?target=3D/regsys/pic.=
+asp">Profile Center</a></td></tr></table></td></tr></table><table =
+cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"headline"><tr =
+valign=3D"top"><td class=3D"bullet">&#8226;</td><td><span =
+class=3D"label">About Microsoft<br></span><p class=3D"blurb"><a =
+href=3D"http://www.microsoft.com/mscorp/">Corporate =
+Information</a></p><table cellpadding=3D"0" cellspacing=3D"0" =
+border=3D"0" class=3D"subbullets"><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/careers/">Careers</a></td></tr><tr =
+valign=3D"top"><td class=3D"subbullet">&#8226;</td><td =
+class=3D"sublink"><a href=3D"http://www.microsoft.com/giving/">Community =
+Affairs</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/diversity/">Diversity</a></td></tr><tr =
+valign=3D"top"><td class=3D"subbullet">&#8226;</td><td =
+class=3D"sublink"><a href=3D"http://www.microsoft.com/msft/">Investor =
+Relations</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://www.microsoft.com/museum/">Microsoft =
+Museum</a></td></tr><tr valign=3D"top"><td =
+class=3D"subbullet">&#8226;</td><td class=3D"sublink"><a =
+href=3D"http://research.microsoft.com/">Microsoft =
+Research</a></td></tr></table></td></tr></table><table cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0" class=3D"headline"><tr valign=3D"top"><td =
+class=3D"bullet">&#8226;</td><td><span class=3D"label">Microsoft =
+Worldwide<br></span><p class=3D"blurb"><a =
+href=3D"http://www.microsoft.com/worldwide/">Worldwide Sites and =
+Offices</a></p></td></tr></table></td></tr><tr><td =
+width=3D"50%"></td><td width=3D"10"><div =
+class=3D"gutterPlug"></div></td><td width=3D"1"><div =
+class=3D"pixel"></div></td><td width=3D"10"><div =
+class=3D"gutterPlug"></div></td><td width=3D"50%"></td></tr></table><div =
+style=3D"margin-top: 16px; margin-bottom: 25px"><a href=3D"#top"><img =
+width=3D"7" height=3D"9" border=3D"0" class=3D"topIcon" =
+src=3D"/library/gallery/templates/MNP2.SiteMap/../MNP2.Common/images/arro=
+w_px_up.gif" alt=3D"Top of page"></a><a class=3D"topOfPage" =
+href=3D"#top">Top of page</a></div></div></td></tr></table><table =
+cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=3D"0" =
+bgcolor=3D"#0A6CCE" style=3D"color: #FFFFFF" dir=3D"LTR"><tr><td =
+class=3D"mnpFooterBottomRow" nowrap height=3D"30">&nbsp;<span =
+dir=3D"LTR">=A92003 Microsoft Corporation. All rights =
+reserved.</span>&nbsp;<a =
+href=3D"/isapi/gomscom.asp?target=3D/info/cpyright.htm" =
+target=3D"_parent" style=3D"color: #FFFFFF; " =
+onmouseout=3D"mnpFooterMouse(this, '#FFFFFF')" =
+onmouseover=3D"mnpFooterMouse(this, '#FFCC00')">Terms of =
+Use</a>&nbsp;|&nbsp;<a =
+href=3D"/isapi/gomscom.asp?target=3D/info/privacy.htm" =
+target=3D"_parent" style=3D"color: #FFFFFF; " =
+onmouseout=3D"mnpFooterMouse(this, '#FFFFFF')" =
+onmouseover=3D"mnpFooterMouse(this, '#FFCC00')">Privacy =
+Statement</a>&nbsp;</td></tr></table><script type=3D"text/javascript" =
+language=3D"Javascript">
+			function mnpFooterMouse(el, co)
+			{
+				if (el.style) el.style.color =3D co;
+			}
+		</script><layer visibility=3D"hide"><div style=3D"display:none"><img =
+width=3D"0" height=3D"0" border=3D"0" hspace=3D"0" vspace=3D"0" =
+src=3D"http://c.microsoft.com/trans_pixel.asp?source=3Dwww&amp;TYPE=3DPV&=
+amp;p=3Dinfo_smart404"></div></layer></body></html>
+------=_NextPart_000_0000_01C37F57.C16993F0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://microsoft.com/library/toolbar/images/curve.gif
+
+R0lGODlhEgAUALMAAMDAwIaGhnl5eXR0dG9vb2tra1NTU0ZGRkFBQTMzMyoqKhMTEwkJCQUFBQAA
+AAAAACH5BAEAAAAALAAAAAASABQAQAQ4EACSnL0Yy807ul0YGiLXZE5ZHqm4oKC6ZXI3WHXY5mqg
+wJpSAZhj0HKCIO+0WzZ5z5yCxxlQOREAOw==
+
+------=_NextPart_000_0000_01C37F57.C16993F0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://microsoft.com/library/images/gifs/homepage/1ptrans.gif
+
+R0lGODlhAQABAIAAAP8zzAAAACH5BAEAAAAALAAAAAABAAEAQAIChFEAOwA=
+
+------=_NextPart_000_0000_01C37F57.C16993F0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://microsoft.com/library/toolbar/images/mslogo.gif
+
+R0lGODlhcAAoALP/ACgoKP///wAAAH9/f7+/v0BAQBAQEO/v78/Pz2BgYN/f35+fn4+Pj3BwcK+v
+r1BQUCH/C0FET0JFOklSMS4wAt7tACH5BAAAAAAALAAAAABwACgAAAT/MMhJq7046827/2AojmRp
+nmiqrmzrvnAsz3Rt33iu73zv/8CgcEgs7gpI5GKSSBYaiKRjeGAMBogZQcDlDiSKLrcx6GaDCkOX
+sLgSXgyx4BtIyB3t69AuMHy7DC8Pcl9hcgoEiWcBCG0LChMIiZAIWQcOV1gVCJkDUxQHeQyQjAQA
+XAVsgFlvK6diX3xdAAhdX1FyDRKvCacDC2piCRIIr2IABxIDwbYBzHJdD42LJ4ZiBdbRC10ODs9d
+DQfQxgbGuq9+g1yBsuW20NBYoyoO0AV8zAyyCMG0B+j14AlAFkCdAGsPJCRp02VYgFcACMhyQCBY
+AgLJWDSYxQWdMVMd/2W1apCkTEcFxkiZFBCw44N5B4IZyLiRS4ACHQOI4/KpBU4usrww2ykgQb8L
+P2cinLCSE7wFLXUp7BIgWoCWpFqI2dbFwBZUXwXEGXMBXICwdB4ODHS2V641EmKiqrUugEkAL8Li
+hcVVABkzZu2WhItWQsUEnQZAQtnlp4BWKxmMfXyTS0IXk4d1PTDRsdo+mGZNTkYUAB6ZxgLJ7UN3
+IIGVeGVJ6IexhcElzVIGKxBgshgDCNThlVBTDvC+0JYYPJYFogQ5LlJW7XOgdGs6y4Ql40Uhe0OV
+3wAs0VkcKOnAwFAVOZCo9gb2iTJSkKTIAnz3RvLr38+/v///AAYo4A+ABBZo4IEIJqjgggyyEAEA
+Ow==
+
+------=_NextPart_000_0000_01C37F57.C16993F0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://web.archive.org/web/20010331083317js_/http://microsoft.com/library/toolbar/toolbar.js
+
+var ToolBar_Supported =3D false;
+var Frame_Supported   =3D false;
+var DoInstrumentation =3D false;
+
+if (navigator.userAgent.indexOf("MSIE")    !=3D -1 &&=20
+	navigator.userAgent.indexOf("Windows") !=3D -1 &&=20
+	navigator.appVersion.substring(0,1) > 3)
+{
+	ToolBar_Supported =3D true;
+}
+
+	var a=3D new Array();
+	a[0] =3D prepTrackingString(window.location.hostname,7);=09
+	a[1] =3D prepTrackingString('PV',8);
+	a[2] =3D prepTrackingString(window.location.pathname,0);
+	if(window.location.search !=3D '')
+	{
+		a[a.length] =3D prepTrackingString(window.location.search,1);
+	}
+	if( '' !=3D window.document.referrer)
+	{
+		a[a.length] =3D prepTrackingString(window.document.referrer,5);
+	}
+	buildIMG(a);
+=09
+
+   =20
+if (ToolBar_Supported)
+{
+=09
+	var newLineChar =3D String.fromCharCode(10);
+	var char34 =3D String.fromCharCode(34);
+	var LastMSMenu =3D "";
+	var CurICPMenu =3D "";
+	var IsMSMenu =3D false;
+	var IsMenuDropDown =3D true;
+	var HTMLStr;
+	var x =3D 0;
+	var y =3D 0;
+	var x2 =3D 0;
+	var y2 =3D 0;
+	var MSMenuWidth;
+	var ToolbarMinWidth;
+	var ToolbarMenu;
+	var ToolbarBGColor;
+	var ToolbarLoaded =3D false;
+	var aDefMSColor  =3D new Array(3);
+	var aDefICPColor =3D new Array(3);
+	var aCurMSColor  =3D new Array(3);
+	var aCurICPColor =3D new Array(3);
+	var MSFont;
+	var ICPFont;
+	var MaxMenu =3D 30;
+	var TotalMenu =3D 0;
+	var arrMenuInfo =3D new Array(30);
+=09
+	// Output style sheet and toolbar ID
+	document.write("<SPAN ID=3D'StartMenu' =
+STYLE=3D'display:none;'></SPAN>");
+
+	// Build toolbar template
+	HTMLStr =3D=20
+		"<DIV ID=3D'idToolbar'     =
+STYLE=3D'background-color:white;width:100%'>" +
+		"<DIV ID=3D'idRow1'        STYLE=3D'position:relative;height:20;'>" +
+		"<DIV ID=3D'idICPBanner'   =
+STYLE=3D'position:absolute;top:0;left:0;height:60;width:250;overflow:hidd=
+en;vertical-align:top;'><!--BEG_ICP_BANNER--><!--END_ICP_BANNER--></DIV>"=
+ +
+		"<DIV ID=3D'idMSMenuCurve' =
+STYLE=3D'position:absolute;top:0;left:250;height:20;width:18;overflow:hid=
+den;vertical-align:top;'><IMG SRC=3D'/library/toolbar/images/curve.gif' =
+BORDER=3D0></DIV>" +
+		"<DIV ID=3D'idMSMenuPane'  =
+STYLE=3D'position:absolute;top:0;left:250;height:20;width:10;background-c=
+olor:black;float:right;' NOWRAP><!--MS_MENU_TITLES--></DIV>" +=20
+		"</DIV>" +
+		"<DIV ID=3D'idRow2' STYLE=3D'position:relative;left:250;height:40;'>" =
++
+		"<DIV ID=3D'idADSBanner'   =
+STYLE=3D'position:absolute;top:0;left:0;height:40;width:200;vertical-alig=
+n:top;overflow:hidden;'><!--BEG_ADS_BANNER--><!--END_ADS_BANNER--></DIV>"=
+ +
+		"<DIV ID=3D'idMSCBanner'   =
+STYLE=3D'position:absolute;top:0;left:200;height:40;width:112;vertical-al=
+ign:top;overflow:hidden;' =
+ALIGN=3DRIGHT><!--BEG_MSC_BANNER--><!--END_MSC_BANNER--></DIV>" +
+		"</DIV>" +
+		"<DIV ID=3D'idRow3' STYLE=3D'position:relative;height:20;width:100%'>" =
++
+		"<DIV ID=3D'idICPMenuPane' =
+STYLE=3D'position:absolute;top:0;left:0;height:20;background-color:black;=
+' NOWRAP><!--ICP_MENU_TITLES--></DIV>" +
+		"</DIV>" +
+		"</DIV>" +=20
+		"<SCRIPT TYPE=3D'text/javascript'>" +=20
+		"   var ToolbarMenu =3D StartMenu;" +=20
+		"</SCRIPT>" +=20
+		"<DIV WIDTH=3D100%>";
+
+	// Define event handlers
+	window.onresize  =3D resizeToolbar;
+
+	// Intialize global variables
+	ToolbarBGColor	=3D "white";						// toolbar background color
+	MSFont  =3D "xx-small Verdana";
+	ICPFont =3D "bold xx-small Verdana";
+=09
+	aDefMSColor[0]	=3D aCurMSColor[0]  =3D "black";	// bgcolor;
+	aDefMSColor[1]	=3D aCurMSColor[1]  =3D "white";	// text font color
+	aDefMSColor[2]  =3D aCurMSColor[2]  =3D "red";		// mouseover font color
+=09
+	aDefICPColor[0]	=3D aCurICPColor[0] =3D "#6699CC";	// bgcolor;
+	aDefICPColor[1] =3D aCurICPColor[1] =3D "white";	// text font color
+	aDefICPColor[2] =3D aCurICPColor[2] =3D "red";		// mouseover font color
+}
+
+// The hard-coded numbers in functions - drawToolbar() & resizeToolbar()
+// correspond to the dimension of the four gif files:
+//		ICP_BANNER: 60h x 250w
+//		ADS_BANNER: 40h x 200w
+//		MSC_BANNER: 40h x 112w
+//		Curve:	    20h x 18w
+
+function drawToolbar()
+{
+	HTMLStr +=3D "</DIV>";
+	document.write(HTMLStr);
+	ToolbarLoaded =3D true;
+
+	MSMenuWidth     =3D Math.max(idMSMenuPane.offsetWidth, (200+112));
+	ToolbarMinWidth =3D (250+18) + MSMenuWidth;
+
+	idToolbar.style.backgroundColor     =3D ToolbarBGColor;
+	idMSMenuPane.style.backgroundColor  =3D aDefMSColor[0];
+	idICPMenuPane.style.backgroundColor =3D aDefICPColor[0];
+	resizeToolbar();
+
+	for (i =3D 0; i < TotalMenu; i++)=20
+	{
+		thisMenu =3D document.all(arrMenuInfo[i].IDStr);
+		if (thisMenu !=3D null)
+		{
+			if (arrMenuInfo[i].IDStr =3D=3D LastMSMenu && arrMenuInfo[i].type =
+=3D=3D "R")
+			{
+				//Last MSMenu has to be absolute width
+				arrMenuInfo[i].type =3D "A";
+				arrMenuInfo[i].unit =3D 200;
+			}
+			if (arrMenuInfo[i].type =3D=3D "A")
+				thisMenu.style.width =3D arrMenuInfo[i].unit;
+			else=20
+				thisMenu.style.width =3D Math.round(arrMenuInfo[i].width * =
+arrMenuInfo[i].unit) + 'em';
+		}
+	}
+}
+
+function resizeToolbar()
+{
+	if (ToolBar_Supported =3D=3D false) return;
+
+	w =3D Math.max(ToolbarMinWidth, document.body.clientWidth) - =
+ToolbarMinWidth;
+=09
+	idMSMenuCurve.style.left  =3D (250+w);
+	idMSMenuPane.style.left   =3D (250+w+18);
+	idMSMenuPane.style.width  =3D MSMenuWidth;
+
+	idADSBanner.style.left    =3D (w+18);
+
+	idMSCBanner.style.left    =3D (w+18+200);
+	idMSCBanner.style.width   =3D (MSMenuWidth - 200);
+=09
+	idICPMenuPane.style.width =3D ToolbarMinWidth + w;
+}
+
+function setToolbarBGColor(color)
+{=09
+	ToolbarBGColor =3D color;
+	if (ToolbarLoaded =3D=3D true)
+		idToolbar.style.backgroundColor =3D ToolbarBGColor;
+}=09
+
+function setMSMenuFont(sFont)
+{	MSFont =3D sFont;
+}
+
+function setICPMenuFont(sFont)
+{	ICPFont =3D sFont;
+}
+
+function setDefaultMSMenuColor(bgColor, fontColor, mouseoverColor)
+{=09
+	if (bgColor   !=3D "")	  aDefMSColor[0] =3D bgColor;
+	if (fontColor !=3D "")	  aDefMSColor[1] =3D fontColor;
+	if (mouseoverColor !=3D "") aDefMSColor[2] =3D mouseoverColor;
+}
+
+function setDefaultICPMenuColor(bgColor, fontColor, mouseoverColor)
+{=09
+	if (bgColor   !=3D "")	  aDefICPColor[0] =3D bgColor;
+	if (fontColor !=3D "")	  aDefICPColor[1] =3D fontColor;
+	if (mouseoverColor !=3D "") aDefICPColor[2] =3D mouseoverColor;
+}
+
+function setICPMenuColor(MenuIDStr, bgColor, fontColor, mouseoverColor)
+{=09
+	if (ToolbarLoaded =3D=3D false) return;
+
+	// Reset previous ICP Menu color if any
+	if (CurICPMenu !=3D "")
+	{
+		PrevID =3D CurICPMenu.substring(4);
+		CurICPMenu =3D "";
+		setICPMenuColor(PrevID, aDefICPColor[0], aDefICPColor[1], =
+aDefICPColor[2]);
+	}
+
+	var	id =3D "AM_" + "ICP_" + MenuIDStr;
+	var thisMenu =3D document.all(id);
+	if (thisMenu !=3D null)
+	{
+		CurICPMenu =3D "ICP_" + MenuIDStr;
+		aCurICPColor[0] =3D bgColor;
+		aCurICPColor[1] =3D fontColor;
+		aCurICPColor[2] =3D mouseoverColor;
+
+		// Change menu color
+		if (bgColor !=3D "")
+			thisMenu.style.backgroundColor =3D bgColor;
+		if (fontColor !=3D "")
+			thisMenu.style.color =3D fontColor;
+
+		// Change subMenu color
+		id =3D "ICP_" + MenuIDStr;
+		thisMenu =3D document.all(id);
+		if (thisMenu !=3D null)
+		{
+			if (bgColor !=3D "")
+				thisMenu.style.backgroundColor =3D bgColor;
+		=09
+			if (fontColor !=3D "")
+			{
+				i =3D 0;
+				id =3D "AS_" + "ICP_" + MenuIDStr;
+				thisMenu =3D document.all.item(id,i);
+				while (thisMenu !=3D null)
+				{
+					thisMenu.style.color =3D fontColor;
+					i +=3D 1;
+					thisMenu =3D document.all.item(id,i);
+				}
+			}
+		}
+	}
+}
+
+function setAds(Gif,Url,AltStr)
+{	=
+setBanner(Gif,Url,AltStr,"<!--BEG_ADS_BANNER-->","<!--END_ADS_BANNER-->")=
+;
+}
+
+function setICPBanner(Gif,Url,AltStr)
+{	=
+setBanner(Gif,Url,AltStr,"<!--BEG_ICP_BANNER-->","<!--END_ICP_BANNER-->")=
+;
+}
+
+function setMSBanner(Gif,Url,AltStr)
+{	tempGif =3D "/library/toolbar/images/" + Gif;
+	=
+setBanner(tempGif,Url,AltStr,"<!--BEG_MSC_BANNER-->","<!--END_MSC_BANNER-=
+->");
+}
+
+function setBanner(BanGif, BanUrl, BanAltStr, BanBegTag, BanEndTag)
+{
+	begPos =3D HTMLStr.indexOf(BanBegTag);
+	endPos =3D HTMLStr.indexOf(BanEndTag) + BanEndTag.length;
+=09
+	SubStr =3D HTMLStr.substring(begPos, endPos);
+	SrcStr =3D "";
+	if (BanUrl !=3D "")
+		SrcStr +=3D "<A Target=3D'_top' HREF=3D'" + formatURL(BanUrl, BanGif) =
++ "'>";
+	SrcStr +=3D "<IMG SRC=3D'" + BanGif + "' ALT=3D'" + BanAltStr + "' =
+BORDER=3D0>";
+	if (BanUrl !=3D "")
+		SrcStr +=3D "</A>";
+	SrcStr =3D BanBegTag + SrcStr + BanEndTag;
+	HTMLStr =3D HTMLStr.replace(SubStr, SrcStr);=09
+}
+
+function setICPSubMenuWidth(MenuIDStr, WidthType, WidthUnit)
+{	tempID =3D "ICP_" + MenuIDStr;
+	setSubMenuWidth(tempID, WidthType, WidthUnit);
+}
+
+function setMSSubMenuWidth(MenuIDStr, WidthType, WidthUnit)
+{	tempID =3D "MS_" + MenuIDStr;
+	setSubMenuWidth(tempID, WidthType, WidthUnit);
+}
+
+function setSubMenuWidth(MenuIDStr, WidthType, WidthUnit)
+{
+	var fFound =3D false;
+	if (TotalMenu =3D=3D MaxMenu)
+	{
+		alert("Unable to process menu. Maximum of " + MaxMenu + " reached.");
+		return;
+	}
+=09
+	for (i =3D 0; i < TotalMenu; i++)
+		if (arrMenuInfo[i].IDStr =3D=3D MenuIDStr)
+		{
+			fFound =3D true;
+			break;
+		}
+
+	if (!fFound)
+	{
+		arrMenuInfo[i] =3D new menuInfo(MenuIDStr);
+		TotalMenu +=3D 1;
+	}
+
+	if (!fFound && WidthType.toUpperCase().indexOf("DEFAULT") !=3D -1)
+	{
+		arrMenuInfo[i].type =3D "A";
+		arrMenuInfo[i].unit =3D 160;
+	}
+	else
+	{
+		arrMenuInfo[i].type =3D (WidthType.toUpperCase().indexOf("ABSOLUTE") =
+!=3D -1)? "A" : "R";
+		arrMenuInfo[i].unit =3D WidthUnit;
+	}
+}
+
+// This function creates a menuInfo object instance.
+function menuInfo(MenuIDStr)
+{
+	this.IDStr =3D MenuIDStr;
+	this.type  =3D "";
+	this.unit  =3D 0;
+	this.width =3D 0;
+	this.count =3D 0;
+}
+
+function updateSubMenuWidth(MenuIDStr)
+{
+	for (i =3D 0; i < TotalMenu; i++)
+		if (arrMenuInfo[i].IDStr =3D=3D MenuIDStr)
+		{
+			if (arrMenuInfo[i].width < MenuIDStr.length)=20
+				arrMenuInfo[i].width =3D MenuIDStr.length;
+			arrMenuInfo[i].count =3D arrMenuInfo[i].count + 1;
+			break;
+		}
+}
+
+function addICPMenu(MenuIDStr, MenuDisplayStr, MenuHelpStr, MenuURLStr)
+{ =09
+	if (addICPMenu.arguments.length > 4)
+		TargetStr =3D addICPMenu.arguments[4];
+	else
+		TargetStr =3D "_top";
+	tempID =3D "ICP_" + MenuIDStr;
+	addMenu(tempID, MenuDisplayStr, MenuHelpStr, MenuURLStr, TargetStr, =
+true);=20
+}
+
+function addMSMenu(MenuIDStr, MenuDisplayStr, MenuHelpStr, MenuURLStr)
+{=09
+	TargetStr =3D "_top";
+	tempID =3D "MS_" + MenuIDStr;
+	addMenu(tempID, MenuDisplayStr, MenuHelpStr, MenuURLStr, TargetStr, =
+false);=20
+	LastMSMenu =3D tempID;
+}
+
+function addMenu(MenuIDStr, MenuDisplayStr, MenuHelpStr, MenuURLStr, =
+TargetStr, bICPMenu)
+{
+	cFont   =3D bICPMenu? ICPFont : MSFont;
+	cColor0 =3D bICPMenu? aDefICPColor[0] : aDefMSColor[0];
+	cColor1 =3D bICPMenu? aDefICPColor[1] : aDefMSColor[1];
+	cColor2 =3D bICPMenu? aDefICPColor[2] : aDefMSColor[2];
+	tagStr  =3D bICPMenu? "<!--ICP_MENU_TITLES-->" : =
+"<!--MS_MENU_TITLES-->";
+
+	MenuStr =3D newLineChar;
+	if (bICPMenu =3D=3D false && LastMSMenu !=3D "")
+		MenuStr +=3D "<SPAN STYLE=3D'font:" + cFont + ";color:" + cColor1 + =
+"'>|&nbsp;</SPAN>";=20
+	MenuStr +=3D "<A TARGET=3D'" + TargetStr + "' TITLE=3D'" + MenuHelpStr =
++ "'" +
+			   "   ID=3D'AM_" + MenuIDStr + "'" +
+			   "   STYLE=3D'text-decoration:none;cursor:hand;font:" + cFont + =
+";background-color:" + cColor0 + ";color:" + cColor1 + ";'";
+	if (MenuURLStr !=3D "")
+	{
+		if (bICPMenu)
+			MenuStr +=3D " HREF=3D'" + formatURL(MenuURLStr, ("ICP_" + =
+MenuDisplayStr)) + "'";
+		else
+			MenuStr +=3D " HREF=3D'" + formatURL(MenuURLStr, ("MS_" + =
+MenuDisplayStr)) + "'";
+	}
+	else
+		MenuStr +=3D " HREF=3D'' =
+onclick=3D'window.event.returnValue=3Dfalse;'";
+	MenuStr +=3D 	" onmouseout=3D"  + char34 + "mouseMenu('out' ,'" + =
+MenuIDStr + "'); hideMenu();" + char34 +=20
+				" onmouseover=3D" + char34 + "mouseMenu('over','" + MenuIDStr + "'); =
+doMenu('"+ MenuIDStr + "');" + char34 + ">" +
+				"&nbsp;" + MenuDisplayStr + "&nbsp;</a>";
+	if (bICPMenu)
+		MenuStr +=3D "<SPAN STYLE=3D'font:" + cFont + ";color:" + cColor1 + =
+"'>&nbsp;|</SPAN>";
+	MenuStr +=3D tagStr;
+=09
+	HTMLStr =3D HTMLStr.replace(tagStr, MenuStr);=09
+	setSubMenuWidth(MenuIDStr,"default",0);
+}
+
+function addICPSubMenu(MenuIDStr, SubMenuStr, SubMenuURLStr)
+{=09
+	if (addICPSubMenu.arguments.length > 3)
+		TargetStr =3D addICPSubMenu.arguments[3];
+	else
+		TargetStr =3D "_top";
+	tempID =3D "ICP_" + MenuIDStr;
+	addSubMenu(tempID,SubMenuStr,SubMenuURLStr,TargetStr,true);=20
+}
+
+function addMSSubMenu(MenuIDStr, SubMenuStr, SubMenuURLStr)
+{=09
+	TargetStr =3D "_top";
+	tempID =3D "MS_" + MenuIDStr;
+	addSubMenu(tempID,SubMenuStr,SubMenuURLStr,TargetStr,false);=20
+}
+
+function addSubMenu(MenuIDStr, SubMenuStr, SubMenuURLStr, TargetStr, =
+bICPMenu)
+{
+	cFont   =3D bICPMenu? ICPFont : MSFont;
+	cColor0 =3D bICPMenu? aDefICPColor[0] : aDefMSColor[0];
+	cColor1 =3D bICPMenu? aDefICPColor[1] : aDefMSColor[1];
+	cColor2 =3D bICPMenu? aDefICPColor[2] : aDefMSColor[2];
+=09
+	var MenuPos =3D MenuIDStr.toUpperCase().indexOf("MENU");
+	if (MenuPos =3D=3D -1) { MenuPos =3D MenuIDStr.length; }
+	InstrumentStr =3D MenuIDStr.substring(0 , MenuPos) + "|" + SubMenuStr;;
+	URLStr        =3D formatURL(SubMenuURLStr, InstrumentStr);
+
+	var LookUpTag  =3D "<!--" + MenuIDStr + "-->";
+	var sPos =3D HTMLStr.indexOf(LookUpTag);
+	if (sPos <=3D 0)
+	{
+		HTMLStr +=3D newLineChar + newLineChar +
+				"<SPAN ID=3D'" + MenuIDStr + "'" +
+				" =
+STYLE=3D'display:none;position:absolute;width:160;background-color:" + =
+cColor0 + ";padding-top:0;padding-left:0;padding-bottom:20;z-index:9;'" =
++
+				" onmouseout=3D'hideMenu();'>";
+		if (Frame_Supported =3D=3D false || bICPMenu =3D=3D false)
+			HTMLStr +=3D "<HR  STYLE=3D'position:absolute;left:0;top:0;color:" + =
+cColor1 + "' SIZE=3D1>";
+		HTMLStr +=3D "<DIV STYLE=3D'position:relative;left:0;top:8;'>";
+	}
+
+	TempStr =3D newLineChar +
+				"<A ID=3D'AS_" + MenuIDStr + "'" +
+				"   STYLE=3D'text-decoration:none;cursor:hand;font:" + cFont + =
+";color:" + cColor1 + "'" +
+				"   HREF=3D'" + URLStr + "' TARGET=3D'" + TargetStr + "'" +
+				" onmouseout=3D"  + char34 + "mouseMenu('out' ,'" + MenuIDStr + =
+"');" + char34 +=20
+				" onmouseover=3D" + char34 + "mouseMenu('over','" + MenuIDStr + =
+"');" + char34 + ">" +
+				"&nbsp;" + SubMenuStr + "</A><BR>" + LookUpTag;
+	if (sPos <=3D 0)
+		HTMLStr +=3D TempStr + "</DIV></SPAN>";
+	else
+		HTMLStr =3D HTMLStr.replace(LookUpTag, TempStr);=09
+
+	updateSubMenuWidth(MenuIDStr);=09
+}
+
+function addICPSubMenuLine(MenuIDStr)
+{=09
+	tempID =3D "ICP_" + MenuIDStr;
+	addSubMenuLine(tempID,true);
+}
+
+function addMSSubMenuLine(MenuIDStr)
+{=09
+	tempID =3D "MS_" + MenuIDStr;
+	addSubMenuLine(tempID,false);
+}
+
+function addSubMenuLine(MenuIDStr, bICPMenu)
+{
+	var LookUpTag =3D "<!--" + MenuIDStr + "-->";
+	var sPos =3D HTMLStr.indexOf(LookUpTag);
+	if (sPos > 0)
+	{
+		cColor  =3D bICPMenu? aDefICPColor[1] : aDefMSColor[1];
+		TempStr =3D newLineChar + "<HR STYLE=3D'color:" + cColor + "' =
+SIZE=3D1>" + LookUpTag;
+		HTMLStr =3D HTMLStr.replace(LookUpTag, TempStr);
+	}
+}
+
+function mouseMenu(id, MenuIDStr)=20
+{
+	IsMSMenu   =3D (MenuIDStr.toUpperCase().indexOf("MS_") !=3D -1);
+	IsMouseout =3D (id.toUpperCase().indexOf("OUT") !=3D -1);
+
+	if (IsMouseout)
+	{
+		color =3D IsMSMenu? aDefMSColor[1] : aDefICPColor[1];
+		if (MenuIDStr =3D=3D CurICPMenu && aCurICPColor[1] !=3D "")=20
+			color =3D aCurICPColor[1];
+	}
+	else
+	{
+		color =3D IsMSMenu? aDefMSColor[2] : aDefICPColor[2];
+		if (MenuIDStr =3D=3D CurICPMenu && aCurICPColor[2] !=3D "")=20
+			color =3D aCurICPColor[2];
+	}
+	window.event.srcElement.style.color =3D color;
+}
+
+function doMenu(MenuIDStr)=20
+{
+	var thisMenu =3D document.all(MenuIDStr);
+	if (ToolbarMenu =3D=3D null || thisMenu =3D=3D null || thisMenu =3D=3D =
+ToolbarMenu)=20
+	{
+		window.event.cancelBubble =3D true;
+		return false;
+	}
+	// Reset dropdown menu
+	window.event.cancelBubble =3D true;
+	ToolbarMenu.style.display =3D "none";
+	showElement("SELECT");
+	showElement("OBJECT");
+	ToolbarMenu =3D thisMenu;
+	IsMSMenu =3D (MenuIDStr.toUpperCase().indexOf("MS_") !=3D -1);
+
+	// Set dropdown menu display position
+	x  =3D window.event.srcElement.offsetLeft +
+	 	 window.event.srcElement.offsetParent.offsetLeft;
+	if (MenuIDStr =3D=3D LastMSMenu)=20
+		x +=3D (window.event.srcElement.offsetWidth - =
+thisMenu.style.posWidth);
+	x2 =3D x + window.event.srcElement.offsetWidth;
+	y  =3D (IsMSMenu)?=20
+		 (idRow1.offsetHeight) :
+		 (idRow1.offsetHeight + idRow2.offsetHeight + idRow3.offsetHeight);
+	thisMenu.style.top  =3D y;
+	thisMenu.style.left =3D x;
+	thisMenu.style.clip =3D "rect(0 0 0 0)";
+	thisMenu.style.display =3D "block";
+
+	// delay 2 millsecond to allow the value of ToolbarMenu.offsetHeight be =
+set
+	window.setTimeout("showMenu()", 2);
+	return true;
+}
+
+function showMenu()=20
+{
+	if (ToolbarMenu !=3D null)=20
+	{=20
+		IsMenuDropDown =3D (Frame_Supported && IsMSMenu =3D=3D false)? false : =
+true;
+		if (IsMenuDropDown =3D=3D false)
+		{
+			y =3D (y - ToolbarMenu.offsetHeight - idRow3.offsetHeight);
+			if (y < 0) y =3D 0;
+			ToolbarMenu.style.top =3D y;
+		}
+		y2 =3D y + ToolbarMenu.offsetHeight;
+
+		ToolbarMenu.style.clip =3D "rect(auto auto auto auto)";
+		hideElement("SELECT");
+		hideElement("OBJECT");
+		hideElement("IFRAME");  //FRANKLO
+	}
+}
+
+function hideMenu()
+{
+	if (ToolbarMenu !=3D null && ToolbarMenu !=3D StartMenu)=20
+	{
+		// Don't hide the menu if the mouse move between the menu and submenus
+		cY =3D event.clientY + document.body.scrollTop;
+		if ( (event.clientX >=3D (x+5) && event.clientX <=3D x2) &&
+			 ((IsMenuDropDown =3D=3D true  && cY > (y-10) && cY <=3D y2)      ||
+			  (IsMenuDropDown =3D=3D false && cY >=3D y     && cY <=3D (y2+10)) =
+))
+		{
+			window.event.cancelBubble =3D true;
+			return;=20
+		}
+
+		ToolbarMenu.style.display =3D "none";
+		ToolbarMenu =3D StartMenu;
+		window.event.cancelBubble =3D true;
+
+		showElement("SELECT");
+		showElement("OBJECT");
+		showElement("IFRAME"); //FRANKLO
+	}
+}
+
+function hideElement(elmID)
+{
+	for (i =3D 0; i < document.all.tags(elmID).length; i++)
+	{
+		obj =3D document.all.tags(elmID)[i];
+		if (! obj || ! obj.offsetParent)
+			continue;
+
+		// Find the element's offsetTop and offsetLeft relative to the BODY =
+tag.
+		objLeft   =3D obj.offsetLeft;
+		objTop    =3D obj.offsetTop;
+		objParent =3D obj.offsetParent;
+		while (objParent.tagName.toUpperCase() !=3D "BODY")
+		{
+			objLeft  +=3D objParent.offsetLeft;
+			objTop   +=3D objParent.offsetTop;
+			objParent =3D objParent.offsetParent;
+		}
+		// Adjust the element's offsetTop relative to the dropdown menu
+		objTop =3D objTop - y;
+
+		if (x > (objLeft + obj.offsetWidth) || objLeft > (x + =
+ToolbarMenu.offsetWidth))
+			;
+		else if (objTop > ToolbarMenu.offsetHeight)
+			;
+		else if (IsMSMenu && (y + ToolbarMenu.offsetHeight) <=3D 80)
+			;
+		else
+			obj.style.visibility =3D "hidden";
+	}
+}
+
+function showElement(elmID)
+{
+	for (i =3D 0; i < document.all.tags(elmID).length; i++)
+	{
+		obj =3D document.all.tags(elmID)[i];
+		if (! obj || ! obj.offsetParent)
+			continue;
+		obj.style.visibility =3D "";
+	}
+}
+
+function formatURL(URLStr, InstrumentStr)
+{
+	var tempStr =3D URLStr;
+
+	if (DoInstrumentation && URLStr !=3D "" )
+	{
+		var ParamPos1 =3D URLStr.indexOf("?");
+		var ParamPos2 =3D URLStr.lastIndexOf("?");
+		var ParamPos3 =3D URLStr.toLowerCase().indexOf("target=3D");
+		var ParamPos4 =3D URLStr.indexOf("#");
+		var Bookmark  =3D "";
+		var URL =3D URLStr;
+		if (ParamPos4 >=3D 0)
+		{
+		 	URL =3D URLStr.substr(0, ParamPos4);
+			Bookmark =3D URLStr.substr(ParamPos4);
+		}
+	=09
+		if (ParamPos1 =3D=3D -1)
+			tempStr =3D "?MSCOMTB=3D";
+		else if (ParamPos1 =3D=3D ParamPos2 && ParamPos3 =3D=3D -1)=09
+			tempStr =3D "&MSCOMTB=3D";
+		else if (ParamPos1 =3D=3D ParamPos2 && ParamPos3 !=3D -1)=09
+			tempStr =3D "?MSCOMTB=3D";
+		else if (ParamPos1 < ParamPos2)
+			tempStr =3D "&MSCOMTB=3D";
+
+		tempStr =3D URL + tempStr + InstrumentStr.replace(" ","%20") + =
+Bookmark;
+	}
+	return tempStr;
+}
+
+function prepTrackingString(ts, type)
+{
+	var rArray;
+	var rString;
+	var pName =3D '';
+	if (0 =3D=3D type)
+	{
+		pName =3D 'p=3D';
+		rString =3D ts.substring(1);
+		rArray =3D rString.split('/');
+	}
+	if (1 =3D=3D type)
+	{
+		pName =3D 'qs=3D';
+		rString =3D ts.substring(1);
+		rArray =3D rString.split('&');	=09
+	}
+	if (2 =3D=3D type)
+	{
+		pName =3D 'f=3D';
+		rString =3D escape(ts);
+		return pName + rString;
+	}
+	if (3 =3D=3D type)
+	{
+		pName =3D 'tPage=3D';
+		rString =3D escape(ts);
+		return pName+rString;
+	}
+	if (4 =3D=3D type)
+	{
+		pName =3D 'sPage=3D';
+		rString =3D escape(ts);
+		return pName + rString;
+	}
+	if (5 =3D=3D type)
+	{
+		pName =3D 'r=3D';
+		rString =3D escape(ts);
+		return pName + rString;
+	}
+	if (6 =3D=3D type)
+	{
+		pName =3D 'MSID=3D';
+		rString =3D escape(ts);
+		return pName + rString;
+	}
+	if (7 =3D=3D type)
+	{
+		pName =3D 'source=3D';
+		rString =3D ts.toLowerCase();
+		if(rString.indexOf("microsoft.com") !=3D -1)
+		{
+			rString =3D rString.substring(0,rString.indexOf("microsoft.com"));
+			if('' =3D=3D rString)
+			{
+				rString =3D "www";
+			}=09
+			else
+			{
+				rString =3D rString.substring(0,rString.length -1);
+			}
+		}
+		return pName + rString;
+	}
+	if (8 =3D=3D type)
+	{
+		pName =3D 'TYPE=3D';
+		rString =3D escape(ts);
+		return pName + rString;
+	}
+	rString =3D '';
+	if(null !=3D rArray)
+	{
+		if(0 =3D=3D type)
+		{
+			for( j=3D0; j < rArray.length - 1; j++)
+			{=09
+				rString +=3D rArray[j] + '_'; =20
+			}=20
+		}
+		else
+		{
+			for( j=3D0; j < rArray.length  ; j++)
+			{
+				rString +=3D rArray[j] + '_'; =20
+			}=20
+		}
+	}
+	rString =3D rString.substring(0, rString.length - 1);  	 =09
+	return pName + rString;
+}
+
+function buildIMG(pArr)
+{
+	var TG =3D '<LAYER visibility=3D"hide"><div =
+style=3D"display:none;"><IMG =
+src=3D"http://c.microsoft.com/trans_pixel.gif?';
+	for(var i=3D0; i<pArr.length; i++)
+	{
+		if(0 =3D=3D i)
+		{
+			TG +=3D  pArr[i];
+		}
+		else
+		{
+			TG +=3D '&' + pArr[i];
+		}
+	}
+	TG +=3D'" height=3D"0" width=3D"0" hspace=3D"0" vspace=3D"0" =
+Border=3D"0"></div></layer>';
+	document.write(TG);
+}
+
+
+
+------=_NextPart_000_0000_01C37F57.C16993F0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://web.archive.org/web/20010331083317js_/http://microsoft.com/library/toolbar/en-us/global.js
+
+var ToolBar_Supported =3D ToolBar_Supported ;
+if (ToolBar_Supported !=3D null && ToolBar_Supported =3D=3D true)
+{
+	//To Turn on/off Instrumentation set DoInstrumentation =3D true/false.
+	DoInstrumentation=3D false;
+
+	// Customize default MS menu color - bgColor, fontColor, mouseoverColor
+	setDefaultMSMenuColor("#000000", "white", "red");
+
+	// Customize toolbar background color
+	setToolbarBGColor("white");
+
+	// display default ICP Banner
+	=
+setICPBanner("/library/toolbar/images/banner.gif","/isapi/gomscom.asp?tar=
+get=3D/","microsoft.com Home") ;
+=09
+	// display MSCOM Banner
+	setMSBanner("mslogo.gif","/isapi/gomscom.asp?target=3D/","microsoft.com =
+Home") ;
+
+	// display ADS
+	//setAds("/library/toolbar/images/ADS/ad.gif","","") ;
+
+	//***** Add Standard Microsoft.com menus *****
+	//ProductsMenu	=09
+	addMSMenu("ProductsMenu", "All Products", =
+"","/isapi/gomscom.asp?target=3D/catalog/default.asp?subid=3D22");
+	=
+addMSSubMenu("ProductsMenu","Downloads","/isapi/gomscom.asp?target=3D/dow=
+nloads/");
+	addMSSubMenu("ProductsMenu","MS Product =
+Catalog","/isapi/gomscom.asp?target=3D/catalog/default.asp?subid=3D22");
+	addMSSubMenu("ProductsMenu","Microsoft =
+Accessibility","/isapi/gomscom.asp?target=3D/enable/");
+	addMSSubMenuLine("ProductsMenu");
+	=
+addMSSubMenu("ProductsMenu","Servers","/isapi/gomscom.asp?target=3D/serve=
+rs/");
+	addMSSubMenu("ProductsMenu","Developer =
+Tools","/isapi/gomsdn.asp?target=3D/vstudio/");
+	=
+addMSSubMenu("ProductsMenu","Office","/isapi/gomscom.asp?target=3D/office=
+/");
+	=
+addMSSubMenu("ProductsMenu","Windows","/isapi/gomscom.asp?target=3D/windo=
+ws/");
+	addMSSubMenu("ProductsMenu","MSN","http://www.msn.com/");
+
+	//SupportMenu
+	addMSMenu("SupportMenu", "Support", =
+"","/isapi/gosupport.asp?target=3D/directory/");
+	addMSSubMenu("SupportMenu","Knowledge =
+Base","http://support.microsoft.com/search/");
+	addMSSubMenu("SupportMenu","Product Support =
+Options","/isapi/gosupport.asp?target=3D/directory/");
+	addMSSubMenu("SupportMenu","Service Partner =
+Referrals","http://mcspreferral.microsoft.com/");
+
+
+	//SearchMenu
+	addMSMenu("SearchMenu", "Search", =
+"","/isapi/gosearch.asp?target=3D/us/default.asp");				=09
+	addMSSubMenu("SearchMenu","Search =
+Microsoft.com","/isapi/gosearch.asp?target=3D/us/default.asp");
+	addMSSubMenu("SearchMenu","MSN Web Search","http://search.msn.com/");
+
+	//MicrosoftMenu								=09
+	addMSMenu("MicrosoftMenu", "Microsoft.com Guide", =
+"","/isapi/gomscom.asp?target=3D/");
+	addMSSubMenu("MicrosoftMenu","Microsoft.com =
+Home","/isapi/gomscom.asp?target=3D/");
+	addMSSubMenu("MicrosoftMenu","MSN Home","http://www.msn.com/");
+	addMSSubMenuLine("MicrosoftMenu");
+	addMSSubMenu("MicrosoftMenu","Contact =
+Us","/isapi/goregwiz.asp?target=3D/regwiz/forms/contactus.asp");
+	=
+addMSSubMenu("MicrosoftMenu","Events","/isapi/gomscom.asp?target=3D/usa/e=
+vents/default.asp");
+	=
+addMSSubMenu("MicrosoftMenu","Newsletters","/isapi/goregwiz.asp?target=3D=
+/regsys/pic.asp?sec=3D0");
+	addMSSubMenu("MicrosoftMenu","Profile =
+Center","/isapi/goregwiz.asp?target=3D/regsys/pic.asp");
+	addMSSubMenu("MicrosoftMenu","Training & =
+Certification","/isapi/gomscom.asp?target=3D/train_cert/");
+	addMSSubMenu("MicrosoftMenu","Free E-mail =
+Account","http://www.hotmail.com/");
+}
+
+------=_NextPart_000_0000_01C37F57.C16993F0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://web.archive.org/web/20010331083317js_/http://microsoft.com/net/global/toolbar.js
+
+var ToolBar_Supported =3D ToolBar_Supported ;
+if (ToolBar_Supported !=3D null && ToolBar_Supported =3D=3D true)
+{
+	Frame_Supported =3D false;
+	setDefaultICPMenuColor("#000000", "white", "#99CCFF");
+	setToolbarBGColor("white");
+	=
+setICPBanner("/net/images/bnrWindowsNgws1.gif","/net/default.asp","Micros=
+oft.NET Home Page") ;
+
+	//Home
+	addICPMenu("HomeMenu", "Microsoft.com home", "","/default.htm");
+	addICPMenu("HomeMenu", "PressPass", =
+"","/presspass/newsroom/net/default.asp");
+}
+
+------=_NextPart_000_0000_01C37F57.C16993F0--

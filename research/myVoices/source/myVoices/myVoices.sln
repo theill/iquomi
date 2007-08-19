@@ -1,0 +1,39 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myVoices", "http://localhost/myVoices/myVoices.csproj", "{43286F30-4807-42AD-BDF0-3EE1286D2BEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HsSoapExtension", "..\..\..\Program Files\Microsoft\.NET MyServices Visual Studio 7 SDK\HsSoapExtension\HsSoapExtension.csproj", "{24127554-954D-4E8F-9C84-17AA36EE74A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLocator", "..\..\..\Program Files\Microsoft\.NET MyServices Visual Studio 7 SDK\ServiceLocator\ServiceLocator.csproj", "{6235D52D-0B3D-429D-8054-138C21F0851F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hsProxy", "..\hsProxy\hsProxy.csproj", "{9394A006-5114-4C65-8868-1B895901C1BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{43286F30-4807-42AD-BDF0-3EE1286D2BEA}.Debug.ActiveCfg = Debug|.NET
+		{43286F30-4807-42AD-BDF0-3EE1286D2BEA}.Debug.Build.0 = Debug|.NET
+		{43286F30-4807-42AD-BDF0-3EE1286D2BEA}.Release.ActiveCfg = Release|.NET
+		{43286F30-4807-42AD-BDF0-3EE1286D2BEA}.Release.Build.0 = Release|.NET
+		{24127554-954D-4E8F-9C84-17AA36EE74A5}.Debug.ActiveCfg = Debug|.NET
+		{24127554-954D-4E8F-9C84-17AA36EE74A5}.Debug.Build.0 = Debug|.NET
+		{24127554-954D-4E8F-9C84-17AA36EE74A5}.Release.ActiveCfg = Release|.NET
+		{24127554-954D-4E8F-9C84-17AA36EE74A5}.Release.Build.0 = Release|.NET
+		{6235D52D-0B3D-429D-8054-138C21F0851F}.Debug.ActiveCfg = Debug|.NET
+		{6235D52D-0B3D-429D-8054-138C21F0851F}.Debug.Build.0 = Debug|.NET
+		{6235D52D-0B3D-429D-8054-138C21F0851F}.Release.ActiveCfg = Release|.NET
+		{6235D52D-0B3D-429D-8054-138C21F0851F}.Release.Build.0 = Release|.NET
+		{9394A006-5114-4C65-8868-1B895901C1BD}.Debug.ActiveCfg = Debug|.NET
+		{9394A006-5114-4C65-8868-1B895901C1BD}.Debug.Build.0 = Debug|.NET
+		{9394A006-5114-4C65-8868-1B895901C1BD}.Release.ActiveCfg = Release|.NET
+		{9394A006-5114-4C65-8868-1B895901C1BD}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,15 @@
+
+<vxml version="1.0" application="services.aspx">
+	<form id="form">
+		<block>
+			<prompt>
+				your appointments are:
+			</prompt>
+			<prompt>dallas .NET user group meeting on 1/17/2002</prompt>
+			<prompt>get oil changed on 1/18/2002</prompt>
+			<prompt>haircut on 1/19/2002</prompt>
+			<prompt>hot date on 1/20/2002</prompt>
+			<goto next="services.aspx" />
+		</block>
+	</form>
+</vxml>

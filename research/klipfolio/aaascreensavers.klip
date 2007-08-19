@@ -1,0 +1,101 @@
+<!--  COPYRIGHT AND TRADEMARK NOTICE
+
+The Klip File Format is copyright 2001-2002, Serence Inc.
+Klip and assoicated marks are trademarks of Serence Inc.
+All rights reserved.
+
+For details visit http://www.serence.com/site.php?page=legal_tmip
+
+-->
+
+<klip>
+<!--Please note that information in this Klip will be available to the public-->
+	
+	<owner>
+		<author>
+			<!--your name-->
+			 AAAScreensavers.com
+		</author>
+		<copyright>
+			<!--your copyright notice-->
+			Copyright 2002 AAAScreensavers.com
+		</copyright>
+		<email>
+			<!--your email address-->
+			support@aaascreensavers.com
+		</email>
+		<web>
+			<!--your web address-->
+			http://www.aaascreensavers.com
+		</web>
+	</owner>
+
+	<identity>
+		<title>
+			<!--the title of this Klip-->
+			AAAScreensavers.com Daily Updates
+		</title>
+		<version>
+			<!--this Klip's version number-->
+			1.0
+		</version>
+		<lastmodified>
+			<!--the date this Klip was last modified yyyy.mm.dd:hhmm-->
+			2002.05.03:1208
+		</lastmodified>
+		<description>
+			<!--a short description of this Klip-->
+			Free screensavers for every occasion. We
+offer freeware screen savers with many themes: nature, sports, Christmas,
+Thanksgiving, Halloween, fantasy, games, TV, rock. There's also
+screensavers here for those who like movies and music.
+		</description>
+		<keywords>
+			<!--a space delimited list of keywords for matching your klip during a search
+			the order of the keywords is relevant no more than 15 keywords will be processed-->
+			screensavers screen saver screen-saver savers software freeware download desktop themes skins icons
+		</keywords>
+	</identity>
+	
+	<locations>
+		<defaultlink>
+			<!--the url this Klip links to by default-->
+			http://www.aaascreensavers.com
+		</defaultlink>
+		<contentsource>
+			<!--the url for the KlipFood this Klip uses-->
+			http://www.aaascreensavers.com/klip/aaascreensavers.food
+		</contentsource>
+		<icon>
+			<!--the url for this Klip's default 16x16 gif or jpeg icon-->
+			http://www.aaascreensavers.com/klip/aaascreensavers_icon.gif
+		</icon>
+		<banner>
+			<!--the url for this Klip's 234x60 gif or jpeg banner-->
+			http://www.aaascreensavers.com/klip/aaascreensavers_banner.gif
+		</banner>
+		<help>
+			<!--the url for this Klip's help web page-->
+		</help>
+		<kliplocation>
+			<!--the url where this Klip is stored
+			this is where KlipFolio periodically checks for updates to your Klip-->
+			http://www.aaascreensavers.com/klip/aaascreensavers.klip
+		</kliplocation>	
+	</locations>
+	
+	<setup>
+		<refresh>
+			<!--how often, in minutes, this Klip should look for new RSS data-->
+			1440
+		</refresh>
+	</setup>
+	
+	<script>
+		// the instructions for processing data
+		// details on how to modify this are coming soon
+		rssEngine = Engines.get ("RSS");
+		rssEngine.process (Setup.get ("contentsource"));
+	</script>
+
+</klip>

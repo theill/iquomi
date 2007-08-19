@@ -1,0 +1,172 @@
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xdb="urn:schemas-microsoft-com:xdb"
+    xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core"
+    targetNamespace="http://schemas.microsoft.com/hs/2001/10/myApplicationSettings"
+    xmlns="http://schemas.microsoft.com/hs/2001/10/myApplicationSettings"
+    elementFormDefault="qualified"
+    >
+
+    <xsd:annotation>
+        <xsd:documentation>
+        Schema for .NET ApplicationSettings service.
+        Copyright (c) 2001 Microsoft Corporation. All rights reserved.
+        </xsd:documentation>
+
+        <xsd:appinfo>
+            <xdb:blue select="/myApplicationSettings"/>
+            <xdb:blue select="/myApplicationSettings/*"/>
+
+            <xdb:red select="//@changeNumber"/>
+            <xdb:red select="//@id"/>
+            <xdb:red select="//@creator"/>
+            <xdb:red select="//cat"/>
+            <xdb:red select="//cat/@ref"/>
+            
+            <xdb:red select="/myApplicationSettings/applicationSetting/name"/>
+            <xdb:red select="/myApplicationSettings/applicationSetting/$any"/>
+
+            <xdb:namespaceMap>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/myApplicationSettings" alias="m"/>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/core" alias="hs"/>
+            </xdb:namespaceMap>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:import namespace="http://schemas.microsoft.com/hs/2001/10/core" schemaLocation="hscommon.xsd"/>
+
+
+    <!--
+    //
+    // myApplicationSettings
+    //  - root element for the .NET ApplicationSettings service
+    //
+    -->
+    <xsd:element
+        name="myApplicationSettings"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates the content document for the service. The service
+            is designed to store and manage application settings that are described
+            through well-formed, namespace-qualified XML.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="myApplicationSettingsType">
+                    <xsd:attributeGroup ref="hs:documentRootAttributeGroup"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType
+        name="myApplicationSettingsType"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element defines the basic <b>myApplicationSettingsType</b>.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:any>
+
+            <xsd:element
+                name="applicationSetting"
+                type="applicationSettingType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:element
+                name="subscription"
+                type="hs:subscriptionType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType
+        name="applicationSettingType"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element defines the <b>applicationSetting</b>, the basic unit of storage within this service. An <b>applicationSetting</b> can be cached and replicated
+            through normal Microsoft&#174; .NET My Services caching and replication techniques. An <b>applicationSetting</b>
+            is identified by a single and stable ID attribute, <b>@id</b>. An <b>applicationSetting</b>
+            can also be identified by a number of <b>applicationSettingNames</b> that are defined as
+            URIs. Most of an application setting is represented by an 
+            <b>{any}</b> entry, a shorthand notation for any free-form, namespace- 
+            qualified XML.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+            <xsd:element
+                name="cat"
+                type="hs:catType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+            
+            <xsd:element
+                name="name"
+                type="xsd:anyURI"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element defines a unique name for the <b>applicationSetting</b> that
+                    programmers will use to code. Unlike the <b>@id</b> attribute, which is a stable and unique name defined by .NET My Services, it is a stable name defined by the applications.
+                    <p/>
+                    The format of this name is a URI. Applications
+                    can name their <b>applicationSettings</b> using URIs with the uuid: or a http: scheme that allows a delegated hierarchical namespace, as shown in the following examples:
+                    <ul>
+                        <li>
+                        uuid:56c3da65-a6d6-4f78-bbbd-e8c5eac98aae
+                        </li>
+                        
+                        <li>
+                        http://schemas.microsoft.com/office/2002/08/outlook#coolTools
+                        </li>
+                        
+                        <li>
+                        http://schemas.microsoft.com/vs/2002/03/studio#codeLayout
+                        </li>
+                        
+                    </ul>
+                    This element can be repeated any number of times to indicate that this
+                    <b>applicationSetting</b> is used by a number of applications.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            
+        </xsd:sequence>
+
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+        
+    </xsd:complexType>
+
+</xsd:schema>

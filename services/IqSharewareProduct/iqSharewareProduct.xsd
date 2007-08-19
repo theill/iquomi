@@ -1,0 +1,75 @@
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xdb="urn:schemas-iquomi-com:xdb" 
+	xmlns:iq="http://schemas.iquomi.com/2004/01/core" 
+	targetNamespace="http://schemas.iquomi.com/2004/01/iqSharewareProduct" 
+	xmlns="http://schemas.iquomi.com/2004/01/iqSharewareProduct" 
+	elementFormDefault="qualified" 
+	version="1.0">
+  
+  <xsd:import namespace="http://schemas.iquomi.com/2004/01/core" schemaLocation="http://schemas.iquomi.com/2004/01/core/iqcommon.xsd" />
+  
+  <!--
+    //
+    // iqSharewareProduct
+    //  - root element for the Iquomi Shareware Product service
+    //
+    -->
+  <xsd:element name="iqSharewareProduct">
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="iqSharewareProductType">
+          <xsd:attributeGroup ref="iq:DocumentRootAttributeGroup" />
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  
+  <xsd:complexType name="iqSharewareProductType">
+    <xsd:sequence>
+      <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded" />
+      <xsd:element name="sharewareProduct" type="sharewareProductType" minOccurs="0" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="sharewareProductType">
+    <xsd:sequence>
+      <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded" />
+      <xsd:element name="cat" type="iq:CatType" minOccurs="0" maxOccurs="unbounded" />
+      <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1" />
+      <xsd:element name="version" type="xsd:string" minOccurs="1" maxOccurs="1" />
+      <xsd:element name="url_product_page" type="xsd:anyURI" minOccurs="1" maxOccurs="1" />
+      <xsd:element name="orders" type="OrdersType" minOccurs="0" maxOccurs="unbounded" />
+    </xsd:sequence>
+    <xsd:attributeGroup ref="iq:StandardBlueAttributeGroup" />
+  </xsd:complexType>
+  
+  <xsd:complexType name="OrdersType">
+    <xsd:sequence>
+      <xsd:element name="order" type="OrderType" minOccurs="0" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="OrderType">
+    <xsd:sequence>
+      <xsd:element name="quantity">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:positiveInteger">
+            <xsd:maxExclusive value="100" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="USPrice" type="xsd:decimal" />
+      <xsd:element name="comment" type="xsd:string" minOccurs="0" />
+      <xsd:element name="shipDate" type="xsd:date" minOccurs="0" />
+    </xsd:sequence>
+    <xsd:attribute name="partNum" type="SKU" use="required" />
+  </xsd:complexType>
+  
+  <!-- Stock Keeping Unit, a code for identifying products -->
+  <xsd:simpleType name="SKU">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="\d{3}-[A-Z]{2}" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

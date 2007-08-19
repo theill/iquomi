@@ -1,0 +1,1776 @@
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xdb="urn:schemas-iquomi-com:xdb"
+    xmlns="http://schemas.iquomi.com/2004/01/core"
+    targetNamespace="http://schemas.iquomi.com/2004/01/core"
+    elementFormDefault="qualified"
+    version="1.0">
+
+<xsd:annotation>
+    <xsd:documentation>
+        Schema for Iquomi&#174; Infrastructure types including security 
+        related types, system document, message headers, etc.
+        
+        Copyright (c) 2004 Iquomi. All rights reserved.
+    </xsd:documentation>
+
+    <xsd:appinfo>
+        <xdb:namespaceMap>
+            <xdb:mapping uri="http://schemas.iquomi.com/2004/01/core" alias="iq"/>
+        </xdb:namespaceMap>
+    </xsd:appinfo>
+</xsd:annotation>
+
+<!--
+//
+// subject
+//
+-->
+<xsd:complexType
+    name="SubjectType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This element encapsulates a subject that includes
+        a <b>userId</b>, and a combined application and <b>platformId</b>. The subject element
+        is matched against the incoming message to determine which role,
+        if any, is to be used to authorize and scope continued message processing. The
+        match algorithm is very simple. The <b>userId</b> in the message chooses the set of matching
+        subjects. Once this set of subjects is identified, a test for subjects containing
+        <b>credType</b> attributes is done relative to the <b>credType</b> passed in the license. Matching subject
+        entries remain. If no subjects match, all subjects containing <b>credType</b> are discarded;
+        only those subjects that do not contain <b>credType</b> are kept. Then the combined platform ID and
+        application ID select a matching subject. Matching subject
+        entries remain. If no subjects match, all subjects containing <b>appAndPlatformId</b> attributes are
+        discarded; only those subjects that do not contain this attribute are kept. These remaining subjects
+        are considered to represent the set of possible roles to be used for the request. The referenced
+        <b>roleDefinitions</b> are extracted from the <b>roleMap</b> and sorted; only the highest priority
+        <b>roleDefinition</b> is kept.
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <!--
+    //
+    // userId
+    //
+    -->
+    <xsd:attribute
+        name="UserId"
+        type="IqidType"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This ID represents an authenticated <b>userId</b>. It must always be specified.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+    <!--
+    //
+    // credType
+    //
+    -->
+    <xsd:attribute
+        name="CredType"
+        type="String"
+        use="optional"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This optional attribute
+            specifies a credential type value which represents the type of credential used
+            to authenticate the <b>userId</b>. During a match operation, this value may be used
+            to further qualify the set of subjects that match in the <b>userId</b> dimension.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+    <!--
+    //
+    // appAndPlatformId
+    //
+    -->
+    <xsd:attribute
+        name="AppAndPlatformId"
+        type="IqidType"
+        use="optional"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This optional attribute specifies the authenticated ID of an application-platform
+            combination. For example, the PUID of calendar@microsoft.com represents the calendar application
+            at Microsoft. The PUID of office@windows represents the Office application running on the
+            Microsoft&#174; Windows&#174; platform.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+</xsd:complexType>
+
+<!--
+//
+// role
+//
+-->
+<xsd:complexType
+    name="RoleType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This type defines a role record that defines a matching subject,
+        an optional scope reference, the roleTemplate for this entry, and 
+        some maintenance information.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+
+        <xsd:any
+            processContents="skip"
+            namespace="##other"
+            minOccurs="0"
+            maxOccurs="unbounded"
+        />
+
+        <!--
+        //
+        // categories this role belongs to
+        //
+        -->
+        <xsd:element
+            name="Cat"
+            type="CatType"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+        </xsd:element>
+
+        <!--
+        //
+        // notes
+        //
+        -->
+        <xsd:element
+            name="Notes"
+            type="LocalizableString"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element specifies optional notes that may be used to specify the reasoning
+                behind adding this role to the <b>roleList</b>.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <!--
+        //
+        // the subject of role
+        //
+        -->
+        <xsd:element
+            name="Subject"
+            type="SubjectType"
+            minOccurs="1"
+            maxOccurs="1"
+            />
+
+        <!--
+        //
+        // when the role is considerd no longer valid
+        //
+        -->
+        <xsd:element
+            name="ExpiresAt"
+            type="xsd:dateTime"
+            minOccurs="0"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This optional element specifies a time after which the
+                subject entry is no longer considered valid for matching
+                purposes. If this element is missing, the subject entry
+                does not expire.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+    </xsd:sequence>
+
+    <!--
+    //
+    // the scopeRef for this role
+    //
+    -->
+    <xsd:attribute
+        name="ScopeRef"
+        type="IdRefType"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This attribute specifies the scope within this document
+            that is in effect for this matching <b>authorizationEntry</b>.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+    <!--
+    //
+    // the roleTemplate for this role
+    //
+    -->
+    <xsd:attribute
+        name="RoleTemplateRef"
+        type="xsd:string"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This item specifies the name of the <b>roleTemplate</b> in the service's roleMap
+            to which this role is bound.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+    <xsd:attributeGroup ref="StandardBlueAttributeGroup"/>
+</xsd:complexType>
+
+<xsd:complexType name="NotifyListType">
+    <xsd:annotation>
+        <xsd:documentation>
+        	This element contains a list of notify endpoints.
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+    	<xsd:element
+    		name="Listener"
+    		type="ListenerType"
+            minOccurs="0"
+            maxOccurs="unbounded"
+    		/>
+    </xsd:sequence>
+</xsd:complexType>
+
+<!--
+<xsd:complexType name="EventingType">
+    <xsd:annotation>
+        <xsd:documentation>
+        This element contains a list of listeners.
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+    	<xsd:element
+    		name="Listener"
+    		type="ListenerType"
+            minOccurs="0"
+            maxOccurs="unbounded"
+    		/>
+    </xsd:sequence>
+</xsd:complexType>
+-->
+
+<xsd:complexType name="ListenerType">
+    <xsd:annotation>
+        <xsd:documentation>
+        This element defines a subscription node that is designed to
+        be an <b>xdb:blue</b> node which, when placed in a content document, causes
+        a subscription to be registered. A subscription contains a trigger element
+        which selects a scope of coverage. When items change that are under this scope
+        of coverage, a <b>subscriptionResponse</b> message is generated and sent to 
+        the specified destination address.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+
+        <!--
+        //
+        // a listener contains
+        //  - trigger which specifies the data that will
+        //    trigger a notification
+        //  - an expiration time after which the subscription
+        //    will expire and automatically be removed from the
+        //    document
+        //  - context which is transmitted when this subscription is triggered
+        //  - a location to send the subscription message to
+        -->
+        <xsd:element name="Trigger">
+            <xsd:complexType>
+                <xsd:attribute
+                    name="Select"
+                    type="xsd:string"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This item specifies an XPath expression that specifies the nodes that are
+                        to be selected and watched for changes. The selection may select only <b>xdb:blue</b>
+                        nodes. As changes in this node set occur, they
+                        trigger the generation of subscription messages. These messages are then sent
+                        to the SOAP receiver listed in the <b>to</b> element.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+                <xsd:attribute
+                    name="Mode"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute specifies whether the content of the changes
+                        that triggered the subscription are delivered in the subscription
+                        message, or the message simply indicates that something changed
+                        under the trigger. The attribute may be:
+                        <dl>
+                            <dt><b>includeData</b></dt>
+                            <dd>
+                            The data that changed, causing the subscription to trigger, is
+                            included in the subscription message. Note that deleted nodes
+                            are specified by their ID, not by value.
+                            </dd>
+
+                            <dt>excludeData</dt>
+                            <dd>
+                            The data that changed, causing the subscription to trigger, is
+                            not included in the subscription message.
+                            </dd>
+
+                        </dl>
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                        <xsd:restriction base="String">
+                            <xsd:enumeration value="IncludeData" />
+                            <xsd:enumeration value="ExcludeData" />
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:attribute>
+
+                <xsd:attribute
+                    name="BaseChangeNumber"
+                    type="ChangeNumberType"
+                    use="optional"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute specifies the <b>changeNumber</b> value to which the trigger relates. 
+                        All changes between the specified change number and the current state
+                        of the document relative to the selection are transmitted as subscription
+                        messages. This allows a client application to establish a subscription
+                        relative to some baseline. As with <b>changeQuery</b>, if the <b>baseChangeNumber</b>
+                        is way out of date relative to the current state of the document, and the service
+                        can not supply the changes in the subscription message, the subscription
+                        insert is rejected. A value of zero means that the current values of
+                        the selected nodes are transmitted in the subscription message.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+            </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element
+            name="ExpiresAt"
+            type="xsd:dateTime"
+            minOccurs="0"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This optional element specifies an absolute time after which the
+                subscription is no longer active. The <b>subscription</b> node is
+                automatically removed when the subscription expires. If this element
+                is missing, the subscription does not expire.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element name="Context">
+            <xsd:annotation>
+                <xsd:documentation>
+                This element returns the <b>Context</b> element from the original
+                subscription. Applications should use this element and only this element
+                to correlate the subscription response with one of their subscriptions.
+                </xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+                <xsd:sequence>
+                    <xsd:any
+                        processContents="skip"
+                        namespace="##other"
+                        minOccurs="0"
+                        maxOccurs="unbounded"
+                    />
+                </xsd:sequence>
+                <xsd:attribute
+                    name="Uri"
+                    type="xsd:anyURI"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute specifies the URI value chosen by the subscriber
+                        that is associated with this subscription.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element
+            name="To"
+            type="xsd:anyURI"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This attribute specifies the location that is to receive the subscription
+                message. The value of this element may be one of the following forms:
+                <ul>
+                    <li>
+                    <b>iq:iqAlerts</b> This URI indicates that generated subscription
+                    messages are to be delivered inside the body of a notification and delivered
+                    to the default Iquomi Alerts service of the creator.
+                    </li>
+
+                    <li>
+                    <b>protocol://service</b> This URI indicates that generated subscription
+                    messages are delivered to the specified service at the domain of the creator's
+                    <b>platformId</b>. For instance, a <b>platformId</b> indicating contoso.com, 
+                    and a value in this element of http://subscriptionResponse, would cause 
+                    delivery of the subscription message to http://subscriptionResponse.contoso.com.
+                    </li>
+                </ul>
+                
+                If this value is not specified, the subscription message is
+                delivered as a notification to the "creator's" Iquomi Alerts service.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attributeGroup ref="StandardBlueAttributeGroup" />
+</xsd:complexType>
+
+
+<!--
+//
+// RoleList
+//
+-->
+<xsd:complexType name="RoleListType">
+	<xsd:annotation>
+		<xsd:documentation>
+			This element encapsulates a <b>RoleList</b> for the identity. This is
+			a first-class root document type that specifies the sharing allowed
+			over the content document.
+		</xsd:documentation>
+	</xsd:annotation>
+	
+	<xsd:sequence>
+		<!--
+		//
+		// scope
+		//
+		-->
+		<xsd:element
+			name="Scope"
+			type="RoleListScopeType"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			/>
+		
+		<!--
+		//
+		// role entries
+		//
+		-->
+		<xsd:element
+			name="Role"
+			type="RoleType"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			/>
+	</xsd:sequence>
+	<xsd:attributeGroup ref="DocumentRootAttributeGroup" />
+</xsd:complexType>
+
+
+<!--
+//
+// RoleListScopeType
+//
+-->
+<xsd:complexType name="RoleListScopeType">
+    <xsd:complexContent>
+        <xsd:extension base="ScopeType">
+            <xsd:attributeGroup ref="StandardBlueAttributeGroup"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<!--
+//
+// roleMap element
+//
+-->
+<xsd:element
+    name="RoleMap"
+    type="RoleMapType"
+/>
+
+<!--
+//
+// roleMapType
+//
+-->
+<xsd:complexType
+    name="RoleMapType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This element encapsulates all the elements that make up a <b>roleMap</b>, which
+        include document class relative <b>roleTemplate</b>, priority, name, method, and per-method scope.
+        An individual <b>roleTemplate</b> defines the maximum scope of information and the methods
+        allowed to access that information for each request mapped into the template.
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+        <xsd:element
+            name="Scope"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element defines a scope which may be referred to by roles within this
+                <b>roleMap</b> to indicate what portions of the document are visible to this role for
+                the specified method.
+                </xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+                <xsd:complexContent>
+                    <xsd:extension base="ScopeType">
+                        <xsd:attribute name="Id" type="IdType"/>
+                    </xsd:extension>
+                </xsd:complexContent>
+            </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element
+            name="RoleTemplate"
+            type="RoleTemplateType"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element encapsulates the definition of a role. The attribute set for
+                this element includes the document class that this <b>roleTemplate</b> refers to,
+                the name of the <b>roleTemplate</b>, and the priority of the <b>roleTemplate</b>.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+    </xsd:sequence>
+    <xsd:attributeGroup ref="StandardBlueAttributeGroup"/>
+</xsd:complexType>
+
+
+<xsd:complexType name="RoleTemplateType">
+    <xsd:sequence>
+        <xsd:element
+            name="FullDescription"
+            type="LocalizableString"
+            minOccurs="0"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element contains a description of this <b>roleTemplate</b>
+                that specifies the capabilities a caller will have
+                when accessing information through this role.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="Method"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element specifies the methods available within this <b>roleTemplate</b> by name
+                and by scope. When a subject maps to a <b>roleTemplate</b>, the method
+                in the request must match one of these elements for the message to continue
+                to flow. If the method exists, the data available to the method is a function
+                of the scope referenced by this method, combined with an optional
+                scope referenced by the role defined in the <b>roleList</b>.
+                </xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+
+                <xsd:attribute
+                    name="Name"
+                    type="String"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This element specifies the name of the method.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+                <xsd:attribute
+                    name="ScopeRef"
+                    type="IdRefType"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute specifies the scope within this document
+                        that is in effect for this method.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:sequence>
+
+    <xsd:attribute
+        name="Name"
+        type="String"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element specifies the name of the role.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+    <xsd:attribute
+        name="Priority"
+        type="xsd:int"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element specifies the priority of the <b>roleTemplate</b> used to select that
+            actual <b>roleTemplate</b> when the role evaluation determines that the subject maps to multiple
+            <b>roleTemplates</b>.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+</xsd:complexType>
+
+
+<!--
+//
+// Message Types
+//
+-->
+
+<!--
+//
+// identity element.  //sgfix: this is necessary for our wsdls
+//
+-->
+<xsd:element
+    name="Identity"
+    type="IdentityType"
+/>
+
+<!--
+//
+// identity license
+//
+-->
+<xsd:complexType
+    name="IdentityType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+            This element is a SOAP-SEC compliant license that identifies the
+            sender of this message to the recipient. The contents are
+            encoded and encrypted using algorithms demonstrated and documented in
+            the .NET My Services client access runtime. This license includes
+            all elements needed to identify the sender of
+            the .NET My Services message. An identity license must be present in all .NET
+            service requests and is always contained within a SOAP-SEC licenses tag.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+        <!-- sgfix: made type an int until we turn on crypto -->
+        <xsd:element
+            name="Kerberos"
+            type="xsd:int"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                    This element specifies the identity of the sender of the message in the form
+                    of a Kerberos AP request:
+                    <br/>
+                    <br/>
+                    <b>
+                    {servicePrincipalName, [{Uk, Kx3, {A/Y, g}}Kh ]Kp , {T}Kx3, otherKerberosStuff }
+                    </b>
+                    <br/>
+                    <br/>
+                    which is easily transformed into:
+                    <dl>
+                        <dt><b>userId</b></dt>
+                        <dd>
+                        The user on whose behalf this message is being sent. The user can be
+                        an actual user, or an identity representing an arbitrary user account.
+                        This value is extractable as a Passport Unique ID (PUID).
+                        </dd>
+                        <dt><b>appAndPlatformId</b></dt>
+                        <dd>
+                        The PUID that represents the licenses granted to an application, and a platform
+                        on which the application runs.
+                        </dd>
+                    </dl>
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+    </xsd:sequence>
+</xsd:complexType>
+
+<!--
+//
+// authorizedRole element
+//
+-->
+<xsd:element
+    name="AuthorizedRole"
+    type="AuthorizedRoleType"
+/>
+<!--
+//
+// authorizedRole license
+//
+-->
+<xsd:simpleType
+    name="AuthorizedRoleType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+            This element is a SOAP-SEC compliant license that does two things:
+            <ul>
+                <li>
+                When presented to a .NET service in a SOAP-SEC licenses tag during
+                a .NET My Services request message,
+                it specifies to the .NET service the authorized role of the sender
+                of the message. The .NET service is free to accept this license when
+                it regards the license as valid. If .NET My Services does not regard the license as valid,
+                it is free to ignore the license, perform its own role evaluation, and possibly
+                issue a new license in a response header.
+                <p/>
+                .NET services are the grantors of this
+                type of license and the content is totally opaque to the sender.
+                </li>
+
+                <li>
+                When this license appears in a SOAP-SEC licenses tag during a .NET My Services
+                response message, this license is considered issued to the recipient
+                for an undetermined amount of time. On a subsequent request, this license may be
+                presented and may allow accelerated processing of the request.
+                </li>
+            </ul>
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string"/>
+</xsd:simpleType>
+
+<!--
+//
+// request element //sgfix: necessary for our wsdls
+//
+-->
+<xsd:element
+    name="Request"
+    type="RequestType"
+/>
+
+<!--
+//
+// request
+//
+-->
+<xsd:complexType
+    name="RequestType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        The request header is used to specify request-specific arguments including the service being addressed,
+        the method being accessed, the document
+        being manipulated, how the response should be processed, and key information used to locate the document (including
+        the PUID that owns the document, the document instance, and the cluster). The request header must occur in each
+        request message.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+        <xsd:element
+            name="Key"
+            minOccurs="1"
+            maxOccurs="100"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element specifies key information used to zoom in on 
+                the document being manipulated. This information includes 
+                the PUID that owns the document, the instance ID of the 
+                document, and the cluster or partition key used to locate 
+                the machine resources that hold the document.
+                <p />
+                In certain situations, a client will want to send the same 
+                message to a number a instances of a particular service. To 
+                do this, the client can repeat this element multiple times. 
+                The <b>cluster</b> attributes in all elements must match 
+                each other, but the <b>puid</b> and <b>instance</b> 
+                attributes may differ. A unique response message is 
+                generated for each key specified.
+                <p />
+                The entire contents of this element come from the IqServices 
+                service.
+                </xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+
+                <xsd:attribute
+                    name="Puid"
+                    type="IqidType"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This element specifies the PUID of the entity that "owns" the service being accessed. <!-- In
+                        the case of a .NET Address service, this element is equivalent to the "my".-->
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+                <xsd:attribute
+                    name="Instance"
+                    type="String"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This element specifies the particular instance of the service for the ID being accessed.
+                        For example, if a given ID is provisioned with multiple .NET Calendar documents on the same
+                        cluster and in the same data center, the documents would differ only by this value.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+                <xsd:attribute
+                    name="Cluster"
+                    type="String"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This element specifies information used by the .NET My Services system to locate the document on
+                        a particular back-end server or database. It is used as the virtual partition key for the
+                        document being addressed. This technique is preferable to computing this partition key based
+                        on some hash of the <b>puid</b>/<b>instance</b>.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+            </xsd:complexType>
+        </xsd:element>
+
+    </xsd:sequence>
+
+    <xsd:attribute
+        name="Service"
+        type="String"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element contains the name of the service being accessed by this request message. For example,
+            to access the .NET Profile service, this attribute will have the value "myProfile".
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+    <xsd:attribute
+        name="Document"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element specifies the document class being accessed by this message. Valid values include:
+            <ul>
+                <li>Content: the main content document</li>
+                <li>RoleList: the authorization list document</li>
+                <li>NotifyList: the notification list document</li>
+                <li>System: the global system document</li>
+                <li>Policy: TBD</li>
+            </ul>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Content"/>
+                <xsd:enumeration value="RoleList"/>
+                <xsd:enumeration value="NotifyList"/>
+                <xsd:enumeration value="Policy"/>
+                <xsd:enumeration value="System"/>
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:attribute>
+
+    <xsd:attribute
+        name="Method"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element specifies the method being accessed within the service. For example, to
+            access one of the standard methods, valid values would include:
+            <ul>
+                <li>insertRequest</li>
+                <li>deleteRequest</li>
+                <li>replaceRequest</li>
+                <li>updateRequest</li>
+                <li>queryRequest</li>
+            </ul>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Insert"/>
+                <xsd:enumeration value="Delete"/>
+                <xsd:enumeration value="Replace"/>
+                <xsd:enumeration value="Update"/>
+                <xsd:enumeration value="Query"/>
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:attribute>
+
+    <xsd:attribute
+        name="GenResponse"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element, coupled with <b>rev</b>/<b>via</b>, controls how a response to this request is generated
+            and delivered. Valid values include:
+            <dl>
+                <dt><b>Always</b></dt>
+                    <dd>
+                    Always generate a response message and deliver to <b>rev</b>/<b>via</b>.
+                    </dd>
+
+                <dt><b>Never</b></dt>
+                    <dd>
+                    Never generate a response message.
+                    </dd>
+
+                <dt><b>FaultOnly</b></dt>
+                    <dd>
+                    Generate a response message, but only if the request message results in
+                    a fault message.
+                    </dd>
+            </dl>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Always"/>
+                <xsd:enumeration value="Never"/>
+                <xsd:enumeration value="FaultOnly"/>
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:attribute>
+
+</xsd:complexType>
+
+<!--
+//
+// response element //sgfix: required for our wsdls
+//
+-->
+<xsd:element
+    name="Response"
+    type="ResponseType"
+/>
+
+<!--
+//
+// response
+//
+-->
+<xsd:complexType
+    name="ResponseType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This element contains information related to the response message.
+        In current implementations, this information is limited to the role
+        that was computed for the sender, assuming the original request was formed
+        well enough to progress this far through the .NET My Services message-processing system.
+        This header element must be present in all response messages.
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:attribute
+        name="Role"
+        type="String"
+        use="optional"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This optional attribute contains the role
+            that was computed for the sender. If the original request message was malformed
+            and did not make it far enough through the message processor to compute
+            a value for this element, the <b>role</b> attribute will be missing from the response header.
+            This situation typically occurs whenever the identity header is so malformed that the
+            basic set of sender identity PUIDs cannot be extracted from the service ticket.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+</xsd:complexType>
+
+<!--
+//
+// echoBack element //sgfix: required for our wsdls
+//
+-->
+<xsd:element
+    name="EchoBack"
+    type="EchoBackType"
+/>
+
+<!--
+//
+// echoBack
+//
+-->
+<xsd:complexType
+    name="EchoBackType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        The <b>echoBack</b> header is a header element that applications can use to pass additional correlation
+        data or out-of-band data between the request and the response recipients. It is considered bad form
+        to use this header during synchronous, piggy-backed responses (because in that situation, the call
+        stack should be all that is required to keep sufficient context), or during cases where responses
+        are not generated or are only generated during fault conditions. If the UUIDs in the <b>path</b>/<b>id</b> and
+        <b>path</b>/<b>relatesTo</b> are insufficient to provide correlation data, the <b>echoBack</b> header can be
+        used to pass arbitrarily structured XML between the service requester and the recipient of the
+        associated .NET My Services response.
+        <p/>
+        .NET services make no attempt to process or inspect the contents of this header. They simply
+        transmit the header from the request message to the response message and treat it as an opaque body
+        of XML.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+        <xsd:any
+            processContents="skip"
+            namespace="##other"
+            minOccurs="0"
+            maxOccurs="unbounded"
+        />
+    </xsd:sequence>
+</xsd:complexType>
+
+
+<xsd:complexType
+    name="SystemBaseType"
+    >
+
+    <xsd:sequence>
+
+        <xsd:element
+            name="SystemVersion"
+            type="SystemVersionType"
+            minOccurs="1"
+            maxOccurs="1"
+            />
+
+        <xsd:element
+            name="RoleMap"
+            type="RoleMapType"
+            minOccurs="1"
+            maxOccurs="1"
+            />
+
+        <xsd:element
+            name="MethodMap"
+            type="MethodMapType"
+            minOccurs="1"
+            maxOccurs="1"
+            />
+
+        <xsd:element
+            name="SchemaMap"
+            type="SchemaMapType"
+            minOccurs="1"
+            maxOccurs="1"
+            />
+
+        <xsd:element
+            name="WsdlMap"
+            type="WsdlMapType"
+            minOccurs="1"
+            maxOccurs="1"
+            />
+
+        <!--xsd:element
+            name="basicInformation"
+            type="basicInformationType"
+            minOccurs="1"
+            maxOccurs="1"
+            /-->
+
+    </xsd:sequence>
+</xsd:complexType>
+
+
+<!--
+//
+// systemVersionType
+//
+//
+-->
+<xsd:complexType
+    name="SystemVersionType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This element defines version information describing this instance of the
+ .NET service.
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+
+        <!--
+        //
+        // version tag
+        //
+        -->
+        <xsd:element
+            name="Version"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:complexType>
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element defines major, minor, and build number version information.
+                    </xsd:documentation>
+                </xsd:annotation>
+
+                <xsd:sequence>
+                    <xsd:element
+                        name="ProductReleaseName"
+                        minOccurs="1"
+                        maxOccurs="1"
+                        type="xsd:string"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This element defines the major product release string (for example, ".NET My Services Beta 1".)
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+
+                    <xsd:element
+                        name="ProductImplementationName"
+                        minOccurs="1"
+                        maxOccurs="1"
+                        type="xsd:anyURI"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This element defines the class of the service to differentiate between
+                            different implementations.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+
+                </xsd:sequence>
+
+                <xsd:attribute
+                    name="MajorVersion"
+                    type="xsd:string"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute specifies the major version number
+                        of the .NET service.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+                <xsd:attribute
+                    name="MinorVersion"
+                    type="xsd:string"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute specifies the minor version number
+                        of the .NET service.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+                <xsd:attribute
+                    name="BuildNumber"
+                    type="xsd:string"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute specifies the build number
+                        of the .NET service.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+                <xsd:attribute
+                    name="Qfe"
+                    type="xsd:string"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute specifies the quick-fix engineering (QFE)
+                        version number of the .NET service.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+
+            </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element
+            name="BuildDate"
+            minOccurs="1"
+            maxOccurs="1"
+            type="xsd:dateTime"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element defines the date and time that the Iquomi Services system was built.
+                The time is always in UTC (Z-relative) form.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="BuildDetails"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:complexType>
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element defines details of the build, including
+                    the machine that generated the build, the branch ID of the
+                    software that contributed to the build, the type of build (<b>chk</b>/<b>fre</b>),
+                    and whether the build was generated by an official build-release process.
+                    </xsd:documentation>
+                </xsd:annotation>
+
+                <xsd:attribute
+                    name="Machine"
+                    type="xsd:string"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute specifies the machine that generated
+                        the build.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+                <xsd:attribute
+                    name="Branch"
+                    type="xsd:string"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute specifies the software branch ID for the source
+                        code that contributed to this build.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+                <xsd:attribute
+                    name="Type"
+                    type="xsd:string"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute specifies the type of build. A value of <b>chk</b> indicates
+                        that this is a checked or debug build. A value of <b>fre</b> indicates
+                        that this is a retail build.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+                <xsd:attribute
+                    name="Official"
+                    type="xsd:string"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute indicates whether the build was produced
+                        by an official build process (value of <b>yes</b>), or an
+                        unofficial process (value of <b>no</b>).
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+            </xsd:complexType>
+        </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attributeGroup ref="StandardBlueAttributeGroup"/>
+</xsd:complexType>
+
+<!--
+//
+// methodMapType
+//
+//
+-->
+<xsd:complexType
+    name="MethodMapType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This element defines the <b>methodMap</b>. While it is true that, in most cases, the
+        <b>roleMap</b> section contains a definitive list of methods, these methods are
+        likely to be scattered about the roleMap in various templates. This section
+        contains the definitive, non-duplicated list of methods available within the service.
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+        <xsd:element
+            name="Method"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:complexType>
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element defines a method that is available within this service.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:any
+                        processContents="skip"
+                        namespace="##other"
+                        minOccurs="0"
+                        maxOccurs="unbounded"
+                    />
+                </xsd:sequence>
+
+                <xsd:attribute
+                    name="Name"
+                    type="xsd:string"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute specifies the name of a method available within this service.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+            </xsd:complexType>
+        </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attributeGroup ref="StandardBlueAttributeGroup"/>
+</xsd:complexType>
+
+<!--
+//
+// schemaMapType
+//
+//  - schema (namespace, location, alias)
+//
+-->
+<xsd:complexType
+    name="SchemaMapType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This element defines the various schemas that define the data structures and shape
+        of information managed by this service. Each schema is defined by its namespace URI,
+        its location, and a preferred namespace alias.
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+        <xsd:element
+            name="Schema"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:complexType>
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element defines a schema that defines data structures and the
+                    shape of information managed by this service. Multiple schema elements
+                    exist for each service, one for each logical grouping of information exposed
+                    by the service.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:any
+                        processContents="skip"
+                        namespace="##other"
+                        minOccurs="0"
+                        maxOccurs="unbounded"
+                    />
+                </xsd:sequence>
+
+                <xsd:attribute
+                    name="Namespace"
+                    type="xsd:anyURI"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute specifies the namespace URI of this schema.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+                <xsd:attribute
+                    name="SchemaLocation"
+                    type="xsd:anyURI"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute specifies the location (in the form of a URI) of the resource containing the schema. When
+                        a schema is reachable through a variety of URIs, one schema element will exist for
+                        each location.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+                <xsd:attribute
+                    name="Alias"
+                    type="xsd:string"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute specifies the preferred alias to be used, if possible, when
+                        manipulating information covered by this schema in the context of this service.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+            </xsd:complexType>
+        </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attributeGroup ref="StandardBlueAttributeGroup"/>
+</xsd:complexType>
+
+<!--
+//
+// wsdlMapType
+//
+//  - wsdl (wsdlLocation)
+//  - disco (discoLocation)
+//  - wisl (wislLocation)
+//
+-->
+<xsd:complexType
+    name="WsdlMapType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This element defines the <b>wsdlMap</b> for this service. This map includes
+        the location of WSDL documents, DISCO documents, and WSIL documents
+        for this Web service. These documents are used by applications to
+        understand the format of messages that may be sent to the various
+        services.
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+        <xsd:element
+            name="Wsdl"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element is used to specify the location of a WSDL file for this service. Multiple
+                entries may exist pointing to the same file hosted in multiple locations, or to variations
+                on the content within the WSDL files.
+                </xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+                <xsd:sequence>
+                    <xsd:any
+                        processContents="skip"
+                        namespace="##other"
+                        minOccurs="0"
+                        maxOccurs="unbounded"
+                    />
+                </xsd:sequence>
+
+                <xsd:attribute
+                    name="WsdlLocation"
+                    type="xsd:anyURI"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute is a URI that specifies the location of the WSDL file.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element
+            name="Disco"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element is used to specify the location of a DISCO file for this service. Multiple
+                entries may exist pointing to the same file hosted in multiple locations, or to variations
+                on the content within the DISCO files.
+                </xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+                <xsd:sequence>
+                    <xsd:any
+                        processContents="skip"
+                        namespace="##other"
+                        minOccurs="0"
+                        maxOccurs="unbounded"
+                    />
+                </xsd:sequence>
+
+                <xsd:attribute
+                    name="DiscoLocation"
+                    type="xsd:anyURI"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute is a URI that specifies the location of the DISCO file.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element
+            name="Wsil"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element is used to specify the location of a WSIL file for this service. Multiple
+                entries may exist pointing to the same file hosted in multiple locations, or to variations
+                on the content within the WSIL files.
+                </xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+                <xsd:sequence>
+                    <xsd:any
+                        processContents="skip"
+                        namespace="##other"
+                        minOccurs="0"
+                        maxOccurs="unbounded"
+                    />
+                </xsd:sequence>
+
+                <xsd:attribute
+                    name="WsilLocation"
+                    type="xsd:anyURI"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This attribute is a URI that specifies the location of the WSIL file.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:complexType>
+        </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attributeGroup ref="StandardBlueAttributeGroup"/>
+</xsd:complexType>
+
+<!--
+//
+//
+// Fault information schema
+//
+//
+-->
+
+<xsd:complexType name="FaultDetailType">
+    <xsd:sequence>
+        <xsd:element
+            name="FaultResponseAction"
+            type="xsd:string"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This is the response action that is to be taken by the client upon
+                receiving this fault message. Contents of this element can be:
+                <p/>
+
+                <dl>
+                    <dt><b>correct</b></dt>
+                    <dd>A correctable error was detected. The client should reform the
+                    request message, correcting the noted error, and resubmit the message.
+                    If the client is unable to correct the message, the client should accept
+                    the failure condition and execute approriate recovery logic. </dd>
+                    <dt><b>retry</b></dt>
+                    <dd>A transient error has occured. The client should resubmit the message
+                    (ensuring that a new message ID is used). </dd>
+                    <dt><b>giveUp</b></dt>
+                    <dd>An uncorrectable error was detected. The client should accept the failure
+                    condition and execue appropriate recovery logic.</dd>
+                </dl>
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="FaultChain"
+            type="FaultChainType"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                When a request is being processed by a service, it may be traveling through multiple
+                sections of the service code. The <b>faultChain</b> element contains a list of errors if
+                there are multiple errors along the processing path of a message. Because a section
+                of the service or the server may overwrite the error code with a more general error,
+                this list gives a history of failures for this particular request.
+                <p/>
+                <b>faultChain</b> contains multiple <b>fault</b> elements. Each <b>fault</b> element
+                contains details about an error condition which this request has caused to occur during
+                its processing.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+    </xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="FaultChainType">
+    <xsd:sequence>
+        <xsd:element
+            name="Fault"
+            type="FaultChainFaultType"
+            minOccurs="1"
+            maxOccurs="unbounded"
+            />
+    </xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="FaultChainFaultType">
+    <xsd:annotation>
+        <xsd:documentation>
+        This element provides details about a failure condition that was encountered during
+        the processing of a .NET My Services message.
+        <p/>
+        <b>code</b> and <b>shortDescription</b> are two of the child elements this element can
+        have. These elements contain pairs defined by the error code documentation to help client
+        applications determine the reason for a failure of a message.
+        The <b>longDescription</b> element child of this element contains context-based information about
+        the error. For example, the <b>shortDescription</b> element may contain "Syntax Error", whereas this element
+        indicates what the real syntax error was.
+        <p/>
+        Users of services and client application developers should depend only on the <b>code</b> element
+        value within a fault to determine what happened. Descriptions are not a part of the contract.
+        <p/>
+        Order of fault elements may change and the order of a set of faults for a certain message is not a
+        part of the contract between a client and a .NET My Services server; only the recommended action to fix
+        the problem is. Application developers should consider the fact that the order of faults may
+        change from service to service, and from version to version; there is no requirement to keep
+        the order and descriptions. This is done on purpose, in order to simplify client application development.
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+        <xsd:element
+            name="Code"
+            type="xsd:string"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element contains the hexadecimal error code for this fault
+                entry in the fault chain.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="ShortDescription"
+            type="xsd:string"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element contains the short description for this fault entry in the fault chain.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="LongDescription"
+            type="xsd:string"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element contains the long and context-sensitive description for
+                this fault entry in the fault chain.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+    </xsd:sequence>
+</xsd:complexType>
+
+</xsd:schema>

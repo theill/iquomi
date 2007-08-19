@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" >
+<html>
+	<head>
+		<title>Iquomi To-do</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">-->
+		<style type="text/css"> body { font-family: Bitstream Vera Sans, Verdana, Sans-serif; font-size: 1em; }
+	div.service { font-weight: bold; }
+	div.service b { color: background; }
+	div.service ul li { font-weight: normal; }
+	</style>
+	</head>
+	<body>
+		<h3><font color="background">Iquomi</font>
+			&nbsp;To-do's</h3>
+		<p><strong>General</strong></p>
+		<ul>
+			<li>
+				we need to add a small <EM>lock</EM> key in lower right of Iquomi client 
+				statusbar since this is known by users to mean <EM>secured</EM>
+			.
+			<li>
+				encoding issue on the server side; it needs to retrieve the data as utf-8 and <em>avoid
+				</em>
+			doing any conversion on them afterwards.
+			<li>
+			create customized layout of main window.
+			<li>
+				entire application should support localization using the new interface provided 
+				with .NET.</li>
+		</ul>
+		
+		<div class="service">		
+			API
+        </div>
+        <div class="service">
+		<ul>
+			<li>
+			add "ToolbarIcon" for reading a customized icon to be placed on the toolbar.
+			<li>
+			need events for "OnDataSynchronized", "OnDataReceived", "OnDataSent", 
+			"OnlineStatusChanged".
+			<li>
+			a service must be able to request a window size change of the parent 
+			application. this is done in order to fit its content better in the window. An 
+			option must be enabled in a configuration file so it's possible to disable this 
+			resize from a user-perspective.
+			<li>
+			Take a look at http://www.ceruleanstudios.com/support/sdkmanual.php for a pretty good 
+			overview of messages.<li>
+				each service must be able to get localized messages in a common way. maybe we 
+				are able to put the localization into the respective services if .NET already 
+				gives the user some nice classes. I don't think we need to provide a global or 
+				centralized repository in which each service needs to register itself. </li>
+		</ul>
+		</div>
+		
+		<div class="service">		
+			<b>Notes</b> service
+			<ul>
+			<li>
+				add <strong>type</strong>
+			field for Note class; this should contain information such as 'registration', 
+			'personal', etc
+			<li>
+			search field should be incremental so it's possible to go through all notes; if 
+			found in description which isn't displayed (we only display two or three lines 
+			of each note) that specific note should be expanded
+			<li>
+			support for drag&amp;drop of text-snippets
+			<li>
+			when drawing elements only selected item will get ellipsed - bug
+			<li>
+				figure out how to get a XmlDocument from a DataSet since we need this when 
+				calling NotifyXXX methods</li>
+		</ul>
+		</div>
+		
+		<div class="service">		
+			<b>Favorites</b> service
+			<ul>
+				<li>				there's a problem with "FileSystemWatcher". It is case-insensitive which makes 
+				it impossible to detect changes for a given file. A solution might be to do a 
+				md5 on the folder + file (exclude full-path to "Favorites" system folder) then 
+				use this unique id as an id on the uploaded bookmarks. when a change is made we 
+				could generate the md5 again and find the key rather fast.</li>
+
+			</ul>
+		</div>
+		
+		<div class="service">		
+			<b>Calendar</b> service
+			<ul>
+				<li></li>
+			</ul>
+		</div>
+		
+		<div class="service">		
+			<b>Contacts</b> service
+			<ul>
+				<li></li>
+			</ul>
+		</div>
+		
+		<div class="service">
+			<b> Music Collection</b> service
+			<ul>
+				<li>
+				read all MP3 files from directory structure
+				<li>
+					make XML structure (XSD file) containing&nbsp;music data</li>
+			</ul>
+		</div>
+		
+		<div class="service">
+			<b>Tasklist</b> service
+		
+		<ul>
+			<li>
+			allow for prioritizing elements
+			<li>
+				setup hierarchy for tasks</li>
+		</ul>
+		</div>
+		
+		<div class="service">
+			<b>Backup</b> service
+			<ul>
+				<li>user can select a number of files from local harddisk 
+
+  
+				<li>user setup date/time interval for backup</li>
+			</ul>
+		</div>
+		
+		<div class="service">
+			<b>XPath Debuging</b>
+			service
+			<ul>
+				<li>
+					Loads screen and allow users to enter an XPath expression for easy testing.</li>
+			</ul>
+		</div>
+		
+		<div class="service">
+			<b>XQuery debuging</b> service
+			<ul>
+				<li>
+					Loads screen and allow users to enter an XQuery expression for easy testing.</li>
+			</ul>
+		</div>
+	</body>
+</html>

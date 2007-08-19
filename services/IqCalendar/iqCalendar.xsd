@@ -1,0 +1,3381 @@
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xdb="urn:schemas-iquomi-com:xdb"
+	xmlns:iq="http://schemas.iquomi.com/2004/01/core" 
+    targetNamespace="http://schemas.iquomi.com/2004/01/iqCalendar"
+    xmlns="http://schemas.iquomi.com/2004/01/iqCalendar"
+    elementFormDefault="qualified" 
+    version="1.0">
+
+    <xsd:annotation>
+        <xsd:documentation>
+            Schema for Iquomi&#174; Calendar service.
+            Copyright (c) 2004 Iquomi. All rights reserved.
+        </xsd:documentation>
+
+        <xsd:appinfo>
+            <xdb:blue select="/IqCalendar" />
+            <xdb:blue select="/IqCalendar/*" />
+            <xdb:blue select="/IqCalendar/event/*" />
+            <xdb:blue select="/IqCalendar/event/recurrence/rule" />
+            <xdb:blue select="/IqCalendar/event/recurrence/exception" />
+
+            <xdb:red select="//@changeNumber" />
+            <xdb:red select="//@id" />
+            <xdb:red select="//cat" />
+            <xdb:red select="//@creator" />
+            <xdb:red select="//cat/@ref" />
+            <xdb:red select="/IqCalendar/event/@calendarType" />
+
+            <xdb:red select="/IqCalendar/event/body/$any" />
+            <xdb:red select="/IqCalendar/event/attendeeEventExtra/$any" />
+            <xdb:red select="/IqCalendar/event/attendee/$any" />
+            <xdb:red select="/IqCalendar/event/recurrence/rule/repeat/$any" />
+            <xdb:red select="/IqCalendar/event/recurrence/rule/$any" />
+            <xdb:red select="/IqCalendar/event/recurrence/exception/$any" />
+            <xdb:red select="/IqCalendar/event/recurrence/$any" />
+
+            <xdb:red select="/IqCalendar/event/body/title" />
+            <xdb:red select="/IqCalendar/event/body/startTime" />
+            <xdb:red select="/IqCalendar/event/body/endTime" />
+
+            <xdb:red select="/IqCalendar/event/body/organizer/puid" />
+            <xdb:red select="/IqCalendar/event/body/organizer/email" />
+            <xdb:red select="/IqCalendar/event/body/cuid" />
+
+            <xdb:red select="/IqCalendar/event/attendee/puid" />
+            <xdb:red select="/IqCalendar/event/attendee/email" />
+<!--
+            <xdb:red select="/IqCalendar/event/attendee/inviteType" />
+            <xdb:red select="/IqCalendar/event/attendee/responseTime" />
+            <xdb:red select="/IqCalendar/event/attendee/responseType" />
+-->
+
+            <xdb:red select="/IqCalendar/event/recurrence/exception/recurrenceId" />
+<!--
+            <xdb:red select="/IqCalendar/event/recurrence/rule/windowStart" />
+            <xdb:red select="/IqCalendar/event/recurrence/rule/windowEnd" />
+            <xdb:red select="/IqCalendar/event/recurrence/rule/repeatForever" />
+-->
+
+            <xdb:red select="/IqCalendar/event/recurrence/exception/body/startTime" />
+            <xdb:red select="/IqCalendar/event/recurrence/exception/body/endTime" />
+
+
+            <xdb:red select="/IqCalendar/event/reminder/nextTriggerTime" />
+            <xdb:sqlScript source="iqCalendarCustomSQL.sql" />
+
+            <xdb:namespaceMap>
+                <xdb:mapping uri="http://schemas.iquomi.com/2004/01/iqCalendar" alias="m" />
+                <xdb:mapping uri="http://schemas.iquomi.com/2004/01/core" alias="iq" />
+            </xdb:namespaceMap>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:import namespace="http://schemas.iquomi.com/2004/01/core" schemaLocation="http://schemas.iquomi.com/2004/01/core/iqcommon.xsd" />
+
+    <!--
+    //
+    // iqCalendar
+    //  - root element for the .NET Calendar service
+    //
+    -->
+    <xsd:element name="IqCalendar">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates the content document for this service. This element
+            establishes a global cache scope for the service and contains other
+            root level system attributes for this instance of the service.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="IqCalendarType">
+                    <xsd:attributeGroup ref="iq:DocumentRootAttributeGroup" />
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType
+        name="IqCalendarType"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element defines the basic iqCalendar types.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+            <xsd:element
+                name="Event"
+                type="EventType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The event is the iqCalendar root object for calendar events, appointments, and meetings.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Subscription"
+                type="iq:SubscriptionType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:any>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="BodyType">
+        <xsd:sequence>
+            <xsd:element
+                name="Cat"
+                type="iq:CatType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+<!--  WHFIX:  move to namespaced category
+            <xsd:element
+                name="Sensitivity"
+                type="SensitivityEnum"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This optional attribute defines the importance of this event normal, personal, private, confidential.
+                         The default is set to normal.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+-->
+
+            <xsd:element
+                name="Title"
+                type="iq:LocalizableString"
+            />
+
+            <xsd:element
+                name="FullDescription"
+                type="iq:LongText"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element contains an xhtml-compliant, free form, full description of the event.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Location"
+                type="iq:LocalizableString"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This optional element contains the event's location.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="MeetingStatus"
+                type="MeetingStatusEnum"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Tracks the status of this meeting {not-sent, sent, cancelled}.  A regular appointment will
+                        not have this element.  If &lt;meetingStatus&gt; exists, this event should be rendered as
+                        a meeting, not as an appointment.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="RecurrenceId"
+                type="xsd:dateTime"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The recurrence id indicates the original start time of an occurrence of a
+                        recurring master appointment.  It is required to identify what instance
+                        an orphan exception is modifying, since users are allowed to change the
+                        start time on the orphan.  The recurrenceId method is stored in UTC.  It does not
+                        appear in the master schema, except in the specific case that an attendee is invited
+                        to an instance of a recurring event.  Otherwise, &lt;recurrenceId&gt; is usually
+                        only a part of getCalendarDays.
+                        <br/><b>ICAL Equivalent</b>: RECURRENCEID
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="LastUpdateTime"
+                type="xsd:dateTime"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This is updated by the organizer whenever s/he creates and sends a new meeting
+                        request.  This helps the attendee to identify which meeting request is the
+                        most recent one.  It is stored in UTC.  This property is not modifiable
+                        by clients and is assigned by the server on modification and by the
+                        sendMeetingRequest.
+                        <br/><b>ICAL Equivalent</b>: DTSTAMP.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="StartTime" type="xsd:dateTime">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The startTime method defines the start time of the event.  An all-day event
+                        by convention starts at 12:00:00 AM of the day of the event.  This is stored
+                        in UTC.  Maximum range is January 1, 1753 to December 31, 9999 to an accuracy
+                        of 3.33 milliseconds.
+                        <br/>If this event is a <b>recurring event</b>, &lt;startTime&gt; defines the
+                        dateTime when the recurrence window starts.  The recurring master does not
+                        have to be an instance of the recurring event itself.  An event in March set
+                        to recur every April will only appear in April.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="EndTime" type="xsd:dateTime">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The endTime method defines the end time of the event.  An all-day event by
+                        convention ends at 11:59:59 PM of the ending day.  This is stored in UTC.
+                        Maximum range is January 1, 1753 to December 31, 9999 to an accuracy of 3.33
+                        milliseconds.  The duration of the event is inferred from endTime - startTime.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="AllDay"
+                type="xsd:boolean"
+                minOccurs="0"
+                maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        False or absence of this element indicates a regular event.
+                        Otherwise, this attribute indicates that the event is an
+                        all-day event.  All day events may span multiple days.  By
+                        convention, all day events start at 12:00:00 am of the day
+                        of startTime, regardless of what time it actually is, and it will
+                        end at 11:59:59 pm of the endTime date.  In other words,
+                        if the allDay element is present and has value=true, .NET Calendar
+                        will ignore the actual times of the events and consider only the
+                        date part of the field.
+                        <br/>The allDay tag is meant to operate as a hint to UI
+                        renders to display specialized icons indicating  an all-day event.
+                        allDay events are distinguishable between 24-hr events starting
+                        at 12am.  In the case of a meeting request, an allDay event
+                        will <b>not</b> appear in the local user's time zone, but rather
+                        in the organizer's time zone.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Floating"
+                type="xsd:boolean"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The floating attribute indicates that this event is to
+                        occur in the current local time zone no matter what time zone
+                        the system is currently in (that is, it floats).  For example,
+                        holidays are floating events.  Floating values are stored
+                        as-is: no time-zone translations are needed to convert them
+                        to UTC or any local time zone.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="TravelTimeTo"
+                type="xsd:int"
+                minOccurs="0"
+                maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This is the amount of time (in minutes) that it takes to
+                        travel to the meeting location.
+                        <p>
+                        This optional element shows in free/busy calculations.
+                        </p>
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element
+                name="TravelTimeFrom"
+                type="xsd:int"
+                minOccurs="0"
+                maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This is the amount of time (in minutes) that it takes to
+                        return from the meeting location.
+                        <p>
+                        This optional element shows in free/busy calculations.
+                        </p>
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="FreeBusyStatus"
+                type="FreeBusyStatusType"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This optional element annotates the freeBusy behavior of this event.
+                        All events by default appear as "busy".  The user may explicitly define
+                        this event to be annotated by setting .NET Calendar values to free, tentative, busy or away.
+                        <br/>CONSIDER:  turn into some freeform mechanism + set values.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Cuid"
+                type="xsd:string"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The cuid (CorrelationUID) links an organizer's event to an attendee's
+                        event.  It identifies which response from an attendee is for which
+                        request from an organizer, and which meeting request update from the
+                        organizer is for which previously accepted meeting by the attendee.
+                        The "cuid" is the same on both the attendee's and the organizer's copy
+                        of the appointment.
+                        It is also identical on the orphan exception and the recurring master.
+                        This value is assigned by the .NET Calendar server and is non-modifiable.
+                        <br/><b>ICAL Equivalent</b>: UID.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Organizer"
+                type="iq:UserReference"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This is the email address of the event organizer for non-.NET My Services organizers.
+                        <br/><b>ICAL Equivalent</b>: ORGANIZER.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Additional body elements.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:any>
+
+        </xsd:sequence>
+        <xsd:attributeGroup ref="iq:UnnamedBlueAttributeGroup" />
+    </xsd:complexType>
+
+    <xsd:complexType name="RecurrenceBaseType">
+        <xsd:sequence>
+            <xsd:element name="Rule" type="RecurrenceRuleBodyBaseType" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="RecurrenceRuleType">
+        <xsd:complexContent>
+            <xsd:extension base="RecurrenceRuleBodyType">
+                <xsd:sequence>
+                    <xsd:any
+                        processContents="skip"
+                        namespace="##other"
+                        minOccurs="0"
+                        maxOccurs="unbounded"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Additional recurrence rule logic that cannot be expressed in iqCalendar logic.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:any>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="RecurrenceType">
+        <xsd:sequence>
+            <xsd:element name="Rule" type="RecurrenceRuleType" />
+
+            <xsd:element
+                name="Exception"
+                type="ModifiedExceptionType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Additional recurrence rule elements.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:any>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="iq:UnnamedBlueAttributeGroup" />
+    </xsd:complexType>
+
+    <xsd:complexType name="RecurrenceRuleBodyBaseType">
+        <xsd:sequence>
+            <xsd:element
+                name="CreationDate"
+                type="xsd:dateTime"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This is required in order to exactly determine which timezone recurrence rule to use.
+                        We cannot use the startTime of the event because of the ability to create events in
+                        the past and in the future.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element
+                name="FirstDayOfWeek"
+                type="DayOfWeekEnum">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This stores what the first day of the week is for this
+                        user. Typical values are (su) Sunday or (mo) Monday.
+                        <br/><br/>
+                        Recurrence rule's specified FirstDOW for calculating the recurrence expansion.
+                        Allows recurring meetings to be expanded in the organizer's FirstDOW instead
+                        of the invitee's FirstDOW.  <br/><b>Outlook and ICAL Equivalents</b>: FirstDOW
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Tzid"
+                type="TzidEnum"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Identifies the time zone for this recurring event.  <b>All dateTime information in
+                        this event is stored in UTC</b> (converted from the local time zone defined
+                        by the time zone sub-schema).  If this field is absent, the recurring event is assumed
+                        to be recurring in UTC time.  However, it is only a <b>floating recurring event</b> if
+                        the &lt;floating&gt; attribute is set.
+                        <strong>@afterDay is used as a placeholder for v1.  @afterDay will not be use for
+                        .NET My Services V1.</strong>
+
+<pre>
+        &lt;timeZone floating="..." <b><u><font color="red">id</font></u></b>="..."&gt;<font color="#aa9988"><sub>1..1</sub></font>
+            &lt;standardBias&gt;<font color="#aa9988"><sub>1..1</sub></font>&lt;/standardBias&gt;
+            &lt;additionalDaylightBias&gt;<font color="#aa9988"><sub>0..1</sub></font>&lt;/additionalDaylightBias&gt;
+            &lt;standardDate&gt;<font color="#aa9988"><sub>0..1</sub></font>
+                &lt;transitionRule weekdayOfMonth="..." day="..." dayOfMonth="..." month="..." afterDay="..."&gt;<font color="#aa9988"><sub>1..1</sub></font>&lt;/transitionRule&gt;
+                &lt;transitionTime&gt;<font color="#aa9988"><sub>1..1</sub></font>&lt;/transitionTime&gt;
+            &lt;/standardDate&gt;
+            &lt;daylightDate&gt;<font color="#aa9988"><sub>0..1</sub></font>
+                &lt;transitionRule weekdayOfMonth="..." day="..." dayOfMonth="..." month="..." afterDay="..."&gt;<font color="#aa9988"><sub>1..1</sub></font>&lt;/transitionRule&gt;
+                &lt;transitionTime&gt;<font color="#aa9988"><sub>1..1</sub></font>&lt;/transitionTime&gt;
+            &lt;/daylightDate&gt;
+        &lt;/timeZone&gt;
+</pre>
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="IsLeapYear"
+                type="xsd:boolean"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        [International calendar support]
+                        <br/>It is possible to derive isLeapYear from leapMonthValue, but .NET Calendar stores both separately.
+                        See leapMonthValue for a use-case scenario.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element
+                name="LeapMonthValue"
+                type="MonthValueEnum"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        [International calendar support]
+                        <br/>&lt;leapMonthValue&gt; cannot be derived from a particular year and thus must be stored.  For
+                        example, a user creates a recurrence on a Hebrew Lunar calendar.  The year is a leap year and it
+                        has 13 months.  In that year, the leapMonthValue is 7.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+
+            <xsd:element name="Repeat" type="RepeatRuleType" />
+
+<!--
+            <xsd:element
+                name="WindowStart"
+                type="WindowStartType"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The windowStart is the beginning of the timeSpan over which the recurrence
+                        occurs.  This is typically set to equal the startTime of a recurring event
+                        upon its creation.  However, there are no provisions that this must be the
+                        case.  This is stored in UTC.  Maximum range is January 1, 1753 to
+                        December 31, 9999 to an accuracy of 3.33 milliseconds.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+-->
+
+            <xsd:element
+                name="WindowEnd"
+                type="xsd:dateTime"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This dateTime indicates the end of the window over which the recurrence
+                        occurs.  This is stored in UTC.  Maximum range is January 1, 1753 to
+                        December 31, 9999 to an accuracy of 3.33 milliseconds.
+                        <b>TODO:</b> windowEnd, repeatForever, repeatInstances should be xsd:choice when implemented by XDB.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="RepeatForever"
+                type="xsd:boolean"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Overrides the windowEnd date and specifies that this recurrence repeats
+                        forever.  Client implementations cannot depend on date values
+                        repeating forever, like 23:59:59pm Dec 31, 9999 or 23:59 Aug 31, 4500.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="RepeatInstances"
+                type="xsd:int"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Overrides the windowEnd date and specifies that this recurrence repeats
+                        for the specified number of instances.  repeatInstances and repeatForever
+                        are mutually exclusive, but repeatInstances will override repeatForever
+                        for errant schemas.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+
+
+<!--
+            <xsd:element
+                name="AddedExceptionDate"
+                type="xsd:dateTime"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Additional days added to the recurrence rule appear as a list of
+                        dateTime elements.
+                        This is stored in UTC.
+                        <br/><b>ICAL Equivalent</b>: RDATE.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+-->
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="RecurrenceRuleBodyType">
+        <xsd:complexContent>
+            <xsd:extension base="RecurrenceRuleBodyBaseType">
+                <xsd:sequence>
+                    <xsd:element
+                        name="DeletedExceptionDate"
+                        type="xsd:dateTime"
+                        minOccurs="0"
+                        maxOccurs="unbounded"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Exceptions to a recurrence rule are added as an element list of dates.
+                                The service logic ignores the hh:mm:ss of the dateTime and merely
+                                blocks out the particular day.  Any days can be added to an exception
+                                rule, including days where no occurrences of a recurrence rule would
+                                fall in the first place (ICAL EXDATE).
+                                This is stored in UTC.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+
+                <xsd:attributeGroup ref="iq:UnnamedBlueAttributeGroup" />
+
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="RepeatRuleType">
+        <xsd:sequence>
+            <xsd:element
+                name="Daily"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Repeat every [...] days.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:attribute name="DayFrequency" type="xsd:int" use="required">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                 The periodicity of days over which repetition occurs,
+                                for example, repeat every 3 days.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element
+                name="Weekly"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Repeat every [...] week(s) on {su,mo,tu,we,th,fr,sa}.
+                        <br/>The presence of a weekday attribute means to repeat
+                        on this particular day.  Any combination of the seven days is valid.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:complexContent>
+                        <xsd:extension base="WeekDayAttributesType">
+                            <xsd:attribute name="WeekFrequency" type="xsd:int">
+                                <xsd:annotation>
+                                    <xsd:documentation>
+                                        The repeatWeekly recurrence occurs every period of weeks.  If the
+                                        attribute is not present, it defaults to 1 (every week).
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:attribute>
+                        </xsd:extension>
+                    </xsd:complexContent>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element
+                name="MonthlyByDay"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <br/>Repeat on the [First, Second, Third, Fourth, Last] {su, mo, tu, we, th, fr, sa} of every [...] month(s).
+                        <br/>Any combination of the {weekday} attributes are valid, including user-defined combinations for
+                        weekdays and weekend days.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:complexContent>
+                        <xsd:extension base="WeekDayAttributesType">
+                            <xsd:attribute
+                                name="MonthFrequency"
+                                type="xsd:int"
+                                >
+                                <xsd:annotation>
+                                    <xsd:documentation>
+                                        Specifies the month periodicity to recur on.  If this
+                                        attribute is not present, it defaults to 1 (every month).
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:attribute>
+                            <xsd:attribute name="WeekdayOfMonth" type="WeekdayOfMonthEnum" use="required" />
+                        </xsd:extension>
+                    </xsd:complexContent>
+                </xsd:complexType>
+
+            </xsd:element>
+
+            <xsd:element
+                name="Monthly"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Repeats the occurrence every month on a particular day.  The very first occurrence is
+                        created from the parent event's startTime and endTime, but the recurrence
+                        occurs as follows:
+                        <li>Repeat every month on [day] of [month].</li>
+                        <li>Repeat every [monthFrequency] month(s) on [day] of [month].</li>
+                        Typically, the first occurrence is also an instance of the recurrence,
+                        but this need not be the case.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:attribute name="MonthFrequency" type="xsd:int">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This optional attribute indicates the month periodicity.  By default,
+                                it is 1, periodic every month.  The start of the periodicity is
+                                determined from event startTime.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+
+                    <xsd:attribute name="Day" type="DayValueEnum" use="required">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Specifies the day of the month to recur on.  Value is between 1-31.
+                                See forceExact for invalid day-month combinations.
+                                The proper recurrence pattern for repeating on the last day of the
+                                month is to use repeatMonthlyByDay.  "Repeat on the [last] [day, weekday, weekend day] of ..."
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                    <xsd:attribute name="ForceExact" type="xsd:boolean">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                By default, an invalid day-month combination will cause .NET Calendar to search backwards to
+                                find a valid day-month combination.  If forceExact is true, an invalid starting [month ,day]
+                                combination such as [6, 31] is ignored and will not be included as an instance of the
+                                recurrence.  With forceExact, .NET Calendar follows ICAL behavior.
+                                <li>day=31 will only pick up months that have 31 days.</li>
+                                <li>day=30 will pick up all months except February.</li>
+                                <li>day=29 will pick up all months except February, except on leap
+                                years. February 29 is included on leap years.</li>
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element
+                name="YearlyByDay"
+                type="YearlyByDayType"
+                minOccurs="0"
+                maxOccurs="1"
+            />
+
+            <xsd:element
+                name="Yearly"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Repeat every year on a particular date.  The very first occurrence is
+                        created from the parent event's startTime and endTime, but the recurrence
+                        occurs as follows:
+                        <li>Repeat yearly on [day] of [month].</li>
+                        <li>Repeat every [yearFrequency] years on [day] of [month].</li>
+                        Typically, the first occurrence is also an instance of the recurrence,
+                        but this need not be the case.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:attribute name="YearFrequency" type="xsd:int">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This optional attribute indicates the year periodicity.  By
+                                default, it is 1 (repeat every year).
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                    <xsd:attribute name="Month" type="MonthValueEnum" use="required">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Specifies the month to recur on.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                    <xsd:attribute name="Day" type="DayValueEnum" use="required">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Specifies the day of the month to recur on.  Value is between 1-31.
+                                See forceExact for invalid day-month combinations.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                    <xsd:attribute name="ForceExact" type="xsd:boolean">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                By default, an invalid day-month-year combination will cause .NET Calendar to search backwards to
+                                find a valid day for a particular month, year.  If forceExact is true, an invalid starting
+                                [month ,day] combination such as [6, 31] is ignored and will not be included as an instance of
+                                the recurrence.  With forceExact, .NET Calendar follows ICAL behavior.
+                                <li>day=31 will only pick up months that have 31 days.</li>
+                                <li>day=30 will pick up all months except February.</li>
+                                <li>day=29 will pick up all months except February, except on leap
+                                years. February 29 is included on leap years.</li>
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Any additional repeat rules.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:any>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ModifiedExceptionType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Contains a list of modified event properties for this particular
+                orphan event.  The properties that are not modified are inherited
+                from the original event upon recurrence expansion (client-side).
+                <b>recurrenceId</b> is always present. It is used to determine
+                which instance of the original rule this modifiedException applies
+                to.
+                <br/><br/><b>TODO</b>:  decide what other properties must belong.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element
+                name="RecurrenceId"
+                type="xsd:dateTime"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This is the original start time (recurrenceId) of the occurrence that is
+                        being modified by this exception.  ModifiedExceptions with recurrenceIds
+                        that do not match the recurrenceId of any occurrence are ignored.
+                        This is stored in UTC.  modifiedException does not expose the id
+                        attribute. recurrenceId should be used to predicate instead, it functions
+                        as the id of modifiedException.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Body"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This contains only the modifiable properties of the eventBody.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element
+                            name="Title"
+                            type="iq:LocalizableString"
+                            minOccurs="0"
+                            maxOccurs="1"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Suppose the title changes.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+
+                        <xsd:element
+                            name="FullDescription"
+                            type="iq:LongText"
+                            minOccurs="0"
+                            maxOccurs="1"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Suppose this particular instance has a revised description.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+
+                        <xsd:element
+                            name="Location"
+                            type="iq:LocalizableString"
+                            minOccurs="0"
+                            maxOccurs="1"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Switch meeting location for this instance only.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+
+                        <xsd:element
+                            name="StartTime"
+                            type="xsd:dateTime"
+                            minOccurs="0"
+                            maxOccurs="1"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Switch the start time for this instance only.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+
+                        <xsd:element
+                            name="EndTime"
+                            type="xsd:dateTime"
+                            minOccurs="0"
+                            maxOccurs="1"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Switch the end time for this instance only.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+
+                        <xsd:element
+                            name="AllDay"
+                            type="xsd:boolean"
+                            minOccurs="0"
+                            maxOccurs="1"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    This particular instance is allDay.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+
+                        <xsd:element
+                            name="TravelTimeTo"
+                            type="xsd:int"
+                            minOccurs="0"
+                            maxOccurs="1"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Suppose traffic is really bad for this instance.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+
+                        <xsd:element
+                            name="TravelTimeFrom"
+                            type="xsd:int"
+                            minOccurs="0"
+                            maxOccurs="1"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Suppose traffic is really bad for this instance.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+
+                        <xsd:element
+                            name="FreeBusyStatus"
+                            type="FreeBusyStatusType"
+                            minOccurs="0"
+                            maxOccurs="1"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Priority is changed for this meeting.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+
+                        <xsd:element
+                            name="Organizer"
+                            type="iq:UserReference"
+                            minOccurs="0"
+                            maxOccurs="1"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Suppose the original organizer is replaced by another organizer.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element
+                name="AttendeeEventExtra"
+                type="AttendeeEventExtraType"
+                minOccurs="0"
+                maxOccurs="1"
+            />
+
+            <xsd:element
+                name="DeletedAttendee"
+                type="iq:IdRefType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The meeting organizer of a recurring meeting may wish to exclude a particular
+                        attendee for an instance of the meeting.  This iq:IdRefType (puid) indicates which
+                        attendee, (from the list of attendees at the event level) are not invited to
+                        this particular meeting instance.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="DeletedAttachment"
+                type="AttachmentIdType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The meeting organizer of a recurring meeting may wish to exclude a particular
+                        attachment for an instance of the meeting.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+<!--
+            <xsd:element
+                name="DeletedReminder"
+                type="iq:IdRefType"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This appointment creator may not wish to be reminded about this particular recurring
+                        instance.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+-->
+            <xsd:element
+                name="Attachment"
+                type="AttachmentMetadataType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+            <xsd:element
+                name="Attendee"
+                type="AttendeeType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+            <xsd:element
+                name="Reminder"
+                type="ReminderExceptionType"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        These are the properties of the reminder that may be modified.  If there is no
+                        reminder subschema in the event body, exception reminders are ignored.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Additional properties of the iqCalendar/BaseEventType schema.  Only certain
+                        event properties may exist here.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:any>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="iq:StandardBlueAttributeGroup">
+            <xsd:annotation>
+                <xsd:documentation>
+                    This id is assigned by .NET Calendar.  On a modify operation, sending
+                    in an id attempts to modify the modifiedException, and a blank id
+                    means that this modify operation adds a new modifiedException.  On
+                    an insert operation, the id must be blank (it will be ignored if
+                    encountered due to the expense of this kind of validation).
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+    </xsd:complexType>
+
+    <xsd:complexType name="TransitionRuleType">
+        <xsd:annotation>
+            <xsd:documentation>
+                The TransitionRule specifies the recurrence pattern for daylight savings
+                time transitions.
+                <li>Repeat on the [First, Second, Third, Fourth, Last]
+                [day, weekday, weekend day, su ,mo, tu, we, th, fr, sa]
+                of [Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec] [after [afterDay]].</li>
+                <li>Repeat on the [dayOfMonth] of [Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]</li>
+                <br/>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="WeekdayOfMonth" type="WeekdayOfMonthEnum">
+            <xsd:annotation>
+                <xsd:documentation>
+                    Used to specify a particular weekday of the month to transition on.  If this attribute
+                    is present, then @day must also be present.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Day" type="AllDaysEnum">
+            <xsd:annotation>
+                <xsd:documentation>
+                    Used to specify a day of the week for the transition to occur on.  If this
+                    attribute is present, then @dayOfMonth must also be present.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="DayOfMonth" type="xsd:int">
+            <xsd:annotation>
+                <xsd:documentation>
+                    Used to specify a transition on a particular day of a month.  Eg, Iraq (Baghdad)
+                    transitions on 5/1 and 9/30.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Month" type="MonthValueEnum" use="required" />
+        <xsd:attribute
+            name="AfterDay"
+            type="DayValueEnum"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                    <b>afterDay</b> is needed to support certain time-zone recurrence rules for
+                    countries that use the format of the first Friday after the 15th (i.e. New
+                    Zealand, which ends the first Sunday on or after 5 March).
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="YearlyByDayType">
+        <xsd:annotation>
+            <xsd:documentation>
+                <li>Repeat on the [First, Second, Third, Fourth, Last] {su, mo, tu, we, th, fr, sa}
+                of [Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec] every [yearFrequency] years.</li>
+                <br/>
+                Any combination of the {weekday} attributes are valid, including user-defined combinations
+                denoting weekdays and weekend days.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="WeekDayAttributesType">
+                <xsd:attribute name="YearFrequency" type="xsd:int">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            This optional attribute indicates the year periodicity.  By
+                            default, it is 1 (repeat every year).
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="WeekdayOfMonth" type="WeekdayOfMonthEnum" use="required" />
+                <xsd:attribute name="Month" type="MonthValueEnum" use="required" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="ReminderExceptionType">
+        <xsd:sequence>
+            <xsd:element name="Set" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="Offset" type="xsd:int" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="Interruptability" type="xsd:int" minOccurs="0" maxOccurs="1" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ReminderType">
+        <xsd:sequence>
+            <xsd:element name="Set" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Boolean flag that indicates whether the reminder is active for this
+                        event.  In most cases, this will be true, but in the case of a recurring
+                        appointment, this flag may default to true with specific instances not to
+                        be reminded, or default to false, with specific instances to be reminded.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="To" type="iq:LocalizableString">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Friendly name that this reminder is being sent to.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Offset" type="xsd:int">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Specifies the offset, in minutes, of how long before the
+                        event the user should be reminded.  Recommended values
+                        are the following:
+                        <table cellpadding="1" cellspacing="1" border="1">
+                            <tr>
+                                <td align="center"><b>Value</b></td>
+                                <td align="center"><b>Description</b></td>
+                            </tr>
+                            <tr>
+                                <td>5, 10, 20, 30, 45</td>
+                                <td>5, 10, 20, 30, 45 minutes before the event</td>
+                            </tr>
+                            <tr>
+                                <td>60, 120, 180,</td>
+                                <td>1, 2, 3 hours before the event</td>
+                            </tr>
+                            <tr>
+                                <td>startTime - startDay</td>
+                                <td>The day of the event (reminder sent at 12:00am)</td>
+                            </tr>
+                            <tr>
+                                <td>startTime - (startDay - (1440 * x))</td>
+                                <td>"x" days before the event (reminder sent at 12:00am "x" days before)</td>
+                            </tr>
+                        </table>
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Interruptability"
+                type="xsd:int"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This optional element defines how interruptible this event is and it is
+                        used by notification routing software to make decisions about the relay
+                        and deferral of notifications that might occur while this meeting is
+                        active. The value contained in this element is a numeric value between
+                        1 - 10. Low values represent a high cost of disruption, high values
+                        represent a low cost of disruption.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="LastSentTime" type="xsd:dateTime">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Required by reminder engine.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="NextTriggerTime" type="xsd:dateTime">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Determines the next time to trigger reminder.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+<!-- WHFIX:  myNotifications should handle this.
+            <xsd:element name="Device" type="DeviceEnum">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Allow for client, mobile, email, and messenger notifications
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="DeviceId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Specifies the device to send to.  This may be an email address, a messenger Id,
+                        or a mobile alert number/id. <b>TBD</b>
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="ReminderMessage"
+                type="iq:LocalizableString"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Optional message to be sent on a notification.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+-->
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ReminderBlueType">
+        <xsd:complexContent>
+            <xsd:extension base="ReminderType">
+                <xsd:sequence>
+                </xsd:sequence>
+
+                <xsd:attributeGroup ref="iq:StandardBlueAttributeGroup" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="AttendeeEventExtraType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Additional information about an event, found only in an
+                event invitee's schema
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+            <xsd:element
+                name="IntendedFreeBusy"
+                type="FreeBusyStatusType"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The intendedFreeBusy element is the event organizer's freeBusy information
+                        and is thus equal to event/freeBusyStatus.  Invitees may overwrite event/freeBusyStatus
+                        with a new value, and intendedFreeBusy is intended to store the organizer's original
+                        freeBusyStatus.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:group ref="AttendeeResponseGroup" />
+
+            <xsd:element
+                name="DelegateResponder"
+                type="iq:UserReference"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        A delegate who responds on behalf of an invitee will have their information
+                        stored here.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Additional attendee extra properties.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:any>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="AttendeeType">
+        <xsd:annotation>
+            <xsd:documentation>
+                The attendeeType contains the full information about an attendee.
+                The display, email, puid, and the attendee's response.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <!-- WHFIX:  This is the only way to do an extension based on 2
+             different groups...make 1st an extension, include 2nd as a group.
+        -->
+        <xsd:complexContent>
+            <xsd:extension base="AttendeeInfoType">
+                <xsd:sequence>
+                    <xsd:group ref="AttendeeResponseGroup" />
+
+                    <xsd:any
+                        processContents="skip"
+                        namespace="##other"
+                        minOccurs="0"
+                        maxOccurs="unbounded"
+                        >
+                    </xsd:any>
+
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+<!--
+        <xsd:sequence>
+            <xsd:group ref="AttendeeInfoGroup" />
+            <xsd:group ref="AttendeeResponseGroup" />
+        </xsd:sequence>
+-->
+    </xsd:complexType>
+
+    <xsd:complexType name="AttendeeInfoType">
+        <xsd:complexContent>
+            <xsd:extension base="iq:UserReference">
+                <xsd:sequence>
+                    <xsd:element
+                        name="InviteType"
+                        type="InviteTypeEnum"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                The meeting organizer uses this to define the kind of invitee {required, optional, resource}.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+<!--
+    <xsd:group name="AttendeeInfoGroup">
+        <xsd:sequence>
+            <xsd:element
+                name="DisplayName"
+                type="iq:LocalizableString"
+                >
+            </xsd:element>
+            <xsd:element
+                name="Puid"
+                type="iq:PuidType"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        TODO: need to figure out if there is a better way to use this information.
+                        That is, perhaps a link to the contact information is better. However, if the
+                        attendee isn't a .NET My Services user or isn't in .NET Contacts, then we need the other fields.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="Email" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        E-mail address of user.  The user may be a non-.NET My Services user.  Precedence is given
+                        to the puid fragment before the email fragment.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:group>
+-->
+
+    <xsd:complexType name="AttendeeResponseType">
+        <xsd:group ref="AttendeeResponseGroup" />
+    </xsd:complexType>
+
+    <xsd:group name="AttendeeResponseGroup">
+        <xsd:sequence>
+            <xsd:element
+                name="ResponseTime"
+                type="xsd:dateTime"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The reply time on each attendee is set to the current time (Now) when the organizer
+                        sends a meeting invitation.  When the attendee responds, they always update their
+                        responseTime. When the organizer receives responses, they will honor only those that
+                        have a higher responseTime than what s/he maintains in his/her own copy of the event for
+                        each attendee. While processing the response, the organizer will update their
+                        responseTime. This guarantees that the organizer honors only the most recent response
+                        from the attendee.  This is stored in UTC.
+                        <br/><b>ICAL Equivalent</b>: reply time on message.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="ResponseType"
+                type="AttendeeAcceptEnum"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The accept status indicates the valid types of responses that an attendee
+                        can reply with {accept, decline, tentative, counterpropose}.  The absense
+                        of this field indicates that no response has been recorded (either the
+                        invitation has not been sent, or that a reply has not been received).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="CounterProposeStartTime"
+                type="xsd:dateTime"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        If responseType=[counterPropose], then either the {startTime, endTime}, or
+                        location, or both can be present.  This is the invitee's counterProposal
+                        for a new start time for the meeting.  This is stored in UTC.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="CounterProposeEndTime"
+                type="xsd:dateTime"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        If responseType=[counterPropose], then either the {startTime, endTime}, or
+                        location, or both can be present.  This is the invitee's counterProposal
+                        for a new end time for the meeting.  This is stored in UTC.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="CounterProposeLocation"
+                type="xsd:string"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        If responseType=[counterPropose], then either the {startTime, endTime}, or
+                        location, or both can be present.  This is the invitee's counterProposal
+                        for a location for the meeting.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="ResponseBody"
+                type="iq:LongText"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Optional message for invitees to include along with the response.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:simpleType name="InviteTypeEnum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Required" />
+            <xsd:enumeration value="Optional" />
+            <xsd:enumeration value="Resource" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="AttendeeAcceptEnum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Accept" />
+            <xsd:enumeration value="Decline" />
+            <xsd:enumeration value="Tentative" />
+            <xsd:enumeration value="CounterPropose" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="MeetingStatusEnum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Not-sent" />
+            <xsd:enumeration value="Sent" />
+            <xsd:enumeration value="Cancelled" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="FreeOrBusyEventType">
+        <xsd:sequence>
+            <xsd:element name="StartTime" type="xsd:dateTime" />
+            <xsd:element name="EndTime" type="xsd:dateTime" />
+            <xsd:element name="Type" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The type belongs to the following enumeration {free, tentative, busy, away}.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="DeviceEnum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Client" />
+            <xsd:enumeration value="Email" />
+            <xsd:enumeration value="Messenger" />
+            <xsd:enumeration value="Mobile" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="DomainStandardMethodParametersType">
+        <xsd:sequence>
+            <xsd:element
+                name="CalendarType"
+                type="CalendarLocaleEnum"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Optional calendar type to return.  Defaults to Gregorian.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="StartTime" type="xsd:dateTime">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The starting time window of calendar objects to retrieve.
+                        This dateTime also contains the timeZone to retrieve the
+                        calendar information in.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="EndTime" type="xsd:dateTime">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The ending time window to retrieve calendar objects.
+                        This dateTime also contains the timeZone to retrieve the
+                        calendar information in. It must be the same timeZone as
+                        startTime.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+<!--
+            <xsd:element
+                name="Tzid"
+                type="TzidEnum"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Determines the time zone of the window for which to pull
+                        events.  If neither tzid or biasOffset are present,
+                        getCalendarDays defaults to UTC (+0:00).  Note that
+                        defaulting to UTC or specifying UTC will also pull
+                        floating events because we store all dateTimes in UTC.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="BiasOffset"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Determines the biasOffset of the window for which to pull
+                        events.  It takes the form [GMT/UTC]{+/-}xx[:yy].  In other
+                        words, it is a GMT/UTC bias for (thin) clients who would
+                        prefer to specify the bias instead of an enum.  If neither
+                        tzid or biasOffset are present, getCalendarDays defaults
+                        to UTC (+0:00).  tzid takes precedence over biasOffset.  It
+                        is restricted to a maximum of 9 characters.
+                        <b>TODO:  convert to RegEx.</b>
+                    </xsd:documentation>
+                </xsd:annotation>
+
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="9" />
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <xsd:element
+                name="Puid"
+                type="iq:PuidType"
+                minOccurs="1"
+                maxOccurs="64"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The puid of the user for whom to retrieve calendar information.
+                        <br/>TODO:  need email/nickname/puid reverse-lookup mechanism.
+                        This is required for meeting invitations as well.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+-->
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //  Domain specific methods
+    //  getCalendarDays Request
+    -->
+    <xsd:element name="GetCalendarDaysRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                This function returns an XML stream of calendar appointments /
+                events between two dates. Recurrence rules are expanded to create
+                individual calendar items.  Holidays are represented as all-day
+                events, and these are returned as well.  getCalendarDays is a
+                query-retrieval of data, but the behavior expands recurrence rules
+                into individual (aliased) events, adds in holidays, and adds regular
+                events and sorts the entire list based on start time. No merging of
+                event blocks occurs.  Any object which overlaps the method parameters
+                {startTime, endTime} will be returned. For example, if an event crosses
+                midnight and the startTime is 12am, that event will be returned. In
+                case the startDate, endDate is one day, the events are
+                sorted in the following order: holidays, all-day events, and regular
+                events (based on startTime).
+
+                <br/>The {startTime, endTime] time window can define any
+                interval:  24hr period, week, month, or any other user-defined
+                period.
+                <br/><b>getCalendarDays</b> returns the calendaring info of
+                any puid that is specified for which the caller has sufficient
+                privileges.  The user's own puid must be specified to retrieve their own
+                information.
+                <br/><b>getCalendarDays</b> may be used to retrieve multiple calendar data from
+                other users using
+                <li>&lt;h:key instance="0" cluster="0" puid="xyz"/&gt;</li>
+
+                in the SOAP headers provided that puid "xyz" is provisioned on the .NET Calendar
+                server, and provided that the user has been granted access in puid "xyz"'s rolelist.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="DomainStandardMethodParametersType">
+                    <xsd:sequence>
+                        <xsd:element name="RemoveRecurrence" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Normally, the recurrence sub-schema, (minus modifiedException and minus
+                                    deletedExceptionDate components) is returned with each instance of a
+                                    recurring event, like "recurring-instance" and "recurring-exception".  This
+                                    allows clients to properly render the recurrence pattern without having
+                                    to explicitly query the recurring-master.  However, because it is heavy
+                                    on bandwith, .NET Calendar includes the option to not return this data.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="GetCalendarDaysResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                Response XML blob format, consists of the base event type minus recurrence.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element
+                    name="Event"
+                    minOccurs="0"
+                    maxOccurs="unbounded"
+                    >
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element
+                                name="Body"
+                                type="BodyType"
+                            />
+
+                            <xsd:element
+                                name="Attachment"
+                                type="AttachmentMetadataType"
+                                minOccurs="0"
+                                maxOccurs="unbounded"
+                            />
+
+                            <xsd:element
+                                name="Reminder"
+                                type="ReminderType"
+                                minOccurs="0"
+                                maxOccurs="1"
+                            />
+
+                            <xsd:element
+                                name="Attendee"
+                                type="AttendeeType"
+                                minOccurs="0"
+                                maxOccurs="unbounded"
+                            />
+
+                            <xsd:element
+                                name="Recurrence"
+                                type="RecurrenceBaseType"
+                                minOccurs="0"
+                                maxOccurs="1"
+                                >
+                                <xsd:annotation>
+                                    <xsd:documentation>
+                                        Depending on if &lt;removeRecurrence&gt; parameter is passed into getCalendarDays
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute
+                            name="InstanceType"
+                            type="InstanceTypeEnum"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Distinguishes between a single instance of an event or an instance of a recurring event.
+                                    The recurring instance is a modified exception if eventBody/recurrenceId is present:
+                                    single, recurring-master, recurring-instance, recurring-exception.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                        <xsd:attributeGroup ref="iq:StandardBlueAttributeGroup" />
+                        <xsd:attribute name="CalendarType" type="CalendarLocaleEnum" />
+                        <xsd:attribute name="AdvanceHijriValue" type="HijriValueEnum" />
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+
+            <xsd:attributeGroup ref="iq:StandardResponseAttributeGroup" />
+
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--
+    //  Domain specific methods
+    //  getCalendarView Request
+    -->
+<!--
+    <xsd:element name="GetCalendarViewRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                This function allows a user to retrieve unexpanded calendar
+                information in a method similar to unmerged freebusy info.
+                Each block contains the [startTime, endTime], plus a puid
+                alias back to the original event.  Specific properties of
+                that event may be surfaced in a future schema revision.
+                <br/><br/>getCalendarView presents an alternate method to
+                retrieve lightweight data, where a user is interested in
+                where events lie in their calendar, but they wish to defer
+                loading of that event for performance, bandwidth, or
+                additional processing reasons.  This method is an
+                additional view of the calendar information.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="StartTime" type="xsd:dateTime" use="required">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            The starting time window of calendar objects to retrieve.
+                            This dateTime also contains the timeZone to retrieve the
+                            calendar information in.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="EndTime" type="xsd:dateTime" use="required">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            The ending time window of calendar objects to retrieve.
+                            This dateTime also contains the timeZone to retrieve the
+                            calendar information in. It must be the same timeZone as
+                            startTime.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element
+                    name="Puid"
+                    type="iq:PuidType"
+                    minOccurs="1"
+                    maxOccurs="64">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            The puid of the user for whom to retrieve calendar information.
+                            <br/>TODO:  need email/nickname/puid reverse-lookup mechanism.
+                            This is required for meeting invitations as well.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="GetCalendarViewResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                Response XML blob format.
+                <b>CONSIDER</b>: surfacing additional user-specified properties.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element
+                    name="User"
+                    minOccurs="1"
+                    maxOccurs="64"
+                    >
+                    <xsd:complexType>
+                        <xsd:attribute
+                            name="Puid"
+                            type="iq:PuidType"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Puid of this particular user's calendar information.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                        <xsd:sequence>
+                            <xsd:element name="StartTime" type="xsd:dateTime">
+                                <xsd:annotation>
+                                    <xsd:documentation>
+                                        The time when this event starts, might be an instance of a recurrence.
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element name="EndTime" type="xsd:dateTime">
+                                <xsd:annotation>
+                                    <xsd:documentation>
+                                        The time when this event ends, might be an instance of a recurrence.
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+
+                            <xsd:element
+                                name="Event"
+                                minOccurs="0"
+                                maxOccurs="unbounded"
+                                >
+                                <xsd:complexType>
+                                    <xsd:attributeGroup ref="iq:StandardBlueAttributeGroup" />
+                                    <xsd:sequence>
+                                        <xsd:element name="Name" type="iq:LocalizableString" />
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element
+                                name="Error"
+                                type="xsd:string"
+                                >
+                                <xsd:annotation>
+                                    <xsd:documentation>
+                                        TODO:  per-user error information.
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+
+            <xsd:attributeGroup ref="iq:StandardResponseAttributeGroup" />
+
+        </xsd:complexType>
+    </xsd:element>
+-->
+
+    <!--
+    //  Domain specific methods
+    //  getFreeBusyDays Request
+    -->
+    <xsd:element name="GetFreeBusyDaysRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                This function returns a stream of xml fragments defining the user's
+                freeBusy information between two dates.  Single events and recurring
+                events within the time window are translated into blocks of free/busy
+                time.
+                <br/><b>getFreeBusyDays</b> only returns the blocks and their
+                associated type.  There is no explicit method to return unmerged
+                freeBusy info, that kind of behavior is fully contained within
+                getCalendarDays.
+                <br/>This method follows the precedence order:
+                <ul>
+                    <li>Away(OOF), Busy, Tentative, Free</li>
+                    <li>Overlapping blocks of the same freeOrBusyStatus kind
+                        are coalesced to form larger blocks.</li>
+                    <li>Overlapping blocks of different freeOrBusyStatus are
+                        overlaid.  The events with higher precedence overlay
+                        on top (<b>not</b> by starting time).</li>
+                </ul>
+                <br/>For example:
+                <li>Busy from 8 to 9</li>
+                <li>Tentative from 8:30 to 10</li>
+                <li>OOF from 9:30 to 11</li>
+                <li>Free from 10:30 to 12</li>
+
+                <br/>Merged as:
+                <li>Busy from 8 to 9</li>
+                <li>Tentative from 9 to 9:30</li>
+                <li>OOF from 9:30 to 11</li>
+                <li>Free from 11 to 12</li>
+
+                <br/>Multiple users' freeBusy information are retrieved
+                by specifying a puid for each user in question.  The caller of
+                this function must also specify their own puid, no implicit
+                assumptions are made.
+                <br/>The calling method takes a startDate and an endDate to
+                define the duration over which freebusy information is returned.
+                A third parameter determines if free blocks are explicitly
+                returned.  Free blocks are intervals where no calendar object
+                exists.
+
+                <br/><b>getFreeBusyDays</b> may be used to retrieve multiple calendar data from
+                other users using
+                <li>&lt;h:key instance="0" cluster="0" puid="xyz"/&gt;</li>
+
+                in the SOAP headers provided that puid "xyz" is provisioned on the .NET Calendar
+                server, and provided that the user has been granted access in puid "xyz"'s rolelist.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="DomainStandardMethodParametersType">
+                    <xsd:sequence>
+                        <xsd:element name="GetFreeBlocks" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    This boolean causes .NET Calendar to explicitly return
+                                    free time as freeBusy blocks.  By default, free blocks are not returned.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="ReturnIndividualBlocks" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    This boolean causes .NET Calendar not to coalesce/merge freeBusy information.
+                                    By default, freeBusy information is merged.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="GetFreeBusyDaysResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                Response XML blob format, consists of freebusy xml fragments.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element
+                    name="FreeOrBusyEvent"
+                    type="FreeOrBusyEventType"
+                    minOccurs="0"
+                    maxOccurs="unbounded"
+                />
+            </xsd:sequence>
+
+            <xsd:attributeGroup ref="iq:StandardResponseAttributeGroup" />
+
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--
+    //  Domain specific methods
+    //  sendMeeting Request
+    -->
+    <xsd:element name="SendMeetingRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The purpose of this method is for a meeting organizer to invite and uninvite
+                (cancel) attendees to this event.  sendMeeting also sends updated invitations
+                to existing invitees.  Inviting a user to a single instance of a recurring
+                event will cause only that instance to be sent.  However, future updates to
+                that event will overwrite the existing instance, including the case where an
+                update is the full recurring event.
+                <br/>Meeting requests will be sent out as iCal attachments from an SMTP server
+                unknown at this point in the design.
+                <br/>When inviting or uninviting, .NET Calendar searches for these existing
+                attendees by puid first, and then by email address such that the puid receives
+                precedence in the search predication.  .NET Calendar will not allow multiple
+                meeting requests/cancellations to the same puid or email address within the
+                scope of the same invite or uninvite block.  However, an organizer may uninvite
+                an attendee and then reinvite again (non-standard behavior).
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Uninvite">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element
+                                name="Attendee"
+                                type="UninviteAttendeeType"
+                                minOccurs="0"
+                                maxOccurs="unbounded"
+                                >
+                                <xsd:annotation>
+                                    <xsd:documentation>
+                                        Contains a list of people to uninvite.  Uninvited attendees must already exist
+                                        in the organizer's attendee table, or else these users are ignored.
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="Behavior" type="SendMeetingBehaviorEnum" use="optional">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    This attribute will give the option to either choose to send
+                                    cancellations to "all" attendees in the event's attendee table,
+                                    or send to "none" of them.  A third value of "default" would
+                                    give the default behavior of sending cancellations to all
+                                    attendees who are replaced in the &lt;replaceRequest&gt; block.
+                                    When this attribute is set, .NET Calendar will ignore anything
+                                    within the &lt;uninvite&gt; node.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                    </xsd:complexType>
+                </xsd:element>
+
+                <xsd:element
+                    name="ReplaceRequest"
+                    type="iq:ReplaceRequestType"
+                    minOccurs="0"
+                    maxOccurs="1"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            This replace request can only affect the meeting invitation in question, and is
+                            thus constrained to be only @select="/m:iqCalendar/m:event[@id=@eventId]/...".
+                            It will not be allowed to replace-on-null so that event creation cannot be a
+                            side-effect.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="Invite">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element
+                                name="Attendee"
+                                type="iq:UserReference"
+                                minOccurs="0"
+                                maxOccurs="unbounded"
+                                >
+                                <xsd:annotation>
+                                    <xsd:documentation>
+                                        Contains information about this attendee to be invited.  An invited
+                                        attendee must already exist in the organizer's attendee table.  This
+                                        attendee may originally be there prior to the sendMeetingRequest
+                                        method, or be the result of the update operation to this meeting.
+                                        <br/>To change the attendee's inviteType, the update operation should
+                                        be used.
+                                        <br/>When invitations are sent, the attendee's &lt;responseTime&gt;
+                                        is set to the current time (now) as a side-effect.
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="Behavior" type="SendMeetingBehaviorEnum" use="optional">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    This attribute will give the option to either choose to send
+                                    invitations to "all" attendees in the event's attendee table,
+                                    or send to "none" of them.  A third value of "default" would
+                                    give the default behavior of sending invitations to only the
+                                    new attendees in the &lt;replaceRequest&gt; block.  When this
+                                    attribute is set, .NET Calendar will ignore anything within
+                                    the &lt;invite&gt; node.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                    </xsd:complexType>
+                </xsd:element>
+
+            </xsd:sequence>
+                    
+            <xsd:attribute name="EventId" type="iq:IdRefType" use="required">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This is the puid of the event which to send meeting invitations
+                        or cancellations to.  This event must already exist within the
+                        .NET Calendar service.  Additional server constraints are
+                        implemented which verify that potential updates to the attendee
+                        tables occur for this event only.  This is a required field.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+
+            <xsd:attribute name="CriticalChange" type="xsd:boolean" use="optional">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        When this attribute is set to "true", &lt;lastUpdateTime&gt; is
+                        updated when invitations are sent to the attendees.  If "false",
+                        &lt;lastUpdateTime&gt; remains untouched.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+
+            <xsd:attribute name="RecurrenceId" type="xsd:dateTime" use="optional">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The optional recurrenceId allows the meeting organizer to send
+                        invitations for only a particular instance of a recurring event.
+                        If the event is not a recurring event, or if recurrenceId does
+                        not correspond to a valid instance/exception, sendMeetingRequest
+                        will fail with an error.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+
+            <xsd:attribute name="ContinueOnFailure" type="xsd:boolean" use="required">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Specifies to .NET Calendar to continue performing the
+                        sendMeetingRequest even on a failure.  Points of failure:
+
+                        <li>&lt;uninvite&gt; may delete attendees, and the HSDL delete may encounter errors</li>
+                        <li>&lt;updateRequest&gt; may encounter HSDL errors.</li>
+                        <li>The optional final delete of the event may encounter errors.</li>
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+
+            <xsd:attribute name="DeleteOnCompletion" type="xsd:boolean" use="optional">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This event will be deleted upon completion of this sendMeetingRequest.
+                        This behavior is intended for deleting a meeting and sending cancellations.
+                        If recurrenceId is present (and valid), <b>only this particular recurring
+                        instance or exception is deleted</b>, in which case a new
+                        &lt;deletedExceptionDate&gt; is added to the recurrence rule.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--
+    //  Domain specific methods
+    //  respond Request
+    -->
+    <xsd:element name="RespondRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The purpose of this method is for a meeting invitee to respond to an
+                invitation.  Invitees may accept, decline, accept tentatively, or
+                counterpropose in some means.  Currently, we allow the counterproposing
+                of time and location, but we may consider future additions.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="AttendeeResponseType">
+                    <xsd:sequence>
+                        <xsd:element name="EventId" type="iq:IdRefType">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    The eventId for the meeting.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="Puid" type="iq:PuidType">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    The invitee.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--
+    //  Domain specific methods
+    //  setReminder Request
+    -->
+    <xsd:element name="UpdateReminderRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                This function is used to update the status of a reminder once the
+                user has received the notification.  We may expose this as an
+                HTTP API so that non-.NET My Services clients have a means to dismiss,
+                snooze, or be reminded again at a different time.  (WIP)
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element
+                    name="Reminder"
+                    type="ReminderType"
+                />
+                <xsd:element
+                    name="Id"
+                    type="iq:IdRefType"
+                />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="SetReminderResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                Response XML blob format, contains the myAlerts iq:IdType
+                for the resultant create/modify operation.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element
+                    name="NotificationId"
+                    type="iq:IdRefType"
+                    minOccurs="0"
+                    maxOccurs="1"
+                />
+            </xsd:sequence>
+
+            <xsd:attributeGroup ref="iq:StandardResponseAttributeGroup" />
+
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--
+    //  Domain specific methods
+    //  deleteReminder Request
+    -->
+    <xsd:element name="DeleteReminderRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                This function delegates a call to .NET Alerts to delete
+                an existing meeting reminder.  .NET Calendar acts as a client
+                to the Notification Service.  In the underlying implementation,
+                setReminderRequest simply issues a .NET My Services delete message.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element
+                    name="NotificationId"
+                    type="iq:IdRefType"
+                    minOccurs="0"
+                    maxOccurs="1"
+                />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--
+    //  Domain specific methods
+    //  getQuickView Request
+    -->
+    <xsd:element name="GetQuickViewRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                This function provides an efficient, lightweight means to query a
+                date range to indicate days that have 1 or more appointments (1)
+                and days without appointments (0).  Outlook and OWA use this for
+                their datepicker functionality.
+                <br/><br/>The date range takes timeZone-specific start and end
+                times, using just the year, month, and day.  The time zone can be a
+                simple bias, since this is merely a request for data.  startTime
+                and endTime are required to have the same time-zone bias.  In effect,
+                the method "overlays" the incoming time zone onto the user's
+                calendar to define the dayblocks for which the QuickView returns
+                data.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="DomainStandardMethodParametersType">
+                    <xsd:sequence>
+                        <xsd:element
+                            name="Tzid"
+                            type="TzidEnum"
+                            minOccurs="0"
+                            maxOccurs="1"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Optionally specifies a timezone to retrieve the quickView in.  If this or biasOffset are
+                                    both missing, TZ_UTC is assumed.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element
+                            name="BiasOffset"
+                            type="xsd:int"
+                            minOccurs="0"
+                            maxOccurs="1"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Optionally specifies a numeric <b>integer</b> offset timezone bias to retrieve the quickView in.
+                                    tzid takes precedence over biasOffset (pending xsd:choice).
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="GetQuickViewResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The return value of getQuickView is a list of calendar days
+                grouped into months.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element
+                    name="Month"
+                    minOccurs="1"
+                    maxOccurs="unbounded"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            Specifies the month block for the grouping of calendar days.
+                        </xsd:documentation>
+                    </xsd:annotation>
+
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element
+                                name="Day"
+                                minOccurs="1"
+                                maxOccurs="31"
+                                >
+                                <xsd:annotation>
+                                    <xsd:documentation>
+                                        Specifies whether this day is free (0) or has at least one event
+                                        on it or overlapping (1).
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                    <xsd:simpleContent>
+                                        <xsd:extension base="xsd:boolean">
+                                            <xsd:attribute name="D" type="DayValueEnum">
+                                                <xsd:annotation>
+                                                    <xsd:documentation>
+                                                        Specifies day in this month.
+                                                    </xsd:documentation>
+                                                </xsd:annotation>
+                                            </xsd:attribute>
+                                        </xsd:extension>
+                                    </xsd:simpleContent>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="M" type="MonthValueEnum" />
+                        <xsd:attribute name="Year" type="xsd:int" />
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+
+            <xsd:attributeGroup ref="iq:StandardResponseAttributeGroup" />
+
+        </xsd:complexType>
+    </xsd:element>
+<!-- ...............................................................................................................-->
+<!--
+    <xsd:complexType name="CalendarPrefType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Stores the user's global calendar preferences (iqCalendar/*) or a meeting
+                organizer's preferences (iqCalendar/event/recurrence/*).  The latter case
+                will override the user's global preferences and is used only for an
+                invitation event that recurs.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+-->
+
+    <xsd:complexType name="TimeZoneExtendedType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Contains the full (extended) structural definition of the timezone.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+            <xsd:element name="Tzid" type="TzidEnum" />
+
+        <!--
+                    <xsd:element
+                        name="Name"
+                        type="iq:LocalizableString"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                The current name of this time zone.  Time zones currently in
+                                the daylight period will switch names to daylightName.  This
+                                property is read only, except for id is <b>USER_DEFINED</b>.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+        -->
+            <xsd:element
+                name="StandardBias"
+                type="xsd:int"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Specifies the current bias, in minutes, for local time translation.
+                        The bias is the difference, in minutes, between Coordinated Universal
+                        Time (UTC) and local time.  All translations between UTC and local
+                        time are based on the following formula:
+                        <PRE>UTC = local time + bias </PRE>
+                        This property is read only, except for id is <b>USER_DEFINED</b>.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        <!--
+                    <xsd:element
+                        name="DaylightName"
+                        type="iq:LocalizableString"
+                        minOccurs="0"
+                        maxOccurs="1"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                [Optional] Specifies the name of the timeZone during daylight periods.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+        -->
+            <xsd:element
+                name="AdditionalDaylightBias"
+                type="xsd:int"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        [Optional] Specifies an additional bias value to be added to standardBias
+                        used during local time translations that occur during daylight
+                        saving time.  In most time zones, the value of this member is minus 60.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="StandardDate"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This fragment describes the standard date to daylight date transition
+                        using the RepeatYearlyByDay recurrence rule.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element
+                            name="TransitionRule"
+                            type="TransitionRuleType"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Specifies a date and local time when the transition from
+                                    standard time to daylight time occurs.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+
+                        <xsd:element
+                            name="TransitionTime"
+                            type="xsd:dateTime"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Specifies the local time (e.g. 2am) to transition from standard
+                                    to daylight.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element
+                name="DaylightDate"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This fragment describes the daylight date to standard date transition
+                        using the RepeatYearlyByDay recurrence rule.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element
+                            name="TransitionRule"
+                            type="TransitionRuleType"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Specifies a date and local time when the transition from daylight
+                                    saving time to standard time occurs.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+
+                        <xsd:element
+                            name="TransitionTime"
+                            type="xsd:dateTime"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Specifies the local time (e.g. 2am) to transition from daylight
+                                    to standard.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="FreeBusyStatusType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Free" />
+            <xsd:enumeration value="Busy" />
+            <xsd:enumeration value="Tentative" />
+            <xsd:enumeration value="Away" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="AttachmentMetadataType">
+        <xsd:annotation>
+            <xsd:documentation>
+                The scheme the message contents were encoded in.  Examples of this are '7bit', '8bit' and 'base64'.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+            <xsd:element name="Name" type="iq:LocalizableString">
+                <xsd:annotation>
+                    <xsd:documentation>
+                      This element contains information about an individual attachment in a mail message.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <!-- TODO: perhaps this should be an enumeration -->
+            <!-- TODO: factor this out to a simpleType -->
+            <xsd:element name="ContentType" type="iq:String">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element contains the content type of the attachment.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <!-- TODO: validate this with a regex -->
+            <xsd:element name="ContentTransferEncoding" type="iq:String">
+                <xsd:annotation>
+                    <xsd:documentation>
+                       This element contains the encoding of the attachment. This information is necessary
+                       for decoding the attachment.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <!-- TODO: perhaps this should be an enumeration -->
+            <!-- TODO: factor this out into a simpleType -->
+            <xsd:element name="Size" type="xsd:unsignedLong">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element contains the size of the attachment in bytes.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="AttachmentBody" type="xsd:base64Binary" >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element contains the MIME body of the attachment.
+                    </xsd:documentation>
+                    <xsd:appinfo>
+                        <xdb:system type="calculatedFieldLateBound" />
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="CdataContentType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Contains the attachment body.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string" />
+    </xsd:simpleType>
+
+    <xsd:simpleType name="AttachmentIdType">
+        <xsd:annotation>
+            <xsd:documentation>
+                The system define unique id of an attachment on a given message.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="128" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="InstanceTypeEnum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Single" />
+            <xsd:enumeration value="Recurring-master" />
+            <xsd:enumeration value="Recurring-instance" />
+            <xsd:enumeration value="Recurring-exception" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="DayOfWeekEnum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Su" />
+            <xsd:enumeration value="Mo" />
+            <xsd:enumeration value="Tu" />
+            <xsd:enumeration value="We" />
+            <xsd:enumeration value="Th" />
+            <xsd:enumeration value="Fr" />
+            <xsd:enumeration value="Sa" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="WeekdayOfMonthEnum">
+        <xsd:annotation>
+            <xsd:documentation>
+                Specifies which week in a month [first, second, third, fourth, last].
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="First" />
+            <xsd:enumeration value="Second" />
+            <xsd:enumeration value="Third" />
+            <xsd:enumeration value="Fourth" />
+            <xsd:enumeration value="Last" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="WeekDayAttributesType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element's attributes contain whether a given day is or is not considered
+                by the user as part of the work week.  If this element has no attributes, we
+                will assume that the user has a Monday to Friday work week.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="Su" type="xsd:boolean" />
+        <xsd:attribute name="Mo" type="xsd:boolean" />
+        <xsd:attribute name="Tu" type="xsd:boolean" />
+        <xsd:attribute name="We" type="xsd:boolean" />
+        <xsd:attribute name="Th" type="xsd:boolean" />
+        <xsd:attribute name="Fr" type="xsd:boolean" />
+        <xsd:attribute name="Sa" type="xsd:boolean" />
+    </xsd:complexType>
+
+    <xsd:simpleType name="AllDaysEnum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Day" />
+            <xsd:enumeration value="Weekday" />
+            <xsd:enumeration value="Weekend day" />
+            <xsd:enumeration value="Su" />
+            <xsd:enumeration value="Mo" />
+            <xsd:enumeration value="Tu" />
+            <xsd:enumeration value="We" />
+            <xsd:enumeration value="Th" />
+            <xsd:enumeration value="Fr" />
+            <xsd:enumeration value="Sa" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="DayValueEnum">
+        <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="1" />
+            <xsd:maxInclusive value="31" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="MonthValueEnum">
+        <xsd:annotation>
+            <xsd:documentation>
+                Restrict to 1-13.  Some calendars have 13 months.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="1" />
+            <xsd:maxInclusive value="13" />
+        </xsd:restriction>
+<!--
+    TODO:  consider xsd:union?
+
+    <xsd:element name='size'>
+    <xsd:simpleType>
+      <xsd:union>
+        <xsd:simpleType>
+          <xsd:restriction base='integer'/>
+        </xsd:simpleType>
+        <xsd:simpleType>
+          <xsd:restriction base='string'/>
+        </xsd:simpleType>
+      </xsd:union>
+    </xsd:simpleType>
+  </xsd:element>
+
+  <size>1</size>
+  <size>large</size>
+  <size xsi:type='xsd:string'>1</size>
+
+
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Jan"></xsd:enumeration>
+            <xsd:enumeration value="Feb"></xsd:enumeration>
+            <xsd:enumeration value="Mar"></xsd:enumeration>
+            <xsd:enumeration value="Apr"></xsd:enumeration>
+            <xsd:enumeration value="May"></xsd:enumeration>
+            <xsd:enumeration value="Jun"></xsd:enumeration>
+            <xsd:enumeration value="Jul"></xsd:enumeration>
+            <xsd:enumeration value="Aug"></xsd:enumeration>
+            <xsd:enumeration value="Sep"></xsd:enumeration>
+            <xsd:enumeration value="Oct"></xsd:enumeration>
+            <xsd:enumeration value="Nov"></xsd:enumeration>
+            <xsd:enumeration value="Dec"></xsd:enumeration>
+        </xsd:restriction>
+-->
+    </xsd:simpleType>
+
+    <xsd:simpleType name="TzidEnum">
+        <xsd:annotation>
+            <xsd:documentation>
+                This is a .NET My Services specific integer enumeration defining
+                the exact supported time zone.  If id is <b>USER_DEFINED = -1</b>,
+                then this time zone's schema defines the entire time zone
+                rule, including any applicable daylight bias. <b>.NET My Services
+                clients are expected to understand the base set of
+                enumerations.  .NET Calendar as a service will provide the
+                enumerations and the additional metadata necessary to
+                fully describe the time zone, including daylight calculations.
+                .NET Calendar will not provide localizable names for the
+                enumerations.</b>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="-1" />
+        </xsd:restriction>
+<!--
+        <xsd:union>
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:int">
+            </xsd:simpleType>
+            <xsd:simpleType>
+                <xsd:restriction base='string'>
+                    <xsd:enumeration value="USER_DEFINED" />
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:union>
+-->
+    </xsd:simpleType>
+
+    <xsd:simpleType name="HijriValueEnum">
+        <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="-3" />
+            <xsd:maxInclusive value="3" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="SensitivityEnum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Normal" />
+            <xsd:enumeration value="Personal" />
+            <xsd:enumeration value="Private" />
+            <xsd:enumeration value="Confidential" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="CalendarLocaleEnum">
+        <xsd:annotation>
+            <xsd:documentation>
+                This field identifies an enumeration which determines the kind
+                of calendar event this is.  <b>.NET My Services v1 will only support HSCAL_GREGORIAN_US.</b>
+                <br/><a href="http://msdn.microsoft.com/library/psdk/winbase/nls_9bg8.htm">http://msdn.microsoft.com/library/psdk/winbase/nls_9bg8.htm</a>
+                plus several others:
+                <br/><br/>
+                <table cellpadding="1" cellspacing="1" border="1">
+                    <tr>
+                        <td align="center"><b>Value</b></td>
+                        <td align="center"><b>Enumeration Constant</b></td>
+                        <td align="center"><b>Description</b></td>
+                    </tr>
+                    <tr>
+                        <td>-1</td>
+                        <td>HSCAL_ALL_CALENDARS</td>
+                        <td>Unknown Calendar; system default (HSCAL_GREGORIAN_US)</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>HSCAL_GREGORIAN</td>
+                        <td>Gregorian (localized) calendar</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>HSCAL_GREGORIAN_US</td>
+                        <td>Gregorian (U.S.) calendar</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>HSCAL_JAPAN</td>
+                        <td>Japanese Emperor Era calendar</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>HSCAL_TAIWAN</td>
+                        <td>Taiwan Era calendar</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>HSCAL_KOREA</td>
+                        <td>Korean Tangun Era calendar</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>HSCAL_HIJRI</td>
+                        <td>Hijri (Arabic Lunar) calendar</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>HSCAL_THAI</td>
+                        <td>Thai calendar</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>HSCAL_HEBREW</td>
+                        <td>Hebrew (Lunar) calendar</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>HSCAL_GREGORIAN_ME_FRENCH</td>
+                        <td>Gregorian Middle East French calendar</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>HSCAL_GREGORIAN_ARABIC</td>
+                        <td>Gregorian Arabic calendar</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>HSCAL_GREGORIAN_XLIT_ENGLISH</td>
+                        <td>Gregorian Transliterated English calendar</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>HSCAL_GREGORIAN_XLIT_FRENCH</td>
+                        <td>Gregorian Transliterated French calendar</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>HSCAL_KOREA_LUNAR</td>
+                        <td>Default Korea Lunar calendar</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>HSCAL_JAPAN_LUNAR</td>
+                        <td>Default Japanese Lunar calendar</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>HSCAL_CHINESE_LUNAR</td>
+                        <td>Chinese Lunar calendar</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>HSCAL_SAKA</td>
+                        <td>Indian Saka calendar</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>HSCAL_LUNAR_ETO_CHN</td>
+                        <td>Chinese Zodiac calendar</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>HSCAL_LUNAR_ETO_KOR</td>
+                        <td>Korean Zodiac calendar</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>HSCAL_LUNAR_ROKUYOU</td>
+                        <td>Japanese Lucky days calendar</td>
+                    </tr>
+                </table>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+<!--
+            <xsd:minInclusive value="-1" />
+            <xsd:maxInclusive value="19" />
+-->
+            <xsd:enumeration value="-1" />
+            <xsd:enumeration value="1" />
+            <xsd:enumeration value="2" />
+            <xsd:enumeration value="3" />
+            <xsd:enumeration value="4" />
+            <xsd:enumeration value="5" />
+            <xsd:enumeration value="6" />
+            <xsd:enumeration value="7" />
+            <xsd:enumeration value="8" />
+            <xsd:enumeration value="9" />
+            <xsd:enumeration value="10" />
+            <xsd:enumeration value="11" />
+            <xsd:enumeration value="12" />
+            <xsd:enumeration value="13" />
+            <xsd:enumeration value="14" />
+            <xsd:enumeration value="15" />
+            <xsd:enumeration value="16" />
+            <xsd:enumeration value="17" />
+            <xsd:enumeration value="18" />
+            <xsd:enumeration value="19" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="AttachmentMetadataBlueType">
+        <xsd:complexContent>
+            <xsd:extension base="AttachmentMetadataType">
+                <xsd:attributeGroup ref="iq:StandardBlueAttributeGroup" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="AttendeeBlueType">
+        <xsd:complexContent>
+            <xsd:extension base="AttendeeType">
+                <xsd:attributeGroup ref="iq:StandardBlueAttributeGroup" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="AttendeeEventExtraBlueType">
+        <xsd:complexContent>
+            <xsd:extension base="AttendeeEventExtraType">
+                <xsd:attributeGroup ref="iq:UnnamedBlueAttributeGroup" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="EventType">
+        <xsd:sequence>
+            <xsd:element
+                name="Body"
+                type="BodyType"
+            />
+
+            <xsd:element
+                name="AttendeeEventExtra"
+                type="AttendeeEventExtraBlueType"
+                minOccurs="0"
+                maxOccurs="1"
+            />
+
+            <xsd:element
+                name="Attachment"
+                type="AttachmentMetadataBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element contains attachment metadata, name, content-type and id's, and
+                        may also contain the attachmentBody.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Reminder"
+                type="ReminderBlueType"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        A user may optionally define a reminder for this appointment.  Reminders
+                        for recurring appointments will be sent periodically before the appointment
+                        as per the rules defined in the reminder subschema.  A non-recurring event may
+                        have the following:
+
+                        <li>Define no reminders</li>
+                        <li>Define a reminder with &lt;set&gt; = "true"</li>
+                        <li>Define a reminder with &lt;set&gt; = "false" (<b>useless</b>)</li><br/>
+
+                        A recurring meeting may have any of the following:
+
+                        <li>Define no reminders</li>
+                        <li>Define a recurring reminder with all instances receiving reminders</li>
+                        <li>To define no reminders by default, but to define reminders for particular
+                        meeting instances in the exception body:  Create a reminder &lt;set&gt; = "false", and turn it on
+                        and/or modify it for particular instances.</li>
+                        <li>To define a recurring reminder, but turn it off for particular meeting instances:  Create a
+                        reminder &lt;set&gt; = "true", and turn it off for particular instances.</li><br/>
+                        If the event's reminder subschema is non-existent, yet the exception body has a reminder blob,
+                        then the exception reminder is ignored.  The alternative is to require 1..1.
+                    </xsd:documentation>
+                </xsd:annotation>
+<!--
+                <xsd:annotation>
+                    <xsd:documentation>
+                        A user may optionally define 1 to 4 reminders for this event for
+                        each device type.
+                        Reminders are hosted on .NET Calendar, but they use .NET Alerts as
+                        a gateway to deliver the actual notification.  Client-support
+                        for reminders is also included in the base schema.  The user
+                        may define any or all of the four kinds of reminders:
+                        <br/><br/>
+                        <table cellpadding="1" cellspacing="1" border="1">
+                            <tr>
+                                <td align="center"><b>Value</b></td>
+                                <td align="center"><b>Description</b></td>
+                            </tr>
+                            <tr>
+                                <td>client</td>
+                                <td>Client performs the reminder</td>
+                            </tr>
+                            <tr>
+                                <td>email</td>
+                                <td>.NET Calendar sends an email to the specified address (via??)</td>
+                            </tr>
+                            <tr>
+                                <td>messenger</td>
+                                <td>.NET Calendar sends a messenger alert to the user (via .NET Alerts)</td>
+                            </tr>
+                            <tr>
+                                <td>mobile</td>
+                                <td>.NET Calendar sends a mobile alert to the user (via .NET Alerts)</td>
+                            </tr>
+                        </table>
+                    </xsd:documentation>
+                </xsd:annotation>
+-->
+            </xsd:element>
+
+            <xsd:element
+                name="Attendee"
+                type="AttendeeBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:element
+                name="Recurrence"
+                type="RecurrenceType"
+                minOccurs="0"
+                maxOccurs="1"
+            />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="iq:StandardBlueAttributeGroup" />
+
+        <xsd:attribute
+            name="CalendarType"
+            type="CalendarLocaleEnum"
+        />
+
+        <xsd:attribute
+            name="AdvanceHijriValue"
+            type="HijriValueEnum"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                    Required for Hijri calendar support.  @advanceHijriValue ranges from
+                    {-3,-2,-1,1,2,3} and is added to the current date, but the day of the
+                    week stays the same.  For example, if today is the 24th and
+                    @advanceHijriValue is set to be +2, then the user sees the date as
+                    being the 26th.  Typically @advanceHijriValue is +/-1, and this
+                    suffices in most cases.  Theoretically it can be any number, but the
+                    worst case scenario is +/-3.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+
+<!--
+    <xsd:complexType name="WindowStartType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:dateTime">
+                <xsd:attribute
+                    name="IsLeapYear"
+                    type="xsd:boolean"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            International calendar support is used to save some
+                            information about the year in which the recurrence was
+                            created.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute
+                    name="LeapMonthValue"
+                    type="MonthValueEnum"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            International calendar support is used to save some
+                            information about the year in which the recurrence was
+                            created.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="WindowEndType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:dateTime">
+                    <xsd:attribute
+                    name="RepeatForever"
+                    type="xsd:boolean"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            Overrides the windowEnd date and specifies that this recurrence repeats
+                            forever.  Client implementations cannot depend on date values
+                            repeating forever, like 23:59:59pm Dec 31, 9999 or 23:59 Aug 31, 4500.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute
+                    name="RepeatInstances"
+                    type="xsd:int"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            Overrides the windowEnd date and specifies that this recurrence repeats
+                            for the specified number of instances.  repeatInstances and repeatForever
+                            are mutually exclusive, but repeatInstances will override repeatForever
+                            for errant schemas.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+-->
+
+    <xsd:complexType name="UninviteAttendeeType">
+        <xsd:complexContent>
+            <xsd:extension base="iq:UserReference">
+                <xsd:attribute name="DeleteAttendee" type="xsd:boolean">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            Optionally specifies whether or not to delete this attendee
+                            from the organizer's attendee table.  If the attendee is
+                            not deleted, .NET Calendar will not know the status of this
+                            attendee because the status {not-sent, sent, cancelled} is
+                            not stored per-attendee.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:simpleType name="SendMeetingBehaviorEnum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="All" />
+            <xsd:enumeration value="None" />
+            <xsd:enumeration value="Default" />
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,1135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s3="http://schemas.iquomi.com/2004/01/iqProfile" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:yml="http://www.contoso.com/yml" xmlns:s1="http://schemas.iquomi.com/2004/01/iqContacts" xmlns:s4="http://schemas.iquomi.com/2004/01/iqCalendar" xmlns:tns="http://services.iquomi.com/2004/01/core" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://schemas.iquomi.com/2004/01/core" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://services.iquomi.com/2004/01/core" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Summary description for IqContacts.</wsdl:documentation>
+  <wsdl:types>
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s:schema elementFormDefault="qualified" targetNamespace="http://services.iquomi.com/2004/01/core">
+      <s:import namespace="http://schemas.iquomi.com/2004/01/iqContacts" />
+      <s:import namespace="http://schemas.iquomi.com/2004/01/core" />
+      <s:element name="Void">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:IqContacts" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VoidResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:ListenTrigger" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListenResponseResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SoapAuthenticationType" type="tns:SoapAuthenticationType" />
+      <s:complexType name="SoapAuthenticationType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Iqid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="SoapRequestType" type="tns:SoapRequestType" />
+      <s:complexType name="SoapRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s2:RequestType" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="Insert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:InsertRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:InsertResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:DeleteRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:DeleteResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Replace">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:ReplaceRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReplaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:ReplaceResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:UpdateRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:UpdateResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Query">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:QueryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:QueryResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.iquomi.com/2004/01/iqContacts">
+      <s:import namespace="http://schemas.iquomi.com/2004/01/core" />
+      <s:import namespace="http://schemas.iquomi.com/2004/01/iqProfile" />
+      <s:element name="IqContacts" type="s1:IqContactsType" />
+      <s:complexType name="IqContactsType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Contact" type="s1:ContactType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Subscription" type="s2:SubscriptionType" />
+        </s:sequence>
+        <s:attribute ref="s2:ChangeNumber" />
+        <s:attribute ref="s2:InstanceId" />
+      </s:complexType>
+      <s:complexType name="ContactType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cat" type="s2:CatType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Name" type="s3:NameType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Puid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SpecialDate" type="s3:SpecialDateBlueType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Picture" type="s3:PictureBlueType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Gender" type="s3:GenderType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s2:LongText" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Address" type="s3:AddressBlueType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EmailAddress" type="s3:EmailAddressBlueType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WebSite" type="s3:WebSiteBlueType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ScreenName" type="s3:ScreenNameBlueType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TelephoneNumber" type="s3:TelephoneNumberBlueType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IdentificationNumber" type="s3:IdentificationNumberBlueType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WorkInformation" type="s3:WorkInformationBlueType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserReference" type="s3:CategorizedUserReferenceBlueType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SecurityCertificate" type="s3:SecurityCertificateBlueType" />
+        </s:sequence>
+        <s:attribute ref="s2:ChangeNumber" />
+        <s:attribute ref="s2:Id" />
+        <s:attribute ref="s2:Creator" />
+        <s:attribute name="Synchronize" use="required">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="Yes" />
+              <s:enumeration value="No" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.iquomi.com/2004/01/core">
+      <s:import namespace="http://www.w3.org/XML/1998/namespace" />
+      <s:complexType name="CatType">
+        <s:attribute form="qualified" name="Ref" type="s:anyURI" />
+      </s:complexType>
+      <s:complexType name="LocalizableString">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute ref="xml:lang" use="optional" />
+            <s:attribute form="qualified" name="Dir" type="s2:DirType" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:simpleType name="DirType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Rtl" />
+          <s:enumeration value="Ltr" />
+        </s:restriction>
+      </s:simpleType>
+      <s:attribute name="ChangeNumber" type="s:nonNegativeInteger" />
+      <s:attribute name="Id" type="s:string" />
+      <s:attribute name="Creator" type="s:hexBinary" />
+      <s:complexType name="LongText">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute ref="xml:lang" use="optional" />
+            <s:attribute form="qualified" name="Dir" type="s2:DirType" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="AddressType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cat" type="s2:CatType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficialAddressLine" type="s2:LocalizableString" />
+          <s:element minOccurs="0" maxOccurs="1" name="InternalAddressLine" type="s2:LocalizableString" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimaryCity" type="s2:LocalizableString" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecondaryCity" type="s2:LocalizableString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subdivision" type="s2:LocalizableString" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Latitude" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Longitude" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Elevation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Velocity">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="Speed" type="s:string" />
+                <s:element minOccurs="0" maxOccurs="1" name="Direction" type="s:string" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Confidence" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Precision" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TelephoneNumberType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cat" type="s2:CatType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NationalCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumberExtension" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pin" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserReferenceCategorized">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:UserReference">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Cat" type="s2:CatType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="UserReference">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s2:LocalizableString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Puid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SubscriptionType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Trigger">
+            <s:complexType>
+              <s:attribute form="qualified" name="Select" type="s:string" />
+              <s:attribute form="qualified" name="Mode" use="required">
+                <s:simpleType>
+                  <s:restriction base="s:string">
+                    <s:enumeration value="IncludeData" />
+                    <s:enumeration value="ExcludeData" />
+                  </s:restriction>
+                </s:simpleType>
+              </s:attribute>
+              <s:attribute form="qualified" name="BaseChangeNumber" type="s:nonNegativeInteger" />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="ExpiresAt" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Context">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" />
+              </s:sequence>
+              <s:attribute form="qualified" name="Uri" type="s:anyURI" />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="To" type="s:anyURI" />
+        </s:sequence>
+        <s:attribute form="qualified" name="ChangeNumber" type="s:nonNegativeInteger" />
+        <s:attribute form="qualified" name="Id" type="s:string" />
+        <s:attribute form="qualified" name="Creator" type="s:hexBinary" />
+      </s:complexType>
+      <s:attribute name="InstanceId" type="s:string" />
+      <s:element name="ListenTrigger" type="s2:ListenTriggerType" />
+      <s:complexType name="ListenTriggerType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TriggerData">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="ChangedBlue" type="s2:ChangedBlueType" />
+                <s:element minOccurs="0" maxOccurs="1" name="DeletedBlue" type="s2:DeletedBlueType" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Context">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" />
+                <s:element minOccurs="0" maxOccurs="1" name="Items" type="s2:ArrayOfAnyType" />
+              </s:sequence>
+              <s:attribute name="Uri" type="s:anyURI" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ChangedBlueType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="1" name="Items" type="s2:ArrayOfAnyType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeletedBlueType">
+        <s:attribute name="Id" type="s:string" />
+      </s:complexType>
+      <s:complexType name="RequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Key">
+            <s:complexType>
+              <s:attribute name="Puid" type="s:string" />
+              <s:attribute name="Instance" type="s:string" />
+              <s:attribute name="Cluster" type="s:string" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+        <s:attribute name="Service" type="s:string" />
+        <s:attribute name="Document" use="required">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="Content" />
+              <s:enumeration value="RoleList" />
+              <s:enumeration value="NotifyList" />
+              <s:enumeration value="Policy" />
+              <s:enumeration value="System" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+        <s:attribute name="Method" use="required">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="Insert" />
+              <s:enumeration value="Delete" />
+              <s:enumeration value="Replace" />
+              <s:enumeration value="Update" />
+              <s:enumeration value="Query" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+        <s:attribute name="GenResponse" use="required">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="Always" />
+              <s:enumeration value="Never" />
+              <s:enumeration value="FaultOnly" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+      </s:complexType>
+      <s:element name="InsertRequest" type="s2:InsertRequestType" />
+      <s:complexType name="InsertRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Options" type="s2:InsertRequestOptionsType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Attributes" type="s2:RedAttributeType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="1" name="Items" type="s2:ArrayOfAnyType" />
+        </s:sequence>
+        <s:attribute name="Select" type="s:string" />
+        <s:attribute name="UseClientIds" type="s:boolean" />
+        <s:attribute name="MinOccurs" type="s:int" />
+        <s:attribute name="MaxOccurs" type="s:int" />
+      </s:complexType>
+      <s:complexType name="InsertRequestOptionsType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RedAttributeType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InsertResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NewBlueId" type="s2:NewBlueIdType" />
+        </s:sequence>
+        <s:attribute name="NewChangeNumber" type="s:nonNegativeInteger" />
+        <s:attribute name="SelectedNodeCount" type="s:int" />
+        <s:attribute name="Message" type="s:string" />
+        <s:attribute name="Status" type="s2:ResponseStatus" use="required" />
+      </s:complexType>
+      <s:complexType name="NewBlueIdType">
+        <s:attribute name="Id" type="s:string" />
+      </s:complexType>
+      <s:simpleType name="ResponseStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="Failure" />
+          <s:enumeration value="Rollback" />
+          <s:enumeration value="NotAttempted" />
+          <s:enumeration value="AccessDenied" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="InsertResponse" type="s2:InsertResponseType" />
+      <s:element name="DeleteRequest" type="s2:DeleteRequestType" />
+      <s:complexType name="DeleteRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Options" type="s2:DeleteRequestOptionsType" />
+        </s:sequence>
+        <s:attribute name="Select" type="s:string" />
+        <s:attribute name="MinOccurs" type="s:int" />
+        <s:attribute name="MaxOccurs" type="s:int" />
+      </s:complexType>
+      <s:complexType name="DeleteRequestOptionsType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeleteResponseType">
+        <s:attribute name="NewChangeNumber" type="s:nonNegativeInteger" />
+        <s:attribute name="SelectedNodeCount" type="s:int" />
+        <s:attribute name="Message" type="s:string" />
+        <s:attribute name="Status" type="s2:ResponseStatus" use="required" />
+      </s:complexType>
+      <s:element name="DeleteResponse" type="s2:DeleteResponseType" />
+      <s:element name="ReplaceRequest" type="s2:ReplaceRequestType" />
+      <s:complexType name="ReplaceRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Options" type="s2:ReplaceRequestOptionsType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Attributes" type="s2:RedAttributeType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="1" name="Items" type="s2:ArrayOfAnyType" />
+        </s:sequence>
+        <s:attribute name="Select" type="s:string" />
+        <s:attribute name="UseClientIds" type="s:boolean" />
+        <s:attribute name="MinOccurs" type="s:int" />
+        <s:attribute name="MaxOccurs" type="s:int" />
+      </s:complexType>
+      <s:complexType name="ReplaceRequestOptionsType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ReplaceResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NewBlueId" type="s2:NewBlueIdType" />
+        </s:sequence>
+        <s:attribute name="NewChangeNumber" type="s:nonNegativeInteger" />
+        <s:attribute name="SelectedNodeCount" type="s:int" />
+        <s:attribute name="Message" type="s:string" />
+        <s:attribute name="Status" type="s2:ResponseStatus" use="required" />
+      </s:complexType>
+      <s:element name="ReplaceResponse" type="s2:ReplaceResponseType" />
+      <s:element name="UpdateRequest" type="s2:UpdateRequestType" />
+      <s:complexType name="UpdateRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UpdateBlock" type="s2:UpdateBlockType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UpdateBlockType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InsertRequest" type="s2:InsertRequestType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeleteRequest" type="s2:DeleteRequestType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReplaceRequest" type="s2:ReplaceRequestType" />
+        </s:sequence>
+        <s:attribute name="Select" type="s:string" />
+        <s:attribute name="OnError" use="required">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="RollbackBlockAndFail" />
+              <s:enumeration value="RollbackBlockAndContinue" />
+              <s:enumeration value="Ignore" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+      </s:complexType>
+      <s:complexType name="UpdateResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UpdateBlockStatus" type="s2:UpdateBlockStatusType" />
+        </s:sequence>
+        <s:attribute name="NewChangeNumber" type="s:nonNegativeInteger" />
+      </s:complexType>
+      <s:complexType name="UpdateBlockStatusType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InsertResponse" type="s2:InsertResponseType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeleteResponse" type="s2:DeleteResponseType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReplaceResponse" type="s2:ReplaceResponseType" />
+        </s:sequence>
+        <s:attribute name="SelectedNodeCount" type="s:int" />
+        <s:attribute name="Message" type="s:string" />
+        <s:attribute name="Status" type="s2:ResponseStatus" use="required" />
+      </s:complexType>
+      <s:element name="UpdateResponse" type="s2:UpdateResponseType" />
+      <s:element name="QueryRequest" type="s2:QueryRequestType" />
+      <s:complexType name="QueryRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="XpQuery" type="s2:XpQueryType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ChangeQuery" type="s2:ChangeQueryType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="XpQueryType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Options" type="s2:QueryOptionsType" />
+        </s:sequence>
+        <s:attribute name="Select" type="s:string" />
+        <s:attribute name="MinOccurs" type="s:int" />
+        <s:attribute name="MaxOccurs" type="s:int" />
+      </s:complexType>
+      <s:complexType name="QueryOptionsType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Sort" type="s2:SortType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Range" type="s2:RangeType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shape" type="s2:ShapeType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SortType">
+        <s:attribute default="Ascending" name="Direction">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="Ascending" />
+              <s:enumeration value="Descending" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+        <s:attribute name="Key" type="s:string" />
+      </s:complexType>
+      <s:complexType name="RangeType">
+        <s:attribute name="First" type="s:string" />
+        <s:attribute name="Count" type="s:int" use="required" />
+      </s:complexType>
+      <s:complexType name="ShapeType">
+        <s:attribute form="qualified" name="Type" use="required">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="Include" />
+              <s:enumeration value="Exclude" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+        <s:attribute form="qualified" name="Select" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ChangeQueryType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Options" type="s2:QueryOptionsType" />
+        </s:sequence>
+        <s:attribute name="Select" type="s:string" />
+        <s:attribute name="BaseChangeNumber" type="s:nonNegativeInteger" />
+      </s:complexType>
+      <s:complexType name="QueryResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="XpQueryResponse" type="s2:XpQueryResponseType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ChangeQueryResponse" type="s2:ChangeQueryResponseType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="XpQueryResponseType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="1" name="Items" type="s2:ArrayOfAnyType" />
+        </s:sequence>
+        <s:attribute name="SelectedNodeCount" type="s:int" />
+        <s:attribute name="Message" type="s:string" />
+        <s:attribute name="Status" type="s2:ResponseStatus" use="required" />
+      </s:complexType>
+      <s:complexType name="ChangeQueryResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ChangedBlue" type="s2:ChangedBlueType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeletedBlue" type="s2:DeletedBlueType" />
+        </s:sequence>
+        <s:attribute name="BaseChangeNumber" type="s:nonNegativeInteger" />
+        <s:attribute name="SelectedNodeCount" type="s:int" />
+        <s:attribute name="Message" type="s:string" />
+        <s:attribute name="Status" type="s2:ResponseStatus" use="required" />
+      </s:complexType>
+      <s:element name="QueryResponse" type="s2:QueryResponseType" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.iquomi.com/2004/01/iqProfile">
+      <s:import namespace="http://schemas.iquomi.com/2004/01/core" />
+      <s:import namespace="http://schemas.iquomi.com/2004/01/iqCalendar" />
+      <s:complexType name="NameType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:MyNameType">
+            <s:attribute ref="s2:ChangeNumber" />
+            <s:attribute ref="s2:Id" />
+            <s:attribute ref="s2:Creator" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MyNameType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cat" type="s2:CatType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s2:LocalizableString" />
+          <s:element minOccurs="0" maxOccurs="1" name="GivenName" type="s2:LocalizableString" />
+          <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s2:LocalizableString" />
+          <s:element minOccurs="0" maxOccurs="1" name="SurName" type="s2:LocalizableString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Suffix" type="s2:LocalizableString" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileAsName" type="s2:LocalizableString" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SpecialDateBlueType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:SpecialDateType">
+            <s:attribute ref="s2:ChangeNumber" />
+            <s:attribute ref="s2:Id" />
+            <s:attribute ref="s2:Creator" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SpecialDateType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Cat" type="s2:CatType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:date" />
+        </s:sequence>
+        <s:attribute name="CalendarType" type="s4:CalendarLocaleEnum" use="required" />
+      </s:complexType>
+      <s:complexType name="PictureBlueType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:PictureType">
+            <s:attribute ref="s2:ChangeNumber" />
+            <s:attribute ref="s2:Id" />
+            <s:attribute ref="s2:Creator" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PictureType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Cat" type="s2:CatType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="GenderType">
+        <s:restriction base="s:string">
+          <s:enumeration value="f" />
+          <s:enumeration value="m" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="AddressBlueType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:AddressType">
+            <s:attribute ref="s2:ChangeNumber" />
+            <s:attribute ref="s2:Id" />
+            <s:attribute ref="s2:Creator" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EmailAddressBlueType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:EmailAddressType">
+            <s:attribute ref="s2:ChangeNumber" />
+            <s:attribute ref="s2:Id" />
+            <s:attribute ref="s2:Creator" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EmailAddressType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cat" type="s2:CatType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s2:LocalizableString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WebSiteBlueType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:WebSiteType">
+            <s:attribute ref="s2:ChangeNumber" />
+            <s:attribute ref="s2:Id" />
+            <s:attribute ref="s2:Creator" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="WebSiteType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Cat" type="s2:CatType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ScreenNameBlueType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:ScreenNameType">
+            <s:attribute ref="s2:ChangeNumber" />
+            <s:attribute ref="s2:Id" />
+            <s:attribute ref="s2:Creator" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ScreenNameType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Cat" type="s2:CatType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s2:LocalizableString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TelephoneNumberBlueType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:TelephoneNumberType">
+            <s:attribute ref="s2:ChangeNumber" />
+            <s:attribute ref="s2:Id" />
+            <s:attribute ref="s2:Creator" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="IdentificationNumberBlueType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:IdentificationNumberType">
+            <s:attribute ref="s2:ChangeNumber" />
+            <s:attribute ref="s2:Id" />
+            <s:attribute ref="s2:Creator" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="IdentificationNumberType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Cat" type="s2:CatType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WorkInformationBlueType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:WorkInformationType">
+            <s:attribute ref="s2:ChangeNumber" />
+            <s:attribute ref="s2:Id" />
+            <s:attribute ref="s2:Creator" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="WorkInformationType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cat" type="s2:CatType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="1" name="Profession" type="s2:LocalizableString" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobTitle" type="s2:LocalizableString" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeLocation" type="s2:LocalizableString" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CoworkerOrDepartment" type="s2:UserReferenceCategorized" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CategorizedUserReferenceBlueType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:UserReferenceCategorized">
+            <s:sequence>
+              <s:any minOccurs="0" maxOccurs="unbounded" />
+            </s:sequence>
+            <s:attribute ref="s2:ChangeNumber" />
+            <s:attribute ref="s2:Id" />
+            <s:attribute ref="s2:Creator" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SecurityCertificateBlueType">
+        <s:complexContent mixed="false">
+          <s:extension base="s3:SecurityCertificateType">
+            <s:attribute ref="s2:ChangeNumber" />
+            <s:attribute ref="s2:Id" />
+            <s:attribute ref="s2:Creator" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SecurityCertificateType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cat" type="s2:CatType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Certificate" type="s:hexBinary" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.iquomi.com/2004/01/iqCalendar">
+      <s:import namespace="http://schemas.iquomi.com/2004/01/core" />
+      <s:simpleType name="CalendarLocaleEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="-1" />
+          <s:enumeration value="1" />
+          <s:enumeration value="2" />
+          <s:enumeration value="3" />
+          <s:enumeration value="4" />
+          <s:enumeration value="5" />
+          <s:enumeration value="6" />
+          <s:enumeration value="7" />
+          <s:enumeration value="8" />
+          <s:enumeration value="9" />
+          <s:enumeration value="10" />
+          <s:enumeration value="11" />
+          <s:enumeration value="12" />
+          <s:enumeration value="13" />
+          <s:enumeration value="14" />
+          <s:enumeration value="15" />
+          <s:enumeration value="16" />
+          <s:enumeration value="17" />
+          <s:enumeration value="18" />
+          <s:enumeration value="19" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="UninviteAttendeeType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:UserReference">
+            <s:attribute name="DeleteAttendee" type="s:boolean" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AttendeeInfoType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:UserReference">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="InviteType" type="s4:InviteTypeEnum" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="InviteTypeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="Required" />
+          <s:enumeration value="Optional" />
+          <s:enumeration value="Resource" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="AttendeeType">
+        <s:complexContent mixed="false">
+          <s:extension base="s4:AttendeeInfoType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ResponseTime" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="ResponseType" type="s4:AttendeeAcceptEnum" />
+              <s:element minOccurs="0" maxOccurs="1" name="CounterProposeStartTime" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="CounterProposeEndTime" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="CounterProposeLocation" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ResponseBody" type="s2:LongText" />
+              <s:any minOccurs="0" maxOccurs="unbounded" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="AttendeeAcceptEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="Accept" />
+          <s:enumeration value="Decline" />
+          <s:enumeration value="Tentative" />
+          <s:enumeration value="CounterPropose" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="AttendeeBlueType">
+        <s:complexContent mixed="false">
+          <s:extension base="s4:AttendeeType">
+            <s:attribute ref="s2:ChangeNumber" />
+            <s:attribute ref="s2:Id" />
+            <s:attribute ref="s2:Creator" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="VoidSoapIn">
+    <wsdl:part name="parameters" element="tns:Void" />
+  </wsdl:message>
+  <wsdl:message name="VoidSoapOut">
+    <wsdl:part name="parameters" element="tns:VoidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListenResponseSoapIn">
+    <wsdl:part name="parameters" element="tns:ListenResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListenResponseSoapOut">
+    <wsdl:part name="parameters" element="tns:ListenResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListenResponseSoapAuthenticationType">
+    <wsdl:part name="SoapAuthenticationType" element="tns:SoapAuthenticationType" />
+  </wsdl:message>
+  <wsdl:message name="ListenResponseSoapRequestType">
+    <wsdl:part name="SoapRequestType" element="tns:SoapRequestType" />
+  </wsdl:message>
+  <wsdl:message name="InsertSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert" />
+  </wsdl:message>
+  <wsdl:message name="InsertSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertSoapAuthenticationType">
+    <wsdl:part name="SoapAuthenticationType" element="tns:SoapAuthenticationType" />
+  </wsdl:message>
+  <wsdl:message name="InsertSoapRequestType">
+    <wsdl:part name="SoapRequestType" element="tns:SoapRequestType" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapAuthenticationType">
+    <wsdl:part name="SoapAuthenticationType" element="tns:SoapAuthenticationType" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapRequestType">
+    <wsdl:part name="SoapRequestType" element="tns:SoapRequestType" />
+  </wsdl:message>
+  <wsdl:message name="ReplaceSoapIn">
+    <wsdl:part name="parameters" element="tns:Replace" />
+  </wsdl:message>
+  <wsdl:message name="ReplaceSoapOut">
+    <wsdl:part name="parameters" element="tns:ReplaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReplaceSoapAuthenticationType">
+    <wsdl:part name="SoapAuthenticationType" element="tns:SoapAuthenticationType" />
+  </wsdl:message>
+  <wsdl:message name="ReplaceSoapRequestType">
+    <wsdl:part name="SoapRequestType" element="tns:SoapRequestType" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapAuthenticationType">
+    <wsdl:part name="SoapAuthenticationType" element="tns:SoapAuthenticationType" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapRequestType">
+    <wsdl:part name="SoapRequestType" element="tns:SoapRequestType" />
+  </wsdl:message>
+  <wsdl:message name="QuerySoapIn">
+    <wsdl:part name="parameters" element="tns:Query" />
+  </wsdl:message>
+  <wsdl:message name="QuerySoapOut">
+    <wsdl:part name="parameters" element="tns:QueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="QuerySoapAuthenticationType">
+    <wsdl:part name="SoapAuthenticationType" element="tns:SoapAuthenticationType" />
+  </wsdl:message>
+  <wsdl:message name="QuerySoapRequestType">
+    <wsdl:part name="SoapRequestType" element="tns:SoapRequestType" />
+  </wsdl:message>
+  <wsdl:portType name="IqContactsSoap">
+    <wsdl:operation name="Void">
+      <wsdl:input message="tns:VoidSoapIn" />
+      <wsdl:output message="tns:VoidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListenResponse">
+      <wsdl:input message="tns:ListenResponseSoapIn" />
+      <wsdl:output message="tns:ListenResponseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert">
+      <wsdl:input message="tns:InsertSoapIn" />
+      <wsdl:output message="tns:InsertSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input message="tns:DeleteSoapIn" />
+      <wsdl:output message="tns:DeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Replace">
+      <wsdl:input message="tns:ReplaceSoapIn" />
+      <wsdl:output message="tns:ReplaceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input message="tns:UpdateSoapIn" />
+      <wsdl:output message="tns:UpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <wsdl:input message="tns:QuerySoapIn" />
+      <wsdl:output message="tns:QuerySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IqContactsSoap" type="tns:IqContactsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Void">
+      <soap:operation soapAction="http://services.iquomi.com/2004/01/core/Void" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListenResponse">
+      <soap:operation soapAction="http://services.iquomi.com/2004/01/core/ListenResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ListenResponseSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap:header message="tns:ListenResponseSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert">
+      <soap:operation soapAction="http://services.iquomi.com/2004/01/core/Insert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:InsertSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap:header message="tns:InsertSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://services.iquomi.com/2004/01/core/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DeleteSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap:header message="tns:DeleteSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Replace">
+      <soap:operation soapAction="http://services.iquomi.com/2004/01/core/Replace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ReplaceSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap:header message="tns:ReplaceSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://services.iquomi.com/2004/01/core/Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap:header message="tns:UpdateSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <soap:operation soapAction="http://services.iquomi.com/2004/01/core/Query" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:QuerySoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap:header message="tns:QuerySoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IqContactsSoap12" type="tns:IqContactsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Void">
+      <soap12:operation soapAction="http://services.iquomi.com/2004/01/core/Void" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListenResponse">
+      <soap12:operation soapAction="http://services.iquomi.com/2004/01/core/ListenResponse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ListenResponseSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap12:header message="tns:ListenResponseSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert">
+      <soap12:operation soapAction="http://services.iquomi.com/2004/01/core/Insert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InsertSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap12:header message="tns:InsertSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap12:operation soapAction="http://services.iquomi.com/2004/01/core/Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DeleteSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap12:header message="tns:DeleteSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Replace">
+      <soap12:operation soapAction="http://services.iquomi.com/2004/01/core/Replace" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ReplaceSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap12:header message="tns:ReplaceSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap12:operation soapAction="http://services.iquomi.com/2004/01/core/Update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap12:header message="tns:UpdateSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <soap12:operation soapAction="http://services.iquomi.com/2004/01/core/Query" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:QuerySoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap12:header message="tns:QuerySoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IqContacts">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Summary description for IqContacts.</wsdl:documentation>
+    <wsdl:port name="IqContactsSoap" binding="tns:IqContactsSoap">
+      <soap:address location="http://localhost:4081/webservices/iqcontacts.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IqContactsSoap12" binding="tns:IqContactsSoap12">
+      <soap12:address location="http://localhost:4081/webservices/iqcontacts.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

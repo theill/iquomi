@@ -1,0 +1,9 @@
+a:hover		{color:#cc0000; text-decoration:underline; font-family:Verdana, Arial, Helvetica}
+a:active	{color:#003399; text-decoration: none; font-family:Verdana, Arial, Helvetica}
+a:visited	{color:#cc0000; text-decoration: none; font-family:Verdana, Arial, Helvetica}
+a:link		{color:#003399; text-decoration: none; font-family:Verdana, Arial, Helvetica}
+
+a.nav:hover		{color:#cc0000; text-decoration:underline; font-family:Verdana, Arial, Helvetica; font-weight:bold; font-size:10px}
+a.nav:active	{color:#003399; text-decoration: none; font-family:Verdana, Arial, Helvetica; font-weight:bold; font-size:10px}
+a.nav:visited	{color:#003399; text-decoration: none; font-family:Verdana, Arial, Helvetica; font-weight:bold; font-size:10px}
+a.nav:link		{color:#003399; text-decoration: none; font-family:Verdana, Arial, Helvetica; font-weight:bold; font-size:10px}

@@ -1,0 +1,108 @@
+<xsd:schema xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+ <xsd:attributeGroup name='node.att'>
+  <xsd:attribute name='id' type='xsd:ID'/>
+  <xsd:attribute name='added'/>
+ </xsd:attributeGroup>
+ <xsd:attributeGroup name='url.att'>
+  <xsd:attribute name='href' use='required'/>
+  <xsd:attribute name='visited'/>
+  <xsd:attribute name='modified'/>
+ </xsd:attributeGroup>
+ <xsd:element name='xbel'>
+  <xsd:complexType>
+   <xsd:sequence>
+     <xsd:element ref='title' minOccurs='0'/>
+     <xsd:element ref='info' minOccurs='0'/>
+     <xsd:element ref='desc' minOccurs='0'/>
+     <xsd:choice minOccurs='0' maxOccurs='unbounded'>
+       <xsd:element ref='bookmark'/>
+       <xsd:element ref='folder'/>
+       <xsd:element ref='alias'/>
+       <xsd:element ref='separator'/>
+     </xsd:choice>
+   </xsd:sequence>
+  <xsd:attributeGroup ref="documentRootAttributeGroup"/>
+  <xsd:attributeGroup ref='node.att'/>
+  <xsd:attribute name='version' fixed='1.0'/>
+  </xsd:complexType>
+ </xsd:element>
+ 
+<xsd:simpleType name="changeNumberType">
+<xsd:restriction base="xsd:nonNegativeInteger">
+<xsd:maxInclusive value="9223372036854775807"/>
+</xsd:restriction>
+</xsd:simpleType>
+ 
+<xsd:simpleType name="instanceIdType">
+<xsd:restriction base="xsd:string"/>
+</xsd:simpleType>
+
+    <xsd:attributeGroup name="documentRootAttributeGroup">
+        <xsd:attribute name="changeNumber" type="changeNumberType" use="required"/>
+        <xsd:attribute name="instanceId" type="instanceIdType"/>
+    </xsd:attributeGroup>
+ 
+ <xsd:element name='alias'>
+  <xsd:complexType>
+  <xsd:attribute name='ref' use='required' type='xsd:IDREF'/>
+  </xsd:complexType>
+ </xsd:element>
+ <xsd:element name='bookmark'>
+  <xsd:complexType>
+   <xsd:sequence>
+     <xsd:element ref='title' minOccurs='0'/>
+     <xsd:element ref='info' minOccurs='0'/>
+     <xsd:element ref='desc' minOccurs='0'/>
+   </xsd:sequence>
+  <xsd:attributeGroup ref='node.att'/>
+  <xsd:attributeGroup ref='url.att'/>
+  </xsd:complexType>
+ </xsd:element>
+ <xsd:element name='desc'>
+  <xsd:complexType mixed='true'>
+  </xsd:complexType>
+ </xsd:element>
+ <xsd:element name='folder'>
+  <xsd:complexType>
+   <xsd:sequence>
+     <xsd:element ref='title' minOccurs='0'/>
+     <xsd:element ref='info' minOccurs='0'/>
+     <xsd:element ref='desc' minOccurs='0'/>
+     <xsd:choice minOccurs='0' maxOccurs='unbounded'>
+       <xsd:element ref='bookmark'/>
+       <xsd:element ref='folder'/>
+       <xsd:element ref='alias'/>
+       <xsd:element ref='separator'/>
+     </xsd:choice>
+   </xsd:sequence>
+  <xsd:attributeGroup ref='node.att'/>
+  <xsd:attribute name='folded' default='yes'>
+   <xsd:simpleType>
+    <xsd:restriction base='xsd:string'>
+     <xsd:enumeration value='yes'/>
+     <xsd:enumeration value='no'/>
+    </xsd:restriction>
+   </xsd:simpleType>
+  </xsd:attribute>
+  </xsd:complexType>
+ </xsd:element>
+ <xsd:element name='info'>
+  <xsd:complexType>
+   <xsd:sequence>
+     <xsd:element ref='metadata' maxOccurs='unbounded'/>
+   </xsd:sequence>
+  </xsd:complexType>
+ </xsd:element>
+ <xsd:element name='metadata'>
+  <xsd:complexType>
+  <xsd:attribute name='owner' use='required'/>
+  </xsd:complexType>
+ </xsd:element>
+ <xsd:element name='separator'>
+  <xsd:complexType/>
+ </xsd:element>
+ <xsd:element name='title'>
+  <xsd:complexType mixed='true'>
+  </xsd:complexType>
+ </xsd:element>
+</xsd:schema>

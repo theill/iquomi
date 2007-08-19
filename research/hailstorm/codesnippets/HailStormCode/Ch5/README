@@ -1,0 +1,3 @@
+
+Note you may have to remove the ClientIds attribute from some
+these requests depending on which build of the SDK you are using.

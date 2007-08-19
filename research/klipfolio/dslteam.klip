@@ -1,0 +1,105 @@
+<!--  COPYRIGHT AND TRADEMARK NOTICE
+
+The Klip File Format is copyright 2001-2002, Serence Inc.
+Klip and assoicated marks are trademarks of Serence Inc.
+All rights reserved.
+
+For details visit http://www.serence.com/site.php?page=legal_tmip
+
+-->
+
+<klip>
+<!--Please note that information in this Klip will be available to the public-->
+	
+	<owner>
+		<author>
+			<!--your name-->
+			Arthur Khessin
+		</author>
+		<copyright>
+			<!--your copyright notice-->
+			Copyright 2001-2003 dslteam.de
+		</copyright>
+		<email>
+			<!--your email address-->
+			info@dslteam.de
+		</email>
+		<web>
+			<!--your web address-->
+			http://www.dslteam.de
+		</web>
+	</owner>
+
+	<identity>
+		<title>
+			<!--the title of this Klip-->
+			DSL-Team.de
+		</title>
+		<version>
+			<!--this Klip's version number-->
+			1.1
+		</version>
+		<lastmodified>
+			<!--the date this Klip was last modified yyyy.mm.dd:hhmm-->
+			2003.06.12:1530
+		</lastmodified>
+		<description>
+			<!--a short description of this Klip-->
+			DSL-Team.de liefert brandneue News aus den Bereichen DSL, Soft- und Hardware, Internet und Telekommunikation.
+		</description>
+		<keywords>
+			<!--a space delimited list of keywords for matching your klip during a search
+			the order of the keywords is relevant no more than 15 keywords will be processed-->
+			DSL t-dsl breitband t-online telekom isdn zugang broadband internet access pppoe news adsl hardware software
+		</keywords>
+	</identity>
+	
+	<locations>
+		<defaultlink>
+			<!--the url this Klip links to by default-->
+			http://www.dslteam.de/
+		</defaultlink>
+		<contentsource>
+			<!--the url for the KlipFood this Klip uses-->
+			http://www.dslteam.de/klip.php
+		</contentsource>
+		<icon>
+			<!--the url for this Klip's default 16x16 gif or jpeg icon-->
+			http://www.dslteam.de/dslteamicon.gif
+		</icon>
+		<banner>
+			<!--the url for this Klip's 234x60 gif or jpeg banner-->
+			http://www.dslteam.de/dslteamlogo.gif
+		</banner>
+		<help>
+			<!--the url for this Klip's help web page-->
+                        http://www.dslteam.de/
+		</help>
+		<kliplocation>
+			<!--the url where this Klip is stored
+			this is where KlipFolio periodically checks for updates to your Klip-->
+			http://www.dslteam.de/dslteam.klip
+		</kliplocation>	
+	</locations>
+	
+	<setup>
+		<refresh>
+			<!--how often, in minutes, this Klip should look for new RSS data-->
+			10
+		</refresh>
+	<country>de
+	</country>
+	<language>de
+	</language>
+	</setup>
+	<messages>
+<loading>News werden geladen...</loading>
+</messages>
+	<script>
+		// the instructions for processing data
+		// details on how to modify this are coming soon
+		rssEngine = Engines.get ("RSS");
+		rssEngine.process (Setup.get ("contentsource"));
+	</script>
+
+</klip>

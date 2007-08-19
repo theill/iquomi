@@ -1,0 +1,5 @@
+<hs:queryRequest
+xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core"
+xmlns="http://schemas.microsoft.com/hs/2001/10/myProfile">
+  <hs:xpQuery select="/myProfile" />
+</hs:queryRequest>

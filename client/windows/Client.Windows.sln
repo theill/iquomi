@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Windows", "Client.Windows.csproj", "{FC174354-333B-4272-A807-4C35A3369A53}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 1
+		SccProviderRegKey = Software\Microsoft\SourceSafe
+		SccProjectUniqueName0 = Client.Windows.csproj
+		SccProjectName0 = \u0022$/iquomi.root/Iquomi/client/windows\u0022,\u0020GXBAAAAA
+		SccLocalPath0 = .
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC174354-333B-4272-A807-4C35A3369A53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC174354-333B-4272-A807-4C35A3369A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC174354-333B-4272-A807-4C35A3369A53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC174354-333B-4272-A807-4C35A3369A53}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

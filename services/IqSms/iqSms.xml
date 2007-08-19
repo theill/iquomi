@@ -1,0 +1,14 @@
+<m:IqSms iq:ChangeNumber="2" iq:InstanceId="8b8f0955-1a0b-4421-be96-641892dc5aed" xmlns:m="http://schemas.iquomi.com/2004/01/iqSms" xmlns:iq="http://schemas.iquomi.com/2004/01/core">
+  <m:ShortMessage iq:Creator="AA" iq:Id="36c926fa-a032-4334-a964-740702cbb88a" iq:ChangeNumber="2">
+    <m:From>
+      <m:Address />
+      <m:Name>Peter Theill</m:Name>
+    </m:From>
+    <m:To>
+      <m:Address />
+      <m:Name>Stine Solden</m:Name>
+    </m:To>
+    <m:Read>true</m:Read>
+    <m:Body>Hi baby, I'm just testing my Iquomi Sms service implementation.</m:Body>
+  </m:ShortMessage>
+</m:IqSms>

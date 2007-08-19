@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Diagram xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" MajorVersion="1" MinorVersion="1" xmlns="http://www.microsoft.com/VisualStudio/EnterpriseTools/ClassDesigner/V1.1/DiagramSchema.xsd">
+  <View FilterFieldProperty="false" LastOpened="true" Name="Main">
+    <AbsoluteBounds X="0" Y="0" Height="10.234240114986896" Width="12.25" />
+    <Font Name="Tahoma" Size="0.1145833358168602" />
+    <Class Collapsed="false">
+      <AbsoluteBounds X="0.5" Y="0.5" Height="3.1509067816535632" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbAccount</FullName>
+        <FileName>DbAccount.cs</FileName>
+        <HashCode>ACAAAEAIAAgABEAAAAAQaQAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.19999999999999996" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="4.5" Y="0.5" Height="2.6509067816535632" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbAuthor</FullName>
+        <FileName>DbAuthor.cs</FileName>
+        <HashCode>ACACAAAAAAAABEAAAgAAYAQAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.20000000000000018" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="6.5" Y="0.5" Height="1.7667816188931469" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbChargeUnit</FullName>
+        <FileName>DbChargeUnit.cs</FileName>
+        <HashCode>AAAAAAAAAAAABEBAAAAAYAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.20000000000000018" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="8.5" Y="0.5" Height="2.1509067816535632" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbColumnAdapter</FullName>
+        <FileName>DbColumnAdapter.cs</FileName>
+        <HashCode>AAAAgAgAAAAAAAAAAAAACAAAAAHAAAAAAAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="10.5" Y="0.5" Height="1.7667816188931469" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbDeleteLog</FullName>
+        <FileName>DbDeleteLog.cs</FileName>
+        <HashCode>AAAAAAAAAAAABEBAAAAAYAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.19999999999999929" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="0.5" Y="1.5" Height="1.2667816188931469" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbHelper</FullName>
+        <FileName>DbHelper.cs</FileName>
+        <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAQAABAAAAAAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="2.5" Y="1.5" Height="3.8683652777473121" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbMethodHistory</FullName>
+        <FileName>DbMethodHistory.cs</FileName>
+        <HashCode>AAACAAAAEAACBHBAAgAiYAAAAgAAAAAAAAAAAAAAAgA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.20000000000000018" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="4.5" Y="1.5" Height="2.3175734483202297" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbMethodType</FullName>
+        <FileName>DbMethodType.cs</FileName>
+        <HashCode>AAAAAAAAAAAABEFAAAAAYAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+      <NestedType xsi:type="EnumShapeProxy" Collapsed="true">
+        <TypeIdentifier>
+          <FullName>Commanigy.Iquomi.Data.DbMethodType.DbIdentifier</FullName>
+        </TypeIdentifier>
+      </NestedType>
+      <LollipopPosition Position="0.20000000000000018" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="6.5" Y="1.5" Height="2.3175734483202297" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbPackage</FullName>
+        <FileName>DbPackage.cs</FileName>
+        <HashCode>AAAAAAAAAAAABkAAAAAAaAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.20000000000000018" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="8.5" Y="1.5" Height="2.10011495222648" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbPackageItem</FullName>
+        <FileName>DbPackageItem.cs</FileName>
+        <HashCode>AAAAAAAAAAAABEBAAAAAYAAAAAAAAAAAAgAAAAAAACA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.19999999999999929" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="10.5" Y="1.5" Height="1.10011495222648" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbPlatform</FullName>
+        <FileName>DbPlatform.cs</FileName>
+        <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="0.5" Y="2.5" Height="2.2667816188931456" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbRole</FullName>
+        <FileName>DbRole.cs</FileName>
+        <HashCode>ACAAAAAAAAAAFEAAEAABYAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.19999999999999996" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="2.5" Y="2.5" Height="1.6001149522264795" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbRoleMap</FullName>
+        <FileName>DbRoleMap.cs</FileName>
+        <HashCode>AAAAAAAAAAAABEAAAAAAYAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.20000000000000018" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="4.5" Y="2.5" Height="2.6001149522264786" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbRoleTemplate</FullName>
+        <FileName>DbRoleTemplate.cs</FileName>
+        <HashCode>AUAAIAAAAAAABEAAAAAAYAAAAAAAgAAAAAECAAAAAAA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.20000000000000018" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="6.5" Y="2.5" Height="1.6001149522264795" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbRoleTemplateDescription</FullName>
+        <FileName>DbRoleTemplateDescription.cs</FileName>
+        <HashCode>AAAAAAAAAAAABEAAAAAAYAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.20000000000000018" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="8.5" Y="2.5" Height="1.7667816188931464" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbRoleTemplateMethod</FullName>
+        <FileName>DbRoleTemplateMethod.cs</FileName>
+        <HashCode>AAAAAAAAAAAABEAAAAAAYAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.19999999999999929" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="10.5" Y="2.5" Height="2.8175734483202293" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbScope</FullName>
+        <FileName>DbScope.cs</FileName>
+        <HashCode>CAAAAABAACAABEAAAAAAYAAEAAAAAAAAAAAAAAAEAAI=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.19999999999999929" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="0.75" Y="6" Height="3.8175734483202284" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbService</FullName>
+        <FileName>DbService.cs</FileName>
+        <HashCode>AAAAAAAAwAAAJMAAQQAAaAAAEgAEAAAAAQAAEAAAAAA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.19999999999999996" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="2.5" Y="3.5" Height="1.9334482855598125" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbServiceCharge</FullName>
+        <FileName>DbServiceCharge.cs</FileName>
+        <HashCode>AAAAAAAAAAAABEBAAAAAYAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.20000000000000018" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="4.5" Y="3.5" Height="2.1001149522264795" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbServiceScope</FullName>
+        <FileName>DbServiceScope.cs</FileName>
+        <HashCode>AAAAAABAAAAABEAAACAAYAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.20000000000000018" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="6.5" Y="3.5" Height="1.7667816188931464" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbShape</FullName>
+        <FileName>DbShape.cs</FileName>
+        <HashCode>AAAAAAAAAAAABEBAAAAAYAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.20000000000000018" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="8.5" Y="3.5" Height="2.2667816188931456" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbSubscription</FullName>
+        <FileName>DbSubscription.cs</FileName>
+        <HashCode>AAAIAICAAAAABEAAAAAAYAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.19999999999999929" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="10.5" Y="3.5" Height="2.6509067816535623" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbSubscriptionListener</FullName>
+        <FileName>DbSubscriptionListener.cs</FileName>
+        <HashCode>AAAAQAAAAAAAFEAAAAAAYAAAAAAAAAAAIAAAARAAAAA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.19999999999999929" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="3.25" Y="6.75" Height="1.7667816188931464" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbSubscriptionScope</FullName>
+        <FileName>DbSubscriptionScope.cs</FileName>
+        <HashCode>AAAAAAAAAAAABEAAAAAAYAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+      <LollipopPosition Position="0.20000000000000018" />
+    </Class>
+    <Class Collapsed="false">
+      <AbsoluteBounds X="5.75" Y="6.5" Height="3.4842401149868962" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.DbUtility</FullName>
+        <FileName>DbUtility.cs</FileName>
+        <HashCode>QAAAAAAABAAAIAAABAABGEAAAAQACAABAAAAAACAACI=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Interface Collapsed="false">
+      <AbsoluteBounds X="2.5" Y="0.5" Height="1.4334482855598132" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Commanigy.Iquomi.Data.IDbObject&lt;T&gt;</FullName>
+        <FileName>IDbObject.cs</FileName>
+        <HashCode>AAAAAAAAAAAABEAAAAAAYAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+    </Interface>
+  </View>
+</Diagram>

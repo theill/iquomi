@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://localhost:4081/webservices/IqCore.asmx?wsdl" docRef="http://services.iquomi.com/IqCore.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:4081/webservices/IqAlerts.asmx?wsdl" docRef="http://services.iquomi.com/IqAlerts.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:4081/webservices/IqProfile.asmx?wsdl" docRef="http://services.iquomi.com/IqAlerts.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:4081/webservices/IqPresence.asmx?wsdl" docRef="http://services.iquomi.com/IqPresence.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:4081/webservices/IqContacts.asmx?wsdl" docRef="http://localhost:4081/webservices/IqContacts.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+</discovery>

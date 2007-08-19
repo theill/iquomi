@@ -1,0 +1,7 @@
+<hs:replaceRequest select="/myProfile/address" useClientIds="true" 
+xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core" 
+xmlns="http://schemas.microsoft.com/hs/2001/10/myProfile" >
+  <address id="46556">
+    <primaryCity xml:lang="en">Fremont</primaryCity>
+  </address>
+</hs:replaceRequest>

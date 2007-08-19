@@ -1,0 +1,2646 @@
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xdb="urn:schemas-microsoft-com:xdb"
+    xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core"
+    xmlns="http://schemas.microsoft.com/hs/2001/10/myInbox"
+    targetNamespace="http://schemas.microsoft.com/hs/2001/10/myInbox"
+    elementFormDefault="qualified"
+    version="1.0">
+
+    <xsd:annotation>
+        <xsd:documentation>
+            Schema for .NET Inbox service
+            Copyright (c) 2001 Microsoft Corporation. All rights reserved.
+        </xsd:documentation>
+
+        <xsd:appinfo>
+            <xdb:blue select="/myInbox"/>
+            <xdb:blue select="/myInbox/$any"/>
+            <xdb:blue select="/myInbox/account"/>
+            <xdb:blue select="/myInbox/subscription"/>
+            <xdb:blue select="/myInbox/folder"/>
+            <xdb:blue select="/myInbox/message"/>
+            <xdb:blue select="/myInbox/draft"/>
+            <xdb:blue select="/myInbox/rule"/>
+            <xdb:blue select="/myInbox/message/messageStatus"/>
+            <xdb:blue select="/myInbox/message/messageContent"/>
+            <xdb:blue select="/myInbox/draft/draftStatus"/>
+            <xdb:blue select="/myInbox/draft/draftContent"/>
+            <xdb:blue select="/myInbox/draft/draftContent/draftPart"/>
+
+            <xdb:red select="//@creator"/>
+            <xdb:red select="//@changeNumber"/>
+            <xdb:red select="//@id"/>
+            <xdb:red select="//cat"/>
+            <xdb:red select="//cat/@ref"/>
+            <xdb:red select="/myInbox/account/email"/>
+            <xdb:red select="/myInbox/account/primary"/>
+            <xdb:red select="/myInbox/account/$any"/>
+            <xdb:red select="/myInbox/folder/type"/>
+            <xdb:red select="/myInbox/folder/$any"/>
+            <xdb:red select="/myInbox/folder/parentFolder/@ref"/>
+            <xdb:red select="/myInbox/folder/childFolderCount"/>
+            <xdb:red select="/myInbox/folder/name"/>
+            <xdb:red select="/myInbox/folder/unread"/>
+            <xdb:red select="/myInbox/message/messageStatus/$any"/>
+            <xdb:red select="/myInbox/message/messageStatus/folder/@ref"/>
+            <xdb:red select="/myInbox/message/messageStatus/isRead"/>
+            <xdb:red select="/myInbox/message/messageStatus/flag/state"/>
+            <xdb:red select="/myInbox/message/messageStatus/flag/$any"/>
+            <xdb:red select="/myInbox/message/messageStatus/state"/>
+            <xdb:red select="/myInbox/message/messageContent/$any"/>
+            <xdb:red select="/myInbox/message/messageContent/size"/>
+            <xdb:red select="/myInbox/message/messageContent/messageType/type"/>
+            <xdb:red select="/myInbox/message/messageContent/messageType/$any"/>
+            <xdb:red select="/myInbox/message/messageContent/account/@ref"/>
+            <xdb:red select="/myInbox/message/messageContent/importance"/>
+            <xdb:red select="/myInbox/message/messageContent/hasAttachments"/>
+            <xdb:red select="/myInbox/message/messageContent/conversationId"/>
+            <xdb:red select="/myInbox/message/messageContent/dateReceived"/>
+            <xdb:red select="/myInbox/message/messageContent/dateSent"/>
+            <xdb:red select="/myInbox/message/messageContent/subject/text"/>
+            <xdb:red select="/myInbox/message/messageContent/from/name"/>
+            <xdb:red select="/myInbox/message/messageContent/from/email"/>
+            <xdb:red select="/myInbox/draft/draftStatus/$any"/>
+            <xdb:red select="/myInbox/draft/draftStatus/folder/@ref"/>
+            <xdb:red select="/myInbox/draft/draftStatus/isRead"/>
+            <xdb:red select="/myInbox/draft/draftStatus/flag/state"/>
+            <xdb:red select="/myInbox/draft/draftStatus/flag/$any"/>
+            <xdb:red select="/myInbox/draft/draftStatus/state"/>
+            <xdb:red select="/myInbox/draft/draftContent/$any"/>
+            <xdb:red select="/myInbox/draft/draftContent/size"/>
+            <xdb:red select="/myInbox/draft/draftContent/draftType/type"/>
+            <xdb:red select="/myInbox/draft/draftContent/draftType/contentType"/>
+            <xdb:red select="/myInbox/draft/draftContent/draftType/$any"/>
+            <xdb:red select="/myInbox/draft/draftContent/account/@ref"/>
+            <xdb:red select="/myInbox/draft/draftContent/hasAttachments"/>
+            <xdb:red select="/myInbox/draft/draftContent/importance"/>
+            <xdb:red select="/myInbox/draft/draftContent/sensitivity"/>
+            <xdb:red select="/myInbox/draft/draftContent/conversationId"/>
+            <xdb:red select="/myInbox/draft/draftContent/conversationIndex"/>
+            <xdb:red select="/myInbox/draft/draftContent/subject"/>
+            <xdb:red select="/myInbox/draft/draftContent/from/name"/>
+            <xdb:red select="/myInbox/draft/draftContent/from/email"/>
+            <xdb:red select="/myInbox/draft/draftContent/subject/text"/>
+            <xdb:red select="/myInbox/draft/draftContent/recipient/email"/>
+            <xdb:red select="/myInbox/draft/draftContent/recipient"/>
+            <xdb:red select="/myInbox/draft/draftContent/plainBody"/>
+            <xdb:red select="/myInbox/draft/draftContent/htmlBody"/>
+            <xdb:red select="/myInbox/draft/draftContent/htmlBody/inlineAttachment"/>
+            <xdb:red select="/myInbox/draft/draftContent/htmlBody/inlineAttachment/uri"/>
+            <xdb:red select="/myInbox/draft/draftContent/htmlBody/inlineAttachment/contentType"/>
+            <xdb:red select="/myInbox/draft/draftContent/htmlBody/inlineAttachment/content"/>
+            <xdb:red select="/myInbox/draft/draftContent/attachment"/>
+            <xdb:red select="/myInbox/draft/draftContent/attachment/name"/>
+            <xdb:red select="/myInbox/draft/draftContent/attachment/ord"/>
+            <xdb:red select="/myInbox/draft/draftContent/attachment/contentType"/>
+            <xdb:red select="/myInbox/draft/draftContent/attachment/content"/>
+            <xdb:red select="/myInbox/draft/draftContent/draftPart/parentPart/@ref"/>
+            <xdb:red select="/myInbox/draft/draftContent/draftPart/order"/>
+            <xdb:red select="/myInbox/draft/draftContent/draftPart/contentType"/>
+            <xdb:red select="/myInbox/draft/draftContent/draftPart/contentTransferEncoding"/>
+            <xdb:red select="/myInbox/draft/draftContent/draftPart/size"/>
+            <xdb:red select="/myInbox/draft/draftContent/draftPart/contentDisposition"/>
+            <xdb:red select="/myInbox/draft/draftContent/draftPart/contentId"/>
+            <xdb:red select="/myInbox/draft/draftContent/draftPart/contentLocation"/>
+            <xdb:red select="/myInbox/draft/draftContent/draftPart/partContent"/>
+            <xdb:red select="/myInbox/draft/draftContent/draftPart/$any"/>
+            <xdb:red select="/myInbox/rule/$any"/>
+            <xdb:red select="/myInbox/rule/@sequence"/>
+            <xdb:red select="/myInbox/rule/runat"/>
+            <xdb:red select="/myInbox/rule/runwhen"/>
+            <xdb:red select="/myInbox/rule/type"/>
+            <xdb:red select="/myInbox/rule/state"/>
+            <xdb:red select="/myInbox/rule/provider"/>
+
+            <xdb:sqlScript source="myInboxCustomSQL.sql"/>
+            <xdb:sqlScript source="myInboxCustomSQLAccount.sql"/>
+            <xdb:sqlScript source="myInboxCustomSQLFolder.sql"/>
+            <xdb:sqlScript source="myInboxCustomSQLMessage.sql"/>
+            <xdb:sqlScript source="myInboxCustomSQLRule.sql"/>
+            <xdb:sqlScript source="myInboxCustomSQLAction.sql"/>
+
+            <xdb:namespaceMap>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/myInbox" alias="m"/>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/core" alias="hs"/>
+            </xdb:namespaceMap>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:import namespace="http://schemas.microsoft.com/hs/2001/10/core" schemaLocation="hscommon.xsd"/>
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+
+    <!--
+    //
+    // myInbox
+    // - root element for the .NET Inbox service
+    //
+    -->
+    <xsd:element name="myInbox" type="myInboxType"/>
+    <xsd:complexType name="myInboxType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This represents the root element of myInbox
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element name="account" type="accountType" minOccurs="1" maxOccurs="unbounded"/>
+
+            <xsd:element name="folder" type="folderType" minOccurs="4" maxOccurs="unbounded"/>
+
+            <xsd:element name="message" type="messageType" minOccurs="0" maxOccurs="unbounded"/>
+
+            <xsd:element name="draft" type="draftType" minOccurs="0" maxOccurs="unbounded"/>
+
+            <xsd:element name="rule" type="ruleType" minOccurs="0" maxOccurs="unbounded"/>
+
+            <xsd:element name="subscription" type="hs:subscriptionType" minOccurs="0" maxOccurs="unbounded"/>
+
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+
+        <!-- standard attributes for the root element -->
+        <xsd:attributeGroup ref="hs:documentRootAttributeGroup"/>
+
+    </xsd:complexType>
+
+    <!--
+    //
+    //  folderType
+    //
+    -->
+    <xsd:complexType name="folderType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Folder elements in myInbox are containers for messages, although not directly.  Messages are related
+                to folders via the /myInbox/message/messageStatus/folder ref="" attribute.  Folders can be orgainized
+                heirarchically, although again not directly.  Instead, folder containment is modeled using the
+                /myInbox/folder/parentFolder ref="" attribute.  If a folder is deleted, all associated messages, folders
+                and their messages are deleted.  It is recommended that instead of deleting a folder directly, you move it
+                to the type="deleted" folder first.
+
+                There are 4 built in types of folders and these can be identified by four special type element values:
+                /folder/type = 'inbox' is the Inbox folder
+                /folder/type = 'sent' is the Sent Items folder
+                /folder/type = 'drafts' is the Drafts folder
+                /folder/type = 'deleted' is the Deleted Items folder
+
+                These four special folders will always exist in a provisioned .NET Inbox account.  They can never be deleted
+                or modified.
+
+                To create user defined folders, you can use the standard .NET My Services insert method and set the type to 'custom'.
+                Custom folders can be deleted or modified.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element name="name" type="hs:localizableString">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element contains the name of the e-mail folder.  For the four special folders,
+                        this element is read only.  For custom folders, this element can be edited.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="type" type="folderTypeEnum">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element contains a type identifier for this folder.  And will contain the value
+                        'inbox, 'sent', 'drafts' or 'delete' for the four special folders.  For all other folders, this
+                        value will be 'custom'
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="unread" type="xsd:unsignedLong" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The calculated count of the unread messages associated with this folder.  This element is read only.
+                    </xsd:documentation>
+                    <xsd:appinfo>
+                        <xdb:system type="calculatedFieldEarlyBound"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="parentFolder" type="refType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element contains a ref attribute that specifies the ID of the parent folder.
+                        For top-level folders, this attribute == "".  This attribute cannot be set on the four special folders
+                        as they must always remain top level folders
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="childFolderCount" type="xsd:unsignedLong" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This calculated attribute indicates how many subfolders that folder contains.  See also 'parentFolder'.
+                    </xsd:documentation>
+                    <xsd:appinfo>
+                        <xdb:system type="calculatedFieldEarlyBound"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any namespace="##other" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+
+    </xsd:complexType>
+
+    <!--
+    //
+    //  folderTypeEnum
+    //
+    -->
+    <xsd:simpleType name="folderTypeEnum">
+        <xsd:annotation>
+            <xsd:documentation>
+                Defines the allowable values for a folder/type element
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="inbox"/>
+            <xsd:enumeration value="drafts"/>
+            <xsd:enumeration value="deleted"/>
+            <xsd:enumeration value="sent"/>
+            <xsd:enumeration value="custom"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+    //
+    //  messageType
+    //
+    -->
+    <xsd:complexType name="messageType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element defines a single message in myInbox in the base schema.  A message represents an email and is
+                divided into two sub-groups 'messageStatus' and 'messageContent'.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element name="messageStatus" type="messageStatusType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the status of the email and frequently changes.  Caching clients should take
+                        advantage of this when deciding which part of the message to change
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="messageContent" type="messageContentType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the content of the message.  This data changes rarely in a normal application.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+
+    </xsd:complexType>
+
+    <!--
+    //
+    //  messageStatusType
+    //
+    -->
+    <xsd:complexType name="messageStatusType">
+
+        <xsd:sequence>
+
+            <xsd:element name="isRead" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the read/unread state of the message and can be modified.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="folder" type="refType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the single folder that this message logically belongs to.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="flag" type="flagType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This optional element defines the flag state of the message.  It includes an {any} element
+                        that can be used for extensible flags.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="state" type="messageStateEnum">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the sent/received state of the message.  This element is read only, which
+                        means that it can be queried for, but not updated
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+
+        <xsd:attributeGroup ref="hs:unnamedBlueAttributeGroup"/>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  sendMessageStatusType
+    //
+    -->
+    <xsd:complexType name="sendMessageStatusType">
+
+        <xsd:sequence>
+
+            <xsd:element name="saveInFolder" type="refType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the folder that a copy of this message should be saved in.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="flag" type="flagType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This optional element defines the flag state of the message.  It includes an {any} element
+                        that can be used for extensible flags.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+
+    </xsd:complexType>
+
+     <!--
+    //
+    //  localMessageStatusType
+    //
+    -->
+    <xsd:complexType name="localMessageStatusType">
+
+        <xsd:sequence>
+
+            <xsd:element name="isRead" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the read/unread state of the message and can be modified.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="folder" type="refType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the single folder that this message logically belongs to.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="flag" type="flagType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This optional element defines the flag state of the message.  It includes an {any} element
+                        that can be used for extensible flags.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="state" type="localMessageStateEnum">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the sent/received state of the message.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  messageTypeEnum
+    //
+    -->
+    <xsd:simpleType name="messageTypeEnum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="voice"/>
+            <xsd:enumeration value="subscription"/>
+            <xsd:enumeration value="fax"/>
+            <xsd:enumeration value="dsn"/>
+            <xsd:enumeration value="readReceipt"/>
+            <xsd:enumeration value="meetingResponse"/>
+            <xsd:enumeration value="meetingRequest"/>
+            <xsd:enumeration value="email"/>
+            <xsd:enumeration value="liveEmail"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+    //
+    //  draftTypeEnum
+    //
+    -->
+    <xsd:simpleType name="draftTypeEnum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="voice"/>
+            <xsd:enumeration value="subscription"/>
+            <xsd:enumeration value="fax"/>
+            <xsd:enumeration value="dsn"/>
+            <xsd:enumeration value="readReceipt"/>
+            <xsd:enumeration value="meetingResponse"/>
+            <xsd:enumeration value="meetingRequest"/>
+            <xsd:enumeration value="email"/>
+            <xsd:enumeration value="liveEmail"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+    //
+    //  messageStateEnum
+    //
+    -->
+    <xsd:simpleType name="messageStateEnum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="sent"/>
+            <xsd:enumeration value="received"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+    //
+    //  localMessageStateEnum
+    //
+    -->
+    <xsd:simpleType name="localMessageStateEnum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="sent"/>
+            <xsd:enumeration value="received"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+    //
+    //  draftStateEnum
+    //
+    -->
+    <xsd:simpleType name="draftStateEnum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="draft"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+    <!--
+    //
+    //  messageContentType
+    //
+    -->
+    <xsd:complexType name="messageContentType">
+        <xsd:sequence>
+
+            <xsd:element name="cat" type="hs:catType" minOccurs="0" maxOccurs="unbounded"/>
+
+            <xsd:element name="account" type="refType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element contains a reference to the /myInbox/account element that this message was sent to.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="messageType" type="messageTypeType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The subelements of this element describe the contents of the message.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="size" type="xsd:unsignedLong">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element contains the size, in bytes, of the entire RFC2822 message in the store.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="importance" type="importanceType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element indicates the importance of this message. The value can be 'low', 'normal', or 'high'.
+                        The default is 'normal'.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="sensitivity" type="sensitivityType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element indicates the sensitivity of the message. The value
+                        can be 'normal', 'personal', 'private', or 'confidential'.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="hasAttachments" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element indicates whether a message has one or more attachments. The value will either be 0
+                        (to indicate that the message has no attachments) or 1 (to indicate that the message has
+                        one or more attachments).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="isJunkMail" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This read only element is set by the myInbox service when the message was delivered and indicates
+                        if the message was marked as junk mail by the junk mail filter.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="containsAdultContent" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This read only element is set by the myInbox service when the message was delivered and indicates
+                        if the message was determined to contain adult content by the adult content mail filter.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <!-- optional element -->
+            <xsd:element name="conversationId" type="conversationIdType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This optional element identifies the 'conversation,' or e-mail thread of which this message
+                        is a part.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <!-- optional element -->
+            <xsd:element name="conversationIndex" type="conversationIndexType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This optional element identifies the 'conversation,' or e-mail thread of which this message
+                        is a part.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="dateReceived" type="xsd:dateTime">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This read-only element contains the UTC date/time the message was received, and
+                        appears in all messages except ones that were sent by the user.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="dateSent" type="xsd:dateTime">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This read-only element contains the UTC date/time the message was sent.  For /messsage/messageStatus/state="sent"
+                        messages, this element represents the time the message was sent. For /messsage/messageStatus/state="received"
+                        this element represents the time the sender sent the message.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="subject" type="subjectType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The subject of the message.  This element contains both a prefix and text sub-elements to allow clients
+                        to sort on the non-prefix part of the subject (so RE: RE: doesn't get sorted)
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="from" type="emailType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This read-only element describes who this message is from.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="recipient" type="emailToCcType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Specifies the recipient of this message and where they appear.  A collection of recipient elements is
+                        only returned if the query option 'expandRecipients' is specified.
+                    </xsd:documentation>
+                    <xsd:appinfo>
+                        <xdb:system type="calculatedFieldLateBound"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="plainBody" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The plain body representation of the message.
+                        This element is returned by passing the 'includeSimpleMessageView' element in query options
+                    </xsd:documentation>
+                    <xsd:appinfo>
+                        <xdb:system type="calculatedFieldLateBound"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="htmlBody" type="htmlBodyType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The html body representation of the message.  This element can also contain inline attachments that are
+                        related to the html content via the 'uri' element of the inline attachment.
+                        This element is returned by passing the 'includeSimpleMessageView' element in query options.
+
+                    </xsd:documentation>
+                    <xsd:appinfo>
+                        <xdb:system type="calculatedFieldLateBound"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="attachment" type="attachmentType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element represents a mail attachment and is returned by passing the 'includeSimpleMessageViewAttachments' element in query options.
+                    </xsd:documentation>
+                    <xsd:appinfo>
+                        <xdb:system type="calculatedFieldLateBound"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="messagePart" type="messagePartType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The element and it's children define the message structure (including the mime body)
+                        This element is returned by passing the 'includeMessagePartStructure' element in query options
+                    </xsd:documentation>
+                    <xsd:appinfo>
+                        <xdb:system type="calculatedFieldLateBound"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="preview" type="hs:localizableString" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The first 256 characters of the message body.  This element is only returned if the query option
+                        'includePreview' is specified.
+                    </xsd:documentation>
+                    <xsd:appinfo>
+                        <xdb:system type="calculatedFieldLateBound"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="single2822Header" type="single2822HeaderType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The rfc2822 headers not included in the base schema (ex: x-apparently-to)
+                        This element is returned by passing the 'includeSingle2822Headers' element in query options
+                    </xsd:documentation>
+                    <xsd:appinfo>
+                        <xdb:system type="calculatedFieldLateBound"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="raw2822Content" type="xsd:base64Binary" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The raw 2822 message (including headers and body)
+                        This element is returned by passing the includeRaw2822Contentelement in query options
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="raw2822Headers" type="xsd:base64Binary" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The raw rfc2822 headers not included in the base schema (ex: x-apparently-to)
+                        This element is returned by passing the 'includeRaw2822Headers' element in query options
+                    </xsd:documentation>
+                    <xsd:appinfo>
+                        <xdb:system type="calculatedFieldLateBound"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+
+        <xsd:attributeGroup ref="hs:unnamedBlueAttributeGroup"/>
+
+    </xsd:complexType>
+
+
+    <!--
+    //
+    //  completeMessageContentType
+    //
+    -->
+    <xsd:complexType name="completeMessageContentType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Represents a complete RFC2822 / MIME message.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element name="cat" type="hs:catType" minOccurs="0" maxOccurs="unbounded"/>
+
+            <xsd:element name="raw2822Content" type="xsd:base64Binary">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The complete RFC2822 / MIME content
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  draftType
+    //
+    -->
+    <xsd:complexType name="draftType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element defines a single draft in myInbox in the base schema.  A draft represents an unsent email and is
+                divided into two sub-groups 'messageStatus' and 'messageContent'.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element name="draftStatus" type="draftStatusType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The contents of this element represent the status metadata of the draft.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="draftContent" type="draftContentType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The contents of this element represent the content of the draft.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any namespace="##other" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+
+    </xsd:complexType>
+
+    <!--
+    //
+    //  draftStatusType
+    //
+    -->
+    <xsd:complexType name="draftStatusType">
+
+        <xsd:sequence>
+
+            <xsd:element name="isRead" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the read/unread state of the message and can be modified.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="folder" type="refType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the single folder that this message logically belongs to.
+                        For drafts this must always point to the drafts folder
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="flag" type="flagType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This optional element defines the flag state of the message.  It includes an {any} element
+                        that can be used for extensible flags.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="state" type="draftStateEnum">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The value of this element will always be 'draft' and is provided for compatability with messages
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+
+        <xsd:attributeGroup ref="hs:unnamedBlueAttributeGroup"/>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  draftContentType
+    //
+    -->
+    <xsd:complexType name="draftContentType">
+        <xsd:sequence>
+
+            <xsd:element name="cat" type="hs:catType" minOccurs="0" maxOccurs="unbounded"/>
+
+            <xsd:element name="account" type="refType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element contains a reference to the /myInbox/account element ref that this message should be sent from
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="draftType" type="draftTypeType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The subelements of this element describe the contents of the message.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="size" type="xsd:unsignedLong">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This read only element contains the size, in bytes, of the entire RFC2822 message in the store.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="importance" type="importanceType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element indicates the importance of this message. The value can be 'low', 'normal', or 'high'.
+                        The default is 'normal'.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="sensitivity" type="sensitivityType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element indicates the sensitivity of the message. The value
+                        can be 'normal', 'personal', 'private', or 'confidential'.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="hasAttachments" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This read only element indicates whether a message has one or more attachments. The value will either be 0
+                        (to indicate that the message has no attachments) or 1 (to indicate that the message has
+                        one or more attachments).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <!-- optional element -->
+            <xsd:element name="conversationId" type="conversationIdType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This optional element identifies the 'conversation,' or e-mail thread of which this message
+                        is a part.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <!-- optional element -->
+            <xsd:element name="conversationIndex" type="conversationIndexType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This optional element identifies the 'conversation,' or e-mail thread of which this message
+                        is a part.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="subject" type="subjectType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The subject of the message.  This element contains both a prefix and text sub-elements to allow clients
+                        to sort on the non-prefix part of the subject (so RE: RE: doesn't get sorted)
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="from" type="emailType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This read-only element describes who this message is from.  To set this value, set the account element.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="recipient" type="emailToCcBccType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Specifies the recipient of this message and where they appear.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="plainBody" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The plain body representation of the draft.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="htmlBody" type="htmlBodyType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The html body representation of the draft. This element can optionally contain inline
+                        attachments
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="attachment" type="attachmentType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element represents a mail attachment.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="draftPart" type="draftPartType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The element and it's children define the message structure (including the mime body)
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="preview" type="hs:localizableString" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The first 256 characters of the message body.  This element is only returned if the query option
+                        'includePreview' is specified.
+                    </xsd:documentation>
+                    <xsd:appinfo>
+                        <xdb:system type="calculatedFieldLateBound"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="single2822Header" type="single2822HeaderType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The rfc2822 headers not included in the base schema (ex: x-apparently-to)
+                        This element is returned by passing the 'includeSingle2822Headers' element in query options
+                    </xsd:documentation>
+                    <xsd:appinfo>
+                        <xdb:system type="calculatedFieldLateBound"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="raw2822Content" type="xsd:base64Binary" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The raw 2822 message (including headers and body)
+                        This element is returned by passing the includeRaw2822Contentelement in query options
+                    </xsd:documentation>
+                    <xsd:appinfo>
+                        <xdb:system type="calculatedFieldLateBound"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="raw2822Headers" type="xsd:base64Binary" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The raw rfc2822 headers not included in the base schema (ex: x-apparently-to)
+                        This element is returned by passing the 'includeRaw2822Headers' element in query options
+                    </xsd:documentation>
+                    <xsd:appinfo>
+                        <xdb:system type="calculatedFieldLateBound"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+
+        <xsd:attributeGroup ref="hs:unnamedBlueAttributeGroup"/>
+
+    </xsd:complexType>
+
+    <!--
+    //
+    //  htmlBodyType
+    //
+    -->
+    <xsd:complexType name="htmlBodyType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element represents the html body of a message or draft.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element name="body" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The contents of the body.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="inlineAttachment" type="inlineAttachmentType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element represents an inline attachment
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  inlineAttachmentType
+    //
+    -->
+    <xsd:complexType name="inlineAttachmentType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element represents an inline attachment
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element name="uri" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The client defined unique identifier for the inline attachment.  This element is used to identify
+                        this attachment location within the html body of a message
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="contentType" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The Content-Type of the attachment
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="content" type="xsd:base64Binary">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The base64 encoded attachment content
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  attachmentType
+    //
+    -->
+    <xsd:complexType name="attachmentType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element represents a mail attachment
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element name="name" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The client defined name of the attachment
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="ord" type="xsd:unsignedLong">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The unique order that this attachment should appear relative to all other attachments.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="contentType" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The Content-Type of the attachment
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="content" type="xsd:base64Binary">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The base64 encoded attachment content
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!--
+    //
+    //  draftMessagePointerType
+    //
+    -->
+    <xsd:complexType name="draftMessagePointerType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Rules specify actions that should be performed on the active message during sending or delivery.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element name="saveInFolder" type="refType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the folder that a copy of this message should be saved in.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+        <xsd:attribute name="select" type="hs:selectType" use="required"/>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  ruleType
+    //
+    -->
+    <xsd:complexType name="ruleType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Rules specify actions that should be performed on the active message during sending or delivery.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element name="name" type="hs:localizableString">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The application-defined, human readable identifier of the rule.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="state" type="ruleStateType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Indicates whether the rule is currently enabled.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="runat" type="runatType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This required attribute specifes where the rule must run. The only allowable value
+                        to date is 'server'.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="runwhen" type="runwhenType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This required attribute specifes when the rule must run. The only allowable values
+                        are 'sending' and 'receiving'.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="type" type="ruleTypeType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Specifies if this is of type 'oof' or 'normal'
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="provider" type="hs:localizableString">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The application-defined provider of the rule.  This is provided so that multiple applicaions
+                        can (if they so desire) only alter their own rules.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="condition">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element's select attribute specifies the xpath expression used to evaluate if the this
+                        rule applies to the active message.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <!-- empty content -->
+                    <xsd:attribute name="select" type="hs:selectType" use="required">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This attribute specifies an xpath expression used to determine if this rule applies
+                                to the active message.  Because rules only apply to messages, this statement must
+                                be scoped to the message element:
+
+                                Legal examples:
+                                "./importance = 'high'"
+                                "./from/email = 'someone@microsoft.com' and contains(./subject/full, 'hello')"
+
+                                Illegal examples:
+                                "/myInbox/message[./importance = 'high']"
+                                "/myInbox/folder"
+                                "/myInbox/rule"
+
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="action" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Specifies an individual action to perform if the select element
+                        matches minOccurs-maxOccurs messages.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="copyMessage" type="copyMessageActionType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="moveMessage" type="moveMessageActionType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="deleteMessage" type="deleteMessageActionType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="assignCategory" type="assignCategoryActionType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="forwardMessage" type="forwardMessageActionType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="forwardAsAttachment" type="forwardAsAttachmentActionType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="serverReply" type="serverReplyActionType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="redirectMessage" type="redirectMessageActionType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="flagMessage" type="flagMessageActionType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="markAsRead" type="markAsReadActionType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="stopProcessingRulesOfThisType" type="stopProcessingRulesOfThisTypeType" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="sequence" type="xsd:unsignedLong" use="required">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This required attribute specifes the order that this action should be performed
+                                in relative to all other actions for this rule.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+
+        <xsd:attribute name="sequence" type="xsd:unsignedLong" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    This required attribute specifes the order that this action should be performed
+                    in relative to all other actions for this rule.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+
+    </xsd:complexType>
+
+    <!--
+    //
+    //  runatType
+    //
+    -->
+    <xsd:simpleType name="runatType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="server"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+    //
+    //  runwhenType
+    //
+    -->
+    <xsd:simpleType name="runwhenType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="sending"/>
+            <xsd:enumeration value="receiving"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+    //
+    //  ruleStateType
+    //
+    -->
+    <xsd:simpleType name="ruleStateType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="enabled"/>
+            <xsd:enumeration value="disabled"/>
+            <xsd:enumeration value="invalid"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+    //
+    //  ruleTypeType
+    //
+    -->
+    <xsd:simpleType name="ruleTypeType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="oof"/>
+            <xsd:enumeration value="normal"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+    //
+    //  rule condition types
+    //
+    -->
+    <xsd:complexType name="stopProcessingRulesOfThisTypeType">
+    </xsd:complexType>
+
+    <!--
+    //
+    //  copyMessageActionType
+    //
+    -->
+    <xsd:complexType name="copyMessageActionType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This action is used to copy the active message in rules processing to another folder specified by the
+                'targetFolder' element
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="targetFolder" type="targetFolderType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  moveMessageActionType
+    //
+    -->
+    <xsd:complexType name="moveMessageActionType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Used in rule actions to indicate that the active message should be moved to the targetFolder
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="targetFolder" type="targetFolderType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  deleteMessageActionType
+    //
+    -->
+    <xsd:complexType name="deleteMessageActionType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Used in rule actions to indicate that the active message should be deleted
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  assignCategoryActionType
+    //
+    -->
+    <xsd:complexType name="assignCategoryActionType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Used in rule actions to indicate that the active message should have the included cat element added to it.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="cat" type="hs:catType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  forwardMessageActionType
+    //
+    -->
+    <xsd:complexType name="forwardMessageActionType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Used in rule actions to indicate that the active message should be forwarded to the included recipients.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="recipient" type="emailToCcBccType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  forwardAsAttachmentActionType
+    //
+    -->
+    <xsd:complexType name="forwardAsAttachmentActionType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Used in rule actions to indicate that the active message should be forwarded to the included recipients as an attachment.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="recipient" type="emailToCcBccType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  serverReplyActionType
+    //
+    -->
+    <xsd:complexType name="serverReplyActionType">
+        <xsd:sequence>
+            <xsd:element name="subject" type="subjectType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The subject of the message from the server.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="simpleBody" type="hs:localizableString" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        A plain text simple body that should be sent from the server.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  redirectMessageActionType
+    //
+    -->
+    <xsd:complexType name="redirectMessageActionType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Used in rule actions to indicate that the active message should be redirected to the included recipient.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="recipient" type="emailToCcBccType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  flagMessageActionType
+    //
+    -->
+    <xsd:complexType name="flagMessageActionType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Used in rule actions to indicate that the active message should have the included flag added to it.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="flag" type="flagType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  markAsReadActionType
+    //
+    -->
+    <xsd:complexType name="markAsReadActionType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Used in rule actions to indicate that the active message should be marked as read.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  accountType Request
+    //
+    -->
+    <xsd:complexType name="accountType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Represents a provisioned users' email account.  This element can optionally contain POP3 settings
+                for myInbox services that support POP3 aggregation.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element name="name" type="hs:localizableString">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The display name of the account
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="email" type="emailAddressType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The SMTP email account.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="primary" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines this account as a primary or non-primary account.  There can be
+                        only one primary account and it can never be deleted.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="cat" type="hs:catType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Obsolete.  This will be removed.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="pop3Settings" type="pop3SettingsType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        If this account is a POP3 account, this defines pop3 settings.  Note that the primary
+                        account can not be a POP3 account.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+
+    </xsd:complexType>
+
+    <!--
+    //
+    //  common type definitions
+    //
+    //
+    //  messageTypeType definition (funny name, huh?)
+    //
+    -->
+    <xsd:complexType name="messageTypeType">
+        <xsd:sequence>
+
+            <xsd:element name="type" type="messageTypeEnum">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element contains a value that provides the client with enough information to
+                        render an 'Inbox' view of the messages.  Valid values are
+                        'voice', 'subscription', 'fax', 'dsn', 'readReceipt', 'meetingResponse', 'meetingRequest', 'email' or 'liveEmail'.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="contentType" type="hs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The contentType of the message (in accordance with RFC 2045). Examples of this are:
+                        'text/plain' and 'multipart/mime'.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  common type definitions
+    //
+    //
+    //  messageTypeType definition (funny name, huh?)
+    //
+    -->
+    <xsd:complexType name="draftTypeType">
+        <xsd:sequence>
+
+            <xsd:element name="type" type="messageTypeEnum">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element contains a value that provides the client with enough information to
+                        render an 'Inbox' view of the messages.  Valid values are
+                        'voice', 'subscription', 'fax', 'dsn', 'readReceipt', 'meetingResponse', 'meetingRequest', 'email' or 'liveEmail'.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="contentType" type="hs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The contentType of the message (in accordance with RFC 2045). Examples of this are:
+                        'text/plain' and 'multipart/mime'.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  importanceType definition
+    //
+    -->
+    <xsd:simpleType name="importanceType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element indicates the importance of this message. The value can be 'low', 'normal', or 'high'.
+                The default is 'normal'
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="low"/>
+            <xsd:enumeration value="normal"/>
+            <xsd:enumeration value="high"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+    //
+    //  sensitivityType
+    //
+    -->
+    <xsd:simpleType name="sensitivityType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element indicates the sensitivity of the message. The value
+                can be 'normal', 'personal', 'private', or 'confidential'.
+
+                If the identity using the .NET Inbox service is a member of
+                the 'assistant' role, that identity will not have read access to e-mail messages that have a
+                value other than 'normal'.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="normal"/>
+            <xsd:enumeration value="personal"/>
+            <xsd:enumeration value="private"/>
+            <xsd:enumeration value="confidential"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+    //
+    //  conversationIdType definition
+    //
+    -->
+    <xsd:simpleType name="conversationIdType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element identifies the 'conversation' or e-mail thread of which this message belongs
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="hs:string"/>
+    </xsd:simpleType>
+
+    <!--
+    //
+    //  conversationIndexType definition
+    //
+    -->
+    <xsd:simpleType name="conversationIndexType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element identifies the index of the conversation to which this message belongs.  It is directly
+                related to conversationId.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="hs:string"/>
+    </xsd:simpleType>
+
+    <!--
+    //
+    //  emailType
+    //
+    -->
+    <xsd:complexType name="emailType">
+        <xsd:annotation>
+            <xsd:documentation>
+                 Specifies an e-mail address and display name, or the PUID that represents them.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="name" type="hs:localizableString">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The display name of an e-mail address
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="email" type="emailAddressType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        An e-mail address (for example, someone@microsoft.com).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  emailToCcType
+    //
+    -->
+    <xsd:complexType name="emailToCcType">
+        <xsd:annotation>
+            <xsd:documentation>
+                 Specifies an e-mail address and display name
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="emailType">
+                 <xsd:attribute name="type" use="required">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            Specifies whether the recipient is in the 'to' or 'cc' list
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                            <xsd:enumeration value="to"/>
+                            <xsd:enumeration value="cc"/>
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  emailToCcBccType
+    //
+    -->
+    <xsd:complexType name="emailToCcBccType">
+        <xsd:annotation>
+            <xsd:documentation>
+                 Specifies an e-mail address and display name
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="emailType">
+                 <xsd:attribute name="type" use="required">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            Specifies whether the recipient is in the 'to', 'cc' or 'bcc' list
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                            <xsd:enumeration value="to"/>
+                            <xsd:enumeration value="cc"/>
+                            <xsd:enumeration value="bcc"/>
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  subjectType
+    //
+    -->
+    <xsd:complexType name="subjectType">
+        <xsd:annotation>
+            <xsd:documentation>
+                The complete prefix and text of a subject.  prefix is separated by
+                the server to allow sorting on the actualy subject of the message.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="prefix" type="hs:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The prefix of a message subject(ex: 'FW: ')
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="text" type="hs:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The subject of a message minus the prefix (ex: 'hello there')
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute ref="xml:lang" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    This required attribute is used to specify an ISO 639 language code
+                    or an ISO 3166 country code as described in
+                    <a href="http://www.ietf.org/rfc/rfc1766.txt">RFC 1766</a>.
+                    The value of this attribute indicates the language type of
+                    the content within this element.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="dir" type="hs:dirType" use="optional">
+            <xsd:annotation>
+                <xsd:documentation>
+                    This optional attribute specifies the default layout direction
+                    for the localized string. Valid values are rtl (right to left), and
+                    ltr (left to right).
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  emailAddressType
+    //
+    -->
+    <xsd:simpleType name="emailAddressType">
+        <xsd:restriction base="hs:string">
+            <xsd:pattern value="\w+\@[.\w]+"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+    //
+    //  targetFolderType
+    //
+    -->
+    <xsd:complexType name="targetFolderType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element specifies the folder to save the message to.  If omitted, the message
+                is saved in the drafts folder.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="select" type="hs:selectType" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                        The location of the folder to which save the message.
+                        For example, /myInbox/folder[@id=""].
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  flagType
+    //
+    -->
+    <xsd:complexType name="flagType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This optional element defines the flag state of the message.  It includes an {any} element
+                that can be used for extensible flags.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="state" type="flagStateType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The state of a message flag.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="title" type="hs:localizableString">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The client defined text of the flag.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="reminderDate" type="xsd:dateTime" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The client defined reminder date of the flag.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  flagStateType
+    //
+    -->
+    <xsd:simpleType name="flagStateType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This type defines the allowable flag state values
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="flagged"/>
+            <xsd:enumeration value="completed"/>
+            <xsd:enumeration value="none"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+    //
+    //  single2822HeaderType
+    //
+    -->
+    <xsd:complexType name="single2822HeaderType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element represents a raw header not included in the base schema
+            </xsd:documentation>
+            <xsd:appinfo>
+                <xdb:system type="calculatedFieldLateBound"/>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <!-- for some reason, this is causing xsd to break
+                //look into it and fix it
+                <xsd:attribute name="name" use="required">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            The name of the raw rfc822 header (ex: x-apparently-to)
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                -->
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  replyToType
+    //
+    -->
+    <xsd:complexType name="replyToType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element is used to specify one or more recipients that this message
+                should be delivered to, if the identity who receives the message chooses
+                to reply.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="recipient" type="emailToCcType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Specifies the recipient of this replyTo message.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  messagePartType
+    //
+    -->
+    <xsd:complexType name="messagePartType">
+        <xsd:annotation>
+            <xsd:documentation>
+                messageParts define the part structure of the message (including the mime parts)
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element name="parentPart" type="refType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element points to the parent part of this part
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="order" type="xsd:unsignedLong" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the order of this part relative to its siblings
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="contentType" type="hs:string" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the contentType of the part.  Ex: message/rfc or text/plain.a
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="size" type="xsd:unsignedLong" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The size in bytes of the message part (including mime headers)
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="contentDisposition" type="hs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The element defines the content-disposition of the part ex: attachment; filename="txt1.txt"
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="contentId" type="hs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The element defines the content-id of the part
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="contentLocation" type="hs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The element defines the content-location of the part.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="contentTransferEncoding" type="hs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The element defines the content-transfer-encoding of this part.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="partContent" type="xsd:base64Binary" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This elements contains the content of this message part and is only returned by including the
+                        'includePartContent' element in the query options.
+                    </xsd:documentation>
+                    <xsd:appinfo>
+                        <xdb:system type="calculatedFieldLateBound"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+
+        <xsd:attribute name="id" type="hs:uuidType" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    The unique identifier of the messagePart
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+
+    </xsd:complexType>
+
+    <!--
+    //
+    //  draftPartType
+    //
+    -->
+    <xsd:complexType name="draftPartType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Defines the part structure of the draft (including the mime parts)
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element name="parentPart" type="refType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element points to the parent part of this part
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="order" type="xsd:unsignedLong" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the order of this part relative to its siblings
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="contentType" type="hs:string" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the contentType of the part.  Ex: message/rfc or text/plain.a
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="size" type="xsd:unsignedLong" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The size in bytes of the message part (including mime headers)
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="contentDisposition" type="hs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The element defines the content-disposition of the part ex: attachment; filename="txt1.txt"
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="contentId" type="hs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The element defines the content-id of the part
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="contentLocation" type="hs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The element defines the content-location of the part.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="contentTransferEncoding" type="hs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The element defines the content-transfer-encoding of this part.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="partContent" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This elements contains the content of this message part.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+
+        <xsd:attributeGroup ref="hs:unnamedBlueAttributeGroup"/>
+
+    </xsd:complexType>
+
+    <!--
+    //
+    //  pop3SettingsType
+    //
+    -->
+    <xsd:complexType name="pop3SettingsType">
+        <xsd:annotation>
+            <xsd:documentation>
+                For myInbox services that support POP3 aggregation, this element defines the POP3 settings
+                necessary for the myInbox service to locate and download messages from that account.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element name="server" type="hs:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The name of the POP3 server
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="userName" type="hs:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The username of the POP3 account
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+             <xsd:element name="password" type="hs:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The password of the POP3 account
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!--
+    //
+    //  myInbox specific methods
+    //
+    -->
+
+    <!--
+    //
+    //  sendMessage Request
+    //
+    -->
+    <xsd:element name="sendMessageRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                This method is used to send a message from myInbox.  It takes either a pointer to a draft
+                message to send, or a raw message that represents a full RFC2822/Mime message.
+
+                This method is accessed using a request message, and in response may generate a
+                domain-specific response message, or may generate a SOAP fault message. The types used in
+                these messages are fully specified in the services base schema document referenced
+                above. The following sample document fragments illustrate the structure and meaning
+                of the elements and attributes in the request and response messages.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence> <!-- TODO: make this a choice -->
+
+                <xsd:element name="draftMessage" type="draftMessagePointerType" minOccurs="0" maxOccurs="1">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            This element is used to identify an existing draft to send.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="rawMessage" type="rawMessageType" minOccurs="0" maxOccurs="1">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            This element is used to specify a raw message to send.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--
+    //
+    //  sendMessage Response
+    //
+    -->
+    <xsd:element name="sendMessageResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response to sendMessage is used to indicate the success of the operation as well
+                as the new id associated with any messages that were saved as a result of this method.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="newBlueId" type="hs:newBlueIdType">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            The new id of the message that was saved in myInbox
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+
+            <xsd:attributeGroup ref="hs:standardResponseAttributeGroup"/>
+
+        </xsd:complexType>
+    </xsd:element>
+
+     <!--
+    //
+    //  saveMessage Request
+    //
+    -->
+    <xsd:element name="saveMessageRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                This method is used to save a local message (for example in a PST file) into myInbox.
+
+                This method is accessed using a request message, and in response may generate a
+                domain-specific response message, or may generate a SOAP fault message. The types used in
+                these messages are fully specified in the services base schema document referenced
+                above. The following sample document fragments illustrate the structure and meaning
+                of the elements and attributes in the request and response messages.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+
+                <xsd:element name="completeLocalMessage" type="completeLocalMessageType" minOccurs="0" maxOccurs="1">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            This element represents a complete local message to add to myInbox.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--
+    //
+    //  saveMessage Response
+    //
+    -->
+    <xsd:element name="saveMessageResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The saveMessage response contains a newBlueId for each message that was successfully saved.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="newBlueId" type="hs:newBlueIdType">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            This elements represents the new or saved message.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+
+            <xsd:attributeGroup ref="hs:standardResponseAttributeGroup"/>
+
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--
+    //
+    //  copyMessage Request
+    //
+    -->
+    <xsd:element name="copyMessageRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                This message allows clients to copy one or more messages to a folder. The message data
+                (including attachments) is copied and new message messages are returned with unique message
+                ID values.
+
+                This element encapsulates the arguments to the copyMessage method. It must contain a
+                message element and a targetFolder element.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="message" minOccurs="1" maxOccurs="unbounded">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            This element contains a select statement that contains an XPATH expression
+                            indicating a message message for which to copy the associated message.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:attribute name="select" type="hs:selectType" use="required">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                     The location of the message (which is associated with the message) to copy.
+                                     For example, /myInbox/message[@id=""].
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                        <xsd:attribute name="copyAsDraft" type="xsd:boolean" use="optional">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                     If this value is present and set to true, the message is copied as a draft into the target folder
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                        <xsd:attribute name="clientId" type="hs:uuidType" use="optional">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                     This attribute specifies that the server should use the value of this attribute as the id of the new message.
+                                     useClientIds should be present on the copyRequest element and set to true
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="targetFolder" type="refType">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            Contains the id of an existing folder to copy the message(s) to.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="useClientIds" type="xsd:boolean" use="optional">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        If this optional attribute is present, each message elements id attribute will be used as the new id
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--
+    //
+    //  copyMessage Response
+    //
+    -->
+    <xsd:element name="copyMessageResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response from copyMessage includes a newBlueId element for each successfully copied message.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="newBlueId" type="hs:newBlueIdType"/>
+            </xsd:sequence>
+
+            <xsd:attributeGroup ref="hs:standardResponseAttributeGroup"/>
+
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--
+    //
+    //  rawMessageType
+    //
+    -->
+    <xsd:complexType name="rawMessageType">
+        <xsd:sequence>
+            <xsd:element name="messageStatus" type="sendMessageStatusType" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="messageContent" type="completeMessageContentType" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  completeLocalMessageType
+    //
+    -->
+    <xsd:complexType name="completeLocalMessageType">
+        <xsd:sequence>
+            <xsd:element name="messageStatus" type="localMessageStatusType" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="messageContent" type="completeMessageContentType" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!--
+    //
+    //  refType
+    //
+    -->
+    <xsd:complexType name="refType">
+        <xsd:attribute name="ref" type="hs:uuidType"/>
+    </xsd:complexType>
+
+    <!--
+    //
+    //  queryOptions
+    //
+    -->
+    <!--
+    <xsd:element name="markAsRead">
+        <xsd:annotation>
+            <xsd:documentation>
+                This query option will mark and returned unread messages as read
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="calculatePreview">
+        <xsd:annotation>
+            <xsd:documentation>
+                This query option return the first 256 characters of the message in the /message/messageContent/preview element
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="expandRecipients">
+        <xsd:annotation>
+            <xsd:documentation>
+                This query option return the the complete recipient list as a collection of /message/messageContent/recipient elements
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="includeRaw2822Headers">
+        <xsd:annotation>
+            <xsd:documentation>
+                This query option returns the the complete raw 2822 message header stream in the element /message/messageContent/raw2822Headers
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="includeRaw2822Content">
+        <xsd:annotation>
+            <xsd:documentation>
+                This query option returns the the complete raw 2822 message stream (including headers) in the element /message/messageContent/raw2822Content
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="includeSingle2822Headers">
+        <xsd:annotation>
+            <xsd:documentation>
+                This query option returns and xml version of all 2822 headers in a collection of /message/messageContent/raw2822Content single2822Header
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="includeSimpleMessageViewAttachments">
+        <xsd:annotation>
+            <xsd:documentation>
+                TODO
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="includeSimpleMessageView">
+        <xsd:annotation>
+            <xsd:documentation>
+                TODO
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    -->
+
+
+</xsd:schema>

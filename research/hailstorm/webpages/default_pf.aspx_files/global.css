@@ -1,0 +1,934 @@
+/*
+----------------------------------------------------------------------------------------------
+XML Stylesheet (Global)
+Created 10/23/01
+----------------------------------------------------------------------------------------------
+*/
+
+/* -------------------------------------------- */
+/* Input */
+/* -------------------------------------------- */
+
+blockquote
+{
+ font-family: arial, helvetica;
+ font-size: 10pt;
+ color: #000000;
+}
+
+input
+{
+  vertical-align: middle;
+  font: 8pt arial
+}
+
+select
+{
+  vertical-align: middle;
+  font: 8pt arial
+}
+/* End Input */
+
+/* -------------------------------------------- */
+/* Links */
+/* -------------------------------------------- */
+
+
+a:link
+{
+  color: #003399;
+  text-decoration: underline
+}
+
+
+
+
+/* End Links */
+
+
+/* -------------------------------------------- */
+/* Header */
+/* -------------------------------------------- */
+.subscribe1
+{
+  text-align: right
+}
+
+a.subscribe1
+{
+  font: 10pt arial;
+  font-weight: bold;
+  color: #003399;
+  text-decoration: underline
+}
+
+a:hover.subscribe1
+{
+  text-decoration: underline
+}
+
+.header
+{
+  background-color: #333366;
+  font: 8pt arial;
+  color: #ffffff
+}
+
+.headeryellow
+{
+  background-color: #333366;
+  font: 8pt arial;
+  color: #ffcc00
+}
+
+.tab
+{
+  background-image: url(/vsm/images/tab_background.gif);
+  vertical-align: baseline
+}
+
+.tabon
+{
+  background-image: url(/vsm/images/tab_on_background.gif);
+  vertical-align: baseline;
+  font: 9pt arial;
+  font-weight: bold;
+  color: #000000
+}
+
+a.tabtext
+{
+  font: 9pt arial;
+  font-weight: bold;
+  color: #000000;
+  text-decoration: none
+}
+/* End Header */
+
+
+/* -------------------------------------------- */
+/* Left Navigation */
+/* -------------------------------------------- */
+
+.navheader
+{
+  padding-left: 2px;
+  background-color: #cccccc;
+  font: 8pt arial;
+  font-weight: bold;
+  color: #000000
+}
+
+.navheaderline
+{
+  background-color: #003399
+}
+
+.navsteptext
+{
+  font: 8pt arial;
+  color: #000000
+}
+
+.navstepred
+{
+  font: 8pt arial;
+  font-weight: bold;
+  color: #ff3333
+}
+
+.navsignup
+{
+  padding-left: 5px;
+  background-color: #ffffcc;
+  font: 8pt arial;
+  color: #000000
+}
+
+.navcover
+{
+  font: 8pt arial;
+  color: #003399;
+  text-align: center;
+}
+
+.navlinkbold
+{
+  font: 8pt arial;
+  margin-bottom: 0pt;
+}
+
+a.navlinkbold
+{
+  font: 8pt arial;
+  font-weight: bold;
+  color: #003399;
+  text-decoration: none
+}
+
+a.navlinkbold:hover
+{
+  text-decoration: underline
+}
+
+a.navlink
+{
+  padding-left: 3px;
+  font: 8pt arial;
+  color: #000000;
+  text-decoration: none
+}
+
+a:hover.navlink
+{
+  text-decoration: underline
+}
+
+a.navstepred
+{
+  font: 8pt arial;
+  font-weight: bold;
+  color: #ff3333
+}
+
+a.toc
+{
+  font: 8pt arial;
+  color: #000000;
+  text-align: center;
+  text-decoration: none
+}
+/* End Left Navigation */
+
+
+/* -------------------------------------------- */
+/* Default Main Content */
+/* -------------------------------------------- */
+
+.updated
+{
+  font: 8pt arial;
+  font-weight: bold;
+  color: #003399
+}
+
+.updatedtime
+{
+  font: 8pt arial;
+  color: #000000
+}
+
+.sectiontitle
+{
+  vertical-align: bottom;
+  font: 13.5pt times;
+  font-weight: bold;
+  color: #003399
+}
+
+.sectiontitleline
+{
+  background-image: url(/javapro/images/blue_line.gif)
+}
+
+.maincontentcategory
+{
+  font: 10pt arial;
+  font-weight: bold;
+  color: #666666
+}
+
+.maincontentcategoryred
+{
+  font: 10pt arial;
+  font-weight: bold;
+  color: #cc0000
+}
+
+.maincontent
+{
+  font: 10pt arial;
+  color: #000000
+}
+
+.pullquote
+{
+	font: 16pt arial;
+	color: Maroon
+}
+
+a.interviewnav
+{
+	font: 8pt arial;
+	color: 003399;
+	text-decoration : none;
+	
+}
+
+
+
+
+
+.subscribe
+{
+  font: 14pt times;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+  text-decoration: underline
+}
+
+.subcontent
+{
+  font: 10pt arial;
+  color: #000000
+}
+
+.sponsorheader
+{
+  font: 9pt arial;
+  font-weight: bold;
+  color: #333366
+}
+
+.sponsor
+{
+  font: 10pt arial;
+  font-weight: bold;
+  color: #000000
+}
+
+.sponsortext
+{
+  font: 10pt arial;
+  color: #000000
+}
+
+.sponsortextlink
+{
+  font: 8pt arial;
+  color: #003399
+}
+
+.subscribe
+{
+  font: 10pt arial;
+  font-style: italic;
+  font-weight: bold;
+  color: #003399;
+  text-align: center
+}
+
+a.maincontenttopheader
+{
+  font: 20pt times;
+  font-weight: bold;
+  color: #000000;
+  text-decoration: none
+}
+
+a:hover.maincontenttopheader
+{
+  text-decoration: underline
+}
+
+a.maincontenttopbullets
+{
+  font: 10pt arial;
+  font-weight: bold;
+  color: #003399;
+  text-decoration: none
+}
+
+a:hover.maincontenttopbullets
+{
+  text-decoration: underline
+}
+
+a.maincontentheader
+{
+  font: 14pt times;
+  font-weight: bold;
+  color: #000000;
+  text-decoration: none
+}
+
+a:hover.maincontentheader
+{
+  text-decoration: underline
+}
+
+a.subcontentheader
+{
+  font: 14pt times;
+  font-weight: bold;
+  color: #000000;
+  text-decoration: none
+}
+
+a:hover.subcontentheader
+{
+  text-decoration: underline
+}
+
+a.readmore
+{
+  font: 10pt arial;
+  font-weight: bold;
+  color: #003399;
+  text-decoration: none
+}
+
+a.readmore2
+{
+  font: 10pt arial;
+  color: #003399;
+  text-decoration: none
+}
+
+
+
+a:hover.readmore
+{
+  text-decoration: underline
+}
+
+a.sponsorheader
+{
+  font: 9pt arial;
+  font-weight: bold;
+  color: #333366;
+  text-decoration: none
+}
+
+a:hover.sponsorheader
+{
+  text-decoration: underline
+}
+
+a.sponsortextlinkbold
+{
+  font: 8pt arial;
+  font-weight: bold;
+  color: #003399;
+  text-decoration: none
+}
+
+a:hover.sponsortextlinkbold
+{
+  text-decoration: underline
+}
+
+a.subscribe
+{
+  font: 10pt arial;
+  font-weight: bold;
+  color: #003399;
+  text-align: center;
+  text-decoration: underline
+}
+
+a:hover.subscribe
+{
+  text-decoration: underline
+}
+
+a.subscribetop
+{
+  font: 10pt arial;
+  font-weight: bold;
+  color: #003399;
+  text-align: center;
+  text-decoration: underline
+}
+
+a:hover.subscribetop
+{
+  text-decoration: underline
+}
+/* End Default Main Content */
+
+
+/* -------------------------------------------- */
+/* Features Main Content */
+/* -------------------------------------------- */
+
+.featureheader
+{
+  font: 14pt times;
+  font-weight: bold;
+  color: #003399
+}
+
+.featureitalic
+{
+  font: 12pt times;
+  font-weight: bold;
+  font-style: italic;
+  color: #cccccc
+}
+
+a.underline
+{
+  font: 10pt arial;
+  color: #003399;
+  text-decoration: underline;
+}
+
+a:hover.underline
+{
+  text-decoration: underline
+}
+/* End Features Main Content */
+
+
+/* -------------------------------------------- */
+/* Resources Table */
+/* -------------------------------------------- */
+.resourcetableborder
+{
+  border: 1px solid #666666;
+}
+
+.resourcetable
+{
+  border: 1px #666666 solid;
+  margin-left: 5pt;
+  margin-bottom: 5pt;
+  background:#cccccc
+}
+
+.resourcetablerow
+{
+  border: 1px #666666 solid;
+}
+
+.resourcetabletext
+{
+  font: 8pt arial;
+  font-weight: bold;
+  color: #003399;
+  text-decoration: none
+}
+
+
+.resourcetableheader
+{
+  font: 10pt arial;
+  font-weight: bold;
+  color: #333366;
+  text-decoration: none
+}
+
+.resourcetableheader2
+{
+  font: 12pt arial;
+  font-weight: bold;
+  color: #333366;
+  text-decoration: none
+}
+
+a.resourcetablelink
+{
+  font: 8pt arial;
+  font-weight: bold;
+  color: #003399;
+  text-decoration: none
+}
+
+a:hover.resourcetablelink
+{
+  text-decoration: underline
+}
+/* End Resources Table */
+
+
+/* -------------------------------------------- */
+/* Popup */
+/* -------------------------------------------- */
+
+.popupHeader
+{
+  font: 12pt arial;
+  font-weight: bold;
+  color: #003399
+}
+
+.popupTitle
+{
+  font: 10pt arial;
+  font-weight: bold;
+  color: #003399
+}
+
+.popupText
+{
+  font: 10pt arial;
+  color: #000000
+}
+
+a.popupClose
+{
+  font: 10pt arial;
+  font-weight: bold;
+  color: #003399;
+  text-decoration: underline
+}
+
+a.popupLink
+{
+  font: 10pt arial;
+  color: #003399;
+  text-decoration: underline
+}
+
+a:hover.popupLink
+{
+  text-decoration: underline
+}
+/* End Popup */
+
+
+/* -------------------------------------------- */
+/* Footer */
+/* -------------------------------------------- */
+
+.footer
+{
+  background-color: #999999;
+  font: 9pt arial;
+  color: #ffffff;
+  text-align: center
+}
+
+.divider
+{
+  font: 9pt arial;
+  color: #cccccc
+}
+
+a.footernavlink
+{
+  font: 8pt arial;
+  color: #333366;
+  text-decoration: none
+}
+
+a:hover.footernavlink
+{
+  text-decoration: underline
+}
+
+a.footerbold
+{
+  background-color: #999999;
+  font: 9pt arial;
+  font-weight: bold;
+  color: #ffffff
+}
+/* End Footer */
+
+
+/* -------------------------------------------- */
+/* Base */
+/* -------------------------------------------- */
+
+p
+{
+ font-family: arial, helvetica;
+ font-size: 10pt;
+ color: #000000;
+}
+
+UL
+{
+ font-family: arial, helvetica;
+ font-size: 10pt;
+ color: #000000;
+}
+
+li
+{
+ font-family: arial, helvetica;
+ font-size: 10pt;
+ color: #000000;
+}
+
+.tabletext
+{
+font-family: verdana, helvetica;
+font-size: 9pt;
+color: #000000;
+}
+
+.qa
+{
+ font-family: arial;
+ font-size: 14pt;
+ color: #cc0033;
+ font-weight: bold;
+}
+
+.black10ptbld
+{
+font-family: verdana, helvetica;
+font-size: 10pt;
+color: #000000;
+font-weight: bold;
+}
+
+.black8pt
+{
+font-family: arial, helvetica;
+font-size: 8pt;
+color:  #000000;
+}
+
+a.black8pt
+{
+font-family: arial, helvetica;
+font-size: 8pt;
+color:  #000000;
+text-decoration: underline;
+}
+
+.codesnippet
+{
+font-family: courier;
+font-size: 10pt;
+color:  #666666;
+}
+
+.codesnippet2
+{font-family: arial, helvetica;
+font-size: 8pt;
+color:  #000000;
+}
+
+
+.FigureCap
+{font-family: arial, helvetica;
+color:  #666699;
+font-size: 9pt;
+font-weight: bold;
+}
+
+.figtable {font-family: arial, helvetica;
+color:  #000000;
+font-size: 8pt;
+font-weight: bold;
+}
+
+
+
+a.FigureCap {color: #666699;
+text-decoration: none;
+}
+
+.TableCap {font-family: arial, helvetica;
+color:  #666699;
+font-size: 9pt;
+font-weight: bold;
+}
+
+a:hover.FigureCap {color: #666699;
+text-decoration: underline;
+}
+
+.DropCap{color: #003399;
+font-size: 16pt;
+font-weight: bold;
+}
+
+.SubHead {font-family: arial, helvetica;
+color: #003399;
+font-size: 10pt;
+font-weight: bold;
+}
+
+a.SubHead {color: #003399;
+text-decoration: none;
+}
+a:hover.SubHead {text-decoration: underline;
+}
+
+.GraySubHead {font-family: times, serif;
+color: #666666;
+font-size: 11pt;
+font-weight: bold;
+}
+
+.BlackSubHead {font-family: arial, helvetica;
+color: #000000;
+font-size: 10pt;
+font-weight: bold;
+}
+
+.AboutAuthor {
+font: 12pt times;
+font-weight: bold;
+font-style: italic;
+color: #666666
+}
+
+.FeatureHead {
+  font: 18pt times;
+  font-weight: bold;
+  color: #000000;
+  text-decoration: none
+}
+
+.FeatureDek {
+  font: 10pt sans-serif;
+  font-weight: bold;
+  color: #003399;
+}
+
+.FeatureDek2 {
+  font: 10pt sans-serif;
+  font-weight: bold;
+  color: #003399;
+}
+
+.toolport {font-family: arial, helvetica;
+color:  #666699;
+font-size: 10pt;
+font-weight: bold;
+}
+
+.breadcrumb {font-family: arial, helvetica;
+color:  #666666;
+font-size: 8pt;
+font-weight: bold;
+}
+
+a.breadcrumb
+{
+  font-family: arial, helvetica;
+  color:  #003399;
+  font-size: 8pt;
+  font-weight: bold;
+  text-decoration: underline
+}
+
+a:hover.breadcrumb
+{
+  text-decoration: underline
+}
+
+.SideBarSubHead {font-family: arial, helvetica;
+font-size: 8pt;
+color: #000000;
+font-weight: bold
+}
+
+.SideBarTitle {font-family: arial, helvetica;
+font-size: 11pt;
+color: #003399;
+font-weight: bold;
+}
+
+
+/* New for redesign */
+
+
+.sponsorheadertop
+{
+  font: 12pt arial;
+  font-weight: bold;
+  color: #800000
+}
+
+.sponsorheader
+{
+  font: 9pt arial;
+  font-weight: bold;
+  color: #800000
+}
+
+.sponsor
+{
+  font: 10pt arial;
+  font-weight: bold;
+  color: #000000
+}
+
+.sponsortext
+{
+  font: 10pt arial;
+  color: #000000
+}
+
+.sponsortextlink
+{
+  font: 8pt arial;
+  color: #003399
+}
+
+a.sponsorheader
+{
+  font: 9pt arial;
+  font-weight: bold;
+  color: #800000;
+  text-decoration: none
+}
+
+a:hover.sponsorheader
+{
+  text-decoration: underline
+}
+
+a.sponsortextlinkbold
+{
+  font: 8pt arial;
+  font-weight: bold;
+  color: #003399;
+  text-decoration: none
+}
+
+a:hover.sponsortextlinkbold
+{
+  text-decoration: underline
+}
+
+.mainheader_blue
+{
+  font: 10pt arial;
+  font-weight: bold;
+  color: #003399;
+  text-decoration: none
+}
+
+a.blue
+{
+  font-weight: bold;
+  color: #003399;
+  text-decoration: underline
+}
+
+a:hover.blue
+{
+  text-decoration: underline
+}
+
+.ad_head {
+	color: #808080;
+	font-family: Arial, Helvetica; 
+	font-size: 10px; 
+	font-variant: small-caps; 
+}
+.bigbox {				
+	float: right;
+	padding: 5px;
+}	
+.bigbox_left {				
+	float: left;
+	padding: 5px;
+}		
+.rightad {				
+	float: right;
+	padding-left: 6px;
+	padding-top: 4px;
+}		
+
+/* End Base */

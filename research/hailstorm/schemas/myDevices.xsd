@@ -1,0 +1,212 @@
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xdb="urn:schemas-microsoft-com:xdb"
+    xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core"
+    xmlns="http://schemas.microsoft.com/hs/2001/10/myDevices"
+    targetNamespace="http://schemas.microsoft.com/hs/2001/10/myDevices"
+    elementFormDefault="qualified"
+    version="1.0"
+    >
+
+    <xsd:annotation>
+        <xsd:documentation>
+        Schema for .NET Devices service.
+        Copyright (c) 2001 Microsoft Corporation. All rights reserved.
+        </xsd:documentation>
+
+        <xsd:appinfo>
+            <xdb:blue select="/myDevices"/>
+            <xdb:blue select="/myDevices/*"/>
+
+            <xdb:red select="//@changeNumber"/>
+            <xdb:red select="//@id"/>
+            <xdb:red select="//@creator"/>
+            <xdb:red select="//cat/@ref"/>
+            <xdb:red select="//cat"/>
+
+            <xdb:red select="//device/deviceId"/>
+            <xdb:red select="//device/carrierId"/>
+            <xdb:red select="//device/address"/>
+            <xdb:red select="//device/$any"/>
+
+            <xdb:namespaceMap>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/myDevices" alias="m"/>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/core" alias="hs"/>
+            </xdb:namespaceMap>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:import namespace="http://schemas.microsoft.com/hs/2001/10/core" schemaLocation="hscommon.xsd"/>
+
+
+    <!--
+    //
+    // myDevices
+    //  - root element for the .NET Devices service
+    //
+    -->
+    <xsd:element
+        name="myDevices"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates the content document for the Microsoft&#174; .NET Devices service.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="myDevicesType">
+                    <xsd:attributeGroup ref="hs:documentRootAttributeGroup"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--
+    //
+    // myDevicesType
+    //
+    -->
+    <xsd:complexType
+        name="myDevicesType"
+        >
+        <xsd:sequence>
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+            <xsd:element
+                name="device"
+                type="deviceType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:element
+                name="subscription"
+                type="hs:subscriptionType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!--
+    //
+    // deviceType
+    //
+    -->
+    <xsd:complexType
+        name="deviceType"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element defines a communication device within the .NET Devices service.
+            Each device is an extensible, categorized item containing the name of the
+            device encoded as a URI, the name of the carrier that services the device
+            encoded as a URI, a friendly name for the device, a list of URIs that can
+            be used to address the device, and so on.
+            <p/>
+            Devices are categorized into classes using simple categorization. For example,
+            a device is classified as a cell phone through the "system#callPhone" categorization.
+            Additionally, a device is marked as a primary device through categorization
+            using the "system#primary" category reference.
+            <p/>
+            A validated device is one that has been digitally signed and certified by
+            some entity. Microsoft .NET My Services accomodates this by allowing the use of extension
+            elements holding certified digital signatures or holding references to
+            verification services that may validate a node on the fly.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+            <xsd:element
+                name="cat"
+                type="hs:catType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:element
+                name="deviceId"
+                type="xsd:anyURI"
+                minOccurs="1"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains the device name/ID in URI form.
+                    This element is encoded as a URI to allow richer and more extensible naming
+                    for the device than can be expressed using a simple UUID. The URI name will
+                    be of the form http://mydevices.microsoft.com/carrierID/deviceID#9c20f0e8-c0ef-472d-8bec-4cc6f8b0f456.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="carrierId"
+                type="xsd:anyURI"
+                minOccurs="1"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains the URI of the carrier that is responsible
+                    for servicing this device. The element is encoded as a URI, Which
+                    allows for both UUID-based carrier identification and
+                    richer identification mechanisms.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="name"
+                type="hs:localizableString"
+                minOccurs="1"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains a user-readable, non-unique friendly name for
+                    the device.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="address"
+                type="xsd:anyURI"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains addresses in the form of URIs that
+                    can be used to address this device. For example, if the device
+                    is addressible through e-mail, an address entry of "mailto:someone@microsoft.com"
+                    may appear in this element. If the device is also addressible through an HTTP
+                    gateway, an additional address of "http://microsoft.com/somepath/someid" can be
+                    specified in this element. This element is repeated for each address that can be used
+                    to address the device.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+    </xsd:complexType>
+
+</xsd:schema>

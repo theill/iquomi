@@ -1,0 +1,61 @@
+﻿<%@ Master Language="C#" CodeFile="MasterPage.master.cs" Inherits="MasterPage_master" %>
+<%@ Register TagPrefix="iq" TagName="UcAccountOverview" Src="~/ctl/UcAccountOverview.ascx" %>
+<%@ Register TagPrefix="iq" TagName="UcMenu" Src="~/UcMenu.ascx" %><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head runat="server">
+	<title>Iquomi</title>
+	<meta http-equiv="Content-Language" content="en" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="js/core.js" defer></script>
+	<style type="text/css" media="all">
+		@import "css/xhtml.css";
+		@import "css/controls.css";
+	</style>
+	<link href="css/xmas.css" type="text/css" rel="alternate stylesheet" title="Christmas Version" />
+</head>
+<body>
+	<div>
+		<div id="Header">
+			<div class="Content">
+				<a href="default.aspx"><img src="gfx/lgo.iquomi.gif" alt="Iquomi" title="Intelligent QUeries On Managed Infrastructures" /></a>
+				<asp:Panel ID="LoggedOnPanel" Runat="server">
+					<iq:UcAccountOverview ID="AccountOverview" Runat="server" />
+				</asp:Panel>
+				<div class="Search">
+					<form id="FrmSearch" action="search.aspx" method="get" autocomplete="on">
+						<input type="submit" value="" class="Submit" />
+						<input id='Query' type="text" name="q" class="Text Blur" value="Search" onfocus="SetFocusUI(this)" accesskey="/" />
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="Location">
+			<div class="Content">
+				<div><asp:SiteMapPath ID="SiteMapPath" Runat="server" PathSeparator=" › " /></div>
+			</div>
+		</div>
+		<div id="Page">
+			<div id="Menu">
+				<iq:UcMenu ID="UcMenu" Runat="server" />
+				<img src="gfx/dot.gif" width="128" height="1" alt="" />
+			</div>
+			<div id="Content">
+				<form id="Form" runat="server" class="Form">
+					<asp:ContentPlaceHolder ID="PageContentArea" Runat="server" />
+				</form>
+				<asp:ContentPlaceHolder ID="NoFormContentPlaceHolder" Runat="server" />
+			</div>
+		</div>
+		<div id="Footer">
+			<div class="Content">
+				<img src="gfx/ico.dots.brown.gif" alt="-" class="dot" />
+				<a href="/"><img src="gfx/lgo.iquomi-footer.png" alt="iquomi" width="78" height="26" style="float: right; border-width: 0;" /></a>
+				<div class="txt">
+					&#169;2003-2007 Commanigy, Inc. <a href="#">All rights reserved.</a><br />
+					Use of this website signifies your agreement to the <a href="about.terms-of-use.aspx">Terms of Use</a>.
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

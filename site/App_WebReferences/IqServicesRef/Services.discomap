@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost:4081/webservices/IqAlerts.asmx?wsdl" filename="IqAlerts.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost:4081/webservices/IqCore.asmx?wsdl" filename="IqCore.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost:4081/webservices/IqPresence.asmx?wsdl" filename="IqPresence.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost:4081/webservices/IqProfile.asmx?wsdl" filename="IqProfile.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost:4081/webservices/IqContacts.asmx?wsdl" filename="IqContacts.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://localhost:4081/webservices/services.disco" filename="services.disco" />
+  </Results>
+</DiscoveryClientResultsFile>

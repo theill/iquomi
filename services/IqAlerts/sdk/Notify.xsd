@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema id="Notify" targetNamespace="http://schemas.iquomi.com/2004/01/iqAlerts/Notify.xsd" xmlns="http://schemas.iquomi.com/2004/01/iqAlerts/Notify.xsd" xmlns:mstns="http://schemas.iquomi.com/2004/01/iqAlerts/Notify.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1.0" elementFormDefault="qualified">
+    <xsd:complexType name="NotifyType">
+        <xsd:sequence>
+            <xsd:element name="Content" type="ViewType">
+            </xsd:element>
+            <xsd:element name="Language" type="xsd:string" />
+            <xsd:element name="Meta" type="MetaType">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="MetaType">
+        <xsd:sequence>
+            <xsd:element name="ActionUrl" type="xsd:string" />
+            <xsd:element name="BaseUrl" type="xsd:string" />
+            <xsd:element name="IconUrl" type="xsd:string" />
+            <xsd:element name="Subject" type="xsd:string" />
+            <xsd:element name="SubscriptionUrl" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ViewType">
+        <xsd:sequence>
+            <xsd:element name="ContentType" type="xsd:string" />
+            <xsd:element name="DeviceHint" type="xsd:string" />
+            <xsd:element name="Subject" type="xsd:string" />
+            <xsd:element name="Value" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="Notify" type="NotifyType" />
+    <xsd:complexType name="NotifyResponseType">
+        <xsd:attribute name="Status" type="ResponseStatusType" use="required" />
+    </xsd:complexType>
+    <!-- TODO: move to common iq file -->
+    <xsd:simpleType name="ResponseStatusType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Success" />
+            <xsd:enumeration value="Failure" />
+            <xsd:enumeration value="Rollback" />
+            <xsd:enumeration value="NotAttempted" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:element name="NotifyResponse" type="NotifyResponseType">
+    </xsd:element>
+</xsd:schema>

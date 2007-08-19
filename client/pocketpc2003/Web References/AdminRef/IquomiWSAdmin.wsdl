@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetSubscriptionServices">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSubscriptionServicesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSubscriptionServicesResult" type="tns:ArrayOfService" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfService">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Service" nillable="true" type="tns:Service" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Service">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AuthorId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Xsd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UrlXsd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UrlIcon" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UrlHomepage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoleMap" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SoapAuthenticationType" type="tns:SoapAuthenticationType" />
+      <s:complexType name="SoapAuthenticationType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Iqid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="DownloadLatestPackage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="platform" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadLatestPackageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadLatestPackageResult" type="tns:Package" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Package">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServiceId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReleaseDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Items" type="tns:ArrayOfPackageItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPackageItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PackageItem" nillable="true" type="tns:PackageItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PackageItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PackageId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Size" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetSubscriptionServicesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSubscriptionServices" />
+  </wsdl:message>
+  <wsdl:message name="GetSubscriptionServicesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSubscriptionServicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSubscriptionServicesSoapAuthenticationType">
+    <wsdl:part name="SoapAuthenticationType" element="tns:SoapAuthenticationType" />
+  </wsdl:message>
+  <wsdl:message name="DownloadLatestPackageSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadLatestPackage" />
+  </wsdl:message>
+  <wsdl:message name="DownloadLatestPackageSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadLatestPackageResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadLatestPackageSoapAuthenticationType">
+    <wsdl:part name="SoapAuthenticationType" element="tns:SoapAuthenticationType" />
+  </wsdl:message>
+  <wsdl:portType name="IquomiWSAdminSoap">
+    <wsdl:operation name="GetSubscriptionServices">
+      <wsdl:input message="tns:GetSubscriptionServicesSoapIn" />
+      <wsdl:output message="tns:GetSubscriptionServicesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadLatestPackage">
+      <wsdl:input message="tns:DownloadLatestPackageSoapIn" />
+      <wsdl:output message="tns:DownloadLatestPackageSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IquomiWSAdminSoap" type="tns:IquomiWSAdminSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSubscriptionServices">
+      <soap:operation soapAction="http://tempuri.org/GetSubscriptionServices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetSubscriptionServicesSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadLatestPackage">
+      <soap:operation soapAction="http://tempuri.org/DownloadLatestPackage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadLatestPackageSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IquomiWSAdminSoap12" type="tns:IquomiWSAdminSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSubscriptionServices">
+      <soap12:operation soapAction="http://tempuri.org/GetSubscriptionServices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetSubscriptionServicesSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadLatestPackage">
+      <soap12:operation soapAction="http://tempuri.org/DownloadLatestPackage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadLatestPackageSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IquomiWSAdmin">
+    <wsdl:port name="IquomiWSAdminSoap" binding="tns:IquomiWSAdminSoap">
+      <soap:address location="http://localhost:4081/webservices/IquomiWSAdmin.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IquomiWSAdminSoap12" binding="tns:IquomiWSAdminSoap12">
+      <soap12:address location="http://localhost:4081/webservices/IquomiWSAdmin.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

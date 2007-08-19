@@ -1,0 +1,14 @@
+
+<vxml version="1.0">
+	<form id="form">
+		<block>
+			<prompt>
+				The items in the list are
+			</prompt>
+			<prompt>workout</prompt>
+			<prompt>get a job</prompt>
+			<prompt>code</prompt>
+			<goto next="services.aspx" />
+		</block>
+	</form>
+</vxml>

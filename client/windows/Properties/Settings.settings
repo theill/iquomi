@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Commanigy.Iquomi.Client.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Commanigy_Iquomi_Client_Windows_IqPresenceRef_IqPresence" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:4081/webservices/IqPresence.asmx</Value>
+    </Setting>
+    <Setting Name="Commanigy_Iquomi_Client_Windows_IqServicesRef_IqPresence" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:4081/webservices/IqPresence.asmx</Value>
+    </Setting>
+    <Setting Name="Commanigy_Iquomi_Client_Windows_IqProfileRef_IqProfile" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:4081/webservices/IqProfile.asmx</Value>
+    </Setting>
+    <Setting Name="MainWindowSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">240, 530</Value>
+    </Setting>
+    <Setting Name="Commanigy_Iquomi_Client_Windows_IqServicesRef_IqAlerts" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost:4081/webservices/IqAlerts.asmx</Value>
+    </Setting>
+    <Setting Name="Commanigy_Iquomi_Client_Windows_IqServicesRef_IqContacts" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost:4081/webservices/IqContacts.asmx</Value>
+    </Setting>
+    <Setting Name="Commanigy_Iquomi_Client_Windows_IqServicesRef_IqCore" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost:4081/webservices/IqCore.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

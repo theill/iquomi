@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xdb="urn:schemas-iquomi-com:xdb" 
+	xmlns:iq="http://schemas.iquomi.com/2004/01/core" 
+	xmlns:mp="http://schemas.iquomi.com/2004/01/iqProfile" 
+	targetNamespace="http://schemas.iquomi.com/2004/01/iqContacts" 
+	xmlns="http://schemas.iquomi.com/2004/01/iqContacts" 
+	elementFormDefault="qualified" 
+	version="1.0">
+
+    <xsd:annotation>
+        <xsd:documentation>
+					Schema for Iquomi&#174; Contacts service.
+          Copyright (c) 2004 Iquomi. All rights reserved.
+        </xsd:documentation>
+
+        <xsd:appinfo>
+            <xdb:blue select="/IqContacts"/>
+            <xdb:blue select="/IqContacts/*"/>
+            <xdb:blue select="/IqContacts/Contact/Name"/>
+            <xdb:blue select="/IqContacts/Contact/SpecialDate"/>
+            <xdb:blue select="/IqContacts/Contact/Picture"/>
+            <xdb:blue select="/IqContacts/Contact/Address"/>
+            <xdb:blue select="/IqContacts/Contact/TelephoneNumber"/>
+            <xdb:blue select="/IqContacts/Contact/EmailAddress"/>
+            <xdb:blue select="/IqContacts/Contact/WebSite"/>
+            <xdb:blue select="/IqContacts/Contact/WorkInformation"/>
+            <xdb:blue select="/IqContacts/Contact/ScreenName"/>
+            <xdb:blue select="/IqContacts/Contact/IdentificationNumber"/>
+            <xdb:blue select="/IqContacts/Contact/UserReference"/>
+            <xdb:blue select="/IqContacts/Contact/SecurityCertificate"/>
+
+            <xdb:red select="//@Id"/>
+            <xdb:red select="//@Creator"/>
+            <xdb:red select="//@ChangeNumber"/>
+            <xdb:red select="//Cat"/>
+            <xdb:red select="//Cat/@Ref"/>
+
+            <xdb:red select="/IqContacts/Contact/@synchronize"/>
+            <xdb:red select="/IqContacts/Contact/Gender"/>
+            <xdb:red select="/IqContacts/Contact/Name/givenName"/>
+            <xdb:red select="/IqContacts/Contact/Name/surname"/>
+            <xdb:red select="/IqContacts/Contact/Name/fileAsName"/>
+            <xdb:red select="/IqContacts/Contact/Puid"/>
+            <xdb:red select="/IqContacts/Contact/$any" />
+            <xdb:red select="/IqContacts/Contact/Name/$any" />
+            <xdb:red select="/IqContacts/Contact/SpecialDate/$any" />
+            <xdb:red select="/IqContacts/Contact/Picture/$any" />
+            <xdb:red select="/IqContacts/Contact/Address/$any" />
+            <xdb:red select="/IqContacts/Contact/EmailAddress/$any" />
+            <xdb:red select="/IqContacts/Contact/WebSite/$any" />
+            <xdb:red select="/IqContacts/Contact/ScreenName/$any" />
+            <xdb:red select="/IqContacts/Contact/TelephoneNumber/$any" />
+            <xdb:red select="/IqContacts/Contact/IdentificationNumber/$any" />
+            <xdb:red select="/IqContacts/Contact/WorkInformation/$any" />
+            <xdb:red select="/IqContacts/subscription/context/$any" />
+
+            <xdb:red select="/IqContacts/Contact/EmailAddress/email"/>
+            <xdb:red select="/IqContacts/Contact/ScreenName/name"/>
+            <xdb:red select="/IqContacts/Contact/TelephoneNumber/number"/>
+            <xdb:red select="//subscription/trigger/@select"/>
+            <xdb:red select="//subscription/trigger/@baseChangeNumber"/>
+
+            <xdb:sqlScript source="iqContactsCustomSQL.sql"/>
+
+            <xdb:namespaceMap>
+                <xdb:mapping uri="http://schemas.iquomi.com/2004/01/iqContacts" alias="m"/>
+                <xdb:mapping uri="http://schemas.iquomi.com/2004/01/iqProfile" alias="mp"/>
+                <xdb:mapping uri="http://schemas.iquomi.com/2004/01/iqCalendar" alias="mc"/>
+                <xdb:mapping uri="http://schemas.iquomi.com/2004/01/core" alias="iq"/>
+            </xdb:namespaceMap>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+		<!-- "schemaLocation" is not used by "xsd.exe" tool on <xsd:import but used by XsdValidator so keep it -->
+    <xsd:import namespace="http://schemas.iquomi.com/2004/01/core" schemaLocation="http://schemas.iquomi.com/2004/01/core/iqcommon.xsd" />
+    <xsd:import namespace="http://schemas.iquomi.com/2004/01/iqProfile" schemaLocation="http://schemas.iquomi.com/2004/01/iqProfile/iqProfile.xsd" />
+
+    <!--
+    //
+    // iqContacts
+    //  - root element for the iqContacts service
+    //
+    -->
+    <xsd:element
+        name="IqContacts"
+        type="IqContactsType"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates the content document for this service. This element
+            establishes a global cache scope for the service and contains other
+            root-level system attributes for this instance of the service.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:complexType
+        name="IqContactsType"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element defines the basic iqContacts types.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="Contact"
+                type="ContactType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+
+                <xsd:annotation>
+                    <xsd:documentation>
+                    A contact
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Subscription"
+                type="iq:SubscriptionType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+        </xsd:sequence>
+
+        <!-- standard attributes for the root element -->
+        <xsd:attributeGroup ref="iq:DocumentRootAttributeGroup"/>
+
+    </xsd:complexType>
+
+    <xsd:complexType name="ContactType">
+        <xsd:sequence>
+
+            <xsd:element
+                name="Cat"
+                type="iq:CatType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="Name"
+                type="mp:NameType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="Puid"
+                type="iq:IqidType"
+                minOccurs="0"
+                maxOccurs="1"
+                />
+
+            <xsd:element
+                name="SpecialDate"
+                type="mp:SpecialDateBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            	/>
+
+            <xsd:element
+                name="Picture"
+                type="mp:PictureBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            	/>
+
+            <xsd:element
+                name="Gender"
+                type="mp:GenderType"
+                minOccurs="0"
+                maxOccurs="1"
+            	/>
+
+            <xsd:element
+                name="Notes"
+                type="iq:LongText"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains free-form notes related to this contact.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Address"
+                type="mp:AddressBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="EmailAddress"
+                type="mp:EmailAddressBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="WebSite"
+                type="mp:WebSiteBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="ScreenName"
+                type="mp:ScreenNameBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="TelephoneNumber"
+                type="mp:TelephoneNumberBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="IdentificationNumber"
+                type="mp:IdentificationNumberBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+            <xsd:element
+                name="WorkInformation"
+                type="mp:WorkInformationBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="UserReference"
+                type="mp:CategorizedUserReferenceBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="SecurityCertificate"
+                type="mp:SecurityCertificateBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+        </xsd:sequence>
+
+        <xsd:attributeGroup ref="iq:StandardBlueAttributeGroup" />
+
+        <xsd:attribute
+            name="Synchronize"
+            use="required"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This attribute controls/enables synchronization
+                of this contact node. When enabled (value of "Yes"),
+                Iquomi will attempt to keep the contact
+                nodes in sync with the reference data stored in the referenced
+                IQID's iqProfile default store. This is subject
+                to permission, of course. A value of "No" indicates that the system
+                should not attempt to keep this contact node in sync.
+                </xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="Yes"/>
+                    <xsd:enumeration value="No"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+
+    </xsd:complexType>
+
+</xsd:schema>

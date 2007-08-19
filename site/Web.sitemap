@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<siteMap>
+  <siteMapNode url="default.aspx" title="Home">
+    <siteMapNode url="search.aspx" title="Search" description="" roles="" />
+    <siteMapNode url="generic.success.aspx" title="Command completed successfully" description="" roles="" />
+		<siteMapNode url="signup.aspx" title="Sign Up" description="" roles="">
+				<siteMapNode url="signup.success.aspx" title="Sign Up successed" />
+		</siteMapNode>
+    <siteMapNode url="logon.aspx" title="Log On" description="" roles="">
+      <siteMapNode url="logon.success.aspx" title="Log on successed" description="" roles="" />
+    </siteMapNode>
+		<siteMapNode url="logoff.success.aspx" title="Log off successed" />
+    <siteMapNode url="beta.subscribe.aspx" title="Beta subscribe" description="" roles="" />
+    <siteMapNode url="account.aspx" title="Account" description="" roles="">
+      <siteMapNode url="account.report.aspx" title="Activity Report" description="" roles="">
+        <siteMapNode url="account.report.service.aspx" title="[dynamic]" args="Service.Id={0}" />
+      </siteMapNode>
+      <siteMapNode url="account.update.aspx" title="Update Account" description="" roles="" />
+      <siteMapNode url="account.close.aspx" title="Close Account" description="" roles="" />
+      <siteMapNode url="account.provider.setup.aspx" title="Setup Provider" args="UrlReferrer={0}" description="" roles="" />
+    </siteMapNode>
+    <siteMapNode url="subscription.create.aspx" title="Subscribe to service" description="" roles="">
+      <siteMapNode url="service.subscribe.aspx" title="Create" args="Service.Id={0}" />
+    </siteMapNode>
+    <siteMapNode url="subscriptions.aspx" title="My Subscriptions" description="" roles="">
+      <siteMapNode url="subscription.read.aspx" title="{0}" description="" roles="" args="Subscription.Id={0}&amp;Service.Id={1}">
+        <siteMapNode url="subscription.listeners.aspx" title="Listeners" description="" args="Subscription.Id={0}">
+          <siteMapNode url="subscription.listener.create.aspx" title="Create Listener" description="" args="Subscription.Id={0}" />
+          <siteMapNode url="subscription.listener.update.aspx" title="Update Listener" description="" args="Subscription.Id={0}&amp;SubscriptionListener.Id={1}" />
+        </siteMapNode>
+        <siteMapNode url="subscription.scopes.aspx" title="Scopes" description="" args="Subscription.Id={0}">
+          <siteMapNode url="subscription.scope.create.aspx" title="Create" args="Subscription.Id={0}" />
+          <siteMapNode url="subscription.scope.update.aspx" title="Update" args="Subscription.Id={0}&amp;Scope.Id={1}">
+            <siteMapNode url="subscription.shape.create.aspx" title="Create Shape" args="Subscription.Id={0}&amp;Scope.Id={1}" />
+            <siteMapNode url="subscription.shape.update.aspx" title="Update Shape" args="Subscription.Id={0}&amp;Shape.Id={1}" />
+          </siteMapNode>
+        </siteMapNode>
+        <siteMapNode url="subscription.roles.aspx" title="Roles" description="" args="Subscription.Id={0}">
+          <siteMapNode url="subscription.role.create.aspx" title="Create Role" description="" args="Subscription.Id={0}" />
+          <siteMapNode url="subscription.role.update.aspx" title="Update Role" description="" args="Subscription.Id={0}&amp;Role.Id={1}" />
+        </siteMapNode>
+      </siteMapNode>
+    </siteMapNode>
+    <siteMapNode url="services.aspx" title="My Services">
+      <siteMapNode url="service.create.aspx" title="Create" />
+      <siteMapNode url="service.extend.aspx" title="Extend" />
+      <siteMapNode url="service.read.aspx" title="[dynamic]" args="Service.Id={0}">
+        <siteMapNode url="service.update.aspx" title="Update" args="Service.Id={0}" />
+        <siteMapNode url="service.upgrade.aspx" title="Upgrade" args="Service.Id={0}" />
+        <siteMapNode url="service.charges.aspx" title="Charges" args="Service.Id={0}">
+          <siteMapNode url="service.charge.create.aspx" title="Create" args="Service.Id={0}" />
+          <siteMapNode url="service.charge.update.aspx" title="Update" args="Service.Id={0}&amp;ServiceCharge.Id={1}" />
+        </siteMapNode>
+        <siteMapNode url="service.methods.aspx" title="Methods" args="Service.Id={0}">
+          <siteMapNode url="service.method.create.aspx" title="Create" args="Service.Id={0}" />
+          <siteMapNode url="service.method.update.aspx" title="Update" args="Service.Id={0}&amp;ServiceMethod.Id={1}" />
+        </siteMapNode>
+        <siteMapNode url="service.role_templates.aspx" title="Role Templates" args="Service.Id={0}">
+          <siteMapNode url="service.role_template.create.aspx" title="Create" args="Service.Id={0}" />
+          <siteMapNode url="service.role_template.update.aspx" title="Update" args="Service.Id={0}&amp;RoleTemplate.Id={1}">
+            <siteMapNode url="service.role_template_description.create.aspx" title="Create RT Description" args="Service.Id={0}&amp;RoleTemplate.Id={1}" />
+            <siteMapNode url="service.role_template_method.create.aspx" title="Create RT Method" args="Service.Id={0}&amp;RoleTemplate.Id={1}" />
+            <siteMapNode url="service.role_template_method.update.aspx" title="Update RT Method" args="Service.Id={0}&amp;RoleTemplate.Id={1}&amp;MethodType.Id={2}" />
+          </siteMapNode>
+        </siteMapNode>
+        <siteMapNode key="service.scopes" url="service.scopes.aspx" title="Scopes" description="All scopes defined for service" args="Service.Id={0}">
+          <siteMapNode url="service.scope.create.aspx" title="Create" args="Service.Id={0}" />
+          <siteMapNode url="service.scope.update.aspx" title="Update" args="Service.Id={0}&amp;Scope.Id={1}">
+            <siteMapNode url="service.shape.create.aspx" title="Create Shape" args="Service.Id={0}&amp;Scope.Id={1}" />
+            <siteMapNode url="service.shape.update.aspx" title="Update Shape" args="Service.Id={0}&amp;Shape.Id={1}" />
+          </siteMapNode>
+        </siteMapNode>
+      </siteMapNode>
+    </siteMapNode>
+    <siteMapNode url="service.charge.create.aspx?service_id={0}" title="Create Service Charge">
+    </siteMapNode>
+    <siteMapNode url="packages.aspx" title="My Packages">
+      <siteMapNode url="package.create.aspx" title="Create" />
+      <siteMapNode url="package.read.aspx" title="[dynamic]" args="Package.Id={0}">
+        <siteMapNode url="package.update.aspx" title="Update" args="Package.Id={0}" />
+        <siteMapNode url="package.items.aspx" title="Items" args="Package.Id={0}">
+          <siteMapNode url="package.item.create.aspx" title="Create" args="Package.Id={0}" />
+          <siteMapNode url="package.item.update.aspx" title="Update" args="PackageItem.Id={0}" />
+        </siteMapNode>
+      </siteMapNode>
+    </siteMapNode>
+    <siteMapNode url="software.aspx" title="Software">
+      <siteMapNode url="software.download.aspx" title="Download" />
+    </siteMapNode>
+    <siteMapNode url="architecture.aspx" title="Architecture" description="" roles="" />
+    <siteMapNode url="about.aspx" title="About" description="" roles="">
+      <siteMapNode url="about.logos.aspx" title="Logos" />
+      <siteMapNode url="about.privacy-policy.aspx" title="Privacy Policy" />
+      <siteMapNode url="about.terms-of-use.aspx" title="Terms of Use" />
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

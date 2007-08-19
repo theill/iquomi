@@ -1,0 +1,1430 @@
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xdb="urn:schemas-microsoft-com:xdb"
+    targetNamespace="http://schemas.microsoft.com/hs/2001/10/core"
+    xmlns="http://schemas.microsoft.com/hs/2001/10/core"
+    elementFormDefault="qualified"
+    version="1.0">
+
+<xsd:annotation>
+    <xsd:documentation>
+        Schema for .NET My Services Infrastructure types including security-related types,
+        system document, message headers, etc.
+        Copyright (c) 2001 Microsoft Corporation. All rights reserved.
+    </xsd:documentation>
+
+    <xsd:appinfo>
+        <xdb:namespaceMap>
+            <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/core" alias="hs"/>
+        </xdb:namespaceMap>
+    </xsd:appinfo>
+</xsd:annotation>
+
+<!--
+//
+// Standard Attribute Group for all .NET My Services response elements (standard and custom)
+//
+-->
+<xsd:attributeGroup name="standardResponseAttributeGroup">
+    <xsd:attribute
+        name="selectedNodeCount"
+        type="selectedNodeCountType"
+        use="optional"
+        >
+    </xsd:attribute>
+
+    <xsd:attribute
+        name="status"
+        type="responseStatus"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This attribute indicates the status of the method.
+                <dl>
+                    <dt>success</dt>
+                        <dd>
+                        The corresponding method was completed successfully.
+                        </dd>
+                    <dt>failure</dt>
+                        <dd>
+                        The corresponding method was not completed successfully.
+                        </dd>
+                    <dt>rollback</dt>
+                        <dd>
+                        The method failed, but was rolled back to its
+                        pre-<b>updateBlock</b> status.
+                        </dd>
+                    <dt>notAttempted</dt>
+                        <dd>
+                        The corresponding method was not attempted. This occurs when
+                        a previous operation failed.
+                        </dd>
+                </dl>
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+</xsd:attributeGroup>
+
+<!--
+//
+// responseStatus
+//
+-->
+<xsd:simpleType name="responseStatus">
+    <xsd:restriction base="xsd:string">
+        <xsd:enumeration value="success"/>
+        <xsd:enumeration value="failure"/>
+        <xsd:enumeration value="rollback"/>
+        <xsd:enumeration value="notAttempted"/>
+        <!-- sgfix: CONSIDER: accessDenied is added here because myContacts return it.  Shouldn't this be failure + soap fault? -->
+        <xsd:enumeration value="accessDenied"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<!--
+//
+// insertRequest
+//
+-->
+<xsd:element
+    name="insertRequest"
+    type="insertRequestType"
+    />
+
+<xsd:complexType name="insertRequestType">
+    <xsd:annotation>
+        <xsd:documentation>
+        This element indicates a request to insert an <b>xdb:blue</b> or <b>xdb:red</b>
+        into the specified <b>xdb:blue</b>. The <b>select</b> attribute must always select an
+        <b>xdb:blue</b>. This element selects a node-set
+        within the specified document relative to the externally established current context.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+        <!--
+        //
+        // options
+        //
+        -->
+        <xsd:element name="options" type="insertRequestOptionsType" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+                <xsd:documentation>
+                    TBD.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <!--
+        //
+        // attributes
+        //
+        -->
+        <xsd:element
+            name="attributes"
+            type="redAttributeType"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+        </xsd:element>
+
+        <!--
+        //
+        // content
+        //
+        -->
+        <xsd:any
+            processContents="skip"
+            namespace="##other"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element is a placeholder that indicates where the
+                content being inserted is to be specified.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:any>
+    </xsd:sequence>
+
+    <xsd:attribute
+        name="select"
+        type="selectType"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation><!--mode="prepend">-->
+                This attribute must always select an <b>xdb:blue</b>.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+    <xsd:attribute
+        name="useClientIds"
+        type="useClientIdsType"
+        use="optional"
+        >
+    </xsd:attribute>
+
+    <xsd:attribute
+        name="minOccurs"
+        type="minOccursType"
+        >
+    </xsd:attribute>
+
+    <xsd:attribute
+        name="maxOccurs"
+        type="maxOccursType"
+        >
+    </xsd:attribute>
+</xsd:complexType>
+
+<!--
+//
+// insertResponse
+//
+-->
+<xsd:element
+    name="insertResponse"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This element specifies the response to the <b>insertRequest</b>.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+        <xsd:sequence>
+            <xsd:element
+                name="newBlueId"
+                type="newBlueIdType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element exists once for each <b>xdb:blue</b> item that was successfully inserted.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+
+        <xsd:attribute
+            name="newChangeNumber"
+            type="changeNumberType"
+            use="optional"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This attribute returns the <b>changeNumber</b> resulting from the insert operation.
+                This attribute is not returned when contained within an <b>updateResponse</b> because
+                in that message, the root contains the <b>changeNumber</b>.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+
+        <xsd:attributeGroup ref="standardResponseAttributeGroup"/>
+
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:complexType name="changedBlueType">
+    <xsd:annotation>
+        <xsd:documentation>
+        This element is typically found in the body of an HSDL response message. It indicates
+        a changed item (insert, replace) and supplies the server-generated ID, the related <b>localTag</b>,
+        and the change number. The granularity of this element is an <b>xdb:blue item</b>. When used in a <b>changeQuery</b>,
+        this element returns the content of the specified ID.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+
+        <!--
+        //
+        // content
+        //
+        -->
+        <xsd:any
+            processContents="skip"
+            namespace="##other"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element is a placeholder that indicates where the
+                content of the changed node <b>xdb:blue</b> item is returned.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:any>
+    </xsd:sequence>
+
+</xsd:complexType>
+
+<xsd:complexType name="deletedBlueType">
+    <xsd:annotation>
+        <xsd:documentation>
+        This element is typically found in the body of an HSDL response message. It indicates
+        a deleted item and supplies the server-generated ID of the deleted item.
+        The granularity of this element is an <b>xdb:blue</b> item.
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:attribute
+        name="id"
+        type="idType"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This attribute specifies the ID of the deleted item.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+</xsd:complexType>
+
+
+<xsd:complexType name="newBlueIdType">
+    <xsd:annotation>
+        <xsd:documentation>
+        This element is typically found in the body of an <b>insertResponse</b>, <b>updateResponse</b>, or <b>replaceResponse</b>
+        to indicate that a new ID value was generated by the corresponding request operation. Applications
+        must, in response, walk through their changes in order and apply the returned ID to any cached value
+        of the node they just inserted. Only new ID generation triggers this. So in the case of an ID-preserving
+        <b>replaceRequest</b>, the root of the replacement never generates one of these, but an inner <b>xdb:blue</b> does.
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:attribute
+        name="id"
+        type="idType"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This attribute specifies the ID of the deleted item.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+</xsd:complexType>
+
+
+<!--
+//
+// deleteRequest
+//
+-->
+<xsd:element
+    name="deleteRequest"
+    type="deleteRequestType"
+    />
+
+<xsd:complexType name="deleteRequestType">
+    <xsd:annotation>
+        <xsd:documentation>
+        This element indicates a request to delete the selected <b>xdb:blue</b> or <b>xdb:red</b> items
+        from the specified XML document. This element selects a node-set
+        within the specified document relative to the externally established current context.
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+        <!--
+        //
+        // options
+        //
+        -->
+        <xsd:element name="options" type="deleteRequestOptionsType" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+                <xsd:documentation>
+                    TBD.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+    </xsd:sequence>
+
+    <xsd:attribute
+        name="select"
+        type="selectType"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation><!--mode="prepend">-->
+                This attribute must always select an <b>xdb:blue</b> or an <b>xdb:red</b>.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+    <xsd:attribute
+        name="minOccurs"
+        type="minOccursType"
+        >
+    </xsd:attribute>
+
+    <xsd:attribute
+        name="maxOccurs"
+        type="maxOccursType"
+        >
+    </xsd:attribute>
+
+</xsd:complexType>
+
+<!--
+//
+// deleteResponse
+//
+-->
+<xsd:element
+    name="deleteResponse"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This element specifies the response to the <b>deleteRequest</b>.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+
+        <xsd:attribute
+            name="newChangeNumber"
+            type="changeNumberType"
+            use="optional"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This attribute returns the <b>changeNumber</b> resulting from the delete operation.
+                This attribute is not returned when contained within an <b>updateResponse</b>, because
+                in that message, the root contains the <b>changeNumber</b>.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+
+        <xsd:attributeGroup ref="standardResponseAttributeGroup"/>
+
+    </xsd:complexType>
+</xsd:element>
+
+<!--
+//
+// replaceRequest
+//
+-->
+<xsd:element
+    name="replaceRequest"
+    type="replaceRequestType"
+    />
+
+<xsd:complexType name="replaceRequestType">
+    <xsd:annotation>
+        <xsd:documentation>
+        This element indicates a request to replace an existing <b>xdb:blue</b> or <b>xdb:red</b> with the
+        XML document fragment contained within this message. This element selects a node-set
+        within the specified document relative to the externally established current context.
+        The selected node must be an <b>xdb:blue</b> or an <b>xdb:red</b>.
+        <p/>
+        The message first selects a node set, and then for each node, replaces the selected node with
+        the content of this message. For <b>xdb:blue</b> nodes, the node's ID is preserved.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+        <!--
+        //
+        // options
+        //
+        -->
+        <xsd:element name="options" type="replaceRequestOptionsType" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+                <xsd:documentation>
+                    TBD.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <!--
+        //
+        // attributes
+        //
+        -->
+        <xsd:element
+            name="attributes"
+            type="redAttributeType"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+        </xsd:element>
+
+        <!--
+        //
+        // content
+        //
+        -->
+        <xsd:any
+            processContents="skip"
+            namespace="##other"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element is a placeholder that indicates where the
+                content of the item being replaced is to be specified.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:any>
+    </xsd:sequence>
+
+    <xsd:attribute
+        name="select"
+        type="selectType"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation><!--mode="prepend">-->
+                This attribute must always select an <b>xdb:blue</b> or an <b>xdb:red</b>.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+    <xsd:attribute
+        name="useClientIds"
+        type="useClientIdsType"
+        use="optional"
+        >
+    </xsd:attribute>
+
+    <xsd:attribute
+        name="minOccurs"
+        type="minOccursType"
+        >
+    </xsd:attribute>
+
+    <xsd:attribute
+        name="maxOccurs"
+        type="maxOccursType"
+        >
+    </xsd:attribute>
+
+</xsd:complexType>
+
+<!--
+//
+// replaceResponse
+//
+-->
+<xsd:element
+    name="replaceResponse"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This element specifies the response to the <b>replaceRequest</b>.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+        <xsd:sequence>
+            <xsd:element
+                name="newBlueId"
+                type="newBlueIdType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element exists once for each <b>xdb:blue</b> item that was successfully inserted.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+
+        <xsd:attribute
+            name="newChangeNumber"
+            type="changeNumberType"
+            use="optional"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This attribute returns the <b>changeNumber</b> resulting from the replace operation.
+                This attribute is not returned when contained within an <b>updateResponse</b>, because
+                in that message, the root contains the <b>changeNumber</b>.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+
+        <xsd:attributeGroup ref="standardResponseAttributeGroup"/>
+
+    </xsd:complexType>
+</xsd:element>
+
+<!--
+//
+// updateRequest
+//
+-->
+<xsd:element
+    name="updateRequest"
+    type="updateRequestType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        The update request is designed to take a set of individual insert, replace, and
+        delete requests and apply them to the specified document. The message is designed
+        to contain a series of <b>updateBlocks</b> that share a common document context and common failure semantics.
+        </xsd:documentation>
+    </xsd:annotation>
+</xsd:element>
+
+<xsd:complexType name="updateRequestType">
+    <xsd:sequence>
+
+        <!--
+        //
+        // An update request consists of a series of sequential
+        // updateBlocks. Each updateBlock may trigger or suppress
+        // a failure notification based on the outcome of the
+        // individual operations contained within. Each updateBlock
+        // establishes context for the operations contained within.
+        //
+        -->
+        <xsd:element
+            name="updateBlock"
+            type="updateBlockType"
+            minOccurs="1"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                A sequence of operations grouped by a common context in the XML document sharing
+                the same failure semantics.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+    </xsd:sequence>
+</xsd:complexType>
+
+<!--
+//
+// updateRequest (sgfix: moved to global scope so VS code can interop)
+//
+-->
+<xsd:complexType name="updateBlockType">
+    <xsd:sequence>
+
+        <xsd:element
+            name="insertRequest"
+            type="insertRequestType"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+        </xsd:element>
+
+        <xsd:element
+            name="deleteRequest"
+            type="deleteRequestType"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+        </xsd:element>
+
+        <xsd:element
+            name="replaceRequest"
+            type="replaceRequestType"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+        </xsd:element>
+
+    </xsd:sequence>
+
+    <xsd:attribute
+        name="select"
+        type="string"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This item specifies an XPath expression that establishes global context
+            for this <b>updateBlock</b>. The selection must specify an <b>xdb:blue</b>.
+            With this context established, the enclosed operation's
+            <b>select</b> attributes select nodes within this global context. It is not
+            an error to match zero nodes with this <b>select</b> attribute. The empty node set is simply
+            the context for the enclosed operations, and their <b>minOccurs</b> and <b>maxOccurs</b> attributes
+            dictate success or failure.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+    <xsd:attribute
+        name="onError"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This attribute controls how error conditions raised by individual operations
+            within an <b>updateBlock</b> affect the entire <b>updateRequest</b> message. Error conditions
+            can trigger one of the following actions:
+            <dl>
+                <dt><b>rollbackBlockAndFail</b></dt>
+                    <dd>
+                    If any operation within the <b>updateBlock</b> fails, all enclosed operations
+                    are rolled back to their initial state and the <b>updateRequest</b> ends in a
+                    failure condition.
+                    </dd>
+                <dt><b>rollbackBlockAndContinue</b></dt>
+                    <dd>
+                    If any operation within the <b>updateBlock</b> fails, all enclosed operations
+                    are rolled back to their initial state and execution proceeds to the
+                    next <b>updateBlock</b>.
+                    </dd>
+                <dt><b>ignore</b></dt>
+                    <dd>
+                    Failures within an individual <b>updateBlock</b> do not trigger a rollback
+                    or a failure in the <b>updateRequest</b>. A failure simply terminates execution
+                    of the <b>updateBlock</b>. Successful operations are tagged in the <b>updateResponse</b>.
+                    Execution continues at the next <b>updateBlock</b>.
+                    </dd>
+            </dl>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="rollbackBlockAndFail"/>
+                <xsd:enumeration value="rollbackBlockAndContinue"/>
+                <xsd:enumeration value="ignore"/>
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:attribute>
+</xsd:complexType>
+
+
+
+<!--
+//
+// updateResponse
+//
+-->
+<xsd:element
+    name="updateResponse"
+    type="updateResponseType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This message contains the results of an <b>updateRequest</b> message. It may
+        appear as a response to an <b>updateRequest</b>, or, in the case of a fault during the
+        processing of an <b>updateRequest</b>, may appear in a SOAP <b>Fault</b> element.
+        <p/>
+        The <b>updateResponse</b> message contains multiple <b>updateBlockStatus</b> elements. One of these
+        elements exists for each <b>updateBlock</b> in the <b>updateRequest</b> message. Each of these contains
+        a status element for each operation in the <b>updateBlock</b>. Additionally, because the
+        changes alter all ancestor change numbers, a <b>newChangeNumber</b> attribute is present so that clients can update their caches.
+        </xsd:documentation>
+    </xsd:annotation>
+</xsd:element>
+
+<xsd:complexType name="updateResponseType">
+    <xsd:sequence>
+
+        <xsd:element
+            name="updateBlockStatus"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element contains status information for the <b>updateBlock</b>. This element indicates the status
+                of the entire <b>updateBlock</b>. It can be one of the following: <b>success</b>, <b>failure</b>, <b>rollback</b>,
+                or <b>notAttempted</b>.<p/>
+                If the status is <b>rollback</b> or <b>notAttempted</b>, the .NET service data was not affected
+                by the corresponding <b>updateBlock</b>. A value of <b>success</b> means that the <b>updateBlock</b> did the
+                specified work, which may or may not have side effects. A value of <b>failure</b> means that the
+                <b>updateBlock</b> was partially executed and the <b>updateOperationStatus</b> elements have additional
+                information.
+                </xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+                <xsd:sequence>
+
+                    <xsd:element
+                        ref="insertResponse"
+                        minOccurs="0"
+                        maxOccurs="unbounded"
+                        >
+                    </xsd:element>
+
+                    <xsd:element
+                        ref="deleteResponse"
+                        minOccurs="0"
+                        maxOccurs="unbounded"
+                        >
+                    </xsd:element>
+
+                    <xsd:element
+                        ref="replaceResponse"
+                        minOccurs="0"
+                        maxOccurs="unbounded"
+                        >
+                    </xsd:element>
+
+                </xsd:sequence>
+
+                <xsd:attributeGroup ref="standardResponseAttributeGroup"/>
+
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:sequence>
+
+        <xsd:attribute
+            name="newChangeNumber"
+            type="changeNumberType"
+            use="required"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This attribute returns the <b>changeNumber</b> resulting from the entire <b>updateRequest</b>. A
+                given <b>updateRequest</b> changes only a single <b>changeNumber</b> value and the application
+                must update affected nodes in its own cache.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+
+</xsd:complexType>
+
+<!--
+//
+// query
+//
+-->
+<xsd:element
+    name="queryRequest"
+    type="queryRequestType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+            The purpose of the <b>queryRequest</b> message is
+            to return, in the <b>queryResponse</b> message, information
+            from the specified document. The message is designed to carry multiple
+            query operations in a single request message. This allows applications
+            to specify efficient queries and address different pieces of the document
+            in a single message transmission.
+            <p/>
+            The <b>queryRequest</b> message may contain zero or more <b>xpQuery</b> elements. These elements
+            specify data queries on the specified document. They contain an XPath expression
+            that selects a set of nodes, and by using <b>minOccurs</b> and <b>maxOccurs</b>, they can control
+            how many nodes are returned in a given operation.
+            <p/>
+            The <b>queryRequest</b> message may contain zero or more <b>changeQuery</b> elements. The purpose
+            of this element is to aid client software in building caches populated with
+            .NET My Services data. These elements
+            are designed to issue a query relative to a <b>changeNumber</b>, and instead of returning
+            simply content, they return a summary of changed or deleted <b>blue</b> items.
+            <p/>
+            The .NET My Services effort is likely to evolve to include support for XML Query. In anticipation
+            of this, plans include support for zero or more <b>xmQuery</b> elements that will be used to
+            encapsulate the XML Query language.
+        </xsd:documentation>
+    </xsd:annotation>
+</xsd:element>
+
+<xsd:complexType name="queryRequestType">
+    <xsd:sequence>
+
+        <xsd:element
+            name="xpQuery"
+            type="xpQueryType"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element specifies an XPath query against the data contained
+                within the specified document. The
+                element is contains an XPath expression that selects
+                the nodes the client needs to extract from .NET My Services, and constraints on how many
+                nodes the selection must match.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="changeQuery"
+            type="changeQueryType"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element is used to request a list of updates relative to a single
+                selected node and a <b>changeNumber</b> value on that node. It is designed specifically
+                to support client-side caching of .NET My Services content. Any <b>xdb:blue</b> node
+                can be selected
+                with the <b>select</b> attribute. It is an error condition to select more than a single node. While
+                this element does not support <b>minOccurs/maxOccurs</b> attributes, it is as if <b>minOccurs</b>=0 and <b>maxOccurs</b>=1.
+                The response to this message is an <b>updateRequest</b> message that contains the insert, replace,
+                and delete operations that should be processed by the client software to bring its
+                cache up to date with respect to the change number specified in this element.
+                <p/>
+                There will be times when the .NET My Services system will be unable to return a <b>changeQueryResponse</b>
+                that is complete enough bring a client cache in sync. This
+                can occur when the client is way out of date and numerous delete operations have occurred. In these
+                situations, a <b>changeQuery</b> will simply fail with a fault condition
+                and, in response to this
+                message, the client should discard and rebuild its cache.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+    </xsd:sequence>
+</xsd:complexType>
+
+<!--
+//
+// xpQueryType (sgfix: moved to global scope so VS code can interop)
+//
+-->
+<xsd:complexType name="xpQueryType">
+
+    <xsd:sequence>
+        <xsd:element name="options" type="queryOptionsType" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+                <xsd:documentation>
+                    TBD
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+    </xsd:sequence>
+
+    <xsd:attribute
+        name="select"
+        type="string"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This item specifies an XPath expression that specifies the nodes that are
+            to be selected and returned in the response for this operation. The selected nodes
+            are encapsulated in the <b>xqQueryResponse</b> element whose operation <b>id</b> attribute matched
+            the operation <b>id</b> attribute of this element.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+    <xsd:attribute
+        name="minOccurs"
+        type="minOccursType"
+        use="optional"
+        >
+    </xsd:attribute>
+
+    <xsd:attribute
+        name="maxOccurs"
+        type="maxOccursType"
+        use="optional"
+        >
+    </xsd:attribute>
+
+</xsd:complexType>
+
+<!--
+//
+// changeQueryType (sgfix: moved to global scope so VS code can interop)
+//
+-->
+<xsd:complexType name="changeQueryType">
+
+    <xsd:sequence>
+        <xsd:element name="options" type="queryOptionsType" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+                <xsd:documentation>
+                    TBD
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+    </xsd:sequence>
+
+    <xsd:attribute
+        name="select"
+        type="string"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This attribute specifies an XPath expression that specifies the single node that the change
+            query is relative to. This node, in conjunction with the specified <b>changeNumber</b> attribute,
+            controls the change computation. The selected node is located, and all nodes containing
+            <b>id</b> attributes (of type <b>idType</b>) are examined. Any nodes that have changed
+            relative to the specified <b>changeNumber</b> are returned in the <b>updateRequest</b>.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+    <xsd:attribute
+        name="baseChangeNumber"
+        type="changeNumberType"
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This attribute specifies the <b>changeNumber</b> value that the client has in its cache for
+            the node specified by the <b>select</b> attribute. As explained above, this value establishes
+            the synchronization base used to compute the changes underneath this node.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+</xsd:complexType>
+
+<!--
+//
+// queryResponse
+//
+-->
+<xsd:element
+    name="queryResponse"
+    type="queryResponseType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        The <b>queryResponse</b> element contains the response data for a given <b>queryRequest</b>.
+        This element contains both <b>xpQueryResponse</b> elements and <b>changeQueryResponse</b>
+        elements. These elements contain operation <b>id</b> attributes that correlate to the matching
+        <b>xpQuery</b> and <b>changeQuery</b> elements in the <b>queryRequest</b> message.
+        </xsd:documentation>
+    </xsd:annotation>
+</xsd:element>
+
+<xsd:complexType name="queryResponseType">
+    <xsd:sequence>
+
+        <xsd:element
+            name="xpQueryResponse"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element contains the node set selected by the matching <b>xpQuery</b>. If the selected
+                node set matches zero nodes, and <b>minOccurs</b> is zero, this element is still present
+                but contains empty content indicating that there were no matching nodes.
+                </xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+                <xsd:sequence>
+
+                    <xsd:any
+                        processContents="skip"
+                        namespace="##other"
+                        minOccurs="0"
+                        maxOccurs="unbounded"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This element is a placeholder that indicates where the
+                            content of the item being queried is returned.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:any>
+
+                </xsd:sequence>
+
+                <xsd:attributeGroup ref="standardResponseAttributeGroup"/>
+
+            </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element
+            name="changeQueryResponse"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element contains the response to the associated <b>changeQuery</b>. The content of this element
+                is a single, optional <b>changeSummary</b> element in the form of an <b>updateRequest</b>
+                that describes the changes for
+                the selected node set, relative to the synchronization base specified by the <b>changeNumber</b>
+                attribute. The client software maintaining a cache of .NET My Services data should process this
+                <b>updateRequest</b> into its own cache, bringing that cache up to date.
+                </xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+                <xsd:sequence>
+                    <xsd:element
+                        name="changedBlue"
+                        type="changedBlueType"
+                        minOccurs="0"
+                        maxOccurs="1"
+                        >
+                    </xsd:element>
+                    <xsd:element
+                        name="deletedBlue"
+                        type="deletedBlueType"
+                        minOccurs="0"
+                        maxOccurs="1"
+                        >
+                    </xsd:element>
+                </xsd:sequence>
+
+                <xsd:attribute
+                    name="baseChangeNumber"
+                    type="changeNumberType"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This element contains the base change number for this <b>changeQuery</b>. On request,
+                        the <b>baseChangeNumber</b> is supplied and is associated with a subtree in the document.
+                        This attribute returns the new value for the change number in that subtree. It
+                        is assumed that the client software will easily know where to place this.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+
+                <xsd:attributeGroup ref="standardResponseAttributeGroup"/>
+
+            </xsd:complexType>
+        </xsd:element>
+
+    </xsd:sequence>
+</xsd:complexType>
+
+<!--
+//
+// useClientIdsType
+//
+-->
+<xsd:simpleType
+    name="useClientIdsType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This attribute specifies that, if an <b>xdb:blue</b> item is created during an insert
+        or replace operation, and an ID would normally be generated, the ID specified
+        in the request content should be used instead of having .NET My Services generate an ID.
+        Applications using this option must ensure that they are properly generating unique
+        IDs in the form of UUIDs. They must also ensure that they do not assign the same ID to
+        multiple <b>xdb:blue</b> items; this can happen if the insert <b>select</b> attribute selects multiple
+        nodes.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+        <xsd:enumeration value="true"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<!--
+//
+// selectType
+//
+-->
+<xsd:simpleType
+    name="selectType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This item specifies an XPath expression that selects a set
+        of nodes relative to the externally established context. The expression can
+        never travel outside the node-set established by this externally established
+        current context. The expression can match zerio or more nodes, and the operation
+        manipulates all selected nodes. The <b>minOccurs</b> and <b>maxOccurs</b> attributes are
+        optional and place restrictions and limitations on the number of nodes selected.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string"/>
+</xsd:simpleType>
+
+<!--
+//
+// minOccursType
+//
+-->
+<xsd:simpleType
+    name="minOccursType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This optional attribute specifies the minimum number of nodes that must be selected
+        by the <b>select</b> operation in order for this operation to be successfully attempted. The
+        default value is zero, meaning that if no nodes are selected, the operation silently succeeds
+        as a "NOP." A value of one means that a minimum of one node must be selected. In that case,
+        if no nodes are selected, the operation fails with an error.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:int"/>
+</xsd:simpleType>
+
+<!--
+//
+// maxOccursType
+//
+-->
+<xsd:simpleType
+    name="maxOccursType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This optional attribute specifies the maximum number of nodes that may be selected
+        by the <b>select</b> operation in order for this operation to be successfully attempted. The
+        default value is <b>unbounded</b>. If the number of nodes selected by the select attribute
+        is greater than this value, an error condition occurs.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:int"/>
+</xsd:simpleType>
+
+<!--
+//
+// selectedNodeCountType
+//
+-->
+<xsd:simpleType
+    name="selectedNodeCountType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This attribute is used to return the number of selected nodes, selected by the corresponding
+        HSDL operation.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:int"/>
+</xsd:simpleType>
+
+<!--
+//
+// redAttributeType
+//
+-->
+<xsd:complexType
+    name="redAttributeType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        This element is used to specify a single attribute to be manipulated by the .NET My Services
+        data-manipulation primitives. For example, when used in an <b>insertRequest</b>, this element
+        specifies an attribute to be inserted at the specified node.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:anyAttribute namespace="##other" processContents="skip"/>
+</xsd:complexType>
+
+
+<!--
+//
+// queryOptionsType
+//
+-->
+<xsd:complexType name="queryOptionsType">
+    <xsd:sequence>
+        <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:element name="sort" type="sortType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+                <xsd:documentation>
+                    TBD.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="range" type="rangeType" minOccurs="0" maxOccurs="unbounded">
+             <xsd:annotation>
+                <xsd:documentation>
+                    TBD.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="shape" type="shapeType" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+                <xsd:documentation>
+                    TBD.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+    </xsd:sequence>
+</xsd:complexType>
+
+<!--
+//
+// sortType (sgfix: moved to global scope so VS code can interop)
+//
+-->
+<xsd:complexType name="sortType">
+    <xsd:attribute name="direction" use="optional" default="ascending">
+        <xsd:annotation>
+            <xsd:documentation>
+                TBD: Direction of sorting (ascending or descending).
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="ascending" />
+                <xsd:enumeration value="descending" />
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:attribute>
+    <xsd:attribute name="key" type="selectType" use="required">
+        <xsd:annotation>
+            <xsd:documentation>
+                TBD: Sort key (for example, subject or @size).
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+</xsd:complexType>
+
+<!--
+//
+// rangeType (sgfix: moved to global scope so VS code can interop)
+//
+-->
+<xsd:complexType name="rangeType">
+    <xsd:attribute name="first" type="positionType" use="required">
+        <xsd:annotation>
+            <xsd:documentation>
+                TBD: Position of element that will be first in the resulting node-set
+                (like '1', 'count()' or 'position-of(.[@id='93247519328475']).
+                Note: Only a subset of XPath will work here.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="count" type="xsd:int" use="required">
+        <xsd:annotation>
+            <xsd:documentation>
+                TBD: Positive number of elements.
+                TBD: Is there any way to specify in schema that this number should be positive?
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+</xsd:complexType>
+
+<!--
+//
+// insertRequestOptionsType
+//
+-->
+<xsd:complexType name="insertRequestOptionsType">
+    <xsd:sequence minOccurs="1" maxOccurs="1">
+        <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+</xsd:complexType>
+
+<!--
+//
+// deleteRequestOptionsType
+//
+-->
+<xsd:complexType name="deleteRequestOptionsType">
+    <xsd:sequence minOccurs="1" maxOccurs="1">
+        <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+</xsd:complexType>
+
+<!--
+//
+// replaceRequestOptionsType
+//
+-->
+<xsd:complexType name="replaceRequestOptionsType">
+    <xsd:sequence minOccurs="1" maxOccurs="1">
+        <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+</xsd:complexType>
+
+<!--
+//
+// positionType
+//
+-->
+<xsd:simpleType name="positionType">
+    <xsd:annotation>
+        <xsd:documentation>
+            TBD
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string" />
+</xsd:simpleType>
+
+
+<!--
+//
+// subscriptionResponse
+//
+-->
+<xsd:element name="subscriptionResponse">
+    <xsd:annotation>
+        <xsd:documentation>
+        This element defines the format of subscription response message. The message
+        is delivered when a subscription's trigger fires.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+        <xsd:sequence>
+
+            <!--
+            //
+            // a subscriptionResponse contains
+            //  - the data that has changed relative to the trigger which
+            //    includes both changedBlue items and deletedBlue items.
+            //  - the context that was established when the subscription was created.
+            -->
+            <xsd:element
+                name="triggerData"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains the data in the form of <b>changedBlue</b> nodes and in the
+                    form of <b>deletedBlue</b> nodes for the data that has changed relative to the trigger.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element
+                            name="changedBlue"
+                            type="changedBlueType"
+                            minOccurs="0"
+                            maxOccurs="1"
+                            >
+                        </xsd:element>
+                        <xsd:element
+                            name="deletedBlue"
+                            type="deletedBlueType"
+                            minOccurs="0"
+                            maxOccurs="1"
+                            >
+                        </xsd:element>
+                    </xsd:sequence>
+
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="context">
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element returns the <b>context</b> element from the original
+                    subscription. Applications should use this element and only this element
+                    to correlate the subscription response with one of their subscriptions.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:any
+                            processContents="skip"
+                            namespace="##other"
+                            minOccurs="0"
+                            maxOccurs="unbounded"
+                        />
+                    </xsd:sequence>
+                    <xsd:attribute
+                        name="uri"
+                        type="xsd:anyURI"
+                        use="required"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This attribute specifies the URI value chosen by the subscriber
+                            that is associated with this subscription.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

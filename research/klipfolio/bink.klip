@@ -1,0 +1,153 @@
+<!--  COPYRIGHT AND TRADEMARK NOTICE
+
+The Klip File Format is copyright 2001-2003, Serence Inc.
+Klip and associated marks are trademarks of Serence Inc.
+All rights reserved.
+
+http://www.serence.com/site.php?action=ser_legal,legal_tmip
+
+Please note that information you enter here will be available to the public
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+When you're done writing your Klip, feel free to remove these comments to
+reduce the size of the file you distribute to your users.
+
+And don't forget to rename your .klip file from "template.klip" to something
+more descriptive.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+-->
+
+
+<klip>
+	
+	<owner>
+
+		<author>
+			Steven Bink
+		</author>
+
+		<copyright>
+						Copyright 1998-2003 Bink Beheer BV.
+		</copyright>
+
+		<email>
+			bink@bink.nu
+		</email>
+
+		<web>
+			http://bink.nu
+		</web>
+
+	</owner>
+
+	<identity>
+		
+		<title>
+			
+			B i n k . n u
+		</title>
+		
+		<uniqueid>
+			<!--
+			Bink.nu rocks
+			-->
+		</uniqueid>
+		
+		<version>
+			2.0
+		</version>
+		
+		<lastmodified>
+						2003.06.15:1505
+		</lastmodified>
+
+		<description>
+			Bink.nu: One Stop for Microsoft News and Downloads
+		</description>
+
+		<keywords>
+						Windows XP 2003 Service Packs news downloads updates
+		
+		</keywords>
+
+	</identity>
+	
+	<locations>
+
+		<defaultlink>
+						http://bink.nu
+			
+		</defaultlink>
+
+		<contentsource>
+						http://bink.nu/bink.txt
+		
+		</contentsource>
+
+		<icon>
+			http://bink.nu/klipico.jpg
+		</icon>
+
+		<banner>
+			http://bink.nu/klipban.jpg
+		</banner>
+
+		<help>
+			<!--
+			a url pointing to online help specific to this Klip
+			-->
+		</help>
+
+		<kliplocation>
+						http://bink.nu/bink.klip
+					</kliplocation>	
+
+	</locations>
+	
+	<setup>
+
+		<refresh>
+						12
+		</refresh>
+
+		<referer>
+						Klipuser
+			
+		</referer>
+
+		<country>
+			nl
+		</country>
+
+		<language>
+			<!--
+			en
+			-->
+			en
+		</language>
+
+		<codepage>
+			<!--
+			only required if you need to override the default codepage
+			used by your language choice
+			-->
+		</codepage>
+
+	</setup>
+
+	<!-- Messages Section
+	Include this section in your Klip to show a different message while your
+	Klip loads or has no data to display -->
+	
+	<messages>
+		<loading>
+			Getting data...
+		</loading>
+		<nodata>
+			No items to display.
+		</nodata>
+	</messages>
+
+
+</klip>

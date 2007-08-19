@@ -1,0 +1,2074 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://schemas.microsoft.com/hs/2001/10/core" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://schemas.xmlsoap.org/soap/security/2000-12" xmlns:s3="http://schemas.microsoft.com/hs/2001/10/myProfile" xmlns:s2="http://schemas.microsoft.com/hs/2001/10/myCalendar" xmlns:s4="http://schemas.microsoft.com/hs/2001/10/myContacts" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:i0="http://schemas.xmlsoap.org/rp/" xmlns:tns="http://schemas.microsoft.com/hs/2001/10/myContacts/wsdl" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://schemas.microsoft.com/hs/2001/10/myContacts/wsdl" name="myContacts" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <import namespace="http://schemas.xmlsoap.org/rp/" location="soaprp.xsd" />
+  <types>
+    <s:schema xmlns:ds="http://www.w3.org/2000/09/xmldsig" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:enc="http://www.w3.org/2001/04/xmlenc" xmlns:xdb="urn:schemas-microsoft-com:xdb" xmlns="http://schemas.xmlsoap.org/soap/security/2000-12" elementFormDefault="qualified" targetNamespace="http://schemas.xmlsoap.org/soap/security/2000-12" version="1.0">
+      <xsd:element name="licenses">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="s1:identity" />
+            <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          </xsd:sequence>
+          <xsd:anyAttribute namespace="##other" />
+        </xsd:complexType>
+      </xsd:element>
+    </s:schema>
+    <s:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/hs/2001/10/core" xmlns:xdb="urn:schemas-microsoft-com:xdb" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/hs/2001/10/core" version="1.0">
+      <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+      <xsd:simpleType name="string">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="768" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="dirType">
+        <xsd:restriction base="s1:string">
+          <xsd:enumeration value="rtl" />
+          <xsd:enumeration value="ltr" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="localizableString">
+        <xsd:simpleContent>
+          <xsd:extension base="s1:string">
+            <xsd:attribute ref="xml:lang" use="required" />
+            <xsd:attribute name="dir" type="s1:dirType" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="longText">
+        <xsd:simpleContent>
+          <xsd:extension base="xsd:string">
+            <xsd:attribute ref="xml:lang" use="required" />
+            <xsd:attribute name="dir" type="s1:dirType" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:simpleType name="idType">
+        <xsd:restriction base="s1:uuidType" />
+      </xsd:simpleType>
+      <xsd:simpleType name="idRefType">
+        <xsd:restriction base="s1:uuidType" />
+      </xsd:simpleType>
+      <xsd:simpleType name="instanceIdType">
+        <xsd:restriction base="xsd:string" />
+      </xsd:simpleType>
+      <xsd:simpleType name="changeNumberType">
+        <xsd:restriction base="xsd:nonNegativeInteger">
+          <xsd:maxInclusive value="9223372036854775807" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="creatorType">
+        <xsd:restriction base="xsd:hexBinary" />
+      </xsd:simpleType>
+      <xsd:attributeGroup name="documentRootAttributeGroup">
+        <xsd:attribute name="changeNumber" type="s1:changeNumberType" use="required" />
+        <xsd:attribute name="instanceId" type="s1:instanceIdType" />
+      </xsd:attributeGroup>
+      <xsd:attributeGroup name="standardBlueAttributeGroup">
+        <xsd:attribute name="changeNumber" type="s1:changeNumberType" use="required" />
+        <xsd:attribute name="id" type="s1:idType" use="required" />
+        <xsd:attribute name="creator" type="s1:creatorType" use="required" />
+      </xsd:attributeGroup>
+      <xsd:attributeGroup name="unnamedBlueAttributeGroup">
+        <xsd:attribute name="changeNumber" type="s1:changeNumberType" use="required" />
+      </xsd:attributeGroup>
+      <xsd:simpleType name="nonZeroPercentageType">
+        <xsd:restriction base="xsd:unsignedByte">
+          <xsd:minInclusive value="1" />
+          <xsd:maxInclusive value="100" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="linkType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="serviceClass" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ownerId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="location" type="s1:locationType" />
+        </xsd:sequence>
+        <xsd:attribute name="type" type="xsd:string" />
+      </xsd:complexType>
+      <xsd:complexType name="location">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="xsd:anyType">
+            <xsd:attribute name="type" type="s1:locationType" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:simpleType name="locationType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="xpath" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="uuidType">
+        <xsd:restriction base="xsd:string">
+          <xsd:pattern value="([0-9]|[a-f]|[A-F]){8}-([0-9]|[a-f]|[A-F]){4}-([0-9]|[a-f]|[A-F]){4}-([0-9]|[a-f]|[A-F]){4}-([0-9]|[a-f]|[A-F]){12}" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="puidType">
+        <xsd:restriction base="xsd:string" />
+      </xsd:simpleType>
+      <xsd:complexType name="catType">
+        <xsd:attribute name="ref" type="xsd:anyURI" use="required" />
+      </xsd:complexType>
+      <xsd:complexType name="catDefType">
+        <xsd:sequence>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="name" type="s1:localizableString" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="description" type="s1:longText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="implies" type="s1:catType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="cat" type="s1:catType" />
+        </xsd:sequence>
+        <xsd:attribute name="idName" type="s1:string" use="required" />
+        <xsd:attributeGroup ref="s1:standardBlueAttributeGroup" />
+      </xsd:complexType>
+      <xsd:complexType name="userReference">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="name" type="s1:localizableString" />
+          <xsd:element minOccurs="0" name="puid" type="s1:puidType" />
+          <xsd:element minOccurs="0" name="email" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="userReferenceCategorized">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s1:userReference">
+            <xsd:sequence>
+              <xsd:element name="cat" type="s1:catType" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="telephoneNumberType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="cat" type="s1:catType" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <xsd:element minOccurs="0" name="countryCode" type="s1:string" />
+          <xsd:element name="nationalCode" type="s1:string" />
+          <xsd:element name="number" type="s1:string" />
+          <xsd:element minOccurs="0" name="numberExtension" type="s1:string" />
+          <xsd:element minOccurs="0" name="pin" type="s1:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="subscriptionType">
+        <xsd:sequence>
+          <xsd:element name="trigger">
+            <xsd:complexType>
+              <xsd:attribute name="select" type="xsd:string" use="required" />
+              <xsd:attribute name="mode" use="required">
+                <xsd:simpleType>
+                  <xsd:restriction base="s1:string">
+                    <xsd:enumeration value="includeData" />
+                    <xsd:enumeration value="excludeData" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:attribute>
+              <xsd:attribute name="baseChangeNumber" type="s1:changeNumberType" use="optional" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="expiresAt" type="xsd:dateTime" />
+          <xsd:element name="context">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+              </xsd:sequence>
+              <xsd:attribute name="uri" type="xsd:anyURI" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="to" type="xsd:anyURI" />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="s1:standardBlueAttributeGroup" />
+      </xsd:complexType>
+      <xsd:complexType name="scopeType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="name" type="s1:localizableString" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="shape" type="s1:shapeType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="shapeType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="include" type="s1:shapeAtomType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="exclude" type="s1:shapeAtomType" />
+        </xsd:sequence>
+        <xsd:attribute name="base">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="t" />
+              <xsd:enumeration value="nil" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+      </xsd:complexType>
+      <xsd:complexType name="shapeAtomType">
+        <xsd:attribute name="select" type="s1:selectType" use="required" />
+      </xsd:complexType>
+      <xsd:element name="subscription" type="s1:subscriptionType" />
+      <xsd:element name="operation" type="xsd:string" />
+      <xsd:complexType name="addressType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="cat" type="s1:catType" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <xsd:element minOccurs="0" name="officialAddressLine" type="s1:localizableString" />
+          <xsd:element minOccurs="0" name="internalAddressLine" type="s1:localizableString" />
+          <xsd:element minOccurs="0" name="primaryCity" type="s1:localizableString" />
+          <xsd:element minOccurs="0" name="secondaryCity" type="s1:localizableString" />
+          <xsd:element minOccurs="0" name="subdivision" type="s1:localizableString" />
+          <xsd:element minOccurs="0" name="postalCode" type="s1:string" />
+          <xsd:element minOccurs="0" name="countryCode">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="2" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="latitude" type="s1:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="longitude" type="s1:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="elevation" type="s1:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="velocity">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="1" name="speed" type="s1:string" />
+                <xsd:element minOccurs="0" maxOccurs="1" name="direction" type="s1:string" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="confidence" type="s1:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="precision" type="s1:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:attributeGroup name="standardResponseAttributeGroup">
+        <xsd:attribute name="selectedNodeCount" type="s1:selectedNodeCountType" use="optional" />
+        <xsd:attribute name="status" type="s1:responseStatus" use="required" />
+      </xsd:attributeGroup>
+      <xsd:simpleType name="responseStatus">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="success" />
+          <xsd:enumeration value="failure" />
+          <xsd:enumeration value="rollback" />
+          <xsd:enumeration value="notAttempted" />
+          <xsd:enumeration value="accessDenied" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="insertRequest" type="s1:insertRequestType" />
+      <xsd:complexType name="insertRequestType">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <keepNamespaceDeclarations xmlns="">xmlns</keepNamespaceDeclarations>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="options" type="s1:insertRequestOptionsType" />
+          <xsd:group ref="s4:insertRequestGroup" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="attributes" type="s1:redAttributeType" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </xsd:sequence>
+        <xsd:attribute name="select" type="s1:selectType" use="required" />
+        <xsd:attribute name="useClientIds" type="s1:useClientIdsType" use="optional" />
+        <xsd:attribute name="minOccurs" type="s1:minOccursType" />
+        <xsd:attribute name="maxOccurs" type="s1:maxOccursType" />
+      </xsd:complexType>
+      <xsd:element name="insertResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="newBlueId" type="s1:newBlueIdType" />
+          </xsd:sequence>
+          <xsd:attribute name="newChangeNumber" type="s1:changeNumberType" use="optional" />
+          <xsd:attributeGroup ref="s1:standardResponseAttributeGroup" />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="changedBlueType">
+        <xsd:sequence>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="deletedBlueType">
+        <xsd:attribute name="id" type="s1:idType" use="required" />
+      </xsd:complexType>
+      <xsd:complexType name="newBlueIdType">
+        <xsd:attribute name="id" type="s1:idType" use="required" />
+      </xsd:complexType>
+      <xsd:element name="deleteRequest" type="s1:deleteRequestType" />
+      <xsd:complexType name="deleteRequestType">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <keepNamespaceDeclarations xmlns="">xmlns</keepNamespaceDeclarations>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="options" type="s1:deleteRequestOptionsType" />
+        </xsd:sequence>
+        <xsd:attribute name="select" type="s1:selectType" use="required" />
+        <xsd:attribute name="minOccurs" type="s1:minOccursType" />
+        <xsd:attribute name="maxOccurs" type="s1:maxOccursType" />
+      </xsd:complexType>
+      <xsd:element name="deleteResponse">
+        <xsd:complexType>
+          <xsd:attribute name="newChangeNumber" type="s1:changeNumberType" use="optional" />
+          <xsd:attributeGroup ref="s1:standardResponseAttributeGroup" />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="replaceRequest" type="s1:replaceRequestType" />
+      <xsd:complexType name="replaceRequestType">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <keepNamespaceDeclarations xmlns="">xmlns</keepNamespaceDeclarations>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="options" type="s1:replaceRequestOptionsType" />
+          <xsd:group ref="s4:replaceRequestGroup" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="attributes" type="s1:redAttributeType" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </xsd:sequence>
+        <xsd:attribute name="select" type="s1:selectType" use="required" />
+        <xsd:attribute name="useClientIds" type="s1:useClientIdsType" use="optional" />
+        <xsd:attribute name="minOccurs" type="s1:minOccursType" />
+        <xsd:attribute name="maxOccurs" type="s1:maxOccursType" />
+      </xsd:complexType>
+      <xsd:element name="replaceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="newBlueId" type="s1:newBlueIdType" />
+          </xsd:sequence>
+          <xsd:attribute name="newChangeNumber" type="s1:changeNumberType" use="optional" />
+          <xsd:attributeGroup ref="s1:standardResponseAttributeGroup" />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateRequest" type="s1:updateRequestType" />
+      <xsd:complexType name="updateRequestType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="updateBlock" type="s1:updateBlockType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="updateBlockType">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <keepNamespaceDeclarations xmlns="">xmlns</keepNamespaceDeclarations>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="insertRequest" type="s1:insertRequestType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="deleteRequest" type="s1:deleteRequestType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="replaceRequest" type="s1:replaceRequestType" />
+        </xsd:sequence>
+        <xsd:attribute name="select" type="s1:string" use="required" />
+        <xsd:attribute name="onError" use="required">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="rollbackBlockAndFail" />
+              <xsd:enumeration value="rollbackBlockAndContinue" />
+              <xsd:enumeration value="ignore" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="updateResponse" type="s1:updateResponseType" />
+      <xsd:complexType name="updateResponseType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="updateBlockStatus">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="unbounded" ref="s1:insertResponse" />
+                <xsd:element minOccurs="0" maxOccurs="unbounded" ref="s1:deleteResponse" />
+                <xsd:element minOccurs="0" maxOccurs="unbounded" ref="s1:replaceResponse" />
+              </xsd:sequence>
+              <xsd:attributeGroup ref="s1:standardResponseAttributeGroup" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="newChangeNumber" type="s1:changeNumberType" use="required" />
+      </xsd:complexType>
+      <xsd:element name="queryRequest" type="s1:queryRequestType" />
+      <xsd:complexType name="queryRequestType">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <keepNamespaceDeclarations xmlns="">xmlns</keepNamespaceDeclarations>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="xpQuery" type="s1:xpQueryType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="changeQuery" type="s1:changeQueryType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="xpQueryType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="options" type="s1:queryOptionsType" />
+        </xsd:sequence>
+        <xsd:attribute name="select" type="s1:string" use="required" />
+        <xsd:attribute name="minOccurs" type="s1:minOccursType" use="optional" />
+        <xsd:attribute name="maxOccurs" type="s1:maxOccursType" use="optional" />
+      </xsd:complexType>
+      <xsd:complexType name="changeQueryType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="options" type="s1:queryOptionsType" />
+        </xsd:sequence>
+        <xsd:attribute name="select" type="s1:string" use="required" />
+        <xsd:attribute name="baseChangeNumber" type="s1:changeNumberType" use="required" />
+      </xsd:complexType>
+      <xsd:element name="queryResponse" type="s1:queryResponseType" />
+      <xsd:complexType name="queryResponseType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="xpQueryResponse">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:group ref="s4:xpQueryResponseGroup" />
+                <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+              </xsd:sequence>
+              <xsd:attributeGroup ref="s1:standardResponseAttributeGroup" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="changeQueryResponse">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="1" name="changedBlue" type="s1:changedBlueType" />
+                <xsd:element minOccurs="0" maxOccurs="1" name="deletedBlue" type="s1:deletedBlueType" />
+              </xsd:sequence>
+              <xsd:attribute name="baseChangeNumber" type="s1:changeNumberType" use="required" />
+              <xsd:attributeGroup ref="s1:standardResponseAttributeGroup" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="useClientIdsType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="true" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="selectType">
+        <xsd:restriction base="xsd:string" />
+      </xsd:simpleType>
+      <xsd:simpleType name="minOccursType">
+        <xsd:restriction base="xsd:int" />
+      </xsd:simpleType>
+      <xsd:simpleType name="maxOccursType">
+        <xsd:restriction base="xsd:int" />
+      </xsd:simpleType>
+      <xsd:simpleType name="selectedNodeCountType">
+        <xsd:restriction base="xsd:int" />
+      </xsd:simpleType>
+      <xsd:complexType name="redAttributeType">
+        <xsd:anyAttribute namespace="##other" processContents="skip" />
+      </xsd:complexType>
+      <xsd:complexType name="queryOptionsType">
+        <xsd:sequence>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="sort" type="s1:sortType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="range" type="s1:rangeType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="shape" type="s1:shapeType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="sortType">
+        <xsd:attribute default="ascending" name="direction" use="optional">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="ascending" />
+              <xsd:enumeration value="descending" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="key" type="s1:selectType" use="required" />
+      </xsd:complexType>
+      <xsd:complexType name="rangeType">
+        <xsd:attribute name="first" type="s1:positionType" use="required" />
+        <xsd:attribute name="count" type="xsd:int" use="required" />
+      </xsd:complexType>
+      <xsd:complexType name="insertRequestOptionsType">
+        <xsd:sequence minOccurs="1" maxOccurs="1">
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="deleteRequestOptionsType">
+        <xsd:sequence minOccurs="1" maxOccurs="1">
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="replaceRequestOptionsType">
+        <xsd:sequence minOccurs="1" maxOccurs="1">
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="positionType">
+        <xsd:restriction base="xsd:string" />
+      </xsd:simpleType>
+      <xsd:element name="subscriptionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="triggerData">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="0" maxOccurs="1" name="changedBlue" type="s1:changedBlueType" />
+                  <xsd:element minOccurs="0" maxOccurs="1" name="deletedBlue" type="s1:deletedBlueType" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="context">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+                </xsd:sequence>
+                <xsd:attribute name="uri" type="xsd:anyURI" use="required" />
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="AnyParam">
+        <xsd:sequence>
+          <xsd:any />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="subjectType">
+        <xsd:attribute name="userId" type="s1:puidType" use="required" />
+        <xsd:attribute name="credType" type="s1:string" use="optional" />
+        <xsd:attribute name="appAndPlatformId" type="s1:puidType" use="optional" />
+      </xsd:complexType>
+      <xsd:complexType name="roleType">
+        <xsd:sequence>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="cat" type="s1:catType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="notes" type="s1:localizableString" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="subject" type="s1:subjectType" />
+          <xsd:element minOccurs="0" name="expiresAt" type="xsd:dateTime" />
+        </xsd:sequence>
+        <xsd:attribute name="scopeRef" type="s1:idRefType" />
+        <xsd:attribute name="roleTemplateRef" type="xsd:string" use="required" />
+        <xsd:attributeGroup ref="s1:standardBlueAttributeGroup" />
+      </xsd:complexType>
+      <xsd:complexType name="roleListType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="scope" type="s1:roleListScopeType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="role" type="s1:roleType" />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="s1:documentRootAttributeGroup" />
+      </xsd:complexType>
+      <xsd:complexType name="roleListScopeType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s1:scopeType">
+            <xsd:attributeGroup ref="s1:standardBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="roleMap" type="s1:roleMapType" />
+      <xsd:complexType name="roleMapType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="scope">
+            <xsd:complexType>
+              <xsd:complexContent mixed="false">
+                <xsd:extension base="s1:scopeType">
+                  <xsd:attribute name="id" type="s1:idType" />
+                </xsd:extension>
+              </xsd:complexContent>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="roleTemplate">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="1" name="fullDescription" type="s1:localizableString" />
+                <xsd:element minOccurs="0" maxOccurs="unbounded" name="method">
+                  <xsd:complexType>
+                    <xsd:attribute name="name" type="s1:string" use="required" />
+                    <xsd:attribute name="scopeRef" type="s1:idRefType" use="required" />
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="s1:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="s1:standardBlueAttributeGroup" />
+      </xsd:complexType>
+      <xsd:element name="identity" type="s1:identityType" />
+      <xsd:complexType name="identityType">
+        <xsd:sequence>
+          <xsd:element name="kerberos" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="authorizedRole" type="s1:authorizedRoleType" />
+      <xsd:simpleType name="authorizedRoleType">
+        <xsd:restriction base="xsd:string" />
+      </xsd:simpleType>
+      <xsd:element name="request" type="s1:requestType" />
+      <xsd:complexType name="requestType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="100" name="key">
+            <xsd:complexType>
+              <xsd:attribute name="puid" type="s1:puidType" use="required" />
+              <xsd:attribute name="instance" type="s1:string" use="required" />
+              <xsd:attribute name="cluster" type="s1:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="service" type="s1:string" use="required" />
+        <xsd:attribute name="document" use="required">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="content" />
+              <xsd:enumeration value="roleList" />
+              <xsd:enumeration value="policy" />
+              <xsd:enumeration value="system" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="method" type="s1:string" use="required" />
+        <xsd:attribute name="genResponse" use="required">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="always" />
+              <xsd:enumeration value="never" />
+              <xsd:enumeration value="faultOnly" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="response" type="s1:responseType" />
+      <xsd:complexType name="responseType">
+        <xsd:attribute name="role" type="s1:string" use="optional" />
+      </xsd:complexType>
+      <xsd:element name="echoBack" type="s1:echoBackType" />
+      <xsd:complexType name="echoBackType">
+        <xsd:sequence>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="systemBaseType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="systemVersion" type="s1:systemVersionType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="roleMap" type="s1:roleMapType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="methodMap" type="s1:methodMapType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="schemaMap" type="s1:schemaMapType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="wsdlMap" type="s1:wsdlMapType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="systemVersionType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="version">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="1" maxOccurs="1" name="productReleaseName" type="xsd:string" />
+                <xsd:element minOccurs="1" maxOccurs="1" name="productImplementationName" type="xsd:anyURI" />
+              </xsd:sequence>
+              <xsd:attribute name="majorVersion" type="xsd:string" use="required" />
+              <xsd:attribute name="minorVersion" type="xsd:string" use="required" />
+              <xsd:attribute name="buildNumber" type="xsd:string" use="required" />
+              <xsd:attribute name="qfe" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="buildDate" type="xsd:dateTime" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="buildDetails">
+            <xsd:complexType>
+              <xsd:attribute name="machine" type="xsd:string" use="required" />
+              <xsd:attribute name="branch" type="xsd:string" use="required" />
+              <xsd:attribute name="type" type="xsd:string" use="required" />
+              <xsd:attribute name="official" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="s1:standardBlueAttributeGroup" />
+      </xsd:complexType>
+      <xsd:complexType name="methodMapType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="method">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="s1:standardBlueAttributeGroup" />
+      </xsd:complexType>
+      <xsd:complexType name="schemaMapType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="schema">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+              </xsd:sequence>
+              <xsd:attribute name="namespace" type="xsd:anyURI" use="required" />
+              <xsd:attribute name="schemaLocation" type="xsd:anyURI" use="required" />
+              <xsd:attribute name="alias" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="s1:standardBlueAttributeGroup" />
+      </xsd:complexType>
+      <xsd:complexType name="wsdlMapType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="wsdl">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+              </xsd:sequence>
+              <xsd:attribute name="wsdlLocation" type="xsd:anyURI" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="disco">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+              </xsd:sequence>
+              <xsd:attribute name="discoLocation" type="xsd:anyURI" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="wsil">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+              </xsd:sequence>
+              <xsd:attribute name="wsilLocation" type="xsd:anyURI" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="s1:standardBlueAttributeGroup" />
+      </xsd:complexType>
+      <xsd:complexType name="faultDetailType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="faultResponseAction" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="faultChain" type="s1:faultChainType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="faultChainType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="fault" type="s1:faultChainFaultType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="faultChainFaultType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="code" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="shortDescription" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="longDescription" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </s:schema>
+    <s:schema xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/hs/2001/10/myCalendar" xmlns:xdb="urn:schemas-microsoft-com:xdb" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/hs/2001/10/myCalendar" version="1.0">
+      <xsd:annotation>
+        <xsd:appinfo>
+          <xdb:blue select="/myCalendar" />
+          <xdb:blue select="/myCalendar/*" />
+          <xdb:blue select="/myCalendar/event/*" />
+          <xdb:blue select="/myCalendar/event/recurrence/rule" />
+          <xdb:blue select="/myCalendar/event/recurrence/exception" />
+          <xdb:red select="//@changeNumber" />
+          <xdb:red select="//@id" />
+          <xdb:red select="//cat" />
+          <xdb:red select="//@creator" />
+          <xdb:red select="//cat/@ref" />
+          <xdb:red select="/myCalendar/event/@calendarType" />
+          <xdb:red select="/myCalendar/event/body/$any" />
+          <xdb:red select="/myCalendar/event/attendeeEventExtra/$any" />
+          <xdb:red select="/myCalendar/event/attendee/$any" />
+          <xdb:red select="/myCalendar/event/recurrence/rule/repeat/$any" />
+          <xdb:red select="/myCalendar/event/recurrence/rule/$any" />
+          <xdb:red select="/myCalendar/event/recurrence/exception/$any" />
+          <xdb:red select="/myCalendar/event/recurrence/$any" />
+          <xdb:red select="/myCalendar/event/body/title" />
+          <xdb:red select="/myCalendar/event/body/startTime" />
+          <xdb:red select="/myCalendar/event/body/endTime" />
+          <xdb:red select="/myCalendar/event/body/organizer/puid" />
+          <xdb:red select="/myCalendar/event/body/organizer/email" />
+          <xdb:red select="/myCalendar/event/body/cuid" />
+          <xdb:red select="/myCalendar/event/attendee/puid" />
+          <xdb:red select="/myCalendar/event/attendee/email" />
+          <xdb:red select="/myCalendar/event/recurrence/exception/recurrenceId" />
+          <xdb:red select="/myCalendar/event/recurrence/exception/body/startTime" />
+          <xdb:red select="/myCalendar/event/recurrence/exception/body/endTime" />
+          <xdb:red select="/myCalendar/event/reminder/nextTriggerTime" />
+        </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:element name="myCalendar">
+        <xsd:complexType>
+          <xsd:complexContent mixed="false">
+            <xsd:extension base="s2:myCalendarType">
+              <xsd:attributeGroup ref="hs:documentRootAttributeGroup" />
+            </xsd:extension>
+          </xsd:complexContent>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="myCalendarType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="event" type="s2:eventType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="subscription" type="hs:subscriptionType" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="bodyType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="cat" type="hs:catType" />
+          <xsd:element name="title" type="hs:localizableString" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="fullDescription" type="hs:longText" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="location" type="hs:localizableString" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="meetingStatus" type="s2:meetingStatusEnum" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="recurrenceId" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="lastUpdateTime" type="xsd:dateTime" />
+          <xsd:element name="startTime" type="xsd:dateTime" />
+          <xsd:element name="endTime" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="allDay" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="floating" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="travelTimeTo" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="travelTimeFrom" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="freeBusyStatus" type="s2:freeBusyStatusType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="cuid" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="organizer" type="hs:userReference" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="hs:unnamedBlueAttributeGroup" />
+      </xsd:complexType>
+      <xsd:complexType name="recurrenceBaseType">
+        <xsd:sequence>
+          <xsd:element name="rule" type="s2:recurrenceRuleBodyBaseType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="recurrenceRuleType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s2:recurrenceRuleBodyType">
+            <xsd:sequence>
+              <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="recurrenceType">
+        <xsd:sequence>
+          <xsd:element name="rule" type="s2:recurrenceRuleType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="exception" type="s2:modifiedExceptionType" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="hs:unnamedBlueAttributeGroup" />
+      </xsd:complexType>
+      <xsd:complexType name="recurrenceRuleBodyBaseType">
+        <xsd:sequence>
+          <xsd:element name="creationDate" type="xsd:dateTime" />
+          <xsd:element name="firstDayOfWeek" type="s2:dayOfWeekEnum" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="tzid" type="s2:tzidEnum" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="isLeapYear" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="leapMonthValue" type="s2:monthValueEnum" />
+          <xsd:element name="repeat" type="s2:repeatRuleType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="windowEnd" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="repeatForever" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="repeatInstances" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="recurrenceRuleBodyType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s2:recurrenceRuleBodyBaseType">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="deletedExceptionDate" type="xsd:dateTime" />
+            </xsd:sequence>
+            <xsd:attributeGroup ref="hs:unnamedBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="repeatRuleType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="daily">
+            <xsd:complexType>
+              <xsd:attribute name="dayFrequency" type="xsd:int" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="weekly">
+            <xsd:complexType>
+              <xsd:complexContent mixed="false">
+                <xsd:extension base="s2:weekDayAttributesType">
+                  <xsd:attribute name="weekFrequency" type="xsd:int" />
+                </xsd:extension>
+              </xsd:complexContent>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="monthlyByDay">
+            <xsd:complexType>
+              <xsd:complexContent mixed="false">
+                <xsd:extension base="s2:weekDayAttributesType">
+                  <xsd:attribute name="monthFrequency" type="xsd:int" />
+                  <xsd:attribute name="weekdayOfMonth" type="s2:weekdayOfMonthEnum" use="required" />
+                </xsd:extension>
+              </xsd:complexContent>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="monthly">
+            <xsd:complexType>
+              <xsd:attribute name="monthFrequency" type="xsd:int" />
+              <xsd:attribute name="day" type="s2:dayValueEnum" use="required" />
+              <xsd:attribute name="forceExact" type="xsd:boolean" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="yearlyByDay" type="s2:yearlyByDayType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="yearly">
+            <xsd:complexType>
+              <xsd:attribute name="yearFrequency" type="xsd:int" />
+              <xsd:attribute name="month" type="s2:monthValueEnum" use="required" />
+              <xsd:attribute name="day" type="s2:dayValueEnum" use="required" />
+              <xsd:attribute name="forceExact" type="xsd:boolean" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="modifiedExceptionType">
+        <xsd:sequence>
+          <xsd:element name="recurrenceId" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="body">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="1" name="title" type="hs:localizableString" />
+                <xsd:element minOccurs="0" maxOccurs="1" name="fullDescription" type="hs:longText" />
+                <xsd:element minOccurs="0" maxOccurs="1" name="location" type="hs:localizableString" />
+                <xsd:element minOccurs="0" maxOccurs="1" name="startTime" type="xsd:dateTime" />
+                <xsd:element minOccurs="0" maxOccurs="1" name="endTime" type="xsd:dateTime" />
+                <xsd:element minOccurs="0" maxOccurs="1" name="allDay" type="xsd:boolean" />
+                <xsd:element minOccurs="0" maxOccurs="1" name="travelTimeTo" type="xsd:int" />
+                <xsd:element minOccurs="0" maxOccurs="1" name="travelTimeFrom" type="xsd:int" />
+                <xsd:element minOccurs="0" maxOccurs="1" name="freeBusyStatus" type="s2:freeBusyStatusType" />
+                <xsd:element minOccurs="0" maxOccurs="1" name="organizer" type="hs:userReference" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="attendeeEventExtra" type="s2:attendeeEventExtraType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="deletedAttendee" type="hs:idRefType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="deletedAttachment" type="s2:attachmentIdType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="attachment" type="s2:attachmentMetadataType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="attendee" type="s2:attendeeType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="reminder" type="s2:reminderExceptionType" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+      </xsd:complexType>
+      <xsd:complexType name="transitionRuleType">
+        <xsd:attribute name="weekdayOfMonth" type="s2:weekdayOfMonthEnum" />
+        <xsd:attribute name="day" type="s2:allDaysEnum" />
+        <xsd:attribute name="dayOfMonth" type="xsd:int" />
+        <xsd:attribute name="month" type="s2:monthValueEnum" use="required" />
+        <xsd:attribute name="afterDay" type="s2:dayValueEnum" />
+      </xsd:complexType>
+      <xsd:complexType name="yearlyByDayType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s2:weekDayAttributesType">
+            <xsd:attribute name="yearFrequency" type="xsd:int" />
+            <xsd:attribute name="weekdayOfMonth" type="s2:weekdayOfMonthEnum" use="required" />
+            <xsd:attribute name="month" type="s2:monthValueEnum" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="reminderExceptionType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="set" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="offset" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="interruptability" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="reminderType">
+        <xsd:sequence>
+          <xsd:element name="set" type="xsd:boolean" />
+          <xsd:element name="to" type="hs:localizableString" />
+          <xsd:element name="offset" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="interruptability" type="xsd:int" />
+          <xsd:element name="lastSentTime" type="xsd:dateTime" />
+          <xsd:element name="nextTriggerTime" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="reminderBlueType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s2:reminderType">
+            <xsd:sequence />
+            <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="attendeeEventExtraType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="intendedFreeBusy" type="s2:freeBusyStatusType" />
+          <xsd:group ref="s2:attendeeResponseGroup" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="delegateResponder" type="hs:userReference" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="attendeeType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s2:attendeeInfoType">
+            <xsd:sequence>
+              <xsd:group ref="s2:attendeeResponseGroup" />
+              <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="attendeeInfoType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="hs:userReference">
+            <xsd:sequence>
+              <xsd:element name="inviteType" type="s2:inviteTypeEnum" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="attendeeResponseType">
+        <xsd:group ref="s2:attendeeResponseGroup" />
+      </xsd:complexType>
+      <xsd:group name="attendeeResponseGroup">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="responseTime" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="responseType" type="s2:attendeeAcceptEnum" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="counterProposeStartTime" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="counterProposeEndTime" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="counterProposeLocation" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="responseBody" type="hs:longText" />
+        </xsd:sequence>
+      </xsd:group>
+      <xsd:simpleType name="inviteTypeEnum">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="required" />
+          <xsd:enumeration value="optional" />
+          <xsd:enumeration value="resource" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="attendeeAcceptEnum">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="accept" />
+          <xsd:enumeration value="decline" />
+          <xsd:enumeration value="tentative" />
+          <xsd:enumeration value="counterPropose" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="meetingStatusEnum">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="not-sent" />
+          <xsd:enumeration value="sent" />
+          <xsd:enumeration value="cancelled" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="freeOrBusyEventType">
+        <xsd:sequence>
+          <xsd:element name="startTime" type="xsd:dateTime" />
+          <xsd:element name="endTime" type="xsd:dateTime" />
+          <xsd:element name="type" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="deviceEnum">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="client" />
+          <xsd:enumeration value="email" />
+          <xsd:enumeration value="messenger" />
+          <xsd:enumeration value="mobile" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="domainStandardMethodParametersType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="calendarType" type="s2:calendarLocaleEnum" />
+          <xsd:element name="startTime" type="xsd:dateTime" />
+          <xsd:element name="endTime" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getCalendarDaysRequest">
+        <xsd:complexType>
+          <xsd:complexContent mixed="false">
+            <xsd:extension base="s2:domainStandardMethodParametersType">
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="1" name="removeRecurrence" type="xsd:boolean" />
+              </xsd:sequence>
+            </xsd:extension>
+          </xsd:complexContent>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getCalendarDaysResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="event">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="body" type="s2:bodyType" />
+                  <xsd:element minOccurs="0" maxOccurs="unbounded" name="attachment" type="s2:attachmentMetadataType" />
+                  <xsd:element minOccurs="0" maxOccurs="1" name="reminder" type="s2:reminderType" />
+                  <xsd:element minOccurs="0" maxOccurs="unbounded" name="attendee" type="s2:attendeeType" />
+                  <xsd:element minOccurs="0" maxOccurs="1" name="recurrence" type="s2:recurrenceBaseType" />
+                </xsd:sequence>
+                <xsd:attribute name="instanceType" type="s2:instanceTypeEnum" />
+                <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+                <xsd:attribute name="calendarType" type="s2:calendarLocaleEnum" />
+                <xsd:attribute name="advanceHijriValue" type="s2:hijriValueEnum" />
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+          <xsd:attributeGroup ref="hs:standardResponseAttributeGroup" />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getFreeBusyDaysRequest">
+        <xsd:complexType>
+          <xsd:complexContent mixed="false">
+            <xsd:extension base="s2:domainStandardMethodParametersType">
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="1" name="getFreeBlocks" type="xsd:boolean" />
+                <xsd:element minOccurs="0" maxOccurs="1" name="returnIndividualBlocks" type="xsd:boolean" />
+              </xsd:sequence>
+            </xsd:extension>
+          </xsd:complexContent>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getFreeBusyDaysResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="freeOrBusyEvent" type="s2:freeOrBusyEventType" />
+          </xsd:sequence>
+          <xsd:attributeGroup ref="hs:standardResponseAttributeGroup" />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sendMeetingRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="uninvite">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="0" maxOccurs="unbounded" name="attendee" type="s2:uninviteAttendeeType" />
+                </xsd:sequence>
+                <xsd:attribute name="behavior" type="s2:sendMeetingBehaviorEnum" use="optional" />
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element minOccurs="0" maxOccurs="1" name="replaceRequest" type="hs:replaceRequestType" />
+            <xsd:element name="invite">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="0" maxOccurs="unbounded" name="attendee" type="hs:userReference" />
+                </xsd:sequence>
+                <xsd:attribute name="behavior" type="s2:sendMeetingBehaviorEnum" use="optional" />
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+          <xsd:attribute name="eventId" type="hs:idRefType" use="required" />
+          <xsd:attribute name="criticalChange" type="xsd:boolean" use="optional" />
+          <xsd:attribute name="recurrenceId" type="xsd:dateTime" use="optional" />
+          <xsd:attribute name="continueOnFailure" type="xsd:boolean" use="required" />
+          <xsd:attribute name="deleteOnCompletion" type="xsd:boolean" use="optional" />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="respondRequest">
+        <xsd:complexType>
+          <xsd:complexContent mixed="false">
+            <xsd:extension base="s2:attendeeResponseType">
+              <xsd:sequence>
+                <xsd:element name="eventId" type="hs:idRefType" />
+                <xsd:element name="puid" type="hs:puidType" />
+              </xsd:sequence>
+            </xsd:extension>
+          </xsd:complexContent>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateReminderRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="reminder" type="s2:reminderType" />
+            <xsd:element name="id" type="hs:idRefType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="setReminderResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="notificationId" type="hs:idRefType" />
+          </xsd:sequence>
+          <xsd:attributeGroup ref="hs:standardResponseAttributeGroup" />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteReminderRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="notificationId" type="hs:idRefType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getQuickViewRequest">
+        <xsd:complexType>
+          <xsd:complexContent mixed="false">
+            <xsd:extension base="s2:domainStandardMethodParametersType">
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="1" name="tzid" type="s2:tzidEnum" />
+                <xsd:element minOccurs="0" maxOccurs="1" name="biasOffset" type="xsd:int" />
+              </xsd:sequence>
+            </xsd:extension>
+          </xsd:complexContent>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getQuickViewResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="month">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="1" maxOccurs="31" name="day">
+                    <xsd:complexType>
+                      <xsd:simpleContent>
+                        <xsd:extension base="xsd:boolean">
+                          <xsd:attribute name="d" type="s2:dayValueEnum" />
+                        </xsd:extension>
+                      </xsd:simpleContent>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+                <xsd:attribute name="m" type="s2:monthValueEnum" />
+                <xsd:attribute name="year" type="xsd:int" />
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+          <xsd:attributeGroup ref="hs:standardResponseAttributeGroup" />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="TimeZoneExtendedType">
+        <xsd:sequence>
+          <xsd:element name="tzid" type="s2:tzidEnum" />
+          <xsd:element name="standardBias" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="additionalDaylightBias" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="standardDate">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="transitionRule" type="s2:transitionRuleType" />
+                <xsd:element name="transitionTime" type="xsd:dateTime" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="daylightDate">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="transitionRule" type="s2:transitionRuleType" />
+                <xsd:element name="transitionTime" type="xsd:dateTime" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="freeBusyStatusType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="free" />
+          <xsd:enumeration value="busy" />
+          <xsd:enumeration value="tentative" />
+          <xsd:enumeration value="away" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="attachmentMetadataType">
+        <xsd:sequence>
+          <xsd:element name="name" type="hs:localizableString" />
+          <xsd:element name="contentType" type="hs:string" />
+          <xsd:element name="contentTransferEncoding" type="hs:string" />
+          <xsd:element name="size" type="xsd:unsignedLong" />
+          <xsd:element name="attachmentBody" type="xsd:base64Binary" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="cdataContentType">
+        <xsd:restriction base="xsd:string" />
+      </xsd:simpleType>
+      <xsd:simpleType name="attachmentIdType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="128" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="instanceTypeEnum">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="single" />
+          <xsd:enumeration value="recurring-master" />
+          <xsd:enumeration value="recurring-instance" />
+          <xsd:enumeration value="recurring-exception" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="dayOfWeekEnum">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="su" />
+          <xsd:enumeration value="mo" />
+          <xsd:enumeration value="tu" />
+          <xsd:enumeration value="we" />
+          <xsd:enumeration value="th" />
+          <xsd:enumeration value="fr" />
+          <xsd:enumeration value="sa" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="weekdayOfMonthEnum">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="first" />
+          <xsd:enumeration value="second" />
+          <xsd:enumeration value="third" />
+          <xsd:enumeration value="fourth" />
+          <xsd:enumeration value="last" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="weekDayAttributesType">
+        <xsd:attribute name="su" type="xsd:boolean" />
+        <xsd:attribute name="mo" type="xsd:boolean" />
+        <xsd:attribute name="tu" type="xsd:boolean" />
+        <xsd:attribute name="we" type="xsd:boolean" />
+        <xsd:attribute name="th" type="xsd:boolean" />
+        <xsd:attribute name="fr" type="xsd:boolean" />
+        <xsd:attribute name="sa" type="xsd:boolean" />
+      </xsd:complexType>
+      <xsd:simpleType name="allDaysEnum">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="day" />
+          <xsd:enumeration value="weekday" />
+          <xsd:enumeration value="weekend day" />
+          <xsd:enumeration value="su" />
+          <xsd:enumeration value="mo" />
+          <xsd:enumeration value="tu" />
+          <xsd:enumeration value="we" />
+          <xsd:enumeration value="th" />
+          <xsd:enumeration value="fr" />
+          <xsd:enumeration value="sa" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="dayValueEnum">
+        <xsd:restriction base="xsd:int">
+          <xsd:minInclusive value="1" />
+          <xsd:maxInclusive value="31" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="monthValueEnum">
+        <xsd:restriction base="xsd:int">
+          <xsd:minInclusive value="1" />
+          <xsd:maxInclusive value="13" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="tzidEnum">
+        <xsd:restriction base="xsd:int">
+          <xsd:minInclusive value="-1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="hijriValueEnum">
+        <xsd:restriction base="xsd:int">
+          <xsd:minInclusive value="-3" />
+          <xsd:maxInclusive value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="sensitivityEnum">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="normal" />
+          <xsd:enumeration value="personal" />
+          <xsd:enumeration value="private" />
+          <xsd:enumeration value="confidential" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="calendarLocaleEnum">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="-1" />
+          <xsd:enumeration value="1" />
+          <xsd:enumeration value="2" />
+          <xsd:enumeration value="3" />
+          <xsd:enumeration value="4" />
+          <xsd:enumeration value="5" />
+          <xsd:enumeration value="6" />
+          <xsd:enumeration value="7" />
+          <xsd:enumeration value="8" />
+          <xsd:enumeration value="9" />
+          <xsd:enumeration value="10" />
+          <xsd:enumeration value="11" />
+          <xsd:enumeration value="12" />
+          <xsd:enumeration value="13" />
+          <xsd:enumeration value="14" />
+          <xsd:enumeration value="15" />
+          <xsd:enumeration value="16" />
+          <xsd:enumeration value="17" />
+          <xsd:enumeration value="18" />
+          <xsd:enumeration value="19" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="attachmentMetadataBlueType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s2:attachmentMetadataType">
+            <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="attendeeBlueType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s2:attendeeType">
+            <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="attendeeEventExtraBlueType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s2:attendeeEventExtraType">
+            <xsd:attributeGroup ref="hs:unnamedBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="eventType">
+        <xsd:sequence>
+          <xsd:element name="body" type="s2:bodyType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="attendeeEventExtra" type="s2:attendeeEventExtraBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="attachment" type="s2:attachmentMetadataBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="reminder" type="s2:reminderBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="attendee" type="s2:attendeeBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="recurrence" type="s2:recurrenceType" />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+        <xsd:attribute name="calendarType" type="s2:calendarLocaleEnum" />
+        <xsd:attribute name="advanceHijriValue" type="s2:hijriValueEnum" />
+      </xsd:complexType>
+      <xsd:complexType name="uninviteAttendeeType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="hs:userReference">
+            <xsd:attribute name="deleteAttendee" type="xsd:boolean" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:simpleType name="sendMeetingBehaviorEnum">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="all" />
+          <xsd:enumeration value="none" />
+          <xsd:enumeration value="default" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </s:schema>
+    <s:schema xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mc="http://schemas.microsoft.com/hs/2001/10/myCalendar" xmlns="http://schemas.microsoft.com/hs/2001/10/myProfile" xmlns:xdb="urn:schemas-microsoft-com:xdb" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/hs/2001/10/myProfile" version="1.0">
+      <xsd:annotation>
+        <xsd:appinfo>
+          <xdb:blue select="/myProfile" />
+          <xdb:blue select="/myProfile/*" />
+          <xdb:red select="//@id" />
+          <xdb:red select="//@creator" />
+          <xdb:red select="//@changeNumber" />
+          <xdb:red select="//cat" />
+          <xdb:red select="//cat/@ref" />
+          <xdb:red select="/myProfile/address/$any" />
+          <xdb:red select="/myProfile/webSite/$any" />
+          <xdb:red select="/myProfile/emailAddress/$any" />
+          <xdb:red select="/myProfile/screenName/$any" />
+          <xdb:red select="/myProfile/telephoneNumber/$any" />
+          <xdb:red select="/myProfile/name/$any" />
+          <xdb:red select="/myProfile/specialDate/$any" />
+          <xdb:red select="/myProfile/userReference/$any" />
+          <xdb:red select="/myProfile/picture/$any" />
+          <xdb:red select="/myProfile/identificationNumber/$any" />
+          <xdb:red select="/myProfile/workInformation/$any" />
+          <xdb:red select="/myProfile/subscription/context/$any" />
+        </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:element name="myProfile" type="s3:myProfileType" />
+      <xsd:complexType name="myProfileType">
+        <xsd:sequence>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="name" type="s3:nameType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="memberInformation" type="s3:memberInformationType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="languagePreference" type="s3:languagePreferenceType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="timeZonePreference" type="s3:timeZonePreferenceType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="specialDate" type="s3:specialDateBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="userReference" type="s3:categorizedUserReferenceBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="picture" type="s3:pictureBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="gender" type="s3:genderBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="identificationNumber" type="s3:identificationNumberBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="workInformation" type="s3:workInformationBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="address" type="s3:addressBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="webSite" type="s3:webSiteBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="emailAddress" type="s3:emailAddressBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="screenName" type="s3:screenNameBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="telephoneNumber" type="s3:telephoneNumberBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="subscription" type="hs:subscriptionType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="securityCertificate" type="s3:securityCertificateBlueType" />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="hs:documentRootAttributeGroup" />
+      </xsd:complexType>
+      <xsd:complexType name="myNameType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="cat" type="hs:catType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="title" type="hs:localizableString" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="givenName" type="hs:localizableString" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="middleName" type="hs:localizableString" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="surname" type="hs:localizableString" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="suffix" type="hs:localizableString" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="fileAsName" type="hs:localizableString" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="name" type="s3:nameType" />
+      <xsd:complexType name="nameType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s3:myNameType">
+            <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="languagePreferenceType">
+        <xsd:simpleContent>
+          <xsd:extension base="hs:string">
+            <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+            <xsd:attribute name="level" use="required">
+              <xsd:simpleType>
+                <xsd:restriction base="hs:string">
+                  <xsd:enumeration value="native" />
+                  <xsd:enumeration value="fluent" />
+                  <xsd:enumeration value="intermediate" />
+                  <xsd:enumeration value="beginner" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:attribute>
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="timeZonePreferenceType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="cat" type="hs:catType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="timeZone" type="hs:string" />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+      </xsd:complexType>
+      <xsd:element name="gender" type="s3:genderType" />
+      <xsd:simpleType name="genderType">
+        <xsd:restriction base="hs:string">
+          <xsd:maxLength value="1" />
+          <xsd:enumeration value="f" />
+          <xsd:enumeration value="m" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="genderBlueType">
+        <xsd:simpleContent>
+          <xsd:extension base="s3:genderType">
+            <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="memberInformationType">
+        <xsd:sequence>
+          <xsd:element name="memberNamePortion" type="hs:localizableString" />
+          <xsd:element name="domainNamePortion" type="hs:string" />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+      </xsd:complexType>
+      <xsd:element name="specialDate" type="s3:specialDateBlueType" />
+      <xsd:complexType name="specialDateType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="cat" type="hs:catType" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="date" type="xsd:date" />
+        </xsd:sequence>
+        <xsd:attribute name="calendarType" type="mc:calendarLocaleEnum" use="required" />
+      </xsd:complexType>
+      <xsd:complexType name="specialDateBlueType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s3:specialDateType">
+            <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="userReference" type="s3:categorizedUserReferenceBlueType" />
+      <xsd:complexType name="categorizedUserReferenceBlueType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="hs:userReferenceCategorized">
+            <xsd:sequence>
+              <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+            </xsd:sequence>
+            <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="pictureType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="cat" type="hs:catType" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="url" type="hs:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="picture" type="s3:pictureBlueType" />
+      <xsd:complexType name="pictureBlueType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s3:pictureType">
+            <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="identificationNumberType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="cat" type="hs:catType" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="number" type="hs:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="identificationNumber" type="s3:identificationNumberBlueType" />
+      <xsd:complexType name="identificationNumberBlueType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s3:identificationNumberType">
+            <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="workInformation" type="s3:workInformationType" />
+      <xsd:complexType name="workInformationType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="cat" type="hs:catType" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="profession" type="hs:localizableString" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobTitle" type="hs:localizableString" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="officeLocation" type="hs:localizableString" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="coworkerOrDepartment" type="hs:userReferenceCategorized" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="workInformationBlueType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s3:workInformationType">
+            <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="address" type="s3:addressBlueType" />
+      <xsd:complexType name="addressBlueType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="hs:addressType">
+            <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="webSite" type="s3:webSiteType" />
+      <xsd:complexType name="webSiteType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="cat" type="hs:catType" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="url" type="hs:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="webSiteBlueType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s3:webSiteType">
+            <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="minimalEmailAddress" type="s3:minimalEmailAddressType" />
+      <xsd:element name="emailAddress" type="s3:emailAddressType" />
+      <xsd:complexType name="minimalEmailAddressType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="email" type="hs:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="emailAddressType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="cat" type="hs:catType" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <xsd:element name="email" type="hs:string" />
+          <xsd:element minOccurs="0" name="name" type="hs:localizableString" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="emailAddressBlueType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s3:emailAddressType">
+            <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="screenNameType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="cat" type="hs:catType" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <xsd:element name="name" type="hs:localizableString" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="screenName" type="s3:screenNameBlueType" />
+      <xsd:complexType name="screenNameBlueType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s3:screenNameType">
+            <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="telephoneNumber" type="s3:telephoneNumberBlueType" />
+      <xsd:complexType name="telephoneNumberBlueType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="hs:telephoneNumberType">
+            <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="securityCertificateType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="cat" type="hs:catType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="certificate" type="xsd:hexBinary" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="securityCertificate" type="s3:securityCertificateBlueType" />
+      <xsd:complexType name="securityCertificateBlueType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="s3:securityCertificateType">
+            <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </s:schema>
+    <s:schema xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mp="http://schemas.microsoft.com/hs/2001/10/myProfile" xmlns="http://schemas.microsoft.com/hs/2001/10/myContacts" xmlns:xdb="urn:schemas-microsoft-com:xdb" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/hs/2001/10/myContacts" version="1.0">
+      <xsd:annotation>
+        <xsd:appinfo>
+          <xdb:blue select="/myContacts" />
+          <xdb:blue select="/myContacts/*" />
+          <xdb:blue select="/myContacts/contact/name" />
+          <xdb:blue select="/myContacts/contact/specialDate" />
+          <xdb:blue select="/myContacts/contact/picture" />
+          <xdb:blue select="/myContacts/contact/address" />
+          <xdb:blue select="/myContacts/contact/telephoneNumber" />
+          <xdb:blue select="/myContacts/contact/emailAddress" />
+          <xdb:blue select="/myContacts/contact/webSite" />
+          <xdb:blue select="/myContacts/contact/workInformation" />
+          <xdb:blue select="/myContacts/contact/screenName" />
+          <xdb:blue select="/myContacts/contact/identificationNumber" />
+          <xdb:blue select="/myContacts/contact/userReference" />
+          <xdb:blue select="/myContacts/contact/securityCertificate" />
+          <xdb:red select="//@id" />
+          <xdb:red select="//@creator" />
+          <xdb:red select="//@changeNumber" />
+          <xdb:red select="//cat" />
+          <xdb:red select="//cat/@ref" />
+          <xdb:red select="/myContacts/contact/@synchronize" />
+          <xdb:red select="/myContacts/contact/gender" />
+          <xdb:red select="/myContacts/contact/name/givenName" />
+          <xdb:red select="/myContacts/contact/name/surname" />
+          <xdb:red select="/myContacts/contact/name/fileAsName" />
+          <xdb:red select="/myContacts/contact/puid" />
+          <xdb:red select="/myContacts/contact/$any" />
+          <xdb:red select="/myContacts/contact/name/$any" />
+          <xdb:red select="/myContacts/contact/specialDate/$any" />
+          <xdb:red select="/myContacts/contact/picture/$any" />
+          <xdb:red select="/myContacts/contact/address/$any" />
+          <xdb:red select="/myContacts/contact/emailAddress/$any" />
+          <xdb:red select="/myContacts/contact/webSite/$any" />
+          <xdb:red select="/myContacts/contact/screenName/$any" />
+          <xdb:red select="/myContacts/contact/telephoneNumber/$any" />
+          <xdb:red select="/myContacts/contact/identificationNumber/$any" />
+          <xdb:red select="/myContacts/contact/workInformation/$any" />
+          <xdb:red select="/myContacts/subscription/context/$any" />
+          <xdb:red select="/myContacts/contact/emailAddress/email" />
+          <xdb:red select="/myContacts/contact/screenName/name" />
+          <xdb:red select="/myContacts/contact/telephoneNumber/number" />
+          <xdb:red select="//subscription/trigger/@select" />
+          <xdb:red select="//subscription/trigger/@baseChangeNumber" />
+        </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:element name="myContacts" type="s4:myContactsType" />
+      <xsd:complexType name="myContactsType">
+        <xsd:sequence>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="contact" type="s4:contactType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="subscription" type="hs:subscriptionType" />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="hs:documentRootAttributeGroup" />
+      </xsd:complexType>
+      <xsd:complexType name="contactType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="cat" type="hs:catType" />
+          <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="name" type="mp:nameType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="puid" type="hs:puidType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="specialDate" type="mp:specialDateBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="picture" type="mp:pictureBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="gender" type="mp:genderType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="notes" type="hs:longText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="address" type="mp:addressBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="emailAddress" type="mp:emailAddressBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="webSite" type="mp:webSiteBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="screenName" type="mp:screenNameBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="telephoneNumber" type="mp:telephoneNumberBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="identificationNumber" type="mp:identificationNumberBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="workInformation" type="mp:workInformationBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="userReference" type="mp:categorizedUserReferenceBlueType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="securityCertificate" type="mp:securityCertificateBlueType" />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+        <xsd:attribute name="synchronize" use="required">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="yes" />
+              <xsd:enumeration value="no" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+      </xsd:complexType>
+      <xsd:group name="insertRequestGroup">
+        <xsd:sequence>
+          <xsd:choice minOccurs="1" maxOccurs="unbounded">
+            <xsd:element minOccurs="1" maxOccurs="1" name="contact" type="s4:contactType" />
+            <xsd:element ref="mp:name" />
+            <xsd:element ref="mp:specialDate" />
+            <xsd:element ref="mp:picture" />
+            <xsd:element ref="mp:address" />
+            <xsd:element ref="mp:emailAddress" />
+            <xsd:element ref="mp:webSite" />
+            <xsd:element ref="mp:screenName" />
+            <xsd:element ref="mp:telephoneNumber" />
+            <xsd:element ref="mp:identificationNumber" />
+            <xsd:element ref="mp:workInformation" />
+            <xsd:element ref="mp:userReference" />
+            <xsd:element ref="mp:securityCertificate" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="subscription" type="hs:subscriptionType" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="cat" type="hs:catType" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="givenName" type="hs:localizableString" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="surname" type="hs:localizableString" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="fileAsName" type="hs:localizableString" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="puid" type="hs:puidType" />
+            <xsd:element ref="mp:gender" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="email" type="hs:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="name" type="hs:localizableString" />
+          </xsd:choice>
+        </xsd:sequence>
+      </xsd:group>
+      <xsd:group name="replaceRequestGroup">
+        <xsd:sequence>
+          <xsd:choice minOccurs="1" maxOccurs="unbounded">
+            <xsd:element minOccurs="1" maxOccurs="1" name="contact" type="s4:contactType" />
+            <xsd:element ref="mp:name" />
+            <xsd:element ref="mp:specialDate" />
+            <xsd:element ref="mp:picture" />
+            <xsd:element ref="mp:address" />
+            <xsd:element ref="mp:emailAddress" />
+            <xsd:element ref="mp:webSite" />
+            <xsd:element ref="mp:screenName" />
+            <xsd:element ref="mp:telephoneNumber" />
+            <xsd:element ref="mp:identificationNumber" />
+            <xsd:element ref="mp:workInformation" />
+            <xsd:element ref="mp:userReference" />
+            <xsd:element ref="mp:securityCertificate" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="subscription" type="hs:subscriptionType" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="cat" type="hs:catType" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="givenName" type="hs:localizableString" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="surname" type="hs:localizableString" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="fileAsName" type="hs:localizableString" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="puid" type="hs:puidType" />
+            <xsd:element ref="mp:gender" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="email" type="hs:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="name" type="hs:localizableString" />
+          </xsd:choice>
+        </xsd:sequence>
+      </xsd:group>
+      <xsd:group name="xpQueryResponseGroup">
+        <xsd:sequence>
+          <xsd:choice minOccurs="1" maxOccurs="unbounded">
+            <xsd:element minOccurs="1" maxOccurs="1" ref="s4:myContacts" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="contact" type="s4:contactType" />
+            <xsd:element ref="mp:name" />
+            <xsd:element ref="mp:specialDate" />
+            <xsd:element ref="mp:picture" />
+            <xsd:element ref="mp:address" />
+            <xsd:element ref="mp:emailAddress" />
+            <xsd:element ref="mp:webSite" />
+            <xsd:element ref="mp:screenName" />
+            <xsd:element ref="mp:telephoneNumber" />
+            <xsd:element ref="mp:identificationNumber" />
+            <xsd:element ref="mp:workInformation" />
+            <xsd:element ref="mp:userReference" />
+            <xsd:element ref="mp:securityCertificate" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="subscription" type="hs:subscriptionType" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="cat" type="hs:catType" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="givenName" type="hs:localizableString" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="surname" type="hs:localizableString" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="fileAsName" type="hs:localizableString" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="puid" type="hs:puidType" />
+            <xsd:element ref="mp:gender" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="email" type="hs:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="name" type="hs:localizableString" />
+          </xsd:choice>
+        </xsd:sequence>
+      </xsd:group>
+      <xsd:complexType name="AnyParam">
+        <xsd:sequence>
+          <xsd:any />
+        </xsd:sequence>
+      </xsd:complexType>
+    </s:schema>
+  </types>
+  <message name="insertRequest">
+    <part name="body" element="s1:insertRequest" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="licensesHeader" element="s0:licenses" />
+    <part name="requestHeader" element="s1:request" />
+    <part name="echoBackHeader" element="s1:echoBack" />
+  </message>
+  <message name="insertResponse">
+    <part name="body" element="s1:insertResponse" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="responseHeader" element="s1:response" />
+    <part name="echoBackHeader" element="s1:echoBack" />
+  </message>
+  <message name="deleteRequest">
+    <part name="body" element="s1:deleteRequest" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="licensesHeader" element="s0:licenses" />
+    <part name="requestHeader" element="s1:request" />
+    <part name="echoBackHeader" element="s1:echoBack" />
+  </message>
+  <message name="deleteResponse">
+    <part name="body" element="s1:deleteResponse" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="responseHeader" element="s1:response" />
+    <part name="echoBackHeader" element="s1:echoBack" />
+  </message>
+  <message name="replaceRequest">
+    <part name="body" element="s1:replaceRequest" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="licensesHeader" element="s0:licenses" />
+    <part name="requestHeader" element="s1:request" />
+    <part name="echoBackHeader" element="s1:echoBack" />
+  </message>
+  <message name="replaceResponse">
+    <part name="body" element="s1:replaceResponse" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="responseHeader" element="s1:response" />
+    <part name="echoBackHeader" element="s1:echoBack" />
+  </message>
+  <message name="updateRequest">
+    <part name="body" element="s1:updateRequest" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="licensesHeader" element="s0:licenses" />
+    <part name="requestHeader" element="s1:request" />
+    <part name="echoBackHeader" element="s1:echoBack" />
+  </message>
+  <message name="updateResponse">
+    <part name="body" element="s1:updateResponse" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="responseHeader" element="s1:response" />
+    <part name="echoBackHeader" element="s1:echoBack" />
+  </message>
+  <message name="queryRequest">
+    <part name="body" element="s1:queryRequest" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="licensesHeader" element="s0:licenses" />
+    <part name="requestHeader" element="s1:request" />
+    <part name="echoBackHeader" element="s1:echoBack" />
+  </message>
+  <message name="queryResponse">
+    <part name="body" element="s1:queryResponse" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="responseHeader" element="s1:response" />
+    <part name="echoBackHeader" element="s1:echoBack" />
+  </message>
+  <message name="sendXmlRequest">
+    <part name="body" type="s1:AnyParam" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="licensesHeader" element="s0:licenses" />
+    <part name="requestHeader" element="s1:request" />
+    <part name="echoBackHeader" element="s1:echoBack" />
+  </message>
+  <message name="sendXmlResponse">
+    <part name="body" type="s1:AnyParam" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="responseHeader" element="s1:response" />
+    <part name="echoBackHeader" element="s1:echoBack" />
+  </message>
+  <portType name="myContactsPort">
+    <operation name="insert">
+      <input message="tns:insertRequest" />
+      <output message="tns:insertResponse" />
+    </operation>
+    <operation name="delete">
+      <input message="tns:deleteRequest" />
+      <output message="tns:deleteResponse" />
+    </operation>
+    <operation name="replace">
+      <input message="tns:replaceRequest" />
+      <output message="tns:replaceResponse" />
+    </operation>
+    <operation name="update">
+      <input message="tns:updateRequest" />
+      <output message="tns:updateResponse" />
+    </operation>
+    <operation name="query">
+      <input message="tns:queryRequest" />
+      <output message="tns:queryResponse" />
+    </operation>
+    <operation name="sendXml">
+      <input message="tns:sendXmlRequest" />
+      <output message="tns:sendXmlResponse" />
+    </operation>
+  </portType>
+  <binding name="myContactsBinding" type="tns:myContactsPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="insert">
+      <soap:operation soapAction="http://schemas.microsoft.com/hs/2001/10/core#request" />
+      <s1:operation />
+      <input>
+        <soap:body use="literal" parts="body" />
+        <soap:header d5p1:required="true" message="tns:insertRequest" part="pathHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:insertRequest" part="licensesHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:insertRequest" part="requestHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:insertRequest" part="echoBackHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+        <soap:header d5p1:required="true" message="tns:insertResponse" part="pathHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:insertResponse" part="responseHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:insertResponse" part="echoBackHeader" use="literal" />
+      </output>
+    </operation>
+    <operation name="delete">
+      <soap:operation soapAction="http://schemas.microsoft.com/hs/2001/10/core#request" />
+      <s1:operation />
+      <input>
+        <soap:body use="literal" parts="body" />
+        <soap:header d5p1:required="true" message="tns:deleteRequest" part="pathHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:deleteRequest" part="licensesHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:deleteRequest" part="requestHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:deleteRequest" part="echoBackHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+        <soap:header d5p1:required="true" message="tns:deleteResponse" part="pathHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:deleteResponse" part="responseHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:deleteResponse" part="echoBackHeader" use="literal" />
+      </output>
+    </operation>
+    <operation name="replace">
+      <soap:operation soapAction="http://schemas.microsoft.com/hs/2001/10/core#request" />
+      <s1:operation />
+      <input>
+        <soap:body use="literal" parts="body" />
+        <soap:header d5p1:required="true" message="tns:replaceRequest" part="pathHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:replaceRequest" part="licensesHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:replaceRequest" part="requestHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:replaceRequest" part="echoBackHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+        <soap:header d5p1:required="true" message="tns:replaceResponse" part="pathHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:replaceResponse" part="responseHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:replaceResponse" part="echoBackHeader" use="literal" />
+      </output>
+    </operation>
+    <operation name="update">
+      <soap:operation soapAction="http://schemas.microsoft.com/hs/2001/10/core#request" />
+      <s1:operation />
+      <input>
+        <soap:body use="literal" parts="body" />
+        <soap:header d5p1:required="true" message="tns:updateRequest" part="pathHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:updateRequest" part="licensesHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:updateRequest" part="requestHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:updateRequest" part="echoBackHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+        <soap:header d5p1:required="true" message="tns:updateResponse" part="pathHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:updateResponse" part="responseHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:updateResponse" part="echoBackHeader" use="literal" />
+      </output>
+    </operation>
+    <operation name="query">
+      <soap:operation soapAction="http://schemas.microsoft.com/hs/2001/10/core#request" />
+      <s1:operation />
+      <input>
+        <soap:body use="literal" parts="body" />
+        <soap:header d5p1:required="true" message="tns:queryRequest" part="pathHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:queryRequest" part="licensesHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:queryRequest" part="requestHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:queryRequest" part="echoBackHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+        <soap:header d5p1:required="true" message="tns:queryResponse" part="pathHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:queryResponse" part="responseHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:queryResponse" part="echoBackHeader" use="literal" />
+      </output>
+    </operation>
+    <operation name="sendXml">
+      <soap:operation soapAction="http://schemas.microsoft.com/hs/2001/10/core#request" />
+      <s1:operation />
+      <input>
+        <soap:body use="literal" parts="body" />
+        <soap:header d5p1:required="true" message="tns:sendXmlRequest" part="pathHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:sendXmlRequest" part="licensesHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:sendXmlRequest" part="requestHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:sendXmlRequest" part="echoBackHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+        <soap:header d5p1:required="true" message="tns:sendXmlResponse" part="pathHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header d5p1:required="true" message="tns:sendXmlResponse" part="responseHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:sendXmlResponse" part="echoBackHeader" use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="myContacts">
+    <port name="myContactsPort" binding="tns:myContactsBinding" />
+  </service>
+</definitions>

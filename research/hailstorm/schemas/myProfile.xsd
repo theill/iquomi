@@ -1,0 +1,1038 @@
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xdb="urn:schemas-microsoft-com:xdb"
+    xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core"
+    xmlns:mc="http://schemas.microsoft.com/hs/2001/10/myCalendar"
+    targetNamespace="http://schemas.microsoft.com/hs/2001/10/myProfile"
+    xmlns="http://schemas.microsoft.com/hs/2001/10/myProfile"
+    elementFormDefault="qualified"
+    version="1.0">
+
+    <xsd:annotation>
+        <xsd:documentation>
+            Schema for .NET Profile service
+            Copyright (c) 2001 Microsoft Corporation. All rights reserved.
+        </xsd:documentation>
+
+        <xsd:appinfo>
+            <xdb:index id="1" select="/myProfile/address">
+                <xdb:indexComponent select="$docId"/>
+                <xdb:indexComponent select="./@id"/>
+            </xdb:index>
+
+            <xdb:blue select="/myProfile"/>
+            <xdb:blue select="/myProfile/*"/>
+
+            <xdb:red select="//@id"/>
+            <xdb:red select="//@creator"/>
+            <xdb:red select="//@changeNumber"/>
+            <xdb:red select="//cat"/>
+            <xdb:red select="//cat/@ref"/>
+            <xdb:red select="/myProfile/address/$any" />
+            <xdb:red select="/myProfile/webSite/$any" />
+            <xdb:red select="/myProfile/emailAddress/$any" />
+            <xdb:red select="/myProfile/screenName/$any" />
+            <xdb:red select="/myProfile/telephoneNumber/$any" />
+            <xdb:red select="/myProfile/name/$any" />
+            <xdb:red select="/myProfile/specialDate/$any" />
+            <xdb:red select="/myProfile/userReference/$any" />
+            <xdb:red select="/myProfile/picture/$any" />
+            <xdb:red select="/myProfile/identificationNumber/$any" />
+            <xdb:red select="/myProfile/workInformation/$any" />
+            <xdb:red select="/myProfile/subscription/context/$any" />
+
+            <xdb:sqlScript source="myProfileCustomSQL.sql"/>
+
+            <xdb:namespaceMap>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/myProfile" alias="m"/>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/myCalendar" alias="mc"/>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/core" alias="hs"/>
+            </xdb:namespaceMap>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:import namespace="http://schemas.microsoft.com/hs/2001/10/core" schemaLocation="hscommon.xsd"/>
+
+    <xsd:import namespace="http://schemas.microsoft.com/hs/2001/10/myCalendar" schemaLocation="myCalendar.xsd"/>
+
+    <!--
+    //
+    // myProfile
+    //  - root element for the .NET Profile service
+    //
+    -->
+    <xsd:element
+        name="myProfile"
+        type="myProfileType"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates the content document for this service. This element
+            establishes a global cache scope for the service and contains other
+            root-level system attributes for this instance of the service.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:complexType
+        name="myProfileType"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates and defines the basic myProfile types for the
+            Microsoft&#174; .NET Profile service.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+        <xsd:element
+                name="name"
+                type="nameType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+        <xsd:element
+                name="memberInformation"
+                type="memberInformationType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+        <xsd:element
+                name="languagePreference"
+                type="languagePreferenceType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the preferred language code
+                    of the identity encoded using ISO 639 language codes
+                    or ISO 3166 country codes, as defined by <a href="http://www.ietf.org/rfc/rfc1766.txt">RFC 1766</a>.
+                    The purpose of this value in this service is to indicate the languages understood
+                    by this identity. When manipulating localizable content, choose from an appropriate language
+                    preference. When encountering localized content not falling within this set, the software should translate
+                    into a language understood by this set.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        <xsd:element
+                name="timeZonePreference"
+                type="timeZonePreferenceType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element supplies the base time zone preference for this entity.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        <xsd:element
+                name="specialDate"
+                type="specialDateBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+        <xsd:element
+                name="userReference"
+                type="categorizedUserReferenceBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+        <xsd:element
+                name="picture"
+                type="pictureBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+        <xsd:element
+                name="gender"
+                type="genderBlueType"
+                minOccurs="0"
+                maxOccurs="1"
+            />
+
+        <xsd:element
+                name="identificationNumber"
+                type="identificationNumberBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+            <xsd:element
+                name="workInformation"
+                type="workInformationBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:element
+                name="address"
+                type="addressBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:element
+                name="webSite"
+                type="webSiteBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:element
+                name="emailAddress"
+                type="emailAddressBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:element
+                name="screenName"
+                type="screenNameBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:element
+                name="telephoneNumber"
+                type="telephoneNumberBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:element
+                name="subscription"
+                type="hs:subscriptionType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="securityCertificate"
+                type="securityCertificateBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+        </xsd:sequence>
+
+        <!-- standard attributes for the root element -->
+        <xsd:attributeGroup ref="hs:documentRootAttributeGroup"/>
+
+    </xsd:complexType>
+
+
+    <!--
+    //
+    // myNameType
+    //
+    -->
+    <xsd:complexType name="myNameType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates a name associated with the identity. An identity
+            can have multiple names associated with it. These name nodes are not
+            intended to be used to store screen or other electronic names, but
+            rather to store a name commonly used for the entity.
+            Names contain five parts and should be combined in proper
+            order, with spaces
+            separating the parts and empty content parts excluded.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element
+                name="cat"
+                type="hs:catType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:element
+                name="title"
+                type="hs:localizableString"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This optional element is used to store a title or prefix associated with the name (for example,'Mr.', 'Mrs.', 'Dr.', or any other commonly used name title or prefix).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="givenName"
+                type="hs:localizableString"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This optional element is used to store the first portion of a name.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="middleName"
+                type="hs:localizableString"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This optional element is used to store the middle portion or initial of a name.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="surname"
+                type="hs:localizableString"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This optional element is used to store the last portion of a name.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="suffix"
+                type="hs:localizableString"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This optional element is used to store a suffix associated with the name (for example, 'Jr.', 'Sr.', 'III', or any other commonly used name suffix).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="fileAsName"
+                type="hs:localizableString"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    A complete name is usually the combination of <b>title</b>, <b>givenName</b>, <b>middleName</b>, <b>surname</b>, and
+                    <b>suffix</b>. The presence of this optional element indicates that a different order should be used
+                    or that the identity prefers to have the name filed differently.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- sgfix: required for wsdl (because myContacts references it) -->
+    <xsd:element name="name" type="nameType"/>
+
+    <!-- NameType: myName type plus blue node attributes -->
+    <xsd:complexType name="nameType">
+        <xsd:complexContent>
+            <xsd:extension base="myNameType">
+                <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="languagePreferenceType">
+        <xsd:simpleContent>
+            <xsd:extension base="hs:string" >
+                <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+                <xsd:attribute
+                    name="level"
+                    use="required"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            This attribute indicates how well this language is understood by this identity. Valid
+                            values include:
+                            <ul>
+                                <li>native</li>
+                                <li>fluent</li>
+                                <li>intermediate</li>
+                                <li>beginner</li>
+                            </ul>
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                        <xsd:restriction base="hs:string">
+                            <xsd:enumeration value="native" />
+                            <xsd:enumeration value="fluent" />
+                            <xsd:enumeration value="intermediate" />
+                            <xsd:enumeration value="beginner" />
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="timeZonePreferenceType">
+        <xsd:sequence>
+            <xsd:element
+                name="cat"
+                type="hs:catType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+            <xsd:element
+                name="timeZone"
+                type="hs:string"
+                minOccurs="1"
+                maxOccurs="1"
+                />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+    </xsd:complexType>
+
+    <!-- gender stuff -->
+    <!-- sgfix: required for wsdl (because myContacts references it) -->
+    <xsd:element name="gender" type="genderType" />
+    <xsd:simpleType name="genderType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element specifies the gender for this entity.
+            An entity can be associated with only one gender.
+            The format of this element is a single, 7-bit ASCII character with
+            one of two possible values: 'm' for male and 'f' for female.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="hs:string">
+            <xsd:maxLength value="1"/>
+            <xsd:enumeration value="f" />
+            <xsd:enumeration value="m" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="genderBlueType">
+        <xsd:simpleContent>
+            <xsd:extension base="genderType">
+                <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <!-- memberInformation stuff -->
+
+    <xsd:complexType name="memberInformationType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This node wraps member-specific public information for this entity. The information
+            cannot be changed. This is reflected in the schemas that modify the content document.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element
+                name="memberNamePortion"
+                type="hs:localizableString"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    A member name is a combination of a user name portion and a domain name portion.
+                    These names separated by an '@' character form a fully qualified
+                    member name. This element contains the user name portion of the name. For
+                    a fully qualified member name of someone@microsoft.com, this element contains the value
+                    'someone'.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="domainNamePortion"
+                type="hs:string"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This is the other part of the fully qualified member name.
+                    This element contains the domain name portion. For
+                    a fully qualified member name of someone@microsoft.com, this element contains the value
+                    'microsoft.com'.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+    </xsd:complexType>
+
+    <!-- specialDate stuff -->
+    <!-- sgfix: required for wsdl (because myContacts references it) -->
+    <xsd:element name="specialDate" type="specialDateBlueType"/>
+    <xsd:complexType name="specialDateType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates a date that is important to this entity.
+            Multiple special date nodes can exist. This is not a substitute for dates stored
+            on an entity's <a href="#myCalendar">.NET Calendar</a> service. Its purpose
+            is to provide a convenient place to store a birthdate or anniversary because
+            these dates are frequently imported into a contact record.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element
+                name="cat"
+                type="hs:catType"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+            </xsd:element>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+            <xsd:element name="date"
+                type="xsd:date"
+                minOccurs="1"
+                maxOccurs="1"
+                />
+        </xsd:sequence>
+        <xsd:attribute
+            name="calendarType"
+            type="mc:calendarLocaleEnum"
+            use="required"
+        />
+    </xsd:complexType>
+
+    <xsd:complexType name="specialDateBlueType">
+        <xsd:complexContent>
+            <xsd:extension base="specialDateType">
+                <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- userReference stuff -->
+        <!-- needed for wsdl generation (because myContacts references it) -->
+    <xsd:element name="userReference" type="categorizedUserReferenceBlueType" />
+    <xsd:complexType name="categorizedUserReferenceBlueType">
+        <xsd:complexContent>
+            <xsd:extension base="hs:userReferenceCategorized">
+                <xsd:sequence>
+                    <!--
+                    // paulste: since these are blue nodes they should have {any}
+                    //  elements as well
+                    //-->
+                    <xsd:any
+                    processContents="skip"
+                    namespace="##other"
+                    minOccurs="0"
+                    maxOccurs="unbounded"
+                    />
+                </xsd:sequence>
+                <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- picture stuff -->
+    <xsd:complexType name="pictureType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This optional element encapsulates a URL that points to a picture of the identity.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element
+                name="cat"
+                type="hs:catType"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+            </xsd:element>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+            <xsd:element
+                name="url"
+                type="hs:string"
+                minOccurs="1"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains the URL that points to the actual picture.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- sgfix: required for wsdl (because myContacts references it) -->
+    <xsd:element name="picture" type="pictureBlueType"/>
+    <xsd:complexType name="pictureBlueType">
+        <xsd:complexContent>
+            <xsd:extension base="pictureType">
+                <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- identificationNumber stuff -->
+    <xsd:complexType name="identificationNumberType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This optional element encapsulates an identification number
+            for the entity (for example, an employee ID number, social security number,
+            national ID number, or driver's license number).
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element
+                name="cat"
+                type="hs:catType"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+            </xsd:element>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+            <xsd:element
+                name="number"
+                type="hs:string"
+                minOccurs="1"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains the actual identification number value.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- sgfix: required for wsdl (because myContacts references it) -->
+    <xsd:element name="identificationNumber" type="identificationNumberBlueType"/>
+    <xsd:complexType name="identificationNumberBlueType">
+        <xsd:complexContent>
+            <xsd:extension base="identificationNumberType">
+                <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- sgfix: required for wsdl (because myContacts references it) -->
+    <xsd:element name="workInformation" type="workInformationType"/>
+    <xsd:complexType
+        name="workInformationType"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates information related to work or occupation for this
+            entity.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:element
+                name="cat"
+                type="hs:catType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="profession"
+                type="hs:localizableString"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This optional element specifies the entity's profession within this
+                    particular <b>workInformation</b> element.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="jobTitle"
+                type="hs:localizableString"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the job title for this piece of work information.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="officeLocation"
+                type="hs:localizableString"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the office location for this piece of work information.
+                    <p/>
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="coworkerOrDepartment"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                type="hs:userReferenceCategorized"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element encapsulates information about this entity's manager, assistant,
+                    company, department, and so on. The information can include its name, Microsoft .NET Passport Unique ID (PUID)
+                    and e-mail address. Using this anchor information, additional details can be
+                    obtained.
+                    The required <b>cat</b> element indicates the relationship of the element to this entity
+                    (that is, ref="system#manager").
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="workInformationBlueType">
+        <xsd:complexContent>
+            <xsd:extension base="workInformationType">
+                <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!--
+    //
+    // address
+    //  - public type for address
+    //
+    -->
+    <!-- sgfix: required for wsdl (because myContacts references it) -->
+    <xsd:element name="address" type="addressBlueType"/>
+    <xsd:complexType name="addressBlueType">
+        <xsd:complexContent>
+            <xsd:extension base="hs:addressType">
+                <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!--
+    //
+    // webSiteType
+    //
+    //-->
+    <!-- sgfix: required for wsdl (because myContacts references it) -->
+    <xsd:element name="webSite" type="webSiteType"/>
+
+    <xsd:complexType name="webSiteType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates an electronic address for this entity. Specifically,
+            it contains a Website or URL associated with this identity.
+            This element
+            can be repeated. Typically, one <b>webSite</b>
+            element is used for each Web site associated with this identity.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+
+            <xsd:element
+                name="cat"
+                type="hs:catType"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+            </xsd:element>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+            <xsd:element
+                name="url"
+                type="hs:string"
+                minOccurs="1"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains the URL for this Web site. If the site is accessible
+                    through multiple URLs, this element can be repeated the corresponding
+                    number of times.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+
+    </xsd:complexType>
+
+    <xsd:complexType name="webSiteBlueType">
+        <xsd:complexContent>
+            <xsd:extension base="webSiteType">
+                <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!--
+    //
+    // emailAddressType
+    //
+    //-->
+    <!-- sgfix: required for wsdl (because myContacts references it) -->
+    <xsd:element name="minimalEmailAddress" type="minimalEmailAddressType" />
+    <xsd:element name="emailAddress" type="emailAddressType"/>
+
+    <xsd:complexType name="minimalEmailAddressType">
+        <xsd:sequence>
+            <xsd:element
+                name="email"
+                type="hs:string"
+                minOccurs="1"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains the actual value of the e-mail address (for example, someone@microsoft.com).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="emailAddressType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates an electronic address for this entity. Specifically,
+            it contains an e-mail address associated with this identity.
+            This element
+            can be repeated. Typically, one <b>emailAddress</b> element is used
+            for each e-mail address associated with this identity.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+
+            <xsd:element
+                name="cat"
+                type="hs:catType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+            <xsd:element
+                name="email"
+                type="hs:string"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains the actual value of the e-mail address (for example, someone@microsoft.com).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element
+                name="name"
+                type="hs:localizableString"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains the friendly or display name associated
+                    with this e-mail address.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="emailAddressBlueType">
+        <xsd:complexContent>
+            <xsd:extension base="emailAddressType">
+                <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!--
+    //
+    // screenNameType
+    //  - open issue: how do we indicate where this screen name is commonly used?
+    //
+    //-->
+    <xsd:complexType name="screenNameType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates an electronic address for this entity. Specifically,
+            it contains a screen name commonly used in real-time communication
+            applications, such as instant messaging, chat rooms, and so on.
+            This element
+            can be repeated. The <b>type</b> attribute can be used
+            for simple classifications on the <b>screenName</b>.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+
+            <xsd:element
+                name="cat"
+                type="hs:catType"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+            </xsd:element>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+            <xsd:element
+                name="name"
+                type="hs:localizableString"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains the value of the screen name.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:complexType>
+    <!-- sgfix: required for wsdl (because myContacts references it) -->
+    <xsd:element name="screenName" type="screenNameBlueType" />
+    <xsd:complexType name="screenNameBlueType">
+        <xsd:complexContent>
+            <xsd:extension base="screenNameType">
+                <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+<!--
+    // telephoneNumber Type
+-->
+    <!-- sgfix: required for wsdl (because myContacts references it) -->
+    <xsd:element name="telephoneNumber" type="telephoneNumberBlueType"/>
+
+    <xsd:complexType name="telephoneNumberBlueType">
+        <xsd:complexContent>
+            <xsd:extension base="hs:telephoneNumberType">
+                <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+<!--
+    // securityCertificateType
+    //  open issue: what type should <certificate> be?
+-->
+    <xsd:complexType name="securityCertificateType">
+        <xsd:sequence>
+            <xsd:element
+                name="cat"
+                type="hs:catType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+            <xsd:element
+                name="certificate"
+                type="xsd:hexBinary"
+                minOccurs="1"
+                maxOccurs="1"
+                />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- sgfix: required for wsdl (because myContacts references it) -->
+    <xsd:element name="securityCertificate" type="securityCertificateBlueType" />
+    <xsd:complexType name="securityCertificateBlueType">
+        <xsd:complexContent>
+            <xsd:extension base="securityCertificateType">
+                <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+<!--
+    // securityCertificateType
+    //  open issue: what type should <certificate> be?
+-->
+
+</xsd:schema>

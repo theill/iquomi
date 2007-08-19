@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<vxml version="1.0" application="services.aspx">
+	<form id="form">
+		<field name="url">
+			<prompt>
+				Choose a web site <enumerate/>
+			</prompt>
+			<option dtmf="1" value="url 1">
+				site 1
+			</option>
+			<option dtmf="2" value="url 2">
+				site 2
+			</option>
+			<filled>
+				<prompt>
+					the url is <value expr="url"/>
+				</prompt>
+			</filled>
+		</field>
+	</form>
+</vxml>

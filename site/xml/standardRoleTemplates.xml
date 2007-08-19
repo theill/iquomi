@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<StandardRoleTemplates>
+	<Scope Name="s0" Base="T" />
+	<Scope Name="s1" Base="NIL">
+		<Shape Select="//*[@Creator='$callerId']" Type="Include" />
+	</Scope>
+	<Scope Name="s2" Base="NIL">
+		<Shape Select="//notify[@Creator='$callerId']" Type="Include" />
+	</Scope>
+	<Scope Name="s3" Base="NIL">
+		<Shape Select="//*[Cat/@Ref='public']" Type="Include" />
+		<Shape Select="//notify[@Creator='$callerId']" Type="Include" />
+	</Scope>
+	<Scope Name="s4" Base="NIL" />
+
+	<RoleTemplate Name="Full access">
+		<fullDescription xml:lang="en-US" dir="ltr">
+			The purpose of this role template is to provide full access to all information.
+		</fullDescription>
+		<Method Name="query" ScopeRef="s0" />
+		<Method Name="insert" ScopeRef="s0" />
+		<Method Name="replace" ScopeRef="s0" />
+		<Method Name="delete" ScopeRef="s0" />
+		<Method Name="update" ScopeRef="s0" />
+	</RoleTemplate>
+
+	<RoleTemplate Name="Full owner access">
+		<fullDescription xml:lang="en-US" dir="ltr">
+			The purpose of this role template is to provide full ability to read information with minimal ability to write. The caller can add information to the service, and can only delete information that is inserted or replaced.
+		</fullDescription>
+		<Method Name="query" ScopeRef="s0" />
+		<Method Name="insert" ScopeRef="s1" />
+		<Method Name="replace" ScopeRef="s1" />
+		<Method Name="delete" ScopeRef="s1" />
+	</RoleTemplate>
+
+	<RoleTemplate Name="Read-only access">
+		<fullDescription xml:lang="en-US" dir="ltr">
+			The purpose of this role template is to provide read-only access with ability to read and subscribe to all public information.
+		</fullDescription>
+		<Method Name="query" ScopeRef="s0" />
+		<Method Name="insert" ScopeRef="s2" />
+		<Method Name="replace" ScopeRef="s2" />
+		<Method Name="delete" ScopeRef="s2" />
+	</RoleTemplate>
+
+	<RoleTemplate Name="Read-only public access">
+		<fullDescription xml:lang="en-US" dir="ltr">
+			The purpose of this role template is to provide read-only access with ability to subscribe to public events only.
+		</fullDescription>
+		<Method Name="query" ScopeRef="s0" />
+		<Method Name="insert" ScopeRef="s3" />
+		<Method Name="replace" ScopeRef="s3" />
+		<Method Name="delete" ScopeRef="s3" />
+	</RoleTemplate>
+
+	<RoleTemplate Name="No access">
+		<fullDescription xml:lang="en-US" dir="ltr">
+			The purpose of this role template is to provide no access.
+		</fullDescription>
+	</RoleTemplate>
+
+</StandardRoleTemplates>
