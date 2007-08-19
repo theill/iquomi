@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+Copyright 2004 BEA Systems Inc., Microsoft Corporation, TIBCO Software Inc. All rights reserved.
+-->
+<xs:schema targetNamespace="http://schemas.xmlsoap.org/ws/2004/01/eventing" xmlns:tns="http://schemas.xmlsoap.org/ws/2004/01/eventing" xmlns:s11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:s12="http://www.w3.org/2003/05/soap-envelope" xmlns:wsa="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2002/12/policy" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" blockDefault="#all">
+
+  <xs:import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="http://schemas.xmlsoap.org/soap/envelope/"/>
+
+  <xs:import namespace="http://www.w3.org/2003/05/soap-envelope" schemaLocation="http://www.w3.org/2003/05/soap-envelope"/>
+
+  <xs:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing" schemaLocation="http://schemas.xmlsoap.org/ws/2003/03/addressing"/>
+
+  <xs:import namespace="http://schemas.xmlsoap.org/ws/2002/12/policy" schemaLocation="http://schemas.xmlsoap.org/ws/2002/12/policy"/>
+
+<!--
+  <xs:import namespace='http://www.w3.org/XML/1998/namespace' /> 
+-->
+
+  <xs:element name="Subscribe">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="tns:NotifyTo"/>
+        <xs:element ref="tns:EndTo" minOccurs="0"/>
+        <xs:element ref="tns:Expires" minOccurs="0"/>
+        <xs:element ref="tns:Filter" minOccurs="0"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="SubscribeTo" type="wsa:EndpointReferenceType"/>
+
+  <xs:element name="NotifyTo" type="wsa:EndpointReferenceType"/>
+
+  <xs:element name="EndTo" type="wsa:EndpointReferenceType"/>
+
+  <xs:element name="Expires">
+    <xs:simpleType>
+      <xs:union memberTypes="xs:dateTime tns:NonNegativeDurationType"/>
+    </xs:simpleType>
+  </xs:element>
+
+  <xs:simpleType name="NonNegativeDurationType">
+    <xs:restriction base="xs:duration">
+      <xs:minInclusive value="P0Y0M0DT0H0M0S"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="Filter" type="wsp:MessagePredicateAssertion"/>
+
+  <xs:element name="SupportedDialect" type="xs:anyURI"/>
+
+  <xs:element name="SubscribeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="tns:Id"/>
+        <xs:element ref="tns:Expires"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Id" type="xs:anyURI"/>
+
+  <xs:element name="Renew">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="tns:Id"/>
+        <xs:element ref="tns:Expires" minOccurs="0"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="RenewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="tns:Expires"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Unsubscribe">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="tns:Id"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <!-- count(/s:Envelope/s:Body/*) = 0 for Unsubscribe response -->
+
+  <xs:element name="SubscriptionEnd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="tns:Id"/>
+        <xs:element ref="tns:Code"/>
+        <xs:element ref="tns:Reason" minOccurs="0"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute ref="s11:actor"/>
+      <xs:attribute ref="s11:mustUnderstand"/>
+      <xs:attribute ref="s12:relay"/>
+      <xs:attribute ref="s12:role"/>
+      <xs:attribute ref="s12:mustUnderstand"/>
+      <xs:anyAttribute namespace="##other" processContents="lax"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Code">
+    <xs:simpleType>
+      <xs:restriction base="xs:QName">
+        <xs:enumeration value="tns:Unsubscribed"/>
+        <xs:enumeration value="tns:Expired"/>
+        <xs:enumeration value="tns:NotifyToFailure"/>
+        <xs:enumeration value="tns:SourceCanceling"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+
+  <xs:element name="Reason">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+<!-- should be defined here but omitted because my validator complains
+          <xs:attribute ref='xml:lang' use='required' />
+-->
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- No constraint on s:Envelope/s:Body/ for SubscriptionEnd -->
+
+</xs:schema>

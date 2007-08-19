@@ -1,0 +1,1 @@
+Online, offline, busy, free, which device(s) to send alerts to.

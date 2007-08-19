@@ -1,0 +1,1262 @@
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xdb="urn:schemas-iquomi-com:xdb"
+	xmlns="http://schemas.iquomi.com/2004/01/core"
+	targetNamespace="http://schemas.iquomi.com/2004/01/core"
+	elementFormDefault="qualified"
+	attributeFormDefault="qualified" 
+	version="1.0">
+
+    <xsd:annotation>
+        <xsd:documentation>
+            Schema for Iquomi&#174; common types.
+            
+            Copyright (c) 2004 Iquomi. All rights reserved.
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <!--
+    //
+    // include additional schema files that are part of this
+    // core namespace
+    //
+    // Service schemas MUST only import iqcommon
+    //
+    <xsd:include schemaLocation="http://schemas.iquomi.com/2004/01/core/iqdl.xsd" />
+    <xsd:include schemaLocation="http://schemas.iquomi.com/2004/01/core/iqinfra.xsd" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd" />
+    -->
+    <xsd:include schemaLocation="iqdl.xsd" />
+    <xsd:include schemaLocation="iqinfra.xsd" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+	
+    <xsd:simpleType name="String">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="768" />
+        </xsd:restriction>
+    </xsd:simpleType>
+	
+    <xsd:simpleType name="DirType">
+        <xsd:annotation>
+           <xsd:documentation>
+              This optional attribute specifies the default layout direction
+              for the localized string. Valid values are <b>rtl</b> (right to left) and
+              <b>ltr</b> (left to right).
+           </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="String">
+            <xsd:enumeration value="Rtl" />
+            <xsd:enumeration value="Ltr" />
+        </xsd:restriction>
+    </xsd:simpleType>
+	
+    <xsd:complexType name="LocalizableString">
+        <xsd:simpleContent>
+            <xsd:extension base="String">
+                <xsd:attribute ref="xml:lang" use="required">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            This required attribute is used to specify an ISO 639 language code
+                            or an ISO 3166 country code as described in
+                            <a href="http://www.ietf.org/rfc/rfc1766.txt">RFC 1766</a>.
+                            The value of this attribute indicates the language type of
+                            the content within this element.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="Dir" type="DirType" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            This optional attribute specifies the default layout direction
+                            for the localized string. Valid values are <b>rtl</b> (right to left) and
+                            <b>ltr</b> (left to right).
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+	
+    <xsd:complexType name="LongText">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute ref="xml:lang" use="required">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            This required attribute is used to specify an ISO 639 language code
+                            or an ISO 3166 country code as described in
+                            <a href="http://www.ietf.org/rfc/rfc1766.txt">RFC 1766</a>.
+                            The value of this attribute indicates the language type of
+                            the content within this element.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="Dir" type="DirType" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            This optional attribute specifies the base direction of
+                            directionally neutral text. Possible values include <b>rtl</b> (right to left)
+                            and <b>ltr</b> (left to right).
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+	
+    <xsd:simpleType name="IdType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This attribute is a globally unique ID assigned to this element
+            by Iquomi. Normally, Iquomi generates and assigns this
+            ID during an <b>InsertRequest operation</b> or possibly during a
+            <b>ReplaceRequest</b>. Application software can override this ID
+            generation by specifying the <b>UseClientIds</b> attribute in the
+            request message. After an ID has been assigned,
+            the attribute is read only and attempts to write it are silently ignored.
+            </xsd:documentation>
+            <xsd:appinfo>
+                <xdb:system type="itemId" />
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="UuidType" />
+    </xsd:simpleType>
+
+    <xsd:simpleType name="IdRefType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This attribute contains a reference to another Iquomi item by
+            its item ID.
+            </xsd:documentation>
+            <xsd:appinfo>
+                <xdb:system type="itemIdRef" />
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="UuidType" />
+    </xsd:simpleType>
+
+    <xsd:simpleType name="InstanceIdType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This attribute is a unique identifier typically assigned to the root
+            element of a service. It is a read-only element and assigned by the
+            Iquomi system when a particular service is provisioned for a user.
+            </xsd:documentation>
+            <xsd:appinfo>
+                <xdb:system type="instanceId" />
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string" />
+    </xsd:simpleType>
+
+    <xsd:simpleType name="ChangeNumberType">
+        <xsd:annotation>
+            <xsd:documentation>
+            The <b>ChangeNumber</b> attribute is designed to facilitate caching of the
+            element and its descendants. This attribute is assigned to this element
+            by the Iquomi system. The attribute is read only to applications.
+            Attempts to write this attribute are silently ignored.
+            </xsd:documentation>
+            <xsd:appinfo>
+                <xdb:system type="ChangeNumber" />
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:nonNegativeInteger">
+            <xsd:maxInclusive value="9223372036854775807" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="CreatorType">
+        <xsd:annotation>
+            <xsd:documentation>
+				This attribute identifies the creator in terms of <b>userId</b>, 
+	            <b>appId</b>, and <b>platformId</b> of the node.
+            </xsd:documentation>
+            <xsd:appinfo>
+                <xdb:system type="creator" />
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:hexBinary" />
+    </xsd:simpleType>
+
+    <!--
+    //
+    // Standard Attribute Group for Document Root
+    //
+    -->
+    <xsd:attributeGroup name="DocumentRootAttributeGroup">
+        <xsd:attribute name="ChangeNumber" type="ChangeNumberType" use="required" />
+        <xsd:attribute name="InstanceId" type="InstanceIdType" />
+    </xsd:attributeGroup>
+
+    <!--
+    //
+    // Standard Attribute Group for Standard Blue
+    //
+    -->
+    <xsd:attributeGroup name="StandardBlueAttributeGroup">
+        <xsd:attribute name="ChangeNumber" type="ChangeNumberType" use="required" />
+        <xsd:attribute name="Id" type="IdType" use="required" />
+        <xsd:attribute name="Creator" type="CreatorType" use="required" />
+    </xsd:attributeGroup>
+
+    <!--
+    //
+    // Standard Attribute Group for Unnamed Blue
+    //
+    -->
+    <xsd:attributeGroup name="UnnamedBlueAttributeGroup">
+        <xsd:attribute name="ChangeNumber" type="ChangeNumberType" use="required" />
+    </xsd:attributeGroup>
+
+    <xsd:simpleType name="NonZeroPercentageType">
+        <xsd:restriction base="xsd:unsignedByte">
+            <xsd:minInclusive value="1" />
+            <xsd:maxInclusive value="100" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="LinkType">
+        <xsd:annotation>
+            <xsd:documentation>
+            The link element points to a Iquomi service. The type is
+            defined by the type attribute (<b>LinkType</b>, and the value is the contents
+            of this element.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+            <xsd:element
+                name="ServiceClass"
+                type="xsd:string"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+            <xsd:element
+                name="OwnerId"
+                type="xsd:string"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+            <xsd:element
+                name="Location"
+                type="LocationType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+        </xsd:sequence>
+        <xsd:attribute
+            name="Type"
+            type="xsd:string"
+        />
+    </xsd:complexType>
+
+    <xsd:complexType name="Location">
+        <xsd:annotation>
+            <xsd:documentation>
+            The <b>Location</b> element defines a location type and location value.
+            The type is defined by the type attribute (<b>LocationType</b>), and
+            the value is the contents of this element.
+            </xsd:documentation>
+        </xsd:annotation>
+        
+        <xsd:sequence>
+        	<xsd:any />
+        </xsd:sequence>
+        <xsd:attribute name="Type" type="LocationType" use="required" />
+<!-- [pt] replaced with above at 11/25/2004 5:22PM
+        <xsd:complexContent>
+            <xsd:extension base="xsd:anyType">
+                <xsd:attribute name="Type" type="LocationType" use="required" />
+            </xsd:extension>
+        </xsd:complexContent> -->
+    </xsd:complexType>
+
+    <xsd:simpleType name="LocationType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This type defines the types of location pointers allowed by the
+            XMI. Today the only valid value is "xpath". In the future, if additional
+            XML pointer dialects become standard, they may be added as well.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Xpath" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="UuidType">
+        <xsd:annotation>
+            <xsd:documentation>
+            The <b>UuidType</b> is used to specify a universally unique identifier (UUID).
+            (Note that the <b>base</b> type below is probably wrong and needs to be fixed
+            to match a correct definition for a UUID.)
+            </xsd:documentation>
+            <xsd:appinfo>
+                <xdb:system type="uuid" />
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="([0-9]|[a-f]|[A-F]){8}-([0-9]|[a-f]|[A-F]){4}-([0-9]|[a-f]|[A-F]){4}-([0-9]|[a-f]|[A-F]){4}-([0-9]|[a-f]|[A-F]){12}" />
+        </xsd:restriction>
+        <!-- AZFIX: restriction base="xsd:anyURI" -->
+    </xsd:simpleType>
+
+    <xsd:simpleType name="PuidType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element is used to specify a Passport Unique ID (PUID). The ID itself is in raw form: it is
+            not encrypted in any way.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:restriction base="xsd:string">
+            <!-- use xsd:hexBinary -->
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="IqidType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element is used to specify a Iquomi Unique ID (IQID). The ID itself is in raw form: it is
+            not encrypted in any way.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:restriction base="xsd:string">
+            <!-- use xsd:hexBinary -->
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+    //
+    // categories
+    //
+    -->
+
+    <!--
+    //
+    // CatType
+    //
+    -->
+    <xsd:complexType
+        name="CatType"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element is used to categorize the element that contains it by
+            referencing either a global category definition
+            (in either the Iquomi Categories service
+            system document or an external resource containing category definitions), or
+            by referencing an identity-centered category definition in the content
+            document of the Iquomi Categories service for a particular PUID.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute
+            name="Ref"
+            use="required"
+            type="xsd:anyURI"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This attribute references a category definition (<b>catDef</b>) element using the
+                rules outlined in the <a href="myCategories.html">Iquomi Categories</a> section of the <i>XMI Manual</i>.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+
+    <!--
+    //
+    // catDef
+    //
+    -->
+    <xsd:complexType
+        name="CatDefType"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates the definition of a category and, as outlined in
+            the <a href="myCategories.html">Iquomi Categories</a> section of the XMI Manual, may appear in the
+            system or content document of the Iquomi Categories service, or may appear in an external
+            resource.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+            <xsd:element
+                name="Name"
+                type="LocalizableString"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the localized name of the category.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Description"
+                type="LongText"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies a full description of the category definition.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Implies"
+                type="CatType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies that this category definition also implies
+                    that another category (designated by the <b>ref</b> attribute) also applies.
+                    </xsd:documentation>
+                </xsd:annotation>
+
+            </xsd:element>
+
+            <xsd:element
+                name="Cat"
+                type="CatType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+        </xsd:sequence>
+
+        <xsd:attribute
+            name="IdName"
+            type="String"
+            use="required"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This attribute specifies the name of the category definition in the form of the category name.
+                The relationship between this value and references to this value is defined using the
+                rules outlined in the <a href="myCategories.html">Iquomi Categories</a> section of the <i>XMI Manual</i>.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+
+        <xsd:attributeGroup ref="StandardBlueAttributeGroup" />
+    </xsd:complexType>
+
+
+    <!--
+    //
+    // UserReference - this is used to capture simple data about a user.
+    // Generally this occurs when you might want to find more data later, but you
+    // don't want to store an entire contact
+    //
+    -->
+    <xsd:complexType
+        name="UserReference"
+        >
+        <xsd:sequence>
+            <xsd:element
+                name="Name"
+                type="LocalizableString"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This optional element specifies the name for the enclosing element.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element
+                name="Puid"
+                type="IqidType"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This optional element specifies the PUID for the enclosing element.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element
+                name="Email"
+                type="xsd:string"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This optional name specifies an e-mail address for the enclosing element.
+                    </xsd:documentation>
+                </xsd:annotation>
+
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    //
+    // UserReferenceCategorized
+    //
+    //-->
+    <xsd:complexType
+        name="UserReferenceCategorized">
+        <xsd:complexContent>
+            <xsd:extension base="UserReference">
+                <xsd:sequence>
+                    <xsd:element
+                        name="Cat"
+                        type="CatType">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!--
+    //
+    // TelephoneNumberType
+    //
+    //-->
+    <xsd:complexType name="TelephoneNumberType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates an electronic address for this entity; specifically,
+            it contains a telephone number.
+            This element
+            may be repeated any number of times. Typical use is one <b>telephoneNumber</b> element
+            for each phone number associated with this identity.
+            <p/>
+            A telephone number consists of an optional country code, a required <b>nationalCode</b> (U.S. area code),
+            a number, an optional extension, and a optional PIN.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element
+                name="Cat"
+                type="CatType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+            <xsd:element
+                name="CountryCode"
+                type="String"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This optional element specifies the country code for this telephone
+                    number.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="NationalCode"
+                type="String"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the national code for this phone number.
+                    For U.S. telephone numbers, this is equivalent to the area code.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Number"
+                type="String"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the actual telephone number within the country
+                    and national code number scheme.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="NumberExtension"
+                type="String"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This optional element specifies an extension used to reach this
+                    identity at this number.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Pin"
+                type="String"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This optional element specifies a PIN number used on this phone number.
+                    A PIN is similar to an extension, but PINs are commonly used to address
+                    pagers while extensions are typically used to address phones relative to a
+                    local PBX.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="SubscriptionType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element defines a subscription node that is designed to
+            be an <b>xdb:blue</b> node which, when placed in a content document, causes
+            a subscription to be registered. A subscription contains a trigger element
+            which selects a scope of coverage. When items change that are under this scope
+            of coverage, a <b>subscriptionResponse</b> message is generated and sent to the specified
+            destination address.
+            </xsd:documentation>
+            <xsd:appinfo>
+                <xdb:system type="subscription" />
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <!--
+            //
+            // a subscription contains
+            //  - trigger which specifies the data that will
+            //    trigger a notification
+            //  - an expiration time after which the subscription
+            //    will expire and automatically be removed from the
+            //    document
+            //  - context which is transmitted when this subscription is triggered
+            //  - a location to send the subscription message to
+            -->
+            <xsd:element name="Trigger">
+                <xsd:complexType>
+                    <xsd:attribute
+                        name="Select"
+                        type="xsd:string"
+                        use="required"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This item specifies an XPath expression that specifies the nodes that are
+                            to be selected and watched for changes. The selection may select only <b>xdb:blue</b>
+                            nodes. As changes in this node set occur, they
+                            trigger the generation of subscription messages. These messages are then sent
+                            to the SOAP receiver listed in the <b>to</b> element.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+
+                    <xsd:attribute
+                        name="Mode"
+                        use="required"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This attribute specifies whether the content of the changes
+                            that triggered the subscription are delivered in the subscription
+                            message, or the message simply indicates that something changed
+                            under the trigger. The attribute may be:
+                            <dl>
+                                <dt><b>includeData</b></dt>
+                                <dd>
+                                The data that changed, causing the subscription to trigger, is
+                                included in the subscription message. Note that deleted nodes
+                                are specified by their ID, not by value.
+                                </dd>
+
+                                <dt>excludeData</dt>
+                                <dd>
+                                The data that changed, causing the subscription to trigger, is
+                                not included in the subscription message.
+                                </dd>
+
+                            </dl>
+                            </xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                            <xsd:restriction base="String">
+                                <xsd:enumeration value="IncludeData" />
+                                <xsd:enumeration value="ExcludeData" />
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+
+	                <xsd:attribute
+	                    name="BaseChangeNumber"
+	                    type="ChangeNumberType"
+	                    use="optional"
+	                    >
+	                    <xsd:annotation>
+	                        <xsd:documentation>
+	                        This attribute specifies the <b>changeNumber</b> value to which the trigger relates. 
+	                        All changes between the specified change number and the current state
+	                        of the document relative to the selection are transmitted as subscription
+	                        messages. This allows a client application to establish a subscription
+	                        relative to some baseline. As with <b>changeQuery</b>, if the <b>baseChangeNumber</b>
+	                        is way out of date relative to the current state of the document, and the service
+	                        can not supply the changes in the subscription message, the subscription
+	                        insert is rejected. A value of zero means that the current values of
+	                        the selected nodes are transmitted in the subscription message.
+	                        </xsd:documentation>
+	                    </xsd:annotation>
+	                </xsd:attribute>
+
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element
+                name="ExpiresAt"
+                type="xsd:dateTime"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This optional element specifies an absolute time after which the
+                    subscription is no longer active. The <b>subscription</b> node is
+                    automatically removed when the subscription expires. If this element
+                    is missing, the subscription does not expire.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="Context">
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element returns the <b>Context</b> element from the original
+                    subscription. Applications should use this element and only this element
+                    to correlate the subscription response with one of their subscriptions.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:any
+                            processContents="skip"
+                            namespace="##other"
+                            minOccurs="0"
+                            maxOccurs="unbounded"
+                        />
+                    </xsd:sequence>
+                    <xsd:attribute
+                        name="Uri"
+                        type="xsd:anyURI"
+                        use="required"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This attribute specifies the URI value chosen by the subscriber
+                            that is associated with this subscription.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element
+                name="To"
+                type="xsd:anyURI"
+                minOccurs="1"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This attribute specifies the location that is to receive the subscription
+                    message. The value of this element may be one of the following forms:
+                    <ul>
+                        <li>
+                        <b>iq:iqAlerts</b> This URI indicates that generated subscription
+                        messages are to be delivered inside the body of a notification and delivered
+                        to the default Iquomi Alerts service of the creator.
+                        </li>
+
+                        <li>
+                        <b>protocol://service</b> This URI indicates that generated subscription
+                        messages are delivered to the specified service at the domain of the creator's
+                        <b>platformId</b>. For instance, a <b>platformId</b> indicating contoso.com, and a value in this
+                        element of http://subscriptionResponse, would cause delivery of the subscription
+                        message to http://subscriptionResponse.contoso.com.
+                        </li>
+                    </ul> If this value is not specified, the subscription message is
+                    delivered as a notification to the "creator's" Iquomi Alerts service.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+        <xsd:attributeGroup ref="StandardBlueAttributeGroup" />
+    </xsd:complexType>
+
+
+<!--
+//
+// ScopeType
+//
+-->
+<xsd:complexType
+    name="ScopeType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+            A <b>Scope</b> contains a <b>Shape</b> element designed to
+            restrict the information visible to the user
+            of the scope. When used within a <b>RoleMap</b>, the scope's
+            shape defines the data shape that is visible to all
+            members of the role. When used within an ACL, the scope's shape defines
+            the data shape that is visible for the ACL entry relative to the shape
+            for the role.
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+        <xsd:element
+            name="Name"
+            type="LocalizableString"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            />
+        <xsd:element
+            name="Shape"
+            type="ShapeType"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            />
+    </xsd:sequence>
+    <xsd:attribute
+        name="Base" 
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This attribute specifies the initial set of nodes visible 
+            through the shape.
+
+            <p/>
+            
+            A value of <b>T</b> indicates that the shape is initialized to 
+            include all possible nodes relative to the shape that is 
+            currently in effect. For example, each role defines a scope 
+            containing a shape. When defining a shape for a role, the value 
+            <b>T</b> indicates all possible nodes available in the 
+            specified document for this role. When defining a shape in an 
+            ACL entry, a value of <b>T</b> means all of the nodes visible 
+            in the shape for the computed role. When you use a shape in an 
+            IQDL operation, a value of <b>T</b> indicates all of the 
+            possible nodes selected by the IQDL operation (relative to the 
+            ACL shape which itself is relative to the role's shape).
+
+            <p/>
+            
+            The value <b>Nil</b> indicates the opposite of <b>T</b>, which 
+            is the empty node set. Nodes from this set may then be included 
+            into the shape.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="T" />
+                <xsd:enumeration value="Nil" />
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:attribute>
+</xsd:complexType>
+
+<!--
+//
+// ShapeType
+//
+-->
+<xsd:complexType
+    name="ShapeType"
+    >
+    <xsd:annotation>
+        <xsd:documentation>
+        A shape defines the node set visible through the document when
+        operating through this <b>Shape</b> element.
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:attribute
+        name="Type" 
+        use="required"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Include" />
+                <xsd:enumeration value="Exclude" />
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:attribute>
+    
+    <xsd:attribute name="Select" type="SelectType" use="required" />
+
+<!--
+    <xsd:sequence>
+        <xsd:element
+            name="Include"
+            type="ShapeAtomType"
+            minOccurs="0"
+            maxOccurs="unbounded">
+            <xsd:annotation>
+                <xsd:documentation>
+                This element specifies the set of nodes that should be included in the shape,
+                relative to the possible set of nodes indicated by the <b>Base</b> attribute.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+        <xsd:element
+            name="Exclude"
+            type="ShapeAtomType"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element specifies the set of nodes that should be excluded from the shape,
+                relative to the possible set of nodes indicated by the <b>Base</b> attribute.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+    </xsd:sequence>
+-->
+</xsd:complexType>
+
+
+<!--
+//
+// ShapeAtomType
+//
+-->
+<xsd:complexType name="ShapeAtomType">
+	<xsd:attribute name="Select" type="SelectType" use="required" />
+</xsd:complexType>
+
+
+<!--
+//
+// subscription
+//
+-->
+<xsd:element name="Subscription" type="SubscriptionType" />
+
+<!-- [pt] added to include class generation by xsd -->
+<xsd:element name="Subject" type="SubjectType" />
+<xsd:element name="RoleList" type="RoleListType" />
+<xsd:element name="NotifyList" type="NotifyListType" />
+
+<!--
+//
+// operation
+// used in VS7 wsdl generation
+//
+-->
+<xsd:element name="Operation" type="xsd:string">
+    <xsd:annotation>
+        <xsd:documentation>
+            The presence of this element in an Iquomi WSDL file indicates that the associated operation
+            should be processed by the Iquomi SoapExtension.
+        </xsd:documentation>
+    </xsd:annotation>
+</xsd:element>
+
+<!--
+//
+// AddressType
+//
+-->
+<xsd:complexType name="AddressType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates a geographic address. The contained
+            nodes describe the geographic address in detail. Typical use is one <b>address</b>
+            element for each geographical address for this identity. For instance,
+            a user with a primary home and a vacation home might have two
+            <b>address</b> elements in this service.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+            <xsd:element
+                name="Cat"
+                type="CatType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+            <xsd:element
+                name="OfficialAddressLine"
+                type="LocalizableString"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains the most precise, official line for the address relative to
+                    the postal agency serving the area specified by the city(or cities) and <b>postalCode</b>. For official postal usage, this element contains the official,
+                    parsable address line that the regional postal system cares about. Typical usage of
+                    this element would be to enclose a street address, post office box address,
+                    private bag, or any other
+                    similar official address. Internal routing information (such as department name, suite number within
+                    a building, internal mailstop number, or other similar properties) should be placed within the
+                    <b>internalAddressLine</b> element.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="InternalAddressLine"
+                type="LocalizableString"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains internal routing information relative to the
+                    address specified by the <b>officialAddressLine</b> element. Items such as department name, suite number within
+                    a building, internal mailstop number, or other similar properties should be placed witin this
+                    element.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="PrimaryCity"
+                type="LocalizableString"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element defines the primary city for this address.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="SecondaryCity"
+                type="LocalizableString"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This optional element defines the secondary city for this address. Example types for this
+                    element include city district, city wards, postal towns, and so on.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Subdivision"
+                type="LocalizableString"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains the offical subdivision name within the country or region for this
+                    address. In the United States, this element would contain the two-letter abbreviation for
+                    the name of the state. This element is also commonly treated as the "first-order admin subdivision" and typically contains subdivision names referring to:
+                    <ul>
+                        <li>Administrative division
+                        </li>
+
+                        <li>Bundesstaat
+                        </li>
+
+                        <li>Canton
+                        </li>
+
+                        <li>Federal district
+                        </li>
+
+                        <li>Province
+                        </li>
+
+                        <li>Region
+                        </li>
+
+                        <li>State
+                        </li>
+
+                        <li>Territory
+                        </li>
+                    </ul>
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="PostalCode"
+                type="String"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains the official postal code for this address.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="CountryCode"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains the twp-letter ISO-3166 ID of the country, dependency, or functionally
+                    equivalent region for this address.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="2" />
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <xsd:element
+                name="Latitude"
+                type="String"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the latitude value for this address in
+                    units of decimal degrees. Geodetic datum WGS84 is required.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element
+                name="Longitude"
+                type="String"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the longitude value for this address in
+                    units of decimal degrees. Geodetic datum WGS84 is required.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element
+                name="Elevation"
+                type="String"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the elevation above sea level with respect to
+                    geodetic datum WGS84. The unit of measure for this value is meters.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element
+                name="Velocity"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the last reported velocity
+                    associated with this address. Obviously for
+                    fixed addresses the velocity node either would not
+                    be present, or would be zero (indicating stationary
+                    position).
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element
+                            name="Speed"
+                            type="String"
+                            minOccurs="0"
+                            maxOccurs="1"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                This element specifies the last-known speed associated
+                                with this report in units of meters per second.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element
+                            name="Direction"
+                            type="String"
+                            minOccurs="0"
+                            maxOccurs="1"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                This element specifies the last known direction associated
+                                with this report in units of decimal degrees.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element
+                name="Confidence"
+                type="String"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies a percentage value that indicates the confidence value that
+                    this location is accurate within the specified precision.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element
+                name="Precision"
+                type="String"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the precision, in meters, of this location. The value defines
+                    a spherical zone that the location falls within.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

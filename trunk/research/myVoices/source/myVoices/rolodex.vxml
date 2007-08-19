@@ -1,0 +1,17 @@
+
+<vxml version="1.0">
+	<form id="form">
+		<field name="info">
+			<prompt>
+				Choose a contact<enumerate />
+			</prompt>
+			<option dtmf="1" value="email: casey@brains-N-brawn.com phone: 2142821556">casey chesnut</option>
+			<filled>
+				<prompt>
+					their info is <value expr="info" />
+				</prompt>
+				<goto next="services.aspx" />
+			</filled>
+		</field>
+	</form>
+</vxml>

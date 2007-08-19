@@ -1,0 +1,997 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:hc="http://schemas.microsoft.com/hs/2001/10/core" xmlns:s0="http://schemas.xmlsoap.org/soap/security/2000-12" xmlns:s2="http://schemas.microsoft.com/hs/2001/10/myServices" xmlns:i0="http://schemas.xmlsoap.org/rp/" xmlns:tns="http://schemas.microsoft.com/hs/2001/10/myServices/wsdl" targetNamespace="http://schemas.microsoft.com/hs/2001/10/myServices/wsdl" name="myServices" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <import namespace="http://schemas.xmlsoap.org/rp/" location="soaprp.xsd" />
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.xmlsoap.org/soap/security/2000-12" version="1.0">
+      <s:element name="licenses">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="hc:identity" />
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          </s:sequence>
+          <s:anyAttribute namespace="##other" />
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/hs/2001/10/core" version="1.0">
+      <s:import namespace="http://www.w3.org/XML/1998/namespace" />
+      <s:simpleType name="string">
+        <s:restriction base="s:string">
+          <s:maxLength value="768" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="dirType">
+        <s:restriction base="hc:string">
+          <s:enumeration value="rtl" />
+          <s:enumeration value="ltr" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="localizableString">
+        <s:simpleContent>
+          <s:extension base="hc:string">
+            <s:attribute ref="xml:lang" use="required" />
+            <s:attribute name="dir" type="hc:dirType" use="optional" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="longText">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute ref="xml:lang" use="required" />
+            <s:attribute name="dir" type="hc:dirType" use="optional" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:simpleType name="idType">
+        <s:restriction base="hc:uuidType" />
+      </s:simpleType>
+      <s:simpleType name="idRefType">
+        <s:restriction base="hc:uuidType" />
+      </s:simpleType>
+      <s:simpleType name="instanceIdType">
+        <s:restriction base="s:string" />
+      </s:simpleType>
+      <s:simpleType name="changeNumberType">
+        <s:restriction base="s:nonNegativeInteger">
+          <s:maxInclusive value="9223372036854775807" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="creatorType">
+        <s:restriction base="s:hexBinary" />
+      </s:simpleType>
+      <s:attributeGroup name="documentRootAttributeGroup">
+        <s:attribute name="changeNumber" type="hc:changeNumberType" use="required" />
+        <s:attribute name="instanceId" type="hc:instanceIdType" />
+      </s:attributeGroup>
+      <s:attributeGroup name="standardBlueAttributeGroup">
+        <s:attribute name="changeNumber" type="hc:changeNumberType" use="required" />
+        <s:attribute name="id" type="hc:idType" use="required" />
+        <s:attribute name="creator" type="hc:creatorType" use="required" />
+      </s:attributeGroup>
+      <s:attributeGroup name="unnamedBlueAttributeGroup">
+        <s:attribute name="changeNumber" type="hc:changeNumberType" use="required" />
+      </s:attributeGroup>
+      <s:simpleType name="nonZeroPercentageType">
+        <s:restriction base="s:unsignedByte">
+          <s:minInclusive value="1" />
+          <s:maxInclusive value="100" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="linkType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="serviceClass" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ownerId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="location" type="hc:locationType" />
+        </s:sequence>
+        <s:attribute name="type" type="s:string" />
+      </s:complexType>
+      <s:complexType name="location">
+        <s:complexContent mixed="false">
+          <s:extension base="s:anyType">
+            <s:attribute name="type" type="hc:locationType" use="required" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="locationType">
+        <s:restriction base="s:string">
+          <s:enumeration value="xpath" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="uuidType">
+        <s:restriction base="s:string">
+          <s:pattern value="([0-9]|[a-f]|[A-F]){8}-([0-9]|[a-f]|[A-F]){4}-([0-9]|[a-f]|[A-F]){4}-([0-9]|[a-f]|[A-F]){4}-([0-9]|[a-f]|[A-F]){12}" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="puidType">
+        <s:restriction base="s:string" />
+      </s:simpleType>
+      <s:complexType name="catType">
+        <s:attribute name="ref" type="s:anyURI" use="required" />
+      </s:complexType>
+      <s:complexType name="catDefType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="name" type="hc:localizableString" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="hc:longText" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="implies" type="hc:catType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="cat" type="hc:catType" />
+        </s:sequence>
+        <s:attribute name="idName" type="hc:string" use="required" />
+        <s:attributeGroup ref="hc:standardBlueAttributeGroup" />
+      </s:complexType>
+      <s:complexType name="userReference">
+        <s:sequence>
+          <s:element minOccurs="0" name="name" type="hc:localizableString" />
+          <s:element minOccurs="0" name="puid" type="hc:puidType" />
+          <s:element minOccurs="0" name="email" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="userReferenceCategorized">
+        <s:complexContent mixed="false">
+          <s:extension base="hc:userReference">
+            <s:sequence>
+              <s:element name="cat" type="hc:catType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="telephoneNumberType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="cat" type="hc:catType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <s:element minOccurs="0" name="countryCode" type="hc:string" />
+          <s:element name="nationalCode" type="hc:string" />
+          <s:element name="number" type="hc:string" />
+          <s:element minOccurs="0" name="numberExtension" type="hc:string" />
+          <s:element minOccurs="0" name="pin" type="hc:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="subscriptionType">
+        <s:sequence>
+          <s:element name="trigger">
+            <s:complexType>
+              <s:attribute name="select" type="s:string" use="required" />
+              <s:attribute name="mode" use="required">
+                <s:simpleType>
+                  <s:restriction base="hc:string">
+                    <s:enumeration value="includeData" />
+                    <s:enumeration value="excludeData" />
+                  </s:restriction>
+                </s:simpleType>
+              </s:attribute>
+              <s:attribute name="baseChangeNumber" type="hc:changeNumberType" use="optional" />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="expiresAt" type="s:dateTime" />
+          <s:element name="context">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+              </s:sequence>
+              <s:attribute name="uri" type="s:anyURI" use="required" />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="1" maxOccurs="1" name="to" type="s:anyURI" />
+        </s:sequence>
+        <s:attributeGroup ref="hc:standardBlueAttributeGroup" />
+      </s:complexType>
+      <s:complexType name="scopeType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="name" type="hc:localizableString" />
+          <s:element minOccurs="1" maxOccurs="1" name="shape" type="hc:shapeType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="shapeType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="include" type="hc:shapeAtomType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="exclude" type="hc:shapeAtomType" />
+        </s:sequence>
+        <s:attribute name="base">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="t" />
+              <s:enumeration value="nil" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+      </s:complexType>
+      <s:complexType name="shapeAtomType">
+        <s:attribute name="select" type="hc:selectType" use="required" />
+      </s:complexType>
+      <s:element name="subscription" type="hc:subscriptionType" />
+      <s:element name="operation" type="s:string" />
+      <s:complexType name="addressType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="cat" type="hc:catType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <s:element minOccurs="0" name="officialAddressLine" type="hc:localizableString" />
+          <s:element minOccurs="0" name="internalAddressLine" type="hc:localizableString" />
+          <s:element minOccurs="0" name="primaryCity" type="hc:localizableString" />
+          <s:element minOccurs="0" name="secondaryCity" type="hc:localizableString" />
+          <s:element minOccurs="0" name="subdivision" type="hc:localizableString" />
+          <s:element minOccurs="0" name="postalCode" type="hc:string" />
+          <s:element minOccurs="0" name="countryCode">
+            <s:simpleType>
+              <s:restriction base="s:string">
+                <s:maxLength value="2" />
+              </s:restriction>
+            </s:simpleType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="latitude" type="hc:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="longitude" type="hc:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="elevation" type="hc:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="velocity">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="speed" type="hc:string" />
+                <s:element minOccurs="0" maxOccurs="1" name="direction" type="hc:string" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="confidence" type="hc:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="precision" type="hc:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:attributeGroup name="standardResponseAttributeGroup">
+        <s:attribute name="selectedNodeCount" type="hc:selectedNodeCountType" use="optional" />
+        <s:attribute name="status" type="hc:responseStatus" use="required" />
+      </s:attributeGroup>
+      <s:simpleType name="responseStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="success" />
+          <s:enumeration value="failure" />
+          <s:enumeration value="rollback" />
+          <s:enumeration value="notAttempted" />
+          <s:enumeration value="accessDenied" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="insertRequest" type="hc:insertRequestType" />
+      <s:complexType name="insertRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="options" type="hc:insertRequestOptionsType" />
+          <s:group ref="s2:insertRequestGroup" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="attributes" type="hc:redAttributeType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </s:sequence>
+        <s:attribute name="select" type="hc:selectType" use="required" />
+        <s:attribute name="useClientIds" type="hc:useClientIdsType" use="optional" />
+        <s:attribute name="minOccurs" type="hc:minOccursType" />
+        <s:attribute name="maxOccurs" type="hc:maxOccursType" />
+      </s:complexType>
+      <s:element name="insertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="newBlueId" type="hc:newBlueIdType" />
+          </s:sequence>
+          <s:attribute name="newChangeNumber" type="hc:changeNumberType" use="optional" />
+          <s:attributeGroup ref="hc:standardResponseAttributeGroup" />
+        </s:complexType>
+      </s:element>
+      <s:complexType name="changedBlueType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="deletedBlueType">
+        <s:attribute name="id" type="hc:idType" use="required" />
+      </s:complexType>
+      <s:complexType name="newBlueIdType">
+        <s:attribute name="id" type="hc:idType" use="required" />
+      </s:complexType>
+      <s:element name="deleteRequest" type="hc:deleteRequestType" />
+      <s:complexType name="deleteRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="options" type="hc:deleteRequestOptionsType" />
+        </s:sequence>
+        <s:attribute name="select" type="hc:selectType" use="required" />
+        <s:attribute name="minOccurs" type="hc:minOccursType" />
+        <s:attribute name="maxOccurs" type="hc:maxOccursType" />
+      </s:complexType>
+      <s:element name="deleteResponse">
+        <s:complexType>
+          <s:attribute name="newChangeNumber" type="hc:changeNumberType" use="optional" />
+          <s:attributeGroup ref="hc:standardResponseAttributeGroup" />
+        </s:complexType>
+      </s:element>
+      <s:element name="replaceRequest" type="hc:replaceRequestType" />
+      <s:complexType name="replaceRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="options" type="hc:replaceRequestOptionsType" />
+          <s:group ref="s2:replaceRequestGroup" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="attributes" type="hc:redAttributeType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </s:sequence>
+        <s:attribute name="select" type="hc:selectType" use="required" />
+        <s:attribute name="useClientIds" type="hc:useClientIdsType" use="optional" />
+        <s:attribute name="minOccurs" type="hc:minOccursType" />
+        <s:attribute name="maxOccurs" type="hc:maxOccursType" />
+      </s:complexType>
+      <s:element name="replaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="newBlueId" type="hc:newBlueIdType" />
+          </s:sequence>
+          <s:attribute name="newChangeNumber" type="hc:changeNumberType" use="optional" />
+          <s:attributeGroup ref="hc:standardResponseAttributeGroup" />
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRequest" type="hc:updateRequestType" />
+      <s:complexType name="updateRequestType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="unbounded" name="updateBlock" type="hc:updateBlockType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="updateBlockType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="insertRequest" type="hc:insertRequestType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="deleteRequest" type="hc:deleteRequestType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="replaceRequest" type="hc:replaceRequestType" />
+        </s:sequence>
+        <s:attribute name="select" type="hc:string" use="required" />
+        <s:attribute name="onError" use="required">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="rollbackBlockAndFail" />
+              <s:enumeration value="rollbackBlockAndContinue" />
+              <s:enumeration value="ignore" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+      </s:complexType>
+      <s:element name="updateResponse" type="hc:updateResponseType" />
+      <s:complexType name="updateResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="updateBlockStatus">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" ref="hc:insertResponse" />
+                <s:element minOccurs="0" maxOccurs="unbounded" ref="hc:deleteResponse" />
+                <s:element minOccurs="0" maxOccurs="unbounded" ref="hc:replaceResponse" />
+              </s:sequence>
+              <s:attributeGroup ref="hc:standardResponseAttributeGroup" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+        <s:attribute name="newChangeNumber" type="hc:changeNumberType" use="required" />
+      </s:complexType>
+      <s:element name="queryRequest" type="hc:queryRequestType" />
+      <s:complexType name="queryRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="xpQuery" type="hc:xpQueryType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="changeQuery" type="hc:changeQueryType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="xpQueryType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="options" type="hc:queryOptionsType" />
+        </s:sequence>
+        <s:attribute name="select" type="hc:string" use="required" />
+        <s:attribute name="minOccurs" type="hc:minOccursType" use="optional" />
+        <s:attribute name="maxOccurs" type="hc:maxOccursType" use="optional" />
+      </s:complexType>
+      <s:complexType name="changeQueryType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="options" type="hc:queryOptionsType" />
+        </s:sequence>
+        <s:attribute name="select" type="hc:string" use="required" />
+        <s:attribute name="baseChangeNumber" type="hc:changeNumberType" use="required" />
+      </s:complexType>
+      <s:element name="queryResponse" type="hc:queryResponseType" />
+      <s:complexType name="queryResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="xpQueryResponse">
+            <s:complexType>
+              <s:sequence>
+                <s:group ref="s2:xpQueryResponseGroup" />
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+              </s:sequence>
+              <s:attributeGroup ref="hc:standardResponseAttributeGroup" />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="changeQueryResponse">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="changedBlue" type="hc:changedBlueType" />
+                <s:element minOccurs="0" maxOccurs="1" name="deletedBlue" type="hc:deletedBlueType" />
+              </s:sequence>
+              <s:attribute name="baseChangeNumber" type="hc:changeNumberType" use="required" />
+              <s:attributeGroup ref="hc:standardResponseAttributeGroup" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="useClientIdsType">
+        <s:restriction base="s:string">
+          <s:enumeration value="true" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="selectType">
+        <s:restriction base="s:string" />
+      </s:simpleType>
+      <s:simpleType name="minOccursType">
+        <s:restriction base="s:int" />
+      </s:simpleType>
+      <s:simpleType name="maxOccursType">
+        <s:restriction base="s:int" />
+      </s:simpleType>
+      <s:simpleType name="selectedNodeCountType">
+        <s:restriction base="s:int" />
+      </s:simpleType>
+      <s:complexType name="redAttributeType">
+        <s:anyAttribute namespace="##other" processContents="skip" />
+      </s:complexType>
+      <s:complexType name="queryOptionsType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="sort" type="hc:sortType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="range" type="hc:rangeType" />
+          <s:element minOccurs="0" maxOccurs="1" name="shape" type="hc:shapeType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="sortType">
+        <s:attribute default="ascending" name="direction" use="optional">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="ascending" />
+              <s:enumeration value="descending" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+        <s:attribute name="key" type="hc:selectType" use="required" />
+      </s:complexType>
+      <s:complexType name="rangeType">
+        <s:attribute name="first" type="hc:positionType" use="required" />
+        <s:attribute name="count" type="s:int" use="required" />
+      </s:complexType>
+      <s:complexType name="insertRequestOptionsType">
+        <s:sequence minOccurs="1" maxOccurs="1">
+          <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="deleteRequestOptionsType">
+        <s:sequence minOccurs="1" maxOccurs="1">
+          <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="replaceRequestOptionsType">
+        <s:sequence minOccurs="1" maxOccurs="1">
+          <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="positionType">
+        <s:restriction base="s:string" />
+      </s:simpleType>
+      <s:element name="subscriptionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="triggerData">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="changedBlue" type="hc:changedBlueType" />
+                  <s:element minOccurs="0" maxOccurs="1" name="deletedBlue" type="hc:deletedBlueType" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element name="context">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+                </s:sequence>
+                <s:attribute name="uri" type="s:anyURI" use="required" />
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AnyParam">
+        <s:sequence>
+          <s:any />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="subjectType">
+        <s:attribute name="userId" type="hc:puidType" use="required" />
+        <s:attribute name="credType" type="hc:string" use="optional" />
+        <s:attribute name="appAndPlatformId" type="hc:puidType" use="optional" />
+      </s:complexType>
+      <s:complexType name="roleType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="cat" type="hc:catType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="notes" type="hc:localizableString" />
+          <s:element minOccurs="1" maxOccurs="1" name="subject" type="hc:subjectType" />
+          <s:element minOccurs="0" name="expiresAt" type="s:dateTime" />
+        </s:sequence>
+        <s:attribute name="scopeRef" type="hc:idRefType" />
+        <s:attribute name="roleTemplateRef" type="s:string" use="required" />
+        <s:attributeGroup ref="hc:standardBlueAttributeGroup" />
+      </s:complexType>
+      <s:complexType name="roleListType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="scope" type="hc:roleListScopeType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="role" type="hc:roleType" />
+        </s:sequence>
+        <s:attributeGroup ref="hc:documentRootAttributeGroup" />
+      </s:complexType>
+      <s:complexType name="roleListScopeType">
+        <s:complexContent mixed="false">
+          <s:extension base="hc:scopeType">
+            <s:attributeGroup ref="hc:standardBlueAttributeGroup" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="roleMap" type="hc:roleMapType" />
+      <s:complexType name="roleMapType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="scope">
+            <s:complexType>
+              <s:complexContent mixed="false">
+                <s:extension base="hc:scopeType">
+                  <s:attribute name="id" type="hc:idType" />
+                </s:extension>
+              </s:complexContent>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="roleTemplate">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="fullDescription" type="hc:localizableString" />
+                <s:element minOccurs="0" maxOccurs="unbounded" name="method">
+                  <s:complexType>
+                    <s:attribute name="name" type="hc:string" use="required" />
+                    <s:attribute name="scopeRef" type="hc:idRefType" use="required" />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:attribute name="name" type="hc:string" use="required" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+        <s:attributeGroup ref="hc:standardBlueAttributeGroup" />
+      </s:complexType>
+      <s:element name="identity" type="hc:identityType" />
+      <s:complexType name="identityType">
+        <s:sequence>
+          <s:element name="kerberos" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="authorizedRole" type="hc:authorizedRoleType" />
+      <s:simpleType name="authorizedRoleType">
+        <s:restriction base="s:string" />
+      </s:simpleType>
+      <s:element name="request" type="hc:requestType" />
+      <s:complexType name="requestType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="100" name="key">
+            <s:complexType>
+              <s:attribute name="puid" type="hc:puidType" use="required" />
+              <s:attribute name="instance" type="hc:string" use="required" />
+              <s:attribute name="cluster" type="hc:string" use="required" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+        <s:attribute name="service" type="hc:string" use="required" />
+        <s:attribute name="document" use="required">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="content" />
+              <s:enumeration value="roleList" />
+              <s:enumeration value="policy" />
+              <s:enumeration value="system" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+        <s:attribute name="method" type="hc:string" use="required" />
+        <s:attribute name="genResponse" use="required">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="always" />
+              <s:enumeration value="never" />
+              <s:enumeration value="faultOnly" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+      </s:complexType>
+      <s:element name="response" type="hc:responseType" />
+      <s:complexType name="responseType">
+        <s:attribute name="role" type="hc:string" use="optional" />
+      </s:complexType>
+      <s:element name="echoBack" type="hc:echoBackType" />
+      <s:complexType name="echoBackType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="systemBaseType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="systemVersion" type="hc:systemVersionType" />
+          <s:element minOccurs="1" maxOccurs="1" name="roleMap" type="hc:roleMapType" />
+          <s:element minOccurs="1" maxOccurs="1" name="methodMap" type="hc:methodMapType" />
+          <s:element minOccurs="1" maxOccurs="1" name="schemaMap" type="hc:schemaMapType" />
+          <s:element minOccurs="1" maxOccurs="1" name="wsdlMap" type="hc:wsdlMapType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="systemVersionType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="version">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="1" maxOccurs="1" name="productReleaseName" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" name="productImplementationName" type="s:anyURI" />
+              </s:sequence>
+              <s:attribute name="majorVersion" type="s:string" use="required" />
+              <s:attribute name="minorVersion" type="s:string" use="required" />
+              <s:attribute name="buildNumber" type="s:string" use="required" />
+              <s:attribute name="qfe" type="s:string" use="required" />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="1" maxOccurs="1" name="buildDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="buildDetails">
+            <s:complexType>
+              <s:attribute name="machine" type="s:string" use="required" />
+              <s:attribute name="branch" type="s:string" use="required" />
+              <s:attribute name="type" type="s:string" use="required" />
+              <s:attribute name="official" type="s:string" use="required" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+        <s:attributeGroup ref="hc:standardBlueAttributeGroup" />
+      </s:complexType>
+      <s:complexType name="methodMapType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="method">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+              </s:sequence>
+              <s:attribute name="name" type="s:string" use="required" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+        <s:attributeGroup ref="hc:standardBlueAttributeGroup" />
+      </s:complexType>
+      <s:complexType name="schemaMapType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="schema">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+              </s:sequence>
+              <s:attribute name="namespace" type="s:anyURI" use="required" />
+              <s:attribute name="schemaLocation" type="s:anyURI" use="required" />
+              <s:attribute name="alias" type="s:string" use="required" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+        <s:attributeGroup ref="hc:standardBlueAttributeGroup" />
+      </s:complexType>
+      <s:complexType name="wsdlMapType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="wsdl">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+              </s:sequence>
+              <s:attribute name="wsdlLocation" type="s:anyURI" use="required" />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="disco">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+              </s:sequence>
+              <s:attribute name="discoLocation" type="s:anyURI" use="required" />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="wsil">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+              </s:sequence>
+              <s:attribute name="wsilLocation" type="s:anyURI" use="required" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+        <s:attributeGroup ref="hc:standardBlueAttributeGroup" />
+      </s:complexType>
+      <s:complexType name="faultDetailType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="faultResponseAction" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="faultChain" type="hc:faultChainType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="faultChainType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="unbounded" name="fault" type="hc:faultChainFaultType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="faultChainFaultType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="code" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="shortDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="longDescription" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/hs/2001/10/myServices" version="1.0">
+      <s:annotation>
+        <s:appinfo>
+          <xdb:blue select="/myServices" xmlns:xdb="urn:schemas-microsoft-com:xdb" />
+          <xdb:blue select="/myServices/*" xmlns:xdb="urn:schemas-microsoft-com:xdb" />
+          <xdb:red select="//@changeNumber" xmlns:xdb="urn:schemas-microsoft-com:xdb" />
+          <xdb:red select="//@id" xmlns:xdb="urn:schemas-microsoft-com:xdb" />
+          <xdb:red select="//@creator" xmlns:xdb="urn:schemas-microsoft-com:xdb" />
+          <xdb:red select="//cat/@ref" xmlns:xdb="urn:schemas-microsoft-com:xdb" />
+          <xdb:red select="/myServices/service/@name" xmlns:xdb="urn:schemas-microsoft-com:xdb" />
+          <xdb:red select="/myServices/service/$any" xmlns:xdb="urn:schemas-microsoft-com:xdb" />
+        </s:appinfo>
+      </s:annotation>
+      <s:element name="myServices">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="service" type="s2:serviceType" />
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+          </s:sequence>
+          <s:attributeGroup ref="hc:documentRootAttributeGroup" />
+        </s:complexType>
+      </s:element>
+      <s:complexType name="serviceType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="cat" type="hc:catType" />
+          <s:element minOccurs="0" maxOccurs="1" name="key">
+            <s:complexType>
+              <s:attribute name="puid" type="hc:puidType" use="required" />
+              <s:attribute name="instance" type="hc:string" use="required" />
+              <s:attribute name="cluster" type="hc:string" use="required" />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="refer" type="hc:string" />
+          <s:element name="to" type="hc:string" />
+          <s:element name="spn" type="hc:string" />
+          <s:element name="realm" type="hc:string" />
+          <s:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+        </s:sequence>
+        <s:attribute name="name" type="hc:string" use="required" />
+        <s:attributeGroup ref="hc:standardBlueAttributeGroup" />
+      </s:complexType>
+      <s:group name="insertRequestGroup">
+        <s:sequence>
+          <s:choice minOccurs="1" maxOccurs="unbounded">
+            <s:element minOccurs="1" maxOccurs="1" name="service" type="s2:serviceType" />
+          </s:choice>
+        </s:sequence>
+      </s:group>
+      <s:group name="replaceRequestGroup">
+        <s:sequence>
+          <s:choice minOccurs="1" maxOccurs="unbounded">
+            <s:element minOccurs="1" maxOccurs="1" name="service" type="s2:serviceType" />
+          </s:choice>
+        </s:sequence>
+      </s:group>
+      <s:group name="xpQueryResponseGroup">
+        <s:sequence>
+          <s:choice minOccurs="1" maxOccurs="unbounded">
+            <s:element minOccurs="1" maxOccurs="1" ref="s2:myServices" />
+            <s:element minOccurs="1" maxOccurs="1" name="service" type="s2:serviceType" />
+          </s:choice>
+        </s:sequence>
+      </s:group>
+      <s:complexType name="AnyParam">
+        <s:sequence>
+          <s:any />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="insertRequest">
+    <part name="body" element="hc:insertRequest" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="licensesHeader" element="s0:licenses" />
+    <part name="requestHeader" element="hc:request" />
+    <part name="echoBackHeader" element="hc:echoBack" />
+  </message>
+  <message name="insertResponse">
+    <part name="body" element="hc:insertResponse" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="responseHeader" element="hc:response" />
+    <part name="echoBackHeader" element="hc:echoBack" />
+  </message>
+  <message name="deleteRequest">
+    <part name="body" element="hc:deleteRequest" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="licensesHeader" element="s0:licenses" />
+    <part name="requestHeader" element="hc:request" />
+    <part name="echoBackHeader" element="hc:echoBack" />
+  </message>
+  <message name="deleteResponse">
+    <part name="body" element="hc:deleteResponse" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="responseHeader" element="hc:response" />
+    <part name="echoBackHeader" element="hc:echoBack" />
+  </message>
+  <message name="replaceRequest">
+    <part name="body" element="hc:replaceRequest" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="licensesHeader" element="s0:licenses" />
+    <part name="requestHeader" element="hc:request" />
+    <part name="echoBackHeader" element="hc:echoBack" />
+  </message>
+  <message name="replaceResponse">
+    <part name="body" element="hc:replaceResponse" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="responseHeader" element="hc:response" />
+    <part name="echoBackHeader" element="hc:echoBack" />
+  </message>
+  <message name="updateRequest">
+    <part name="body" element="hc:updateRequest" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="licensesHeader" element="s0:licenses" />
+    <part name="requestHeader" element="hc:request" />
+    <part name="echoBackHeader" element="hc:echoBack" />
+  </message>
+  <message name="updateResponse">
+    <part name="body" element="hc:updateResponse" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="responseHeader" element="hc:response" />
+    <part name="echoBackHeader" element="hc:echoBack" />
+  </message>
+  <message name="queryRequest">
+    <part name="body" element="hc:queryRequest" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="licensesHeader" element="s0:licenses" />
+    <part name="requestHeader" element="hc:request" />
+    <part name="echoBackHeader" element="hc:echoBack" />
+  </message>
+  <message name="queryResponse">
+    <part name="body" element="hc:queryResponse" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="responseHeader" element="hc:response" />
+    <part name="echoBackHeader" element="hc:echoBack" />
+  </message>
+  <message name="sendXmlRequest">
+    <part name="body" type="hc:AnyParam" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="licensesHeader" element="s0:licenses" />
+    <part name="requestHeader" element="hc:request" />
+    <part name="echoBackHeader" element="hc:echoBack" />
+  </message>
+  <message name="sendXmlResponse">
+    <part name="body" type="hc:AnyParam" />
+    <part name="pathHeader" element="i0:path" />
+    <part name="responseHeader" element="hc:response" />
+    <part name="echoBackHeader" element="hc:echoBack" />
+  </message>
+  <portType name="myServicesPort">
+    <operation name="insert">
+      <input message="tns:insertRequest" />
+      <output message="tns:insertResponse" />
+    </operation>
+    <operation name="delete">
+      <input message="tns:deleteRequest" />
+      <output message="tns:deleteResponse" />
+    </operation>
+    <operation name="replace">
+      <input message="tns:replaceRequest" />
+      <output message="tns:replaceResponse" />
+    </operation>
+    <operation name="update">
+      <input message="tns:updateRequest" />
+      <output message="tns:updateResponse" />
+    </operation>
+    <operation name="query">
+      <input message="tns:queryRequest" />
+      <output message="tns:queryResponse" />
+    </operation>
+    <operation name="sendXml">
+      <input message="tns:sendXmlRequest" />
+      <output message="tns:sendXmlResponse" />
+    </operation>
+  </portType>
+  <binding name="myServicesBinding" type="tns:myServicesPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="insert">
+      <soap:operation soapAction="http://schemas.microsoft.com/hs/2001/10/core#request" />
+      <hc:operation />
+      <input>
+        <soap:body use="literal" parts="body" />
+        <soap:header n1:required="true" message="tns:insertRequest" part="pathHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:insertRequest" part="licensesHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:insertRequest" part="requestHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:insertRequest" part="echoBackHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+        <soap:header n1:required="true" message="tns:insertResponse" part="pathHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:insertResponse" part="responseHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:insertResponse" part="echoBackHeader" use="literal" />
+      </output>
+    </operation>
+    <operation name="delete">
+      <soap:operation soapAction="http://schemas.microsoft.com/hs/2001/10/core#request" />
+      <hc:operation />
+      <input>
+        <soap:body use="literal" parts="body" />
+        <soap:header n1:required="true" message="tns:deleteRequest" part="pathHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:deleteRequest" part="licensesHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:deleteRequest" part="requestHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:deleteRequest" part="echoBackHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+        <soap:header n1:required="true" message="tns:deleteResponse" part="pathHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:deleteResponse" part="responseHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:deleteResponse" part="echoBackHeader" use="literal" />
+      </output>
+    </operation>
+    <operation name="replace">
+      <soap:operation soapAction="http://schemas.microsoft.com/hs/2001/10/core#request" />
+      <hc:operation />
+      <input>
+        <soap:body use="literal" parts="body" />
+        <soap:header n1:required="true" message="tns:replaceRequest" part="pathHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:replaceRequest" part="licensesHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:replaceRequest" part="requestHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:replaceRequest" part="echoBackHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+        <soap:header n1:required="true" message="tns:replaceResponse" part="pathHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:replaceResponse" part="responseHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:replaceResponse" part="echoBackHeader" use="literal" />
+      </output>
+    </operation>
+    <operation name="update">
+      <soap:operation soapAction="http://schemas.microsoft.com/hs/2001/10/core#request" />
+      <hc:operation />
+      <input>
+        <soap:body use="literal" parts="body" />
+        <soap:header n1:required="true" message="tns:updateRequest" part="pathHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:updateRequest" part="licensesHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:updateRequest" part="requestHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:updateRequest" part="echoBackHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+        <soap:header n1:required="true" message="tns:updateResponse" part="pathHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:updateResponse" part="responseHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:updateResponse" part="echoBackHeader" use="literal" />
+      </output>
+    </operation>
+    <operation name="query">
+      <soap:operation soapAction="http://schemas.microsoft.com/hs/2001/10/core#request" />
+      <hc:operation />
+      <input>
+        <soap:body use="literal" parts="body" />
+        <soap:header n1:required="true" message="tns:queryRequest" part="pathHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:queryRequest" part="licensesHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:queryRequest" part="requestHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:queryRequest" part="echoBackHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+        <soap:header n1:required="true" message="tns:queryResponse" part="pathHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:queryResponse" part="responseHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:queryResponse" part="echoBackHeader" use="literal" />
+      </output>
+    </operation>
+    <operation name="sendXml">
+      <soap:operation soapAction="http://schemas.microsoft.com/hs/2001/10/core#request" />
+      <hc:operation />
+      <input>
+        <soap:body use="literal" parts="body" />
+        <soap:header n1:required="true" message="tns:sendXmlRequest" part="pathHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:sendXmlRequest" part="licensesHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:sendXmlRequest" part="requestHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:sendXmlRequest" part="echoBackHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+        <soap:header n1:required="true" message="tns:sendXmlResponse" part="pathHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header n1:required="true" message="tns:sendXmlResponse" part="responseHeader" use="literal" xmlns:n1="http://schemas.xmlsoap.org/wsdl/" />
+        <soap:header message="tns:sendXmlResponse" part="echoBackHeader" use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="myServices">
+    <port name="myServicesPort" binding="tns:myServicesBinding" />
+  </service>
+</definitions>

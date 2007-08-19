@@ -1,0 +1,43 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns="resume-schema"
+		targetNamespace="resume-schema"
+		elementFormDefault="qualified">
+
+<xsd:element name="Resume" type="ResumeType"/>
+
+<xsd:complexType name="ResumeType" mixed="true">
+ <xsd:all>
+  <xsd:element name="Name" type="NameType" minOccurs="0"/>
+  <xsd:element name="Objective" type="xsd:string" minOccurs="0"/>
+  <xsd:element name="Experience" type="Experience" minOccurs="0"/>
+  <xsd:element name="Education" type="Education" minOccurs="0"/>
+  <xsd:element name="InterestSection" type="xsd:string" minOccurs="0"/>
+ </xsd:all>
+</xsd:complexType>
+
+
+<xsd:complexType name="Experience" mixed="true">
+  <xsd:sequence>
+    <xsd:element name="YearFrom" type="xsd:int"/>
+    <xsd:element name="YearTo" type="xsd:int"/>
+    <xsd:element name="Description" type="xsd:string"/>
+  </xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="Education" mixed="true">
+  <xsd:sequence>
+    <xsd:element name="YearFrom" type="xsd:int"/>
+    <xsd:element name="YearTo" type="xsd:int"/>
+    <xsd:element name="Description" type="xsd:string"/>
+  </xsd:sequence>
+</xsd:complexType>
+
+
+<xsd:complexType name="NameType" mixed="true">
+ <xsd:all>
+  <xsd:element name="FirstName" type="xsd:string"/>
+  <xsd:element name="LastName" type="xsd:string"/>
+ </xsd:all>
+</xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Commanigy.Iquomi.Test.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Commanigy_Iquomi_UnitTests_IqPresenceRef_IqPresence" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://services.iquomi.com/IqPresence.asmx</Value>
+    </Setting>
+    <Setting Name="Commanigy_Iquomi_UnitTests_IqProfileRef_IqProfile" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://services.iquomi.com/IqProfile.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

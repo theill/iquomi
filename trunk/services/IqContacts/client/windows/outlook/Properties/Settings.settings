@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Commanigy.Iquomi.Services.IqContacts.Client.Properties" GeneratedClassName="Settings">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings>
+    <Setting Name="Iqid" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User" />
+    <Setting Name="SynchronizeFolder" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Commanigy_Iquomi_Services_IqContacts_Client_Windows_Outlook_IqContactsRef_IqContacts" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:4081/webservices/IqContacts.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

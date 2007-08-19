@@ -1,0 +1,13 @@
+<hs:insertRequest select="/myContacts" useClientIds="true"  
+xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core" 
+xmlns="http://schemas.microsoft.com/hs/2001/10/myContacts"
+xmlns:mp="http://schemas.microsoft.com/hs/2001/10/myProfile">
+  <contact id="1253">
+    <name id="12531">
+      <mp:givenName xml:lang="en">John</mp:givenName>
+    </name>
+    <emailAddress id="12532">
+      <mp:email>jdoe11562@hotmail.com</mp:email>
+    </emailAddress>
+  </contact>
+</hs:insertRequest>

@@ -1,0 +1,226 @@
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xdb="urn:schemas-microsoft-com:xdb"
+    xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core"
+    targetNamespace="http://schemas.microsoft.com/hs/2001/10/myServices"
+    xmlns="http://schemas.microsoft.com/hs/2001/10/myServices"
+    elementFormDefault="qualified"
+    version="1.0">
+
+    <xsd:annotation>
+        <xsd:documentation>
+            Schema for .NET Services service
+            Copyright (c) 2001 Microsoft Corporation. All rights reserved.
+        </xsd:documentation>
+
+        <xsd:appinfo>
+            <xdb:blue select="/myServices"/>
+            <xdb:blue select="/myServices/*"/>
+
+            <xdb:red select="//@changeNumber"/>
+            <xdb:red select="//@id"/>
+            <xdb:red select="//@creator"/>
+            <xdb:red select="//cat/@ref"/>
+            <xdb:red select="/myServices/service/@name"/>
+            <xdb:red select="/myServices/service/$any"/>
+
+            <xdb:namespaceMap>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/myServices" alias="m"/>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/core" alias="hs"/>
+            </xdb:namespaceMap>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:import namespace="http://schemas.microsoft.com/hs/2001/10/core" schemaLocation="hscommon.xsd"/>
+
+
+    <!--
+    //
+    // myServices
+    //  - root element for the .NET Services service
+    //
+    -->
+    <xsd:element name="myServices">
+        <xsd:complexType>
+            <xsd:annotation>
+                <xsd:documentation>
+                This element encapsulates the content document for the service.
+                </xsd:documentation>
+            </xsd:annotation>
+
+            <xsd:sequence>
+                <xsd:element
+                    name="service"
+                    type="serviceType"
+                    minOccurs="0"
+                    maxOccurs="unbounded"
+                />
+
+                <xsd:any
+                    processContents="skip"
+                    namespace="##other"
+                    minOccurs="0"
+                    maxOccurs="unbounded"
+                />
+            </xsd:sequence>
+            <xsd:attributeGroup ref="hs:documentRootAttributeGroup"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--
+    //
+    // serviceType
+    //
+    //-->
+    <xsd:complexType name="serviceType">
+        <xsd:annotation>
+            <xsd:documentation>
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+
+            <xsd:element
+                name="cat"
+                type="hs:catType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:element
+                name="key"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies key information used to zoom in on the document being manipulated.
+                    This information includes the PUID that owns the document, the instance id of the document,
+                    and the cluster or partition key used to locate the machine resources that hold the document.
+                    <p/>
+                    In certain situations, a client will want to send the same message to a number a instances of a particular
+                    service. In order to do this, the client may repeat this element multiple times. The cluster
+                    attributes in all elements must match each other, but the puid and instance attributes may differ. A
+                    unique response message is generated for each key specified.
+                    <p/>
+                    The entire contents of this element come from the .NET Services service.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+
+                    <xsd:attribute
+                        name="puid"
+                        type="hs:puidType"
+                        use="required"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This element specifies the PUID of the entity that "owns" the service being accessed. In
+                            the case of a "myProfile" service, this element is equivalent to the "my".
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+
+                    <xsd:attribute
+                        name="instance"
+                        type="hs:string"
+                        use="required"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This element specifies the particular instance of the service for this id being accessed.
+                            For example, if a given id is provisioned with multiple .NET Calendar documents on the same
+                            cluster and in the same data center, the documents would differ only by this value.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+
+                    <xsd:attribute
+                        name="cluster"
+                        type="hs:string"
+                        use="required"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This element specifies information used by the .NET My Services system to locate the document on
+                            a particular back-end server or database. It is used as the virtual partition key for the
+                            document being addressed. This technique is preferable to computing this partition key based
+                            on some hash of the puid/instance.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element
+                name="refer"
+                type="hs:string"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies that the fields below are for a referral.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="to"
+                type="hs:string"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies to the to destination URL.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="spn"
+                type="hs:string"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the spn in question.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="realm"
+                type="hs:string"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the authentication realm for the spn in question.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+        </xsd:sequence>
+
+        <xsd:attribute
+            name="name"
+            type="hs:string"
+            use="required"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element contains the name of the service being accessed by this request message. For example,
+                to access the .NET Profile service, this attribute will have the value "myProfile".
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+    </xsd:complexType>
+
+
+</xsd:schema>
+

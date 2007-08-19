@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://services.iquomi.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://services.iquomi.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://services.iquomi.com/">
+      <s:element name="Insert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="s0:InsertRequestType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InsertRequestType">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:BaseRequestType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="UseClientIds" type="s0:UseClientIdsType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Attributes" type="s0:ArrayOfAttributeType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Any" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Select" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MinOccurs" type="s0:MinOccursType" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaxOccurs" type="s0:MaxOccursType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MinOccursType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MaxOccursType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UseClientIdsType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAttributeType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AttributeType" nillable="true" type="s0:AttributeType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AttributeType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NewIdType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BaseResponseType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SelectedNodeCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s0:ResponseStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ResponseStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="Failure" />
+          <s:enumeration value="Rollback" />
+          <s:enumeration value="NotAttempted" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="InsertResponseType">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:BaseResponseType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="NewIds" type="s0:ArrayOfNewIdType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfNewIdType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NewIdType" nillable="true" type="s0:NewIdType" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertResult" type="s0:InsertResponseType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticationType" type="s0:AuthenticationType" />
+      <s:complexType name="AuthenticationType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Iqid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RequestType" type="s0:RequestType" />
+      <s:complexType name="RequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Service" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Method" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerIqid" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GenResponse" type="s0:GenResponseType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="GenResponseType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Always" />
+          <s:enumeration value="Never" />
+          <s:enumeration value="FaultOnly" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="s0:DeleteRequestType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DeleteRequestType">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:BaseRequestType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteResult" type="s0:DeleteResponseType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DeleteResponseType">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:BaseResponseType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="Replace">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="s0:ReplaceRequestType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ReplaceRequestType">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:BaseRequestType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="UseClientIds" type="s0:UseClientIdsType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Attributes" type="s0:ArrayOfAttributeType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Any" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ReplaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReplaceResult" type="s0:ReplaceResponseType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ReplaceResponseType">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:BaseResponseType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="NewIds" type="s0:ArrayOfNewIdType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="s0:UpdateRequestType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UpdateRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UpdateBlocks" type="s0:ArrayOfUpdateBlockType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUpdateBlockType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UpdateBlockType" nillable="true" type="s0:UpdateBlockType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UpdateBlockType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Select" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OnError" type="s0:UpdateBlockOnErrorType" />
+          <s:element minOccurs="0" maxOccurs="1" name="InsertRequests" type="s0:ArrayOfInsertRequestType" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeleteRequests" type="s0:ArrayOfDeleteRequestType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReplaceRequests" type="s0:ArrayOfReplaceRequestType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="UpdateBlockOnErrorType">
+        <s:restriction base="s:string">
+          <s:enumeration value="RollbackBlockAndFail" />
+          <s:enumeration value="RollbackBlockAndContinue" />
+          <s:enumeration value="Ignore" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfInsertRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InsertRequestType" nillable="true" type="s0:InsertRequestType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDeleteRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeleteRequestType" nillable="true" type="s0:DeleteRequestType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfReplaceRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReplaceRequestType" nillable="true" type="s0:ReplaceRequestType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UpdateResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UpdateBlockStatuses" type="s0:ArrayOfUpdateBlockStatusType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUpdateBlockStatusType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UpdateBlockStatusType" nillable="true" type="s0:UpdateBlockStatusType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UpdateBlockStatusType">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:BaseResponseType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="InsertResponses" type="s0:ArrayOfInsertResponseType" />
+              <s:element minOccurs="0" maxOccurs="1" name="DeleteResponses" type="s0:ArrayOfDeleteResponseType" />
+              <s:element minOccurs="0" maxOccurs="1" name="ReplaceResponses" type="s0:ArrayOfReplaceResponseType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfInsertResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InsertResponseType" nillable="true" type="s0:InsertResponseType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDeleteResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeleteResponseType" nillable="true" type="s0:DeleteResponseType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfReplaceResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReplaceResponseType" nillable="true" type="s0:ReplaceResponseType" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateResult" type="s0:UpdateResponseType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Query">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="s0:QueryRequestType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="QueryRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="XpQueries" type="s0:ArrayOfXpQueryType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfXpQueryType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="XpQueryType" nillable="true" type="s0:XpQueryType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="XpQueryType">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:BaseRequestType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Options" type="s0:ArrayOfQueryOptionsType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfQueryOptionsType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="QueryOptionsType" nillable="true" type="s0:QueryOptionsType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="QueryOptionsType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Sort" type="s0:ArrayOfSortType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Range" type="s0:ArrayOfRangeType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSortType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SortType" nillable="true" type="s0:SortType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SortType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Direction" type="s0:SortTypeDirection" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="SortTypeDirection">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ascending" />
+          <s:enumeration value="Descending" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfRangeType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RangeType" nillable="true" type="s0:RangeType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RangeType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="First" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="QueryResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="XpQueryResponses" type="s0:ArrayOfXpQueryResponseType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfXpQueryResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="XpQueryResponseType" nillable="true" type="s0:XpQueryResponseType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="XpQueryResponseType">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:BaseResponseType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Any" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="QueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryResult" type="s0:QueryResponseType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="InsertSoapIn">
+    <part name="parameters" element="s0:Insert" />
+  </message>
+  <message name="InsertSoapOut">
+    <part name="parameters" element="s0:InsertResponse" />
+  </message>
+  <message name="InsertAuthenticationType">
+    <part name="AuthenticationType" element="s0:AuthenticationType" />
+  </message>
+  <message name="InsertRequestType">
+    <part name="RequestType" element="s0:RequestType" />
+  </message>
+  <message name="DeleteSoapIn">
+    <part name="parameters" element="s0:Delete" />
+  </message>
+  <message name="DeleteSoapOut">
+    <part name="parameters" element="s0:DeleteResponse" />
+  </message>
+  <message name="DeleteAuthenticationType">
+    <part name="AuthenticationType" element="s0:AuthenticationType" />
+  </message>
+  <message name="DeleteRequestType">
+    <part name="RequestType" element="s0:RequestType" />
+  </message>
+  <message name="ReplaceSoapIn">
+    <part name="parameters" element="s0:Replace" />
+  </message>
+  <message name="ReplaceSoapOut">
+    <part name="parameters" element="s0:ReplaceResponse" />
+  </message>
+  <message name="ReplaceAuthenticationType">
+    <part name="AuthenticationType" element="s0:AuthenticationType" />
+  </message>
+  <message name="ReplaceRequestType">
+    <part name="RequestType" element="s0:RequestType" />
+  </message>
+  <message name="UpdateSoapIn">
+    <part name="parameters" element="s0:Update" />
+  </message>
+  <message name="UpdateSoapOut">
+    <part name="parameters" element="s0:UpdateResponse" />
+  </message>
+  <message name="UpdateAuthenticationType">
+    <part name="AuthenticationType" element="s0:AuthenticationType" />
+  </message>
+  <message name="UpdateRequestType">
+    <part name="RequestType" element="s0:RequestType" />
+  </message>
+  <message name="QuerySoapIn">
+    <part name="parameters" element="s0:Query" />
+  </message>
+  <message name="QuerySoapOut">
+    <part name="parameters" element="s0:QueryResponse" />
+  </message>
+  <message name="QueryAuthenticationType">
+    <part name="AuthenticationType" element="s0:AuthenticationType" />
+  </message>
+  <message name="QueryRequestType">
+    <part name="RequestType" element="s0:RequestType" />
+  </message>
+  <portType name="ServiceSoap">
+    <operation name="Insert">
+      <input message="s0:InsertSoapIn" />
+      <output message="s0:InsertSoapOut" />
+    </operation>
+    <operation name="Delete">
+      <input message="s0:DeleteSoapIn" />
+      <output message="s0:DeleteSoapOut" />
+    </operation>
+    <operation name="Replace">
+      <input message="s0:ReplaceSoapIn" />
+      <output message="s0:ReplaceSoapOut" />
+    </operation>
+    <operation name="Update">
+      <input message="s0:UpdateSoapIn" />
+      <output message="s0:UpdateSoapOut" />
+    </operation>
+    <operation name="Query">
+      <input message="s0:QuerySoapIn" />
+      <output message="s0:QuerySoapOut" />
+    </operation>
+  </portType>
+  <binding name="ServiceSoap" type="s0:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Insert">
+      <soap:operation soapAction="http://services.iquomi.com/Insert" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:InsertAuthenticationType" part="AuthenticationType" use="literal" />
+        <soap:header message="s0:InsertRequestType" part="RequestType" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Delete">
+      <soap:operation soapAction="http://services.iquomi.com/Delete" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:DeleteAuthenticationType" part="AuthenticationType" use="literal" />
+        <soap:header message="s0:DeleteRequestType" part="RequestType" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Replace">
+      <soap:operation soapAction="http://services.iquomi.com/Replace" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:ReplaceAuthenticationType" part="AuthenticationType" use="literal" />
+        <soap:header message="s0:ReplaceRequestType" part="RequestType" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Update">
+      <soap:operation soapAction="http://services.iquomi.com/Update" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:UpdateAuthenticationType" part="AuthenticationType" use="literal" />
+        <soap:header message="s0:UpdateRequestType" part="RequestType" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Query">
+      <soap:operation soapAction="http://services.iquomi.com/Query" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:QueryAuthenticationType" part="AuthenticationType" use="literal" />
+        <soap:header message="s0:QueryRequestType" part="RequestType" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Service">
+    <documentation>Iquomi Services</documentation>
+    <port name="ServiceSoap" binding="s0:ServiceSoap">
+      <soap:address location="http://services.iquomi.com/Service.asmx" />
+    </port>
+  </service>
+</definitions>

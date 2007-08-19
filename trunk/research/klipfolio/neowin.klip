@@ -1,0 +1,72 @@
+<klip>
+	<owner>
+		<author>
+			</author>
+			neowin.net
+		<copyright>
+			&copy 2003 neowin.net
+		</copyright>
+		<email>
+			webmaster@neowin.net
+		</email>
+		<web>
+			http://www.neowin.net
+		</web>
+	</owner>
+	<identity>
+		<title>
+			Neowin.net
+		</title>
+		<uniqueid>
+			123
+		</uniqueid>
+		<version>
+			2.0
+		</version>
+		<lastmodified>
+			2003.03.12:2200
+		</lastmodified>
+		<description>
+			Where unprofessional journalism looks better.
+		</description>
+		<keywords>
+			Windows News Info Hardware Software Tech XP Longhorn Microsoft Forum 
+		</keywords>
+	</identity>
+	<locations>
+		<defaultlink>
+			http://www.neowin.net
+		</defaultlink>
+		<contentsource>
+			http://www.neowin.net/Klip/neowin.food
+		</contentsource>
+		<icon>
+			http://www.neowin.net/Klip/neowin_icon.gif
+		</icon>
+		<banner>
+			http://www.neowin.net/Klip/neowin_banner.gif
+		</banner>
+		<kliplocation>
+			http://www.neowin.net/Klip/neowin.klip
+		</kliplocation>	
+	</locations>
+	<setup>
+		<refresh>
+			60
+		</refresh>
+		<referer>
+			http://www.neowin.net/Klip/referrer.html
+		</referer>
+		<country>
+			nl
+		</country>
+		<language>
+			en
+		</language>
+	</setup>
+	<messages>
+		<loading>
+			Please Wait Loading...
+		</loading>
+	</messages>
+</klip>

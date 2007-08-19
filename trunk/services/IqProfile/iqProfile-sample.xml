@@ -1,0 +1,15 @@
+<?xml-stylesheet href="iqProfile.xslt" type="text/xsl"?>
+<m:IqProfile iq:ChangeNumber="77" iq:InstanceId="7a6b9c2c-4066-431d-a44b-63f6876a1280" xmlns:m="http://schemas.iquomi.com/2004/01/iqProfile" xmlns:iq="http://schemas.iquomi.com/2004/01/core">
+  <Name iq:ChangeNumber="82" iq:Id="7a6b9c2c-4066-431d-a44b-63f6876a1280" iq:Creator="AB" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.iquomi.com/2004/01/iqProfile">
+    <Cat iq:Ref="urn:somewhere" />
+    <Title xml:lang="en-US" />
+    <GivenName xml:lang="en-US">Peter</GivenName>
+    <MiddleName xml:lang="en-US">C.</MiddleName>
+    <SurName xml:lang="en-US">Theill</SurName>
+    <Suffix xml:lang="en-US" />
+  </Name>
+  <EmailAddress iq:ChangeNumber="82" iq:Id="7a6b9c2c-4066-431d-a44b-63f6876a1280" iq:Creator="AB" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.iquomi.com/2004/01/iqProfile">
+    <Email xml:lang="en-US">peter@theill.com</Email>
+    <Name xml:lang="en-US">Personal E-mail</Name>
+  </EmailAddress>
+</m:IqProfile>

@@ -1,0 +1,5 @@
+<hs:deleteRequest select="/myContacts/contact[name/mp:givenName='John']" 
+maxOccurs="1" xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core" 
+xmlns="http://schemas.microsoft.com/hs/2001/10/myContacts"  
+xmlns:mp="http://schemas.microsoft.com/hs/2001/10/myProfile"/>
+

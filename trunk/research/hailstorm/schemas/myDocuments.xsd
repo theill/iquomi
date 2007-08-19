@@ -1,0 +1,428 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xdb="urn:schemas-microsoft-com:xdb" xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core" targetNamespace="http://schemas.microsoft.com/hs/2001/10/myDocuments" xmlns="http://schemas.microsoft.com/hs/2001/10/myDocuments" elementFormDefault="qualified">
+    <xsd:annotation>
+        <xsd:documentation>
+        Schema for .NET Documents service.
+        Copyright (c) 2001 Microsoft Corporation. All rights reserved.
+        </xsd:documentation>
+        <xsd:appinfo>
+            <xdb:blue select="/myDocuments" />
+            <xdb:blue select="/myDocuments/*" />
+            <xdb:red select="//@creator" />
+            <xdb:red select="//@changeNumber" />
+            <xdb:red select="//@id" />
+            <xdb:red select="//cat/@ref" />
+            <xdb:red select="/myDocuments/document/name" />
+            <xdb:red select="/myDocuments/document/$any" />
+            <xdb:red select="/myDocuments/document/ref/@folderId" />
+            <xdb:red select="/myDocuments/document/stream/@name" />
+            <xdb:red select="/myDocuments/folder/name" />
+            <xdb:red select="/myDocuments/folder/@parent" />
+            <xdb:namespaceMap>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/myDocuments" alias="m" />
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/core" alias="hs" />
+            </xdb:namespaceMap>
+        </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:import namespace="http://schemas.microsoft.com/hs/2001/10/core" schemaLocation="hscommon.xsd" />
+    <!--
+    //
+    // myDocuments
+    //  - root element for the .NET Documents service
+    //
+    -->
+    <xsd:element name="myDocuments">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates the content document for the Microsoft&#174; .NET Documents service. 
+
+            This service provides scaleable storage for opaque file data.  While some of the meta data 
+            can be promoted into the .NET My Services content document, the primary purpose of this service is to provide file 
+            storage, and to allow other services to access and grant access to this data.
+
+            The cache scope for this document is the entire content document. That is, there is a single
+            <b>changeNumber</b> attribute, and it occurs at the root element. Any change to the document
+            changes this attribute.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="myDocumentsType">
+                    <xsd:attributeGroup ref="hs:documentRootAttributeGroup" />
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <!--
+    //
+    // myDocumentsType
+    //
+    -->
+    <xsd:complexType name="myDocumentsType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element defines the basic <b>myDocuments</b> types.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="document" type="documentType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The document is the <b>myDocuments</b> root object for document properties, references, and content.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="folder" type="folderType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="quota" type="quotaType" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="subscription" type="hs:subscriptionType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--
+    //
+    // documentType
+    //
+    -->
+    <xsd:complexType name="documentType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element defines the basic document type.
+
+                As with a traditional operating system file store, documents in the .NET Documents service store opaque binary 
+                data.  The content of this data is completely unknown to the service.  Documents support multiple 
+                streams, and they always have at least a single stream with a null name.
+
+                When adding a document, it must contain a single reference to an existing folder ID, and the name 
+                given must be unique within that folder. Otherwise the operation will fail.  When the document is created, 
+                it automatically creates an empty stream object with a null name.
+
+                Document attributes and properties can be updated if appropriate.  Restrictions concerning references 
+                and streams are enforced when updating a document.
+
+                If an individual document is deleted (by specifying the document ID in the .NET My Services Delete method) 
+                then all references will be deleted, all streams will be deleted, and the document will be deleted 
+                immediately.  If the final reference object within the document object is deleted, then the document object 
+                and all streams will be deleted.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="cat" type="hs:catType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="name" type="hs:localizableString" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The name of the document.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="lock" type="lockType" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="attributes" type="attributeType" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="lastAccessDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="creationDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="ref" type="refType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="stream" type="streamType" minOccurs="1" maxOccurs="unbounded" />
+            <xsd:element name="properties" type="propType" minOccurs="0" maxOccurs="1" />
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+    </xsd:complexType>
+    <!--
+    //
+    // folderType
+    //
+    -->
+    <xsd:complexType name="folderType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element defines the basic folder type.
+                Folders have both a path and a unique server-generated ID.  Documents are associated, through a reference, only with the folder ID. They are not "contained" within a folder in the .NET Documents content document.
+
+                When adding a folder, the folder must have a unique path name, and if the folder has a parent, then the first portion of the folder path 
+                must match the path of the parent.
+
+                When changing the path name of a folder, the name must not conflict with an existing name.  If the name does not conflict, then an 
+                update of a folder that is the parent of other folders has the side-effect of changing the path="..." attribute of all child 
+                folders to reflect the new parent path name.
+
+                For a folder to be deleted, there must exist no other folder which is a child of the folder and there must be no documents that are 
+                referenced by the folder.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="name" type="hs:localizableString" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The default name of the folder.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="attributes" type="attributeType" minOccurs="0" maxOccurs="1" />
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+        <xsd:attribute name="parent" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+                <xsd:documentation>
+                    The parent folder ID.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="path" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+                <xsd:documentation>
+                    The fully qualified path to this folder.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    <!--
+    //
+    // attributeType
+    //
+    -->
+    <xsd:complexType name="attributeType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element contains all file system store attributes for the document
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="hidden" type="xsd:int" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        If 0, then the document should be displayed in normal UI.  If 1, then it should be hidden from most views.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="system" type="xsd:int" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        If 0, then the file is not a system file.  If 1, then file should be treated as a special system file.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="readOnly" type="xsd:int" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        If 0, then the document is read/write, if 1, then read-only.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--
+    //
+    // refType
+    //
+    -->
+    <xsd:complexType name="refType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element defines a reference to a document.
+
+            Documents are all ref-counted objects. These references can be deleted through the standard delete method. 
+            When the final reference is deleted, the file and all associated metadata are deleted.  
+
+            References always refer to a specific folder.  This means that documents conceptually "exist" within one or 
+            more Folders.  The traditional "file name" for the document is unique per reference.
+
+            References can also specify a time to live.  This allows other services to post data to a user's store temporarily.  For example, they can use the user's store to create temp files.  If all references have 
+            expired then the document is automatically deleted.  However, if any reference exists that has not expired, 
+            then all references, including ones that have expired, remain valid.
+
+            When adding a reference to an existing document, the reference must refer to an existing folder ID, and the 
+            name given must be unique within that folder.
+
+            Updates to references require that any update leave the name unique within the referencing folder.
+
+            If the final reference to a document is deleted, then the deletion of the reference results in the deletion of 
+            the document and all associated streams.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="delete" type="xsd:int" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        If this element exists, it specifies an HTTP GET operation to be performed to delete the reference cleanly. 
+                        This would be placed here by another service that stored data in the .NET Documents service.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="show" type="hs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                     If this element exists, it specifies a URL that can be used to render HTML to display the referenced object.  
+                     For example, if the document is a photograph in a photo album, this URL would show the document 
+                     in the appropriate context.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="folderId" type="hs:string" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+                <xsd:documentation>
+                    The ID of the folder object that holds this reference to this object.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <xsd:annotation>
+                <xsd:documentation>
+                   The name of this document within this reference folder.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="expires" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+                <xsd:documentation>
+                   If this attribute exists, then it specifies the number of minutes this reference is valid relative to the last 
+                   access time for the document.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    <!--
+    //
+    // streamType
+    //
+    -->
+    <xsd:complexType name="streamType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element contains information about a single stream within a document.
+
+            Documents support multiple streams of data.  Each stream is stored as a separate object from the 
+            document in the .NET My Services content document.  Streams have names that must be unique to a given 
+            document.
+
+            When adding a stream, stream names must be unique for a given document.            
+
+            When updating a stream, stream names must be unique within a given document.  The null stream 
+            can not be renamed.
+
+            The null stream may not be deleted.  Any other stream may be deleted.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="httpHeaders" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The value of this optional element is returned by the .NET Documents service for an HTTP GET operation in 
+                        the response headers.  If this element is empty, then no additional response headers will be returned.  If this element 
+                        does not exist, the default response header for the file extension will be returned.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="body" type="xsd:hexBinary" minOccurs="0" maxOccurs="1" />
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="name" type="hs:string" minOccurs="1" maxOccurs="1">
+            <xsd:annotation>
+                <xsd:documentation>
+                    This attribute specifies a name for the stream which is unique within this document.  
+                    There is always one stream with the null name ("").
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="href" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+                <xsd:documentation>
+                  This attribute specifies the HTTP reference to the actual stream object data.  
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="size" type="xsd:int" minOccurs="1" maxOccurs="1">
+            <xsd:annotation>
+                <xsd:documentation>
+                    This attribute specifies the size of the stream data in bytes.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    <!--
+    //
+    // lockType
+    //
+    -->
+    <xsd:complexType name="lockType">
+        <xsd:annotation>
+            <xsd:documentation>
+            This element is used for document level locking.
+
+            Because locks must be taken in an atomic fashion, this method, rather than a standard update, is necessary .  
+            If the lock is successfully taken, then it can be released by calling the update <b>method</b> and setting 
+            the taken attribute to 0.  If a lock has been taken but should be renewed, set the <b>Force</b> flag to TRUE 
+            when calling this method.  The <b>Force</b> flag should be used only to renew a lock that was previously successfully 
+            taken.
+
+            Parameters
+
+            <li>The query must result in a LOCK element for a specific document.</li>
+            <li>The single BOOL parameter <b>Force</b> which, if true, takes the lock and ignores the current state of the 
+                <b>Taken</b> attribute.</li>
+            <li>A <b>datetime</b> that specifies when the lock should automatically expire. To avoid holding locks when the client holding the lock crashes, this should be set to a reasonably 
+                small delta from the time the lock is taken.  
+                It is best to periodically refresh the lock and have relatively small lock expirations times.</li>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="taken" type="xsd:int" minOccurs="1" maxOccurs="1">
+            <xsd:annotation>
+                <xsd:documentation>
+                    If 0, then no lock has been taken.  If 1, then a lock is being held for the document.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="expires" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+                <xsd:documentation>
+                    If the lock has been taken, then this optional attribute specifies when the lock should be automatically released.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    <!--
+    //
+    // quotaType
+    //
+    -->
+    <xsd:complexType name="quotaType">
+        <xsd:annotation>
+            <xsd:documentation>
+            Used by the service to restrict and report usage of storage.
+
+            The <b>quota</b> element can be updated only by a client mapped to the Provision role.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="provisioned" type="xsd:int" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The maximum number of bytes of storage that can be used by this instance of the .NET Documents service.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="used" type="xsd:int" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                     The number of bytes actually in use by this instance of the .NET Documents service.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--
+    //
+    // propType
+    //
+    -->
+    <xsd:complexType name="propType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element defines the basic property type.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup" />
+    </xsd:complexType>
+</xsd:schema>

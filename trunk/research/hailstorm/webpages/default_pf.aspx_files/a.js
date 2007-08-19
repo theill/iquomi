@@ -1,0 +1,1 @@
+document.write('<a target="_blank" href="http://ad.doubleclick.net/click;h=v2|30b8|0|0|%2a|x;5151012;0-0;0;6683787;1-468|60;2272734|2271020|1;;%3fhttp://www.neodata.com/ITPS2.cgi?OrderType=Reply+Only&ItemCode=BPRO&iResponse=BPRO.SAVE5&SourceCode=7&KeyCode=73A3"><img src="http://m2.doubleclick.net/viewad/693434/013003vsm468x60c.gif" border=0 alt="Click Here!"></a>');

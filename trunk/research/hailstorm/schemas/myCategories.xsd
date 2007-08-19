@@ -1,0 +1,100 @@
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xdb="urn:schemas-microsoft-com:xdb"
+    xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core"
+    xmlns="http://schemas.microsoft.com/hs/2001/10/myCategories"
+    targetNamespace="http://schemas.microsoft.com/hs/2001/10/myCategories"
+    elementFormDefault="qualified"
+    version="1.0"
+    >
+
+    <xsd:annotation>
+        <xsd:documentation>
+        Schema for .NET Categories service.
+        Copyright (c) 2001 Microsoft Corporation. All rights reserved.
+        </xsd:documentation>
+
+        <xsd:appinfo>
+            <xdb:blue select="/myCategories"/>
+            <xdb:blue select="/myCategories/*"/>
+
+            <xdb:red select="//@changeNumber"/>
+            <xdb:red select="//@id"/>
+            <xdb:red select="//@creator"/>
+            <xdb:red select="//cat/@ref"/>
+            <xdb:red select="//cat"/>
+
+            <xdb:red select="//catDef/@idName"/>
+            <xdb:red select="//catDef/$any"/>
+
+
+            <xdb:namespaceMap>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/myCategories" alias="m"/>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/core" alias="hs"/>
+            </xdb:namespaceMap>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:import namespace="http://schemas.microsoft.com/hs/2001/10/core" schemaLocation="hscommon.xsd"/>
+
+
+    <!--
+    //
+    // myCategories
+    //  - root element for the .NET Categories service
+    //
+    -->
+    <xsd:element
+        name="myCategories"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates the content document for the .NET Categories service. The service
+            is designed to store identity centric category definitions that may be refered to using the
+            <b>content</b>[?puid=puid-value]#<i>name-of-category</i> relative URI scheme.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="myCategoriesType">
+                    <xsd:attributeGroup ref="hs:documentRootAttributeGroup"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--
+    //
+    // myCategoriesType
+    //
+    -->
+    <xsd:complexType
+        name="myCategoriesType"
+        >
+        <xsd:sequence>
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+            <xsd:element
+                name="catDef"
+                type="hs:catDefType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:element
+                name="subscription"
+                type="hs:subscriptionType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

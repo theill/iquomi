@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-16"?>
+<NotifyList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.iquomi.com/2004/01/core">
+  <Listener Id="73C105DD-9818-4bd5-902D-E57E7737E707" Creator="ABC">
+    <Trigger Select="/asdf" Mode="IncludeData" BaseChangeNumber="0" />
+    <To>iqAlerts</To>
+  </Listener>
+</NotifyList>

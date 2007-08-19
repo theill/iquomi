@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-16"?>
+<RoleMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.iquomi.com/2004/01/core">
+  <Scope Id="1">
+    <Shape Base="T" />
+  </Scope>
+  <Scope Id="2">
+    <Shape Base="Nil">
+      <Include Select="//*[@creator='$callerId']" />
+    </Shape>
+  </Scope>
+  <Scope Id="3">
+    <Shape Base="Nil">
+      <Include Select="//subscription[@creator='$callerId']" />
+    </Shape>
+  </Scope>
+  <Scope Id="4">
+    <Shape Base="Nil">
+      <Include Select="//*[cat/@ref='iq:public']" />
+      <Include Select="//subscription[@creator='$callerId']" />
+    </Shape>
+  </Scope>
+  <RoleTemplate Name="rt0" Priority="0">
+    <Method Name="query" ScopeRef="1" />
+    <Method Name="insert" ScopeRef="1" />
+    <Method Name="replace" ScopeRef="1" />
+    <Method Name="delete" ScopeRef="1" />
+    <Method Name="update" ScopeRef="1" />
+  </RoleTemplate>
+  <RoleTemplate Name="rt1" Priority="0">
+    <Method Name="query" ScopeRef="1" />
+  </RoleTemplate>
+</RoleMap>

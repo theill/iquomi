@@ -1,0 +1,214 @@
+<!--  
+
+COPYRIGHT AND TRADEMARK NOTICE
+The Klip File Format is copyright 2001-2003, Serence Inc.
+Klip and associated marks are trademarks of Serence Inc.
+All rights reserved.
+
+For details visit http://www.serence.com/site.php?page=legal_tmip
+
+-->
+
+<klip>
+	
+	<owner>
+		<author>
+			CNET Networks, Inc.
+		</author>
+		<copyright>
+			Copyright © 1995-2003 CNET Networks, Inc. All rights reserved. 
+		</copyright>
+		<email>
+			news-rss@cnet.com
+		</email>
+		<web>
+			http://www.news.com/
+		</web>
+	</owner>
+
+	<identity>
+		<title>
+			CNET News.com
+		</title>
+		<version>
+			1.01
+		</version>
+		<lastmodified>
+			2003.03.22:0900
+		</lastmodified>
+		<description>
+			The latest headlines from CNET News.com - with eight categories for you to choose from.
+		</description>
+		<keywords>
+			CNET CNET.com News.com ZDNet hardware reviews software consumer electronics latest prices tech news free downloads web
+		</keywords>
+	</identity>
+	
+	<locations>
+		<defaultlink>
+			http://www.news.com/
+		</defaultlink>
+		<contentsource>
+			http://rss.com.com/2547-12-0-20.xml
+		</contentsource>
+		<icon>
+			http://www.serence.com/serence_klips/pics/cnet_icon.gif
+		</icon>
+		<banner>
+			http://www.serence.com/serence_klips/pics/cnet_banner.gif
+		</banner>
+		<kliplocation>
+			http://www.serence.com/serence_klips/cnet.klip
+		</kliplocation>	
+	</locations>
+	
+	<setup>
+		<refresh>
+			60
+		</refresh>
+		<referer>
+			http://www.news.com/KlipFolioUser
+		</referer>
+		<country>
+			US
+		</country>
+		<language>
+			en
+		</language>
+	</setup>
+
+	<klipscript>
+		<![CDATA[
+
+Setup.addTab ("Categories");
+
+Setup[0].addText ('Please select from the following categories:');
+
+function cbxClick ()
+{
+	Prefs.setPref ("cbx"+this.idx, (this.checked?"true":"false"));
+	for (i = 0; i < Items.length; ++i)
+	{
+		if (Items[i].extra == this.idx)
+		{
+			if (this.checked)
+			{
+				Items[i].hidden = false;
+				
+			}
+			else
+			{
+				Items[i].hidden = true;
+			}
+		}
+	}
+	if (this.checked)
+	{
+		Klip.requestRefresh ();
+	}
+}
+
+var cbx1 = Setup[0].addCheckbox ("CNET News.com");
+cbx1.onClick = cbxClick;
+cbx1.idx = "1";
+cbx1.checked = Prefs.getPref ("cbx1") != "false";
+
+var cbx2 = Setup[0].addCheckbox ("Enterprise Computing");
+cbx2.onClick = cbxClick;
+cbx2.idx = "2";
+cbx2.checked = Prefs.getPref ("cbx2") == "true";
+
+var cbx3 = Setup[0].addCheckbox ("E-Business");
+cbx3.onClick = cbxClick;
+cbx3.idx = "3";
+cbx3.checked = Prefs.getPref ("cbx3") == "true";
+
+var cbx4 = Setup[0].addCheckbox ("Communications");
+cbx4.onClick = cbxClick;
+cbx4.idx = "4";
+cbx4.checked = Prefs.getPref ("cbx4") == "true";
+
+var cbx5 = Setup[0].addCheckbox ("Entertainment & Media");
+cbx5.onClick = cbxClick;
+cbx5.idx = "5";
+cbx5.checked = Prefs.getPref ("cbx5") == "true";
+
+var cbx6 = Setup[0].addCheckbox ("Personal Technology");
+cbx6.onClick = cbxClick;
+cbx6.idx = "6";
+cbx6.checked = Prefs.getPref ("cbx6") == "true";
+
+var cbx7 = Setup[0].addCheckbox ("Newsmakers");
+cbx7.onClick = cbxClick;
+cbx7.idx = "7";
+cbx7.checked = Prefs.getPref ("cbx7") == "true";
+
+var cbx8 = Setup[0].addCheckbox ("Perspectives & Letters");
+cbx8.onClick = cbxClick;
+cbx8.idx = "8";
+cbx8.checked = Prefs.getPref ("cbx8") == "true";
+
+
+function onRefresh ()
+{
+	for (i = 0; i < Items.length; i++)
+	{
+		Items[i].tagged = true;
+	}
+	result = false;
+	if (cbx1.checked)
+	{
+		result = getData ("http://rss.com.com/2547-12-0-5.xml", "1") || result;
+	}
+	if (cbx2.checked)
+	{
+		result = getData ("http://rss.com.com/2547-1001-0-5.xml", "2") || result;
+	}
+	if (cbx3.checked)
+	{
+		result = getData ("http://rss.com.com/2547-1017-0-5.xml", "3") || result;
+	}
+	if (cbx4.checked)
+	{
+		result = getData ("http://rss.com.com/2547-1033-0-5.xml", "4") || result;
+	}
+	if (cbx5.checked)
+	{
+		result = getData ("http://rss.com.com/2547-1023-0-5.xml", "5") || result;
+	}
+	if (cbx6.checked)
+	{
+		result = getData ("http://rss.com.com/2547-1040-0-5.xml", "6") || result;
+	}
+	if (cbx7.checked)
+	{
+		result = getData ("http://rss.com.com/2547-1082-0.xml", "7") || result;
+	}
+	if (cbx8.checked)
+	{
+		result = getData ("http://rss.com.com/2547-1071-0.xml", "8") || result;
+	}
+	return result;
+}
+
+function getData (url, idx)
+{
+	req = Engines.HTTP.newRequest (url);
+	if (req.send ())
+	{
+		Engines.KlipFood.process (req.response);
+		for (i = 0; i < Items.length; i++)
+		{
+			if (!Items[i].tagged)
+			{
+				Items[i].extra = idx;
+				Items[i].tagged = true;
+			}
+		}
+		return true;
+	}
+	return false;
+}
+		]]>
+	</klipscript>
+</klip>

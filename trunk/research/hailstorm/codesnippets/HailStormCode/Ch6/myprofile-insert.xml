@@ -1,0 +1,12 @@
+<hs:insertRequest select="/myProfile" xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core" xmlns="http://schemas.microsoft.com/hs/2001/10/myProfile">
+  <name>
+    <title xml:lang="en">Mr.</title>
+    <givenName xml:lang="en">Jonathan</givenName>
+    <middleName xml:lang="en">M.</middleName>
+    <surname xml:lang="en">Pinnock</surname>
+  </name>
+  <address>
+    <hs:officialAddressLine xml:lang="en">Route 66</hs:officialAddressLine>
+    <hs:primaryCity xml:lang="en">Nowheresville</hs:primaryCity>
+  </address>
+</hs:insertRequest>

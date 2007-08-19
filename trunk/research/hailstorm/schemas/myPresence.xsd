@@ -1,0 +1,301 @@
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xdb="urn:schemas-microsoft-com:xdb"
+    xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core"
+    xmlns:ma="http://schemas.microsoft.com/hs/2001/10/myAlerts"
+    targetNamespace="http://schemas.microsoft.com/hs/2001/10/myPresence"
+    xmlns="http://schemas.microsoft.com/hs/2001/10/myPresence"
+    elementFormDefault="qualified"
+    version="1.0">
+
+    <xsd:annotation>
+        <xsd:documentation>
+            Schema for Microsoft&#174; .NET Presence service
+            Copyright (c) 2001 Microsoft Corporation. All rights reserved.
+        </xsd:documentation>
+
+        <xsd:appinfo>
+            <xdb:blue select="/myPresence"/>
+            <xdb:blue select="/myPresence/*"/>
+            <xdb:blue select="/myPresence/endpoint/argot"/>
+
+            <xdb:red select="//@changeNumber"/>
+            <xdb:red select="//@id"/>
+
+            <xdb:namespaceMap>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/myPresence" alias="m"/>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/myAlerts" alias="ma"/>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/core" alias="hs"/>
+            </xdb:namespaceMap>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:import namespace="http://schemas.microsoft.com/hs/2001/10/core" schemaLocation="hscommon.xsd"/>
+
+    <xsd:import namespace="http://schemas.microsoft.com/hs/2001/10/myAlerts" schemaLocation="myalerts.xsd"/>
+
+    <!--
+    //
+    // myPresence
+    //  - root element for the .NET Presence service
+    //
+    -->
+    <xsd:element name="myPresence" type="myPresenceType"/>
+
+    <xsd:complexType
+        name="myPresenceType"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element defines the basic <b>myPresence</b> types.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element
+                name="endpoint"
+                type="endpointType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Collection of endpoints for this user's .NET Presence service.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="subscription" type="hs:subscriptionType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+
+        <!-- standard attributes for the root element -->
+        <xsd:attributeGroup ref="hs:documentRootAttributeGroup"/>
+
+    </xsd:complexType>
+
+    <xsd:complexType name="endpointType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This stores an endpoint, designating a user agent. The definition of a user agent is intentionally left open. It is simply
+                defined as the information expressed by its argots. It may have one deviceUuid associated with it, but this is not required.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+            <xsd:element
+                name="deviceUuid"
+                type="hs:uuidType"
+                minOccurs="0"
+            />
+            <xsd:element
+                name="expiresAt"
+                type="xsd:dateTime"
+                minOccurs="0"
+            />
+            <xsd:element
+                name="argot"
+                type="argotType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Collection of argots for this endpoint.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+
+        <xsd:attribute
+            name="name"
+            type="xsd:string"
+            use="required"
+        />
+
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+
+    </xsd:complexType>
+
+    <xsd:complexType name="argotType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This stores an argot for application-specific information about an endpoint, and so is completely free.
+                Argots are opaque to .NET My Services.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+        </xsd:sequence>
+
+        <xsd:attribute
+            name="argotURI"
+            type="xsd:anyURI"
+            use="required">
+
+            <xsd:annotation>
+                <xsd:documentation>
+                    This URI points to a location containing the XSD for this argot. It also uniquely identifies the type of argot.
+                </xsd:documentation>
+            </xsd:annotation>
+
+        </xsd:attribute>
+
+        <xsd:attribute
+            name="name"
+            type="xsd:string"
+            use="required"
+        />
+
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+
+    </xsd:complexType>
+
+    <!--
+    //  Domain specific methods
+    //  notifyEndpoint
+    -->
+    <xsd:element name="notifyEndpointRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                This method takes an endpoint and sends a specified notification to it by means of the endpoint's owner's
+                .NET Alerts. The endpoint must expose the <b>notifiableEndpoint</b> argot, so that
+                the .NET Presence service knows which connection to target in .NET Alerts.
+                This method serves two purposes: first, as an abstraction layer over individual connections
+                so that users may target groups of connections classified as endpoints. Second,
+                as a privacy measure, so that a specific connection associated with an endpoint may
+                be targeted without that connection being exposed to the user invoking the method.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element
+                    name="endpointId"
+                    type="hs:idType"
+                />
+                <xsd:element
+                    name="notification"
+                    type="ma:notificationType"
+                />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="MessengerArgot" type="MessengerArgotType"/>
+
+    <xsd:complexType name="MessengerArgotType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This argot represents an instant messaging client's presence.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+            <xsd:element
+                name="statusMessage"
+                type="hs:string"
+                minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        An unrestricted status message reflecting presence.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+
+        <xsd:attribute
+            name="status"
+            type="MessengerStatus"
+            use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    The present state of the Messenger client.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:simpleType name="MessengerStatus">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="online"/>
+            <xsd:enumeration value="offline"/>
+            <xsd:enumeration value="away"/>
+            <xsd:enumeration value="busy"/>
+            <xsd:enumeration value="phone"/>
+            <xsd:enumeration value="lunch"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:element name="PresenceArgot" type="PresenceArgotType"/>
+
+    <xsd:complexType name="PresenceArgotType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This argot represent generic presence data about an endpoint.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:attribute
+            name="availability"
+            type="xsd:int"
+            use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    The availability of the endpoint. This attribute indicates how fast and reliable communications are to the endpoint.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute
+            name="responsiveness"
+            type="xsd:int"
+            use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    The responsiveness of the endpoint. This attribute indicates how quickly the owner of the endpoint is likely to respond.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute
+            name="userPreference"
+            type="xsd:int"
+            use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    The user's preference for this endpoint. This attribute indicates whether this endpoint is the user's preferred method of contact.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+
+    </xsd:complexType>
+
+    <xsd:element name="ConnectableArgot" type="ConnectableArgotType"/>
+
+    <xsd:complexType name="ConnectableArgotType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This argot represents the connectability of an endpoint. If present,
+                it designates a connection on the user's .NET Alerts.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+            <xsd:element
+                name="connectionID"
+                type="hs:idType"
+                minOccurs="1"
+                maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The ID for one or more connection elements on the user's .NET Alerts
+                        that are represented by this endpoint.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+

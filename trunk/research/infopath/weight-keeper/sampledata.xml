@@ -1,0 +1,12 @@
+<my:myFields xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:my="http://schemas.microsoft.com/office/infopath/2003/myXSD/2004-11-19T20:56:25" xmlns:xd="http://schemas.microsoft.com/office/infopath/2003">
+	<my:Date/>
+	<my:Weight/>
+	<my:field1/>
+	<my:field2/>
+	<xd:SchemaInfo LocalName="myFields" NamespaceURI="http://schemas.microsoft.com/office/infopath/2003/myXSD/2004-11-19T20:56:25">
+		<xd:Namespaces>
+			<xd:Namespace LocalName="myFields" NamespaceURI="http://schemas.microsoft.com/office/infopath/2003/myXSD/2004-11-19T20:56:25"/>
+			<xd:Namespace LocalName="myFields" NamespaceURI="http://schemas.microsoft.com/office/infopath/2003/myXSD/2004-11-19T20:56:25"/>
+		</xd:Namespaces>
+	</xd:SchemaInfo>
+</my:myFields>

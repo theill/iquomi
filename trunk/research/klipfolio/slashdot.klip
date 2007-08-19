@@ -1,0 +1,75 @@
+<!--  COPYRIGHT AND TRADEMARK NOTICE
+
+The Klip File Format is copyright 2001, Serence Inc.
+Klip and assoicated marks are trademarks of Serence Inc.
+All rights reserved.
+
+For details visit http://www.serence.com/p_copyright.html
+
+-->
+
+<klip>
+	
+	<owner>
+		<author>
+			VA Linux Systems Inc. - OSDN
+		</author>
+		<copyright>
+			Copyright 2001 VA Linux Systems Inc.
+		</copyright>
+		<email>
+			info@osdn.com
+		</email>
+		<web>
+			http://www.osdn.com
+		</web>
+	</owner>
+
+	<identity>
+		<title>
+			Slashdot
+		</title>
+		<version>
+			1.0
+		</version>
+		<lastmodified>
+			2003.01.16:0632
+		</lastmodified>
+		<description>
+			News for nerds, stuff that matters. The majority of the work is done by the tons of people who e-mail stories.. Thanks go to them for helping make this site the cool place that it is.
+		</description>
+		<keywords>
+			slashdot news nerds stuff matters programming hardware software space linux
+		</keywords>
+	</identity>
+	
+	<locations>
+		<defaultlink>
+			http://www.slashdot.org
+		</defaultlink>
+		<contentsource>
+			http://slashdot.org/slashdot.rdf
+		</contentsource>
+		<icon>
+			http://www.serence.com/serence_klips/pics/slashdot_icon.gif
+		</icon>
+		<banner>
+			http://www.serence.com/serence_klips/pics/slashdot_banner.gif
+		</banner>
+		<kliplocation>
+			http://www.serence.com/serence_klips/slashdot.klip
+		</kliplocation>	
+	</locations>
+	
+	<setup>
+		<refresh>
+			120
+		</refresh>
+	</setup>
+	
+	<script>
+		rssEngine = Engines.get ("RSS");
+		rssEngine.process (Setup.get ("contentsource"));
+	</script>
+
+</klip>

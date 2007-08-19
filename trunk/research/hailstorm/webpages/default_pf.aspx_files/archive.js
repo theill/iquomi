@@ -1,0 +1,1 @@
+document.write('<a target="_blank" href="http://ad.doubleclick.net/click;h=v2|30b8|0|0|%2a|p;5233338;0-0;0;7602179;9095-174|39;2368830|2367079|2;;%3fhttp://www.vslive.com"><img src="http://m2.doubleclick.net/viewad/693434/vslive_174x39.gif" border=0 alt="Click Here!"></a>');

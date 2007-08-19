@@ -1,0 +1,88 @@
+
+ -----------------------------------------------------------------------------
+  Iquomi History
+  $Id: history.txt 23 2006-04-18 20:36:48Z peter $
+ -----------------------------------------------------------------------------
+ 
+  20060122
+   - Added IqSms service to suite of core services.
+   - First version of a Windows Mobile Iquomi Client released.
+   
+  20051025
+   - Added initial version of "service methods" allowing POST requests for
+     easy access to information without requiring SOAP technologies.
+
+  20051006
+   - Removed part of web site allowing www.iquomi.com to be accessed without
+     requiring credentials.
+     
+  20041009
+   - Updated ServiceLocator class to create instances of any service proxy 
+     class and setting up SoapAuthentication/SoapRequest attributes.
+  
+  20040908
+   - Notification (iqAlerts) part breakthrough by enabling the ability for the
+     XmlStore to send alerts to listening parties.
+  
+  20040810
+   i Finished migrating entire project to .NET 2.0 beta.
+  
+  20040429
+   - Updated ServiceUtils.GetObject- and .SetObject methods to get namespace
+     from generated proxy class by reading its custom attributes.
+   i Investigated possibility to read name of element from attributes as well
+     as this would result in a more simple "SetObject" method.
+   
+  20040428
+   - Improved Preferences dialog for Windows client by adding icons and making
+     it use themes on Windows XP.
+   
+  20040422
+   - Added "api" project containing client classes used by plugin developers.
+   - Moved some classes from "sdk" project to "api" project in order to keep
+     a simple client API.
+   
+  20040414
+   - Schema updates for DL allowing "listenRequest" for setting up subscription
+     listeners. These will catch events and propagate either to users Alerts
+     service or directly to a listener implementation on external networks.
+   
+  20040412
+   + Adding SubscriptionListener handling to support cross-service updates via
+     events (based on changeNumber revisions).
+   - Weekly meeting discussing "Eventing" implementation allowing services to
+     communicate subscription changes transparently.
+     
+  20040404
+   - Allowing namespaces in queries by importing aliases from service into the
+     "system" document. This allows queries like /m:iqFavorites/m:favorite and
+     avoid future namespace clashes.
+  
+  20040403
+   - Updated web site with new styles stylesheet for controls.
+   - Rearranged controls on web site to place field names above fields.
+   - Researched ability to validate XSD referred from service. Needed to allow
+     prefixes in XPath selections e.g. /m:iqFavorites.
+   
+  20040401
+   - Figured out, that when including "targetNamespace" in an Xsd the instance 
+     document must use a namespace e.g. <m:iqFavorites />.
+  
+  20040331
+   + Notification discussed and prototype implemented.
+   
+  20040329
+   - Researched SOA systems to find competitors.
+   
+  20040328
+   - Streamlining services by adding IqPresence, IqAlerts, IqServices to suite
+     and adding build scripts for generating proxy classes for them.
+   - Researching WSDL generation based on concrete services.
+  
+  20040321
+   - Modified Insert, Replace and Query to use "XmlElement[]" instead of 
+     "string" for the "Any" attribute.
+   - Updated IqFavorites Service to use new type looking almost like the 
+     Microsoft "myFavoriteWebSites" schema and using XmlSerializer to use 
+     classes generated from Xml Schema using xsd.exe.
+   - Updated web design to include styled scrollbars.

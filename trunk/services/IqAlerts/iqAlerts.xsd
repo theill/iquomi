@@ -1,0 +1,1270 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xdb="urn:schemas-iquomi-com:xdb"
+	xmlns:iq="http://schemas.iquomi.com/2004/01/core" 
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	targetNamespace="http://schemas.iquomi.com/2004/01/iqAlerts"
+	xmlns="http://schemas.iquomi.com/2004/01/iqAlerts"
+	elementFormDefault="qualified" 
+	version="1.0">
+
+    <xsd:annotation>
+        <xsd:documentation>
+            Schema for Iquomi&#174; Alerts service.
+            Copyright (c) 2004 Iquomi. All rights reserved.
+        </xsd:documentation>
+
+        <xsd:appinfo>
+            <xdb:blue select="/IqAlerts" />
+            <xdb:blue select="/IqAlerts/*" />
+            <xdb:red select="//@Creator" />
+            <xdb:red select="//@ChangeNumber" />
+            <xdb:red select="//@Id" />
+
+            <xdb:namespaceMap>
+                <xdb:mapping uri="http://schemas.iquomi.com/2004/01/iqAlerts" alias="m" />
+                <xdb:mapping uri="http://schemas.iquomi.com/2004/01/core" alias="iq" />
+            </xdb:namespaceMap>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:import namespace="http://schemas.iquomi.com/2004/01/core" schemaLocation="http://schemas.iquomi.com/2004/01/core/iqcommon.xsd" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd" />
+
+
+    <!--
+    //
+    // argot type
+    //
+    -->
+    <xsd:complexType name="ArgotType">
+        <xsd:annotation>
+            <xsd:documentation>
+                An argot is a domain-specific blob of data qualified by a name and ID.
+                The contents are free. Argots are opaque to Iquomi.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+        </xsd:sequence>
+
+        <xsd:attribute
+            name="ArgotURI"
+            type="xsd:anyURI"
+            use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    This URI uniquely identifies the type of argot and points to a location 
+                    containing the XSD for this argot.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+
+
+    <!--
+    //
+    // argotList
+    //
+    -->
+    <xsd:complexType name="ArgotListType">
+        <xsd:annotation>
+            <xsd:documentation>
+                An argot list is a container of argots.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+            <xsd:element
+                name="Argot"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:complexType>
+                    <xsd:complexContent>
+                        <xsd:extension base="ArgotType">
+                            <xsd:attribute
+                                name="Name"
+                                type="xsd:string"
+                                use="required"
+                                />
+                            <xsd:attribute
+                                name="Id"
+                                type="iq:IdType"
+                                use="required"
+                                />
+                        </xsd:extension>
+                    </xsd:complexContent>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+
+
+    <!--
+    //
+    // notification type
+    //
+    // This is the schema for a single alert.
+    //
+    -->
+    <xsd:complexType name="NotificationType">
+        <xsd:annotation>
+            <xsd:documentation>
+                An alert has contents: "from" (sender) data,
+                optional "to" (receiver) data, and optional "routing" data.
+                The contents are a set of argots (domain-specific blobs).
+                The sender and receiver must understand and agree on the argots that are
+                transmitted in the alert.
+                In the iqAlerts service, both streams and connections usually choose which alerts
+                they process based on the argots contained within the alerts.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element
+                name="From"
+                type="FromType"
+                minOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This tag contains all data from the sender, including sender authentication as well
+                        as preferences and requests from the sender.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element
+                name="To"
+                type="ToType"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This tag contains all data pertaining to the receiver. This data can be set
+                        by the sender or by any processing/routing agent between the sender and the receiver.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element
+                name="Contents"
+                type="ContentsType"
+                minOccurs="1"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element contains the problem domain-specific data to be conveyed to the receiver.
+                        Each child element of the <b>Contents</b> element is an argot, a problem domain-specific
+                        strongly typed XML blob. Streams and connections query against the element names of
+                        these blobs when selecting alerts they will process.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element
+                name="Routing"
+                type="RoutingType"
+                minOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This tag contains any routing data inserted by the iqAlerts
+                        routing process.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+<!--
+        <xsd:attribute  name="Uuid" type="iq:UuidType" />
+-->
+        <xsd:attribute  name="Id" type="xsd:string" />
+    </xsd:complexType>
+
+		<xsd:complexType name="ContentsType">
+        <xsd:sequence>
+            <xsd:element
+                name="Argot"
+                type="ArgotListType"
+                minOccurs="1"
+                maxOccurs="1"
+                />
+        </xsd:sequence>
+		</xsd:complexType>
+		
+    <xsd:complexType name="FromType">
+        <xsd:sequence>
+            <xsd:element
+                name="IdentityHeader"
+                type="IdentityHeaderType"
+                minOccurs="0"
+                maxOccurs="1"
+            />
+            <xsd:element
+                name="ExpiresAt"
+                type="ExpiresType"
+                minOccurs="0"
+                maxOccurs="1"
+            />
+            <xsd:element
+                name="Acknowledge"
+                type="xsd:string"
+                minOccurs="0"
+                maxOccurs="1"
+            />
+            <xsd:element
+                name="Category"
+                type="CategoryType"
+                minOccurs="0"
+                maxOccurs="1"
+            />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="IdentityHeaderType">
+        <xsd:sequence>
+            <xsd:element    name="OnBehalfOfUser"   type="iq:UuidType" />
+            <xsd:element    name="LicenseHolder"    type="iq:UuidType" />
+            <xsd:element    name="PlatformId"       type="iq:UuidType" />
+        </xsd:sequence>
+        <xsd:attribute      name="Type"             type="xsd:string" />
+    </xsd:complexType>
+
+    <xsd:complexType name="ExpiresType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute      name="Ttl"              type="xsd:string" />
+                <xsd:attribute      name="OnDate"           type="xsd:string" />
+                <xsd:attribute      name="Replace"          type="xsd:string" />
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="CategoryType">
+        <xsd:attribute      name="Id"              type="xsd:string" />
+    </xsd:complexType>
+
+    <xsd:complexType name="ToType">
+        <xsd:sequence>
+            <xsd:element
+                name="OriginalUser"
+                type="iq:UuidType"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the original receiver of the alert.
+                        A routing agent may change (forward or fan out) an alert to other
+                        receivers. If so, it should add this element to the alert.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="RoutingType">
+        <xsd:sequence>
+            <xsd:element
+                name="Timestamp"
+                type="xsd:string"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element contains the timestamp of when the alert was received
+                        by the iqAlerts service.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element
+                name="Hops"
+                type="xsd:string"
+                minOccurs="0"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                        This element defines the actors that have processed the alert to date.
+                        This data can be used by iqAlerts to recognize and stop infinite loops.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!--
+    //
+    //  notificationQueryType
+    //      BUGBUG: Not sure what the query will look like...
+    //
+    -->
+    <xsd:simpleType name="NotificationQueryType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="*" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+    <!-- ==============================================================================
+    //
+    // iqAlerts
+    //
+    //  This is the schema for the user's iqAlerts content document
+    //
+    //================================================================================= -->
+    <xsd:element
+        name="IqAlerts"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+                iqAlerts is the user content document for alert routing.
+                It contains streams, connections, and preferences (general provisioning).
+                The document does not contain a list of alerts. Alerts are
+                transitory. Use the <b>NotifyRequest</b>, <b>route</b>, and <b>pollRequest</b>
+                to send and receive alerts.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="IqAlertsType">
+                    <xsd:attributeGroup
+                        ref="iq:DocumentRootAttributeGroup"
+                    />
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="IqAlertsType">
+        <xsd:sequence>
+            <xsd:element
+                name="Stream"
+                type="StreamType"
+                minOccurs="1"
+                maxOccurs="unbounded"
+            />
+
+            <xsd:element
+                name="Connection"
+                type="ConnectionType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+            <xsd:element
+                name="Subscription"
+                type="iq:SubscriptionType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!-- ================================
+    //
+    // iqAlerts - streams
+    //
+    // ================================== -->
+    <xsd:complexType name="StreamType">
+        <xsd:annotation>
+            <xsd:documentation>
+            A stream is an internal object that processes alerts before they are routed to connections.
+            Streams can buffer or reroute.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+            <xsd:element
+                    name="Class"
+                    type="StreamClassType"
+                    minOccurs="1"
+                    maxOccurs="1"
+                    >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    Defines what kind of stream.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Expiration"
+                type="xsd:dateTime"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    Lifetime of a connection in absolute time (UTC).
+                    This can be used to clean up the content document.
+                    </xsd:documentation>
+                </xsd:annotation>
+
+            </xsd:element>
+                <xsd:element
+                    name="Position"
+                    type="StreamPositionType"
+                    minOccurs="1"
+                    maxOccurs="1"
+                    >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    Defines where the stream fits into the <b>streamFork</b> processing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="ArgotQuery"
+                type="NotificationQueryType"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    The stream's query against incoming alerts.
+                    The query specifies the argot name(s) that enable selection (a logical 
+                    OR of the named argots). This is optional based on the streamClass (a 
+                    stream may do its own selection processing instead of or in addition to 
+                    the standard stream alert query). See the available stream classes.
+                    If not present, the query defaults to all alert argots ("*").
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Argot"
+                type="ArgotType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    An optional provisioning argot for the stream.
+                    This is dependent on the stream class. See the available stream classes.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+
+        <xsd:attributeGroup ref="iq:StandardBlueAttributeGroup" />
+
+    </xsd:complexType>
+
+    <!--
+    //  streamClassType
+    -->
+    <xsd:simpleType name="StreamClassType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Buffer" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+    //  streamPositionType
+    -->
+    <xsd:simpleType name="StreamPositionType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="AtFront" />
+            <xsd:enumeration value="AtEnd" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+
+    <!-- ================================
+    //
+    // iqAlerts - connections
+    //
+    // ================================== -->
+    <xsd:complexType name="ConnectionType">
+        <xsd:annotation>
+            <xsd:documentation>
+            Abbreviations:
+                CXN (Connection): The connection exists inside of
+                the IqAlerts service.
+
+                UA (UserAgent): The userAgent exists outside of
+                the iqAlerts service.
+
+            There are two primary types of connections:
+
+            Push: Alerts are pushed by CXN to UA.
+            Pull: Alerts are downloaded by the UA
+                  by issuing a request to CXN. The response
+                  contains the alerts.
+
+            A CXN is created (added to the iq Alerts
+            content document) either by the UA directly or by some entity acting on behalf of the UA.
+
+
+            In order to transfer the alerts, a session, either persistent or transient, is established
+            between CXN and UA. In cases in which sessions are transient, the CXN persists.
+            Establishment of a session can be initiated by either CXN or UA,
+            either when the CXN is created or based on, say, a timer or some
+            signaling mechanism between CXN and UA. The session can be closed by either entity
+            after a period of time (including 0).
+
+            The following are different models of UA-CXN
+            interaction:
+
+            1) UA establishes a session with a CXN and pulls alerts
+               from CXN.
+            2) UA establishes a session with a CXN and the CXN pushes
+               alerts to the UA.
+            3) CXN establishes a session with a UA and the UA pulls
+               alerts.
+            4) CXN establishes a session with a UA and pushes alerts
+               to UA.
+            5) UA polls the CXN periodically on a timer and UA will initiate
+               process #1 or #2.
+            6) CXN polls the UA when alerts arrive or periodically on a
+               timer. When there are pending alerts in the queue, UA will
+               initiate process #1 or #2.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+                <xsd:element
+                    name="Class"
+                    type="ConnectionClassType"
+                    minOccurs="1"
+                    maxOccurs="1"
+                    >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the class of a connection (for example, Push over
+                    Soap-RP or Pull over Soap-RP).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Status"
+                type="ConnectionStatusType"
+                minOccurs="1"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    Flags indicating the current status of the connection. Can be used by the Stream modules
+                    to do traffic management, buffering, generate nondelivery and delayed delivery
+                    reports for the sender.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Characteristics"
+                type="ConnectionCharacteristicsType"
+                minOccurs="1"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    Information about the nature of the connection, used mainly
+                    by the Stream modules. Reliable can mean it supports ACKs;
+                    unreliable means it is fire-and-forget. Type of polling used
+                    (Connection vs. UserAgent).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Expiration"
+                type="xsd:dateTime"
+                minOccurs="1"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    Lifetime of a connection in absolute time (UTC).
+                    This can be used to clean up the content document.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="ArgotQuery"
+                type="NotificationQueryType"
+                minOccurs="1"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    The connection's query against incoming alerts.
+                    The query specifies the argot name(s) that enable selection (a 
+                    logical OR of the named argots).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="Argot"
+                type="ArgotType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    An optional provisioning argot for the connection.
+                    This is dependent on the connection class. For more information, see the available connection classes.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+
+        <xsd:attributeGroup ref="iq:StandardBlueAttributeGroup" />
+
+    </xsd:complexType>
+
+    <!--
+    //
+    //  connectionClassType
+    //
+    -->
+    <xsd:simpleType name="ConnectionClassType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Push_http" />
+            <xsd:enumeration value="Pull_http" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+    //
+    //  connectionStatusType
+    //
+    -->
+    <xsd:simpleType name="ConnectionStatusType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Active" />
+            <xsd:enumeration value="Inactive" />
+            <xsd:enumeration value="Busy" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+    //
+    //  connectionCharacteristicsType
+    //
+    -->
+    <xsd:simpleType name="ConnectionCharacteristicsType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Reliable" />
+            <xsd:enumeration value="Unreliable" />
+            <xsd:enumeration value="ConnectionPoll" />
+            <xsd:enumeration value="UserAgentPoll" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+
+    <!-- ==============================================================================
+    //
+    //  Argots
+    //
+    //================================================================================= -->
+    <!--
+    //
+    // bufferStreamParameters argot
+    //
+    -->
+    <xsd:element
+        name="BufferStreamParameters"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+                This element is an argot specifying the read and write parameters for
+                a bufferStream stream. For the current implementation of Iquomi, the 
+                bufferStream takes no input parameters; it returns the current set of 
+                buffered alerts through this argot. A query on a bufferStream is a 
+                transient, read-only operation.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element
+                    name="Notification"
+                    type="NotificationType"
+                    minOccurs="0"
+                    maxOccurs="unbounded"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        Zero or more alerts in the buffer of the streamBuffer stream.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+
+    <!--
+    //
+    // pushConnectionParameters argot
+    //
+    -->
+    <xsd:element
+        name="PushConnectionParameters"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+                This element is an argot specifying the read and write parameters for
+                a connectionPush connection.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element
+                    name="TargetUrl"
+                    type="xsd:string"
+                    minOccurs="1"
+                    maxOccurs="1"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        The push connection will issue <b>NotifyRequest</b> packets to this target URL.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+
+    <!--
+    //
+    // humanReadable argot
+    //
+    -->
+    <xsd:element
+        name="HumanReadable"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+                This element is an argot used to convey human readable information in
+                an alert. The receiver of a human readable alert should be
+                able, at a minimum, to display the text element data to a human
+                in either textual or speech form.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element
+                    name="BaseUrl"
+                    type="xsd:anyURI"
+                    minOccurs="1"
+                    maxOccurs="1"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        The base URL to which all other URLs are relative.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element
+                    name="ActionUrl"
+                    type="xsd:anyURI"
+                    minOccurs="1"
+                    maxOccurs="1"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This is a URL that links to an action page from the sender.
+                        This URL can be relative to the <b>baseURL</b> element.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element
+                    name="SubscriptionUrl"
+                    type="xsd:anyURI"
+                    minOccurs="1"
+                    maxOccurs="1"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This is a URL that links to the sender's page that allows the
+                        receiver to view and change the way the alert was sent.
+                        This URL can be relative to the <b>baseURL</b> element.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element
+                    name="Language"
+                    minOccurs="1"
+                    maxOccurs="unbounded"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            This element contains text specific to a language. You can
+                            include as many language elements as you like to convey the
+                            same information in different languages.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element
+                                name="Text"
+                                type="xsd:string"
+                                minOccurs="1"
+                                maxOccurs="1"
+                                >
+                                <xsd:annotation>
+                                    <xsd:documentation>
+                                    The element contains the text to be conveyed to the human.
+                                    This text must be in the language specified by the <b>xml:lang</b> attribute.
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute ref="xml:lang" use="required">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    This required attribute is used to specify an ISO 639 language code
+                                    or an ISO 3166 country code as described in
+                                    <a href="http://www.ietf.org/rfc/rfc1766.txt">RFC 1766</a>.
+                                    The value of this attribute indicates the language type of
+                                    the content within this element.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                        <xsd:attribute
+                            name="IconUrl"
+                            type="xsd:anyURI"
+                            >
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    This attribute contains an optional URL from the sender for an icon in a Portable Network Graphics (PNG) file
+                                    that can be used when the userAgent
+                                    displays the content to the user.
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+
+
+    <!-- ==============================================================================
+    //
+    //  Domain specific methods...
+    //
+    //================================================================================= -->
+    
+    <!--
+    //
+    // NotifyRequest
+    //
+    -->
+    <xsd:element name="NotifyRequest" type="NotifyRequestType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This method attempts to send the enclosed alerts using standard routing by iqAlerts.
+                There can be one or more notification elements specified. If none is specified, the
+                notify request should be interpreted as a query about whether the receiver is
+                willing to accept alerts from this sender.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:complexType name="NotifyRequestType">
+        <xsd:sequence>
+            <xsd:element
+                name="Notification"
+                type="NotificationType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    An alert to be delivered.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+
+
+    <!--
+    //
+    // pollRequest
+    //
+    -->
+    <xsd:element name="PollRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                This method can be invoked on a connection. If there is a new alert
+                in the buffer stream, it will be returned in the pollResponse message. The <b>pollRequest</b>
+                will immediately return a response about whether there is a pending alert.
+                However, if the optional <b>parkInterval</b> element is specified, then the response can take
+                up to parkInterval milliseconds before returning when there are no new alerts
+                in the buffer stream.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element
+                    name="ParkInterval"
+                    type="xsd:string"
+                    minOccurs="0"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        The unit of time specified for the <b>parkInterval</b> is milliseconds.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+
+    <!--
+    //
+    // pollResponse
+    //
+    -->
+    <xsd:element name="PollResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response contains zero or one new alerts in the buffer stream.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element
+                    name="Notification"
+                    type="NotificationType"
+                    minOccurs="0"
+                    maxOccurs="1"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        A new alert contained in the buffer stream.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+
+    <!--
+    //
+    // routeRequest
+    //
+    -->
+<!--
+    <xsd:element name="RouteRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                This method is similar to <b>NotifyRequest</b>, but allows the caller to specify
+                control of the iqAlerts internal routing for the alert.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element
+                    name="Routing"
+                    minOccurs="1"
+                    maxOccurs="1"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        The routing dictates how to process the alerts in the iqAlerts service.
+                        You can specify either the <b>streamFork</b> or <b>connectionFork</b> directions or both.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element
+                                name="StreamFork"
+                                type="StreamForkType"
+                                minOccurs="0"
+                                maxOccurs="1"
+                                >
+                                <xsd:annotation>
+                                    <xsd:documentation>
+                                    The <b>streamFork</b> directive indicates the alert should be processed by streams.
+                                    If the &lt;streamFork&gt; tag is not present, no streams will process the alert;
+                                    routing will begin directly at the <b>connectionFork</b> point.
+                                    If one of the <b>streamID</b> attributes are not included, <b>streamFork</b> processing begins at
+                                    the first stream defined for the user.
+                                    </xsd:documentation>
+                                </xsd:annotation>
+
+                            </xsd:element>
+                            <xsd:element
+                                name="ConnectionFork"
+                                type="ConnectionForkType"
+                                minOccurs="0"
+                                maxOccurs="1"
+                                >
+                                <xsd:annotation>
+                                    <xsd:documentation>
+                                    The <b>connectionFork</b> directive indicates through which connection(s) the alert can be routed.
+                                    If not included, all connections can potentially deliver the alert.
+                                    A connection cannot deliver the alert even if specified in the list of connection IDs; to be delivered through the connection, the alert must always match the connection's query.
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+
+                <xsd:element
+                    name="Notification"
+                    type="NotificationType"
+                    minOccurs="0"
+                    maxOccurs="unbounded"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        An alert to be routed through a specific stream/connection.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="ConnectionForkType">
+        <xsd:sequence>
+            <xsd:element
+                name="ConnectionID"
+                type="iq:IdType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    The <b>connectionFork</b> directive indicates through which connection(s) the alert can be routed.
+                    If not included, all connections can potentially deliver the alert.
+                    A connection cannot deliver the alert even if specified in the list of connection IDs; to be delivered through the connection,
+                    the alert must always match the connection's query.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+-->
+
+
+    <!--
+    //
+    // doRequest
+    //
+    -->
+<!--
+    <xsd:element name="DoRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                This method issues a request to the specified streams or connections within the iqAlerts schema
+                to execute an object-specific method. Parameters are passed in and out through argot lists.
+                The actual object method is specified by the &lt;methodName&gt; tag.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element
+                    name="Objects"
+                    type="ObjectsType"
+                    minOccurs="1"
+                    maxOccurs="1"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        List of one or more streams or connections to perform the requested object method.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element
+                    name="MethodName"
+                    type="xsd:string"
+                    minOccurs="1"
+                    maxOccurs="1"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This specifies the method to be executed by the selected object(s).
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element
+                    name="Argot"
+                    type="ArgotType"
+                    minOccurs="0"
+                    maxOccurs="unbounded"
+                    >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This list contains data passed to the connection.
+                        The data is passed as a list of argots that the connection class will understand.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+-->
+
+
+    <!--
+    // objectsType
+    -->
+<!--
+    <xsd:complexType name="ObjectsType">
+        <xsd:sequence>
+            <xsd:element
+                name="StreamID"
+                type="StreamIDType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+            <xsd:element
+                name="ConnectionID"
+                type="ConnectionIDType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="StreamIDType">
+        <xsd:attribute name="Id" type="iq:IdType" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="ConnectionIDType">
+        <xsd:attribute name="Id" type="iq:IdType" use="required" />
+    </xsd:complexType>
+-->
+
+
+    <!--
+    //
+    // doResponse
+    //
+    -->
+<!--
+    <xsd:element name="DoResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                This is the response to doRequest.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element
+                    name="Argot"
+                    type="ArgotType"
+                    minOccurs="0"
+                    maxOccurs="unbounded"
+                >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        This contains data other than alerts that is returned by the connection.
+                        The data is passed as a list of argots that the connection class generates.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element
+                    name="Notification"
+                    type="NotificationType"
+                    minOccurs="0"
+                    maxOccurs="unbounded"
+                >
+                    <xsd:annotation>
+                        <xsd:documentation>
+                        An optional returned alert.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="StreamForkType">
+        <xsd:annotation>
+            <xsd:documentation>
+            The <b>streamFork</b> directive indicates the alert should be processed by streams.
+            If the &lt;streamFork&gt; tag is not present, no streams will process the alert;
+            routing will begin directly at the <b>connectionFork</b> point.
+            If one of the <b>streamID</b> attributes are not included, <b>streamFork</b> processing begins at
+            the first stream defined for the user.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute      name="AtStreamID"           type="iq:IdType" />
+                <xsd:attribute      name="AfterStreamID"        type="iq:IdType" />
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+-->
+
+    <!-- ==============================================================================
+    //
+    // Alerts v4.5 types
+    //
+    // Used inside the "identity" element in the headers and in the notification's "from".
+    //
+    //================================================================================= -->
+    <!--
+    //
+    // contentProvider - optional sub-element in the "identity" element
+    //
+    -->
+    <xsd:element name="ContentProvider" type="ContentProviderType">
+        <xsd:annotation>
+            <xsd:documentation>
+                The <b>contentProvider</b> element is the Microsoft Alerts version 4.5 service
+                authentication element. It replaces the expected iqServices <b>kerberos</b> element.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:complexType name="ContentProviderType">
+        <xsd:attribute
+            name="Cpid"
+            type="xsd:string"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                    This attribute contains the content provider ID as assigned to the content provider
+                    by the iqAlerts service provisioning. The ID must be a valid decimal or hexadecimal
+                    string.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute
+            name="Puid"
+            type="xsd:string"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                    This attribute is optional and contains the sending user's Passport User ID (PUID).
+                    The sending content provider is required to ensure the authenticity of this PUID.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+
+</xsd:schema>

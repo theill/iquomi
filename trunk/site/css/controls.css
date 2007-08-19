@@ -1,0 +1,105 @@
+/*
+ * $Id: controls.css 71 2007-01-21 22:41:09Z peter $
+ * 
+ * Iquomi | Stylesheet for Controls
+ * 
+ */
+
+div.fld { /* field */
+	font-family: "Lucida Sans Typewriter", Monospace;
+	font-size: 9pt;
+	color: #666;
+	background-color: Transparent;
+	padding-bottom: 2px;
+	padding-top: 8px;
+	position: relative;
+}
+
+div.fld input { /* buttons within fields areas are right-aligned */
+	position: absolute;
+	top: 36px;
+	left: 460px;
+}
+
+input.Inactive, textarea.Inactive { /* inactivated field e.g. if both a "script" and "script_url" has been specified */
+	color: #999;
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#f9f9f9', endColorStr='#f6f6f6', gradientType='0');
+}
+
+div.grp { /* group (of fields e.g. from radio buttons) */
+	margin-left: 16px;
+}
+
+div.grp div.hdr { /* header for current group */
+	margin-left: -16px;
+	margin-top: 16px;
+	font-family: "Lucida Sans Typewriter", Monospace;
+	font-size: 10pt;
+	color: #666;
+	background-color: Transparent;
+}
+
+div.req { /* required field */
+    color: #c66;
+}
+
+/**
+ * Form fields
+ */
+input.txt, input.Text {
+	font-family: Consolas, "Lucida Sans Typewriter", "Lucida Console", Monospace;
+	padding: 4px;
+	width: 560px;
+	
+	border: solid 1px #ccc;
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#ffffff', endColorStr='#f9f9f9', gradientType='0');
+}
+
+select.txt, select.Text {
+	font-family: Consolas, "Lucida Sans Typewriter", "Lucida Console", Monospace;
+	padding: 4px;
+	border: solid 1px #ccc;
+}
+
+/*
+select.txt option {
+	padding: 4px;
+}
+*/
+
+textarea.txt, textarea.Text {
+	font-family: Consolas, "Lucida Sans Typewriter", "Lucida Console", Monospace;
+	border: solid 1px #ccc;
+	border-bottom: window-inset 2px #eee;
+	padding: 4px;
+	/*width: 30em;*/
+	width: 560px;
+    scrollbar-darkshadow-color: #fff;
+    scrollbar-shadow-color: #999;
+	scrollbar-3dlight-color: #ccc;
+    scrollbar-highlight-color: #fff;
+    scrollbar-arrow-color: #333;
+    scrollbar-base-color: #fff;
+    scrollbar-face-color: #eee;
+
+	border: solid 1px #ccc;
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#ffffff', endColorStr='#fcfcfc', gradientType='0');
+}
+
+input.btn, input.Button {
+	background-color: White;
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#ffffff', endColorStr='#f0f0f0', gradientType='0');
+	color: #003;
+	border: solid 1px #cd9;
+	border-left: solid 6px #cd9;
+	margin: 2px;
+	padding: 2px;
+/*
+	font-family: "Segoe UI", Tahoma, Sans-Serif;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 9px;
+	height: 18px;
+	background: white url(../gfx/bgr.button.light.gif) repeat-x top;
+*/
+}

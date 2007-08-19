@@ -1,0 +1,17 @@
+<IqFavorites ChangeNumber="1" InstanceId="5cc718e7-30fa-4e16-b4cc-cca9a4609687">
+  <favorite changeNumber="1" id="4EAEBF55-1224-4220-AFAF-C1B6B09F3946" creator="1">
+    <cat ref="urn:$PENDING" />
+    <title>Free Images - Free Stock Photos2</title>
+    <url>http://www.freeimages.co.uk/</url>
+  </favorite>
+  <favorite changeNumber="1" id="72140273-F232-4642-9D1B-ADE5A3DFD27F" creator="1">
+    <cat ref="urn:Applications/Browsers" />
+    <title>101 things you can do in Mozilla</title>
+    <url>http://www.xulplanet.com/ndeakin/arts/reasons.html</url>
+  </favorite>
+  <favorite changeNumber="1" id="72140273-F232-4642-9D1B-ADE5A3DFD27F" creator="1">
+    <cat ref="urn:Applications/Help Tools" />
+    <title>VizAcc - Quality Shareware</title>
+    <url>http://www.vizacc.com/</url>
+  </favorite>
+</IqFavorites>

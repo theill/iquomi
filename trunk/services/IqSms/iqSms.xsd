@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xdb="urn:schemas-iquomi-com:xdb"
+	xmlns:iq="http://schemas.iquomi.com/2004/01/core" 
+	targetNamespace="http://schemas.iquomi.com/2004/01/iqSms"
+	xmlns="http://schemas.iquomi.com/2004/01/iqSms"
+	elementFormDefault="qualified" 
+	version="1.0">
+
+	<xsd:annotation>
+		<xsd:documentation>
+			Schema for Iquomi&#174; SMS service.
+			Copyright(c) 2006 Iquomi. All rights reserved.
+		</xsd:documentation>
+		
+		<xsd:appinfo>
+			<xdb:namespaceMap>
+				<xdb:mapping uri="http://schemas.iquomi.com/2004/01/iqSms" alias="m" />
+				<xdb:mapping uri="http://schemas.iquomi.com/2004/01/core" alias="iq" />
+			</xdb:namespaceMap>
+		</xsd:appinfo>
+	</xsd:annotation>
+	
+	<xsd:import namespace="http://schemas.iquomi.com/2004/01/core" schemaLocation="http://schemas.iquomi.com/2004/01/core/iqcommon.xsd" />
+	
+  <!--
+  //
+  // iqSms
+  //
+  -->
+  <xsd:element
+      name="IqSms"
+      type="IqSmsType"
+      />
+
+  <xsd:complexType
+      name="IqSmsType"
+      >
+      <xsd:annotation>
+          <xsd:documentation>
+          	This element defines the basic types.
+          </xsd:documentation>
+      </xsd:annotation>
+      
+      <xsd:sequence>
+
+          <xsd:any
+              processContents="skip"
+              namespace="##other"
+              minOccurs="0"
+              maxOccurs="unbounded"
+              />
+
+          <xsd:element
+              name="ShortMessage"
+              type="ShortMessageType"
+              minOccurs="0"
+              maxOccurs="unbounded"
+              >
+
+              <xsd:annotation>
+                  <xsd:documentation>
+                  	A message
+                  </xsd:documentation>
+              </xsd:annotation>
+          </xsd:element>
+
+      </xsd:sequence>
+
+      <!-- standard attributes for the root element -->
+      <xsd:attributeGroup ref="iq:DocumentRootAttributeGroup"/>
+
+  </xsd:complexType>
+
+  <xsd:complexType name="ShortMessageType">
+      <xsd:sequence>
+
+          <xsd:element
+              name="Cat"
+              type="iq:CatType"
+              minOccurs="0"
+              maxOccurs="unbounded"
+              />
+
+          <xsd:any
+              processContents="skip"
+              namespace="##other"
+              minOccurs="0"
+              maxOccurs="unbounded"
+              />
+              
+          <xsd:element
+              name="From"
+              type="RecipientType"
+              minOccurs="1"
+              maxOccurs="1"
+          />
+
+          <xsd:element
+              name="To"
+              type="RecipientType"
+              minOccurs="1"
+              maxOccurs="unbounded"
+          />
+          
+					<xsd:element
+						name="Read"
+						type="xsd:boolean"
+						minOccurs="1"
+						maxOccurs="1"
+						/>
+						
+					<xsd:element
+						name="LastModified"
+						type="xsd:dateTime"
+						minOccurs="0"
+						maxOccurs="1"
+						/>
+						
+					<xsd:element
+						name="Received"
+						type="xsd:dateTime"
+						minOccurs="0"
+						maxOccurs="1"
+						/>
+          
+          <xsd:element
+              name="Body"
+              type="xsd:string"
+              minOccurs="1"
+              maxOccurs="1"
+          />
+
+      </xsd:sequence>
+
+      <xsd:attributeGroup ref="iq:StandardBlueAttributeGroup"/>
+      
+  </xsd:complexType>
+    
+  <xsd:complexType name="RecipientType">
+  	<xsd:sequence>
+          <xsd:element
+              name="Address"
+              type="xsd:string"
+              minOccurs="1"
+              maxOccurs="1"
+          />
+          <xsd:element
+              name="Name"
+              type="xsd:string"
+              minOccurs="1"
+              maxOccurs="1"
+          />
+  	</xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

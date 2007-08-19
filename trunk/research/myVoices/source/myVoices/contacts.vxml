@@ -1,0 +1,14 @@
+<vxml version="1.0">
+	<form id="form">
+		<field name="letter">
+			<prompt>
+				What is the 1st letter of their first or last name?
+			</prompt>
+			<grammar type="application/x-gsl">
+				[a b c d e f g h i j k l m n o p q r s t u v w x y z]</grammar>
+			<filled>
+				<submit next="rolodex.aspx" method="post" namelist="letter" />
+			</filled>
+		</field>
+	</form>
+</vxml>

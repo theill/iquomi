@@ -1,0 +1,27 @@
+<myFavoriteWebSites>
+	<favoriteWebSite>
+		<cat ref="hs:public" />
+		<title>Test</title>
+		<url>This is a public URL</url>
+	</favoriteWebSite>
+	<favoriteWebSite>
+		<cat ref="hs:private" />
+		<title>Test</title>
+		<url>This is a private URL</url>
+	</favoriteWebSite>
+	<favoriteWebSite>
+		<cat ref="hs:public" />
+		<title>Test</title>
+		<url>This is an URL</url>
+	</favoriteWebSite>
+	<favoriteWebSite>
+		<cat ref="hs:private" />
+		<title>Test</title>
+		<url>Testing</url>
+	</favoriteWebSite>
+	<favoriteWebSite>
+		<cat ref="hs:public" />
+		<title>Test</title>
+		<url>This is an URL</url>
+	</favoriteWebSite>
+</myFavoriteWebSites>

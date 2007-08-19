@@ -1,0 +1,196 @@
+
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xdb="urn:schemas-microsoft-com:xdb"
+    xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core"
+    xmlns="http://schemas.microsoft.com/hs/2001/10/myLocation"
+    targetNamespace="http://schemas.microsoft.com/hs/2001/10/myLocation"
+    elementFormDefault="qualified"
+    version="1.0"
+    >
+
+    <xsd:annotation>
+        <xsd:documentation>
+        Schema for .NET Location service.
+        Copyright (c) 2001 Microsoft Corporation. All rights reserved.
+        </xsd:documentation>
+
+        <xsd:appinfo>
+            <xdb:blue select="/myLocation"/>
+            <xdb:blue select="/myLocation/*"/>
+
+            <xdb:red select="//@changeNumber"/>
+            <xdb:red select="//@id"/>
+            <xdb:red select="//@creator"/>
+            <xdb:red select="//cat/@ref"/>
+            <xdb:red select="//cat"/>
+
+            <xdb:red select="//location/expiresAt"/>
+            <xdb:red select="//location/lastUpdateTime"/>
+            <xdb:red select="//location/address/$any"/>
+            <xdb:red select="//location/$any"/>
+
+            <xdb:namespaceMap>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/myLocation" alias="m"/>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/core" alias="hs"/>
+            </xdb:namespaceMap>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:import namespace="http://schemas.microsoft.com/hs/2001/10/core" schemaLocation="hscommon.xsd"/>
+
+
+    <!--
+    //
+    // myLocation
+    //  - root element for the .NET Location service
+    //
+    -->
+    <xsd:element
+        name="myLocation"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates the content document for the .NET Location service.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="myLocationType">
+                    <xsd:attributeGroup ref="hs:documentRootAttributeGroup"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--
+    //
+    // myLocationType
+    //
+    -->
+    <xsd:complexType
+        name="myLocationType"
+        >
+        <xsd:sequence>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="location"
+                type="locationType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:element
+                name="subscription"
+                type="hs:subscriptionType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!--
+    //
+    // locationType
+    //
+    -->
+    <xsd:complexType
+        name="locationType"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+            <xsd:element
+                name="cat"
+                type="hs:catType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:element
+                name="address"
+                type="hs:addressType"
+                minOccurs="1"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the last known current
+                    location of the identity bound to this service.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="reportingDevice"
+                type="xsd:anyURI"
+                minOccurs="1"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains the device name of the device supplying this
+                    location information. The name is encoded as a URI.
+                    One common format for this name is a uuid: scheme uri interpreted
+                    as a "Universal Device Number" as
+                    exposed by the <a href="http://www.upnp.org/resources.htm">Universal Plug
+                    and Play</a> infrastructure.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="lastUpdateTime"
+                type="xsd:dateTime"
+                minOccurs="1"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the last update time of this location
+                    report.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="expiresAt"
+                type="xsd:dateTime"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This optional element specifies the time after wich this location
+                    report is considered expires. The system is free to delete expired
+                    elements on it's own schedule.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+    </xsd:complexType>
+
+</xsd:schema>

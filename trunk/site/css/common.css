@@ -1,0 +1,264 @@
+/*
+ * $Id: common.css 23 2006-04-18 20:36:48Z peter $
+ * 
+ * Iquomi | Stylesheet
+ * 
+ */
+
+body {
+	padding: 0px;
+	margin: 0px;
+	background-color: white;
+	color: black;
+	font-size: 11px;
+	font-family: Garamond, Serif;
+}
+
+table.pge { /* page */
+	padding: 0px;
+	margin: 0px;
+	border-collapse: collapse;
+	width: 768px;
+	border-right: 1px solid #cccccc;
+}
+
+td.hdr { /* header */
+	font-family: Tahoma, Sans-Serif;
+	color: white;
+	vertical-align: top;
+}
+
+div.hdr { /* header */
+	height: 24px;
+}
+
+td.ftr { /* footer */
+	font-family: Tahoma, Sans-Serif;
+	padding: 8px;
+	border-top: 1px solid #ff6600;
+}
+
+td.mnu { /* menu */
+	font-family: Tahoma, Sans-Serif;
+	vertical-align: top;
+	padding: 8px;
+	width: 122px;
+	background-color: #eeeeee;
+	border-right: 1px solid white;
+	color: black;
+	border-top: solid 16px #999999;
+}
+
+td.cnt { /* content */
+	vertical-align: top;
+	padding: 16px;
+	width: 100%;
+	font-size: 16px;
+	font-family: Georgia, Serif;
+}
+
+table.frm { /* form */
+	width: 100%;
+	padding: 4px;
+}
+
+div.frm {
+	padding: 16px;
+	background-color: #f3f3f3;
+}
+
+td.fbtn { /* form button */
+	text-align: right;
+}
+
+table.list {
+	width: 100%;
+/*	font-family: Tahoma, Sans-Serif;*/
+	font-size: 10px;
+}
+
+th {
+	border-bottom: 1px solid #cccccc;
+	border-left: 1px solid #ffffff;
+	border-right: 1px solid #dddddd;
+	font-size: 11px;
+	background-color: #f0f0f0;
+	color: #999999;
+	padding: 4px;
+	text-align: left;
+}
+
+tr.hdr td {
+	border-bottom: 1px solid #cccccc;
+	border-left: 1px solid #ffffff;
+	border-right: 1px solid #dddddd;
+	font-size: 11px;
+	font-weight: bold;
+	background-color: #f0f0f0;
+	color: #999999;
+	padding: 4px;
+	text-align: left;
+}
+
+tr.l td {
+	font-size: 11px;
+	background-color: #ffffff;
+	color: black;
+	padding: 2px;
+}
+
+td.l { /* light */
+	font-size: 11px;
+	background-color: #fff;
+	color: black;
+	padding: 2px;
+	border-bottom: inset 1px #eee;
+}
+
+td.d { /* dark */
+	font-size: 11px;
+	background-color: #f6f6f6;
+	color: black;
+	padding: 2px;
+}
+
+td.ttl { /* total */
+	border-top: 1px solid #999999;
+	border-bottom: 3px double #999999;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 2px;
+}
+
+/*
+ul.mnu {
+	padding-left: 8px;
+	margin-left: 0px;
+	margin-top: 2px;
+	margin-bottom: 16px;
+	list-style-type: none;
+}
+
+ul.mnu li {
+    
+}
+*/
+
+div.err { /* error */
+	font-size: 11px;
+	color: red;
+	padding-bottom: 8px;
+}
+
+div.nfo { /* info */
+	color: #006600;
+}
+
+div#validationSummary {
+	font-family: Tahoma, Sans-Serif;
+	font-size: 11px;
+	padding: 8px;
+	background-color: #fff6f6;
+	border: solid 1px #ff9999;
+	border-top-width: 6px;
+	color: Red;
+}
+
+input.txt {
+	font-family: "Courier New", "Lucida Console", Monospace;
+	font-size: 13px;
+	width: 380px;
+}
+
+select.txt, option.txt {
+	font-family: "Lucida Sans Typewriter", "Lucida Console", Monospace;
+	font-size: 13px;
+	width: 380px;
+}
+
+textarea.txt {
+	font-family: "Lucida Sans Typewriter", "Courier New", "Lucida Console", Monospace;
+	font-size: 10px;
+	width: 380px;
+	height: 60px;
+}
+
+input.btn { /* button */
+/* default
+	font: menu;
+	font-weight: bold;
+	background-color: #ffffff;
+	color: black;
+	border: 1px solid #ff6600;
+	border-left-width: 4px;
+	padding: 0px 8px 0px 8px;
+*/
+
+	padding: 0;
+	padding-left: 8px;
+	padding-right: 8px;
+	border-width: 0;
+	height: 18px;
+	border: outset 1px #CCDD99;
+	background-color: #CCDD99;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 8px;
+	font-weight: bold;
+	font-family: Sevenet 7;
+	padding-top: 1px;
+
+/* Generate image on the fly
+	
+	padding: 0;
+	border-width: 0;
+	width: 74px;
+	height: 18px;
+	background-image: url('/utility.images.aspx?type=button');
+	color: White;
+	text-transform: uppercase;
+	font-size: 8px;
+	font-weight: bold;
+	font-family: Sevenet 7;
+	padding-top: 1px;
+*/
+}
+
+div.btngrp { /* button group */
+	text-align: right;
+	padding: 8px;
+}
+
+a {
+	text-decoration: none;
+	color: #333333;
+}
+
+a:hover {
+	color: #3300ff;
+}
+
+a.ftr {
+	padding: 4px;
+}
+
+code {
+	font-family: Courier New, Courier, Monospace;
+	font-size: 8pt;
+}
+
+form {
+	margin-bottom: 0px;
+}
+
+#State {
+	;
+}
+
+#Size {
+	text-align: right;
+}
+
+#Content {
+	margin-left: 130px;
+}

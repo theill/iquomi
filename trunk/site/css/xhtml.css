@@ -1,0 +1,548 @@
+/*
+ * $Id: xhtml.css 72 2007-01-24 21:17:27Z peter $
+ * 
+ * Iquomi | Stylesheet for XHTML 1.0 Layout
+ * 
+ */
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family: Verdana, Geneva, "Lucida Grande", "Bitstream Vera Sans", Georgia, Garamond, Serif;
+	font-size: 11px;
+}
+
+h1 {
+	font-size: 1.1em;
+	font-weight: normal;
+}
+
+img {
+	border-width: 0;
+}
+
+#Header {
+	background: url(../gfx/bgr.header.gif) repeat-x;
+	width: 100%;
+	height: 72px;
+	clear: both;
+}
+
+#Header .Content {
+	width: 760px;
+	margin-left: auto; margin-right: auto;
+}
+
+#Header #AccountOverview {
+	display: none;
+	
+	border: solid 1px red;
+	position: absolute;
+	top: 8px;
+	margin-left: 160px;
+}
+
+#Header #AccountOverview .Caption {
+	width: 120px;
+	float: left;
+}
+
+#Header a {
+	border-style: none;
+}
+
+.MyBalance {
+	color: #99CC66;
+}
+
+.MyDetails {
+	color: #3366CC;
+}
+
+.MyDevices {
+	color: #FF6666;
+}
+
+#Header div.Search {
+	position: absolute;
+	margin-left: 560px;
+	top: 8px;
+	line-height: 1.6em;
+	width: 200px;
+}
+
+#Header div.Search .Text {
+	width: 120px;
+	vertical-align: middle;
+}
+
+#Header div.Search .Submit {
+	background: url(../gfx/ico.search.gif) repeat-x;
+	width: 16px;
+	height: 16px;
+	border-width: 0;
+	vertical-align: middle;
+}
+
+#Header div.Search .Blur {
+	color: #ccc;
+}
+
+#Header div.Search form {
+	padding: 0;
+	margin: 0;
+}
+
+/** Location **/
+
+#Location {
+	width: 760px;
+	margin-left: auto; margin-right: auto;
+}
+
+#Location .Content {
+	position: absolute;
+	background: url(../gfx/bgr.location.png) repeat-x;
+	height: 25px;
+	width: 616px;
+	z-index: 1;
+	top: 47px;
+	margin-left: 144px;
+}
+
+#Location .Content div {
+	margin: 6px 6px 6px 8px;
+	font-weight: bold;
+	color: #fff;
+}
+
+#Location a {
+	text-decoration: none;
+	font-weight: normal;
+}
+
+#Location a:link, #Location a:active {
+	color: #fff;
+	border-bottom: dotted #fff 1px;
+}
+
+#Location a:visited {
+	color: #f9f9f9;
+	border-bottom: dotted #fff 1px;
+}
+
+#Location a:hover {
+	color: #ffc;
+	border-bottom: dotted #f9f9f9 1px;
+}
+
+/** Footer **/
+
+#Footer {
+	margin: 0;
+	height: 72px;
+	background: url(../gfx/bgr.footer.gif) repeat-x;
+	width: 100%;
+	clear: both;
+}
+
+#Footer .Content {
+	width: 760px;
+	margin-left: auto; margin-right: auto;
+}
+
+#Footer img.dot {
+	padding: 16px;
+	float: left;
+}
+
+#Footer div.txt {
+	padding: 16px;
+	margin-left: 32px;
+}
+
+#Footer a {
+	background-color: transparent;
+	color: #333;
+	text-decoration: none;
+}
+
+#Footer a:link, #Footer a:active {
+	color: #0040b6;
+	border-bottom: dotted #cccccc 1px;
+}
+
+#Footer a:visited {
+	color: #777777;
+	border-bottom: dotted #cccccc 1px;
+}
+
+#Footer a:hover {
+	color: #000000;
+	border-bottom: dotted #999999 1px;
+}
+
+/** Page **/
+
+#Page {
+	clear: both;
+	position: relative;
+	width: 760px;
+	margin-left: auto; margin-right: auto;
+}
+
+/** Menu **/
+
+#Menu {
+	vertical-align: top;
+	padding: 8px;
+	width: 128px;
+	border-right: 1px dotted #ccc;
+	float: left;
+	clear: left;
+}
+
+#Menu a {
+	color: #000;
+	text-decoration: none;
+	border-style: none;
+}
+
+#Menu a:hover {
+	color: #f90;
+}
+
+#Menu ul {
+	list-style-type: none;
+	margin-left: 8px;
+	margin-top: 0;
+	padding: 0;
+}
+
+#Menu ul li a.dbg {
+    color: #339;
+}
+
+#Menu ul li .disabled {
+    color: #999;
+}
+
+/** Content **/
+
+#Content {
+	padding: 16px;
+	margin-left: 144px;
+	width: 580px;
+}
+
+#Content a {
+	background-color: transparent;
+	color: #333;
+	text-decoration: none;
+}
+
+#Content a:link, #Content a:active {
+	color: #0040b6;
+	border-bottom: dotted #cccccc 1px;
+}
+
+#Content a:visited {
+	color: #777777;
+	border-bottom: dotted #cccccc 1px;
+}
+
+#Content a:hover {
+	color: #000000;
+	border-bottom: dotted #999999 1px;
+}
+
+#ContentDescription {
+	margin-bottom: 8px;
+}
+
+#Content b.Query {
+	color: #333;
+}
+
+#ValidationSummary, .Validation {
+	padding: 8px;
+	border: solid 1px #f99;
+	border-top-width: 6px;
+	background-color: #fff;
+	color: #f00;
+	margin: 0;
+}
+
+#InformationSummary, .Information {
+	background-color: #FFEABF;
+    padding: 8px 40px 8px 0px;
+	color: #807560;
+	border-bottom: solid 1px #E5D2AC;
+	border-top: solid 1px #fff;
+	position: relative;
+	height: 100%;
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#FFEABF', endColorStr='#FFFACF', gradientType='0');
+}
+
+#InformationSummary ul {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#InformationSummary ul li {
+    color: #807560;
+    list-style-type: square;
+    margin-left: -16px;
+}
+
+#InformationSummary img.Icon {
+	position: absolute;
+	left: 8px;
+}
+
+#Definition b {
+	font-weight: normal;
+	color: #060;
+}
+
+#Form, .Form {
+	padding: 0;
+	margin: 0;
+}
+
+table.List {
+	width: 100%;
+	float: left;
+	border-collapse: inherit !important;
+}
+
+table.List th {
+	border-top-width: 0;
+	border-bottom: 1px solid #d4d4d4;
+	border-left: 1px solid #fff;
+	border-right: 1px solid #d4d4d4;
+	background-color: #eee;
+	color: #999;
+	padding: 4px;
+	text-align: left;
+	white-space: nowrap;
+	/*filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#f3f3f3', endColorStr='#e0e0e0', gradientType='0');*/
+	
+	background: url(../gfx/bgr.table-header.gif) repeat-x bottom;
+}
+
+table.List th.mark {
+	background-image: url(../gfx/ico.dots.gray.gif);
+	background-position: center;
+	background-repeat: no-repeat;
+	filter: none;
+	width: 16px;
+	
+	background: url(../gfx/bgr.table-header.gif) repeat-x bottom;
+}
+
+table.List td {
+	padding: 3px;
+	height: 18px;
+	border-bottom: dashed 1px #eee;
+}
+
+table.List a {
+	background-color: Transparent;
+	color: #36c;
+	text-decoration: none;
+	border-style: none !important;
+}
+
+table.List a:visited {
+	background-color: Transparent;
+	color: #369;
+}
+
+table.List a:hover {
+	background-color: Transparent;
+	color: #039;
+	text-decoration: none;
+}
+
+table.List tr.l td {
+	
+}
+
+table.List tr.d td {
+	background-color: #fcfcf9;
+	color: transparent;
+}
+
+table.List tr.hl { /* highlighted */
+	/*background-color: #f3ffd3;*/
+	background-color: #f0f6f0;
+}
+
+table.List tr.hl a {
+	background-color: transparent;
+	color: #000;
+}
+
+table.List tr.hl td {
+	border-top: solid 1px #fff;
+	border-bottom: solid 1px #eee;
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#e0f0e0', endColorStr='#ffffff', gradientType='0');
+}
+
+table.List tr.inactive td {
+	color: #aaa;
+}
+
+table.List tr.inactive td a, table.List tr.inactive td a:visited {
+	color: #77a;
+}
+
+table.List tr.Pager td {
+	border-width: 0;
+}
+
+table.List div.RankBar {
+	height: 10px;
+	width: 100px;
+	background-color: #693;
+	float: left;
+}
+
+div.hr {
+	height: 0px;
+	width: 32px;
+	border-bottom: dotted 1px #cd9;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+div.hr hr {
+	display: none;
+}
+
+/**
+ * Tabs
+ */
+
+#Tabs {
+	background: url(../gfx/part.tab.right.gray.gif) repeat-x;
+	font-size: 10px;
+	height: 16px;
+}
+
+#Tabs #TabSelected {
+	background: url(../gfx/part.tab.left.selected.gray.gif) repeat-x;
+	height: 14px;
+	font-weight: bold;
+	overflow: hidden;
+	text-align: center;
+	padding-left: 8px;
+	padding-right: 4px;
+	padding-top: 2px;
+}
+
+#Tabs .TabUnselected {
+	background: url(../gfx/part.tab.middle.notselected.gray.gif) repeat-x;
+	height: 16px;
+	padding-left: 4px;
+	padding-right: 8px;
+}
+
+#TabContent {
+	margin: 0;
+	background-color: #eee;
+	background-image: url(../gfx/ico.dots.gray.gif);
+	background-position: 8px 8px;
+	background-repeat: no-repeat;
+    padding: 8px 40px 8px 0px;
+	border-bottom: solid 1px #D4D4D4;
+	overflow: hidden;
+	position: relative;
+/*	height: 48px;
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#eeeeee', endColorStr='#f6f6f6', gradientType='0'); */
+	/*margin-bottom: 16px;*/
+}
+
+#TabContent img.Icon {
+	position: absolute;
+	left: 8px;
+}
+
+#TabContentText {
+	left: 32px;
+	position: relative;
+}
+
+#TabContentText #TabDescription {
+	background-color: Transparent;
+	color: black;
+}
+
+#TabContentText .Validation {
+	margin-top: 8px;
+	padding: 0;
+	border-width: 0;
+	background-color: transparent;
+	color: #f00;
+}
+
+#TabContentText .Validation ul {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#TabContentText a {
+	color: #600;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#Buttons {
+	margin-top: 8px;
+	padding: 4px;
+	height: 100%;
+	border: solid 1px #f0f6ff;
+	border-bottom: solid 1px #d6e6f6;
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#ffffff', endColorStr='#f0f6ff', gradientType='0');
+}
+
+/**
+ * Shape - Include/Exclude
+ */
+span.include {
+	background-color: transparent;
+	color: Green;
+}
+
+span.exclude {
+	background-color: transparent;
+	color: Red;
+}
+
+
+
+/**
+ * Color selected table row
+ */
+table.list tr:hover {
+	background-color: #fdfdfd;
+}
+
+.code, .Code {
+	font-family: "Lucida Sans Typewriter", "Courier New", Courier, Monospace;
+	background-color: #eeeeee;
+	color: Black;
+	padding: 8px;
+}
+
+.integer, .currency {
+    text-align: right;
+}
+
+.Xml {
+	font-family: "Lucida Sans Typewriter", "Courier New", Courier, Monospace;
+	overflow: hidden;
+	white-space: pre;
+	width: 580px;
+}

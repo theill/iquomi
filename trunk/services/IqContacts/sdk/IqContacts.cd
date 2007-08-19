@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" DisplayMemberTypes="true">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.IqContactsType">
+    <Position X="9.75" Y="20.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>IAAQAAAAAIAAAAAACAAAAAAACAAAAAAEAgAAAAAAQAE=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Contact" />
+      <Property Name="Subscription" />
+    </ShowAsAssociation>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.ContactType">
+    <Position X="9.75" Y="16" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>ICAywEAQAAQAAACqGYECAASAAAAwASAWMgQAQigAk4Q=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Gender" />
+      <Property Name="Notes" />
+      <Property Name="Synchronize" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Name" />
+      <Property Name="Picture" />
+      <Property Name="ScreenName" />
+      <Property Name="SecurityCertificate" />
+      <Property Name="SpecialDate" />
+      <Property Name="TelephoneNumber" />
+      <Property Name="WebSite" />
+      <Property Name="WorkInformation" />
+      <Property Name="UserReference" />
+      <Property Name="IdentificationNumber" />
+      <Property Name="EmailAddress" />
+      <Property Name="Address" />
+    </ShowAsCollectionAssociation>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.CatType" Collapsed="true">
+    <Position X="19.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAAAAAAAAAAEAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.SubscriptionType">
+    <Position X="6.5" Y="20.5" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAACAAEAAgAAABAACAAAAAEAABAIACAEkgAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.SubscriptionTypeTrigger" Collapsed="true">
+    <Position X="19.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAAEgAAAAICAAAAAAAAAAAAAAAAAAAABAAAAQAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.SubscriptionTypeContext" Collapsed="true">
+    <Position X="17.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>IAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAEAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.SecurityCertificateType">
+    <Position X="6.5" Y="15.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAAAAAAQAAQAAAACAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.SecurityCertificateBlueType">
+    <Position X="6.5" Y="17.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAACAAAAAAAAAAAACAEEgAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.UserReference">
+    <Position X="4.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAAAAAAAACAAAAAAAIIAAAQAAAAAAAAAAAQAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.UninviteAttendeeType">
+    <Position X="0.75" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAQBAABAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.AttendeeInfoType">
+    <Position X="7.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="InviteType" />
+    </ShowAsAssociation>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.AttendeeType">
+    <Position X="7" Y="4.5" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>IAAQoAEIEAAEABAAAAMgCACAAAAAAABEQEAIAAGAAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ResponseType" />
+    </ShowAsAssociation>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.LongText">
+    <Position X="13" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAgAAABAAAAAAACgAAAAAEgAAQIAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.AttendeeBlueType">
+    <Position X="7.5" Y="8" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAACAAAAAAAAAAAACAEEgAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.UserReferenceCategorized">
+    <Position X="4" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.CategorizedUserReferenceBlueType">
+    <Position X="3.75" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>IAASAAAAAAAAAAAACAAAAAAAAAAAACAEEgAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.WorkInformationType">
+    <Position X="14.5" Y="10.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>IAAQAAAAAEQQAAACAAAAAAACQAAAAAAAAQAgAAAIAAE=</HashCode>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="CoworkerOrDepartment" />
+    </ShowAsCollectionAssociation>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.WorkInformationBlueType">
+    <Position X="14.5" Y="13" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAACAAAAAAAAAAAACAEEgAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.IdentificationNumberType">
+    <Position X="14.5" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>IAAQAAAAAAQAAAACIEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.IdentificationNumberBlueType">
+    <Position X="14.5" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAACAAAAAAAAAAAACAEEgAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.TelephoneNumberType">
+    <Position X="14.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>ICAQAAAAAAQAAAAKIEASABAAgAAAAAAAAAAAAAAAABA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.TelephoneNumberBlueType">
+    <Position X="14.5" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAACAAAAAAAAAAAACAEEgAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.ScreenNameType">
+    <Position X="3.5" Y="13.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>IAAQAAAAAAQAAAACAIAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.ScreenNameBlueType">
+    <Position X="3.5" Y="15.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAACAAAAAAAAAAAACAEEgAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.WebSiteType">
+    <Position X="0.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>IAAQAAAAAAQAAAACAAAAAAAAAAAAAAAACAAAEAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.WebSiteBlueType">
+    <Position X="0.5" Y="13.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAACAAAAAAAAAAAACAEEgAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.EmailAddressType">
+    <Position X="11.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>IAAQAAAAACQAAAACAIIAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.EmailAddressBlueType">
+    <Position X="11.5" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAACAAAAAAAAAAAACAEEgAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.AddressType">
+    <Position X="10.5" Y="8.5" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>JCAwAgAAAEQAAACSoIIIAAEAgMCAAAAACAEAAAAFUAk=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.AddressTypeVelocity" Collapsed="true">
+    <Position X="17.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAAAAAAAAAAEAAAAACAAAAABAAAAAAAAAAAAAQAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.AddressBlueType">
+    <Position X="10.75" Y="12.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAACAAAAAAAAAAAACAEEgAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.PictureType">
+    <Position X="7.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>IAAQAAAAAAQAAAACAAAAAAAAAAAAAAAACAAAEAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.PictureBlueType">
+    <Position X="7.5" Y="12.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAACAAAAAAAAAAAACAEEgAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.SpecialDateType">
+    <Position X="3.5" Y="8.5" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>IABQAAAAAAQAAAACAAAAAgAAAAAAAAABAAAAAAAAACA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.SpecialDateBlueType">
+    <Position X="3.75" Y="11" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAACAAAAAAAAAAAACAEEgAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.MyNameType">
+    <Position X="0.5" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>IBAQAAIAAgQEAkACAAAUAAAAAABAAAAAACQAAAAAAAI=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqContacts.NameType">
+    <Position X="0.75" Y="8.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAACAAAAAAAAAAAACAEEgAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Enum Name="Commanigy.Iquomi.Services.IqContacts.SubscriptionTypeTriggerMode" Collapsed="true">
+    <Position X="17.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Commanigy.Iquomi.Services.IqContacts.DirType" Collapsed="true">
+    <Position X="19.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Commanigy.Iquomi.Services.IqContacts.InviteTypeEnum">
+    <Position X="7.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAABAAAAIAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Commanigy.Iquomi.Services.IqContacts.AttendeeAcceptEnum">
+    <Position X="10.5" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AIAAAAAACAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Commanigy.Iquomi.Services.IqContacts.CalendarLocaleEnum" Collapsed="true">
+    <Position X="17.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AACBgAAAAYBAQCAAAAAgABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Commanigy.Iquomi.Services.IqContacts.GenderType">
+    <Position X="13" Y="19" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAgAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Commanigy.Iquomi.Services.IqContacts.ContactTypeSynchronize">
+    <Position X="9.75" Y="19" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqContacts.cs</FileName>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+</ClassDiagram>

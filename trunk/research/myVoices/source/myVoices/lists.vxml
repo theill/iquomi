@@ -1,0 +1,15 @@
+
+<vxml version="1.0">
+	<form id="form">
+		<field name="list">
+			<prompt>
+				Choose a list <enumerate />
+			</prompt>
+			<option dtmf="1" value="36958F80-6A39-4A1C-8110-029CFEA84A43">to do</option>
+			<option dtmf="2" value="DECDFEA0-8B9A-4402-9C90-0D7AD8B3AB20">grocery</option>
+			<filled>
+				<submit next="items.aspx" method="post" namelist="list" />
+			</filled>
+		</field>
+	</form>
+</vxml>

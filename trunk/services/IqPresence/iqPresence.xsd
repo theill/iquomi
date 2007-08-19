@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xdb="urn:schemas-iquomi-com:xdb" 
+	xmlns:iq="http://schemas.iquomi.com/2004/01/core" 
+	xmlns:ma="http://schemas.iquomi.com/2004/01/iqAlerts" 
+	targetNamespace="http://schemas.iquomi.com/2004/01/iqPresence" 
+	xmlns="http://schemas.iquomi.com/2004/01/iqPresence" 
+	elementFormDefault="qualified" 
+	version="1.0">
+
+    <xsd:annotation>
+        <xsd:documentation>
+            Schema for Iquomi Presence service.
+            Copyright (c) 2004 Iquomi. All rights reserved.
+        </xsd:documentation>
+        <xsd:appinfo>
+            <xdb:blue select="/IqPresence" />
+            <xdb:blue select="/IqPresence/*" />
+            <xdb:blue select="/IqPresence/Endpoint/Argot" />
+            <xdb:red select="//@ChangeNumber" />
+            <xdb:red select="//@Id" />
+            <xdb:namespaceMap>
+                <xdb:mapping uri="http://schemas.iquomi.com/2004/01/iqPresence" alias="m" />
+                <xdb:mapping uri="http://schemas.iquomi.com/2004/01/iqAlerts" alias="ma" />
+                <xdb:mapping uri="http://schemas.iquomi.com/2004/01/core" alias="iq" />
+            </xdb:namespaceMap>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:import namespace="http://schemas.iquomi.com/2004/01/core" schemaLocation="http://schemas.iquomi.com/2004/01/core/iqcommon.xsd" />
+    <xsd:import namespace="http://schemas.iquomi.com/2004/01/iqAlerts" schemaLocation="http://schemas.iquomi.com/2004/01/iqAlerts/iqAlerts.xsd" />
+
+    <!--
+	  //
+	  // iqPresence
+	  //  - root element for the iqPresence service
+	  //
+	  -->
+    <xsd:element name="IqPresence" type="IqPresenceType" />
+    <xsd:complexType name="IqPresenceType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This element defines the basic <b>iqPresence</b> types.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="Endpoint" type="EndpointType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Collection of endpoints for this user's iqPresence service.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Subscription" type="iq:SubscriptionType" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <!-- standard attributes for the root element -->
+        <xsd:attributeGroup ref="iq:DocumentRootAttributeGroup" />
+    </xsd:complexType>
+    <xsd:complexType name="EndpointType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This stores an endpoint, designating a user agent. The definition of a user agent is intentionally left open. It is simply
+                defined as the information expressed by its argots. It may have one deviceUuid associated with it, but this is not required.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="DeviceUuid" type="iq:UuidType" minOccurs="0" />
+            <xsd:element name="ExpiresAt" type="xsd:dateTime" minOccurs="0" />
+            <xsd:element name="Argot" type="ArgotType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Collection of argots for this endpoint.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="Name" type="xsd:string" use="required" />
+        <xsd:attributeGroup ref="iq:StandardBlueAttributeGroup" />
+    </xsd:complexType>
+    <xsd:complexType name="ArgotType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This stores an argot for application-specific information about an endpoint, and so is completely free.
+                Argots are opaque to Iquomi.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="ArgotURI" type="xsd:anyURI" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    This URI points to a location containing the XSD for this argot. It also uniquely identifies the type of argot.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Name" type="xsd:string" use="required" />
+        <xsd:attributeGroup ref="iq:StandardBlueAttributeGroup" />
+    </xsd:complexType>
+
+    <!--
+    //  Domain specific methods
+    //  NotifyEndpoint
+    -->
+    <xsd:element name="NotifyEndpointRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                This method takes an endpoint and sends a specified notification
+                to it by  means of the endpoint's owner's iqAlerts. The endpoint
+                must expose the <b>NotifiableEndpoint</b> argot, so that the
+                iqPresence service knows which connection to target in iqAlerts.
+                This method serves two purposes: first, as an abstraction layer
+                over individual connections so that users may target groups of
+                connections classified as endpoints. Second, as a privacy
+                measure, so that a specific connection associated with an
+                endpoint may be targeted without that connection being exposed
+                to the user invoking the method.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="EndpointId" type="iq:IdType" />
+                <xsd:element name="Notification" type="ma:NotificationType" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="MessengerArgot" type="MessengerArgotType" />
+
+    <xsd:complexType name="MessengerArgotType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This argot represents an instant messaging client's presence.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="StatusMessage" type="iq:String" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        An unrestricted status message reflecting presence.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="Status" type="MessengerStatus" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    The present state of the Messenger client.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:simpleType name="MessengerStatus">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Online" />
+            <xsd:enumeration value="Offline" />
+            <xsd:enumeration value="Invisible" />
+            <xsd:enumeration value="Away" />
+            <xsd:enumeration value="Busy" />
+            <xsd:enumeration value="Phone" />
+            <xsd:enumeration value="Lunch" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:element name="PresenceArgot" type="PresenceArgotType" />
+    <xsd:complexType name="PresenceArgotType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This argot represent generic presence data about an endpoint.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="Availability" type="xsd:int" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    The availability of the endpoint. This attribute indicates 
+                    how fast and reliable communications are to the endpoint.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Responsiveness" type="xsd:int" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    The responsiveness of the endpoint. This attribute indicates 
+                    how quickly the owner of the endpoint is likely to respond.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="UserPreference" type="xsd:int" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    The user's preference for this endpoint. This attribute 
+                    indicates whether this endpoint is the user's preferred 
+                    method of contact.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    
+    <xsd:element name="ConnectableArgot" type="ConnectableArgotType" />
+    <xsd:complexType name="ConnectableArgotType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This argot represents the connectability of an endpoint. If present,
+                it designates a connection on the user's iqAlerts.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ConnectionID" type="iq:IdType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The ID for one or more connection elements on the user's iqAlerts
+                        that are represented by this endpoint.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

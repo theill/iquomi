@@ -1,0 +1,69 @@
+<html>
+<head>
+	<link href="css/xhtml.css" rel="stylesheet" />
+</head>
+
+<body>
+
+<p>
+	Testing
+</p>
+
+<div id="debug" style="background-color: red; height: 32px">
+	asdf
+</div>
+<div id="InformationSummary" style="position: absolute">
+	<img src="gfx/ico.success.gif" id="X" class="Icon" />
+	<div id="TabContentText">
+		<b>fas kflsda jlk</b>
+		<div id="TabDescription">
+			fasdjkljf lksd<br />
+			afsdf kjsadlkf jsdakl
+		</div>
+	</div>
+</div>
+<div>
+	text after
+</div>
+<script type="text/javascript">
+
+	var FadeSteps = 50;
+
+	function hide(id, opacity, height, steps) {
+		var e = document.getElementById(id);
+		
+		e.style.filter = "progid:DXImageTransform.Microsoft.Alpha(opacity=" + opacity + ")";
+		height -= steps;
+//		e.style.height = height;
+//		e.style.top = height;
+		e.style.clip = "rect(0 480 " + (steps * FadeSteps + height) + " 0)";
+//		document.all.debug.innerHTML = height;
+		
+		opacity -= 2;
+		
+		if (opacity > 0) {
+			self.setTimeout("hide('" + id + "', " + opacity + ", " + height + ", " + steps + ")", 10);
+		} else {
+			e.style.display = "none";
+		}
+	}
+	
+	function startFade(id, waitInMillis) {
+		var e = document.getElementById(id);
+		var height = e.offsetHeight;
+		var steps = height / FadeSteps;
+//		alert(height + " - " + steps + " - " + e.offsetTop);
+		
+		e.style.overflow = "hidden";
+		e.style.height = height;
+//		e.style.zIndex = -1;
+		
+//		document.all.X.style.display = "none";
+		
+		self.setTimeout("hide('" + id + "', " + "100" + ", " + 0 + ", " + steps + ")", waitInMillis);
+	}
+	
+	startFade('InformationSummary', 1000);
+</script>
+</body>
+</html>

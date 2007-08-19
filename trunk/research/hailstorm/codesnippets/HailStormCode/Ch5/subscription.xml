@@ -1,0 +1,11 @@
+<subscription changeNumber="3" id = "17" creator=" " 
+    xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core" 
+    xmlns="http://schemas.microsoft.com/hs/2001/10/myContacts">
+ <trigger
+      select="/myContacts"
+      mode="includeData"
+      baseChangeNumber="1">
+  </trigger>
+  <context uri="uuid:32328738787"> </context>
+  <to>hs:myAlerts</to>
+</subscription>

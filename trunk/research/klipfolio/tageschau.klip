@@ -1,0 +1,99 @@
+<!--  COPYRIGHT AND TRADEMARK NOTICE
+
+The Klip File Format is copyright 2001-2002, Serence Inc.
+Klip and assoicated marks are trademarks of Serence Inc.
+All rights reserved.
+
+For details visit http://www.serence.com/site.php?page=legal_tmip
+
+-->
+
+<klip>
+<!--Please note that information in this Klip will be available to the public-->
+
+	<owner>
+		<author>
+			<!--your name-->
+			tagesschau.de
+		</author>
+		<copyright>
+			<!--your copyright notice-->
+			tagesschau.de, Norddeutscher Rundfunk
+		</copyright>
+		<email>
+			<!--your email address-->
+			webmaster@tagesschau.de
+		</email>
+		<web>
+			<!--your web address-->
+			http://www.tagesschau.de
+		</web>
+	</owner>
+
+	<identity>
+		<title>
+			<!--the title of this Klip-->
+			tagesschau.de
+		</title>
+		<version>
+			<!--this Klip's version number-->
+			1.3
+		</version>
+		<lastmodified>
+			<!--the date this Klip was last modified yyyy.mm.dd:hhmm-->
+			2002.09.16:1200
+		</lastmodified>
+		<description>
+			<!--a short description of this Klip-->
+			tagesschau.de bietet die wichtigsten Nachrichten aus den Bereichen Inland, Ausland, Wirtschaft, Kultur und Sport sowie ergänzende Informationen in Text, Bild, Audio und Video.
+		</description>
+		<keywords>
+			<!--a space delimited list of keywords for matching your klip during a search
+			the order of the keywords is relevant no more than 15 keywords will be processed-->
+			Sample Serence Klip News XML Engine RSS Tagesschau ARD tagesschau.de Nachrichten
+		</keywords>
+	</identity>
+
+	<locations>
+		<defaultlink>
+			<!--the url this Klip links to by default-->
+			http://www.tagesschau.de
+		</defaultlink>
+		<contentsource>
+			<!--the url for the KlipFood this Klip uses-->
+			http://www.tagesschau.de/xml/tagesschau-meldungen/0,,,00.xml
+		</contentsource>
+		<icon>
+			<!--the url for this Klip's default 16x16 gif or jpeg icon-->
+		http://www.tagesschau.de/img/klip/tagesschau-logo.gif
+		</icon>
+		<banner>
+			<!--the url for this Klip's 234x60 gif or jpeg banner-->
+        	http://www.tagesschau.de/img/klip/tagesschau_banner.jpg
+		</banner>
+		<help>
+			<!--the url for this Klip's help web page-->
+		</help>
+		<kliplocation>
+			<!--the url where this Klip is stored
+			this is where KlipFolio periodically checks for updates to your Klip-->
+			http://www.tagesschau.de/xml/tagesschau-meldungen/0,,,00.xml
+		</kliplocation>
+	</locations>
+
+	<setup>
+		<refresh>
+			<!--how often, in minutes, this Klip should look for new KlipFood-->
+			60
+		</refresh>
+	</setup>
+
+	<script>
+		// the instructions for processing data
+		// details on how to modify this are coming soon
+		rssEngine = Engines.get ("RSS");
+		rssEngine.process (Setup.get ("contentsource"));
+	</script>
+
+</klip><br />
+<b>Warning</b>:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in <b>/magma/users/u43/serence/public_html/beta/download.php</b> on line <b>77</b><br />

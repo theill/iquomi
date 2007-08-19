@@ -1,0 +1,313 @@
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xdb="urn:schemas-microsoft-com:xdb"
+    xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core"
+    xmlns:mp="http://schemas.microsoft.com/hs/2001/10/myProfile"
+    targetNamespace="http://schemas.microsoft.com/hs/2001/10/myContacts"
+    xmlns="http://schemas.microsoft.com/hs/2001/10/myContacts"
+    elementFormDefault="qualified"
+    version="1.0">
+
+    <xsd:annotation>
+        <xsd:documentation>
+        Schema for .NET Contacts service.
+        Copyright (c) 2001 Microsoft Corporation. All rights reserved.
+        </xsd:documentation>
+
+        <xsd:appinfo>
+            <xdb:blue select="/myContacts"/>
+            <xdb:blue select="/myContacts/*"/>
+            <xdb:blue select="/myContacts/contact/name"/>
+            <xdb:blue select="/myContacts/contact/specialDate"/>
+            <xdb:blue select="/myContacts/contact/picture"/>
+            <xdb:blue select="/myContacts/contact/address"/>
+            <xdb:blue select="/myContacts/contact/telephoneNumber"/>
+            <xdb:blue select="/myContacts/contact/emailAddress"/>
+            <xdb:blue select="/myContacts/contact/webSite"/>
+            <xdb:blue select="/myContacts/contact/workInformation"/>
+            <xdb:blue select="/myContacts/contact/screenName"/>
+            <xdb:blue select="/myContacts/contact/identificationNumber"/>
+            <xdb:blue select="/myContacts/contact/userReference"/>
+            <xdb:blue select="/myContacts/contact/securityCertificate"/>
+
+            <xdb:red select="//@id"/>
+            <xdb:red select="//@creator"/>
+            <xdb:red select="//@changeNumber"/>
+            <xdb:red select="//cat"/>
+            <xdb:red select="//cat/@ref"/>
+
+            <xdb:red select="/myContacts/contact/@synchronize"/>
+            <xdb:red select="/myContacts/contact/gender"/>
+            <xdb:red select="/myContacts/contact/name/givenName"/>
+            <xdb:red select="/myContacts/contact/name/surname"/>
+            <xdb:red select="/myContacts/contact/name/fileAsName"/>
+            <xdb:red select="/myContacts/contact/puid"/>
+            <xdb:red select="/myContacts/contact/$any" />
+            <xdb:red select="/myContacts/contact/name/$any" />
+            <xdb:red select="/myContacts/contact/specialDate/$any" />
+            <xdb:red select="/myContacts/contact/picture/$any" />
+            <xdb:red select="/myContacts/contact/address/$any" />
+            <xdb:red select="/myContacts/contact/emailAddress/$any" />
+            <xdb:red select="/myContacts/contact/webSite/$any" />
+            <xdb:red select="/myContacts/contact/screenName/$any" />
+            <xdb:red select="/myContacts/contact/telephoneNumber/$any" />
+            <xdb:red select="/myContacts/contact/identificationNumber/$any" />
+            <xdb:red select="/myContacts/contact/workInformation/$any" />
+            <xdb:red select="/myContacts/subscription/context/$any" />
+
+            <xdb:red select="/myContacts/contact/emailAddress/email"/>
+            <xdb:red select="/myContacts/contact/screenName/name"/>
+            <xdb:red select="/myContacts/contact/telephoneNumber/number"/>
+            <xdb:red select="//subscription/trigger/@select"/>
+            <xdb:red select="//subscription/trigger/@baseChangeNumber"/>
+
+            <xdb:sqlScript source="myContactsCustomSQL.sql"/>
+
+            <xdb:namespaceMap>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/myContacts" alias="m"/>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/myProfile" alias="mp"/>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/myCalendar" alias="mc"/>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/core" alias="hs"/>
+            </xdb:namespaceMap>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:import namespace="http://schemas.microsoft.com/hs/2001/10/core" schemaLocation="hscommon.xsd"/>
+
+    <xsd:import namespace="http://schemas.microsoft.com/hs/2001/10/myProfile" schemaLocation="myProfile.xsd"/>
+
+    <!--
+    //
+    // myContacts
+    //  - root element for the .NET Contacts service
+    //
+    -->
+    <xsd:element
+        name="myContacts"
+        type="myContactsType"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates the content document for this service. This element
+            establishes a global cache scope for the service and contains other
+            root-level system attributes for this instance of the service.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:complexType
+        name="myContactsType"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element defines the basic myContacts types.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="contact"
+                type="contactType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+
+                <xsd:annotation>
+                    <xsd:documentation>
+                    A contact
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="subscription"
+                type="hs:subscriptionType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+        </xsd:sequence>
+
+        <!-- standard attributes for the root element -->
+        <xsd:attributeGroup ref="hs:documentRootAttributeGroup"/>
+
+    </xsd:complexType>
+
+    <xsd:complexType name="contactType">
+        <xsd:sequence>
+
+            <xsd:element
+                name="cat"
+                type="hs:catType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="name"
+                type="mp:nameType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+            </xsd:element>
+
+            <xsd:element
+                name="puid"
+                type="hs:puidType"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+            </xsd:element>
+
+            <xsd:element
+                name="specialDate"
+                type="mp:specialDateBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+            <xsd:element
+                name="picture"
+                type="mp:pictureBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+            <xsd:element
+                name="gender"
+                type="mp:genderType"
+                minOccurs="0"
+                maxOccurs="1"
+            />
+
+            <xsd:element
+                name="notes"
+                type="hs:longText"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element contains free-form notes related to this contact.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="address"
+                type="mp:addressBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+
+            </xsd:element>
+
+            <xsd:element
+                name="emailAddress"
+                type="mp:emailAddressBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+
+            </xsd:element>
+
+
+            <xsd:element
+                name="webSite"
+                type="mp:webSiteBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+
+            </xsd:element>
+
+            <xsd:element
+                name="screenName"
+                type="mp:screenNameBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="telephoneNumber"
+                type="mp:telephoneNumberBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+
+            </xsd:element>
+
+            <xsd:element
+                name="identificationNumber"
+                type="mp:identificationNumberBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+
+            <xsd:element
+                name="workInformation"
+                type="mp:workInformationBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                >
+
+            </xsd:element>
+
+            <xsd:element
+                name="userReference"
+                type="mp:categorizedUserReferenceBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="securityCertificate"
+                type="mp:securityCertificateBlueType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+        </xsd:sequence>
+
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+
+        <xsd:attribute
+            name="synchronize"
+            use="required"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This attribute controls/enables synchronization
+                of this contact node. When enabled (value of "yes"),
+                .NET My Services will attempt to keep the contact
+                nodes in sync with the reference data stored in the referenced
+                PUID's myProfile default store. This is subject
+                to permission, of course. A value of "no" indicates that the system
+                should not attempt to keep this contact node in sync.
+                </xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="yes"/>
+                    <xsd:enumeration value="no"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+
+    </xsd:complexType>
+
+</xsd:schema>

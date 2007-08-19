@@ -1,0 +1,184 @@
+//////////////////////////////////////////////////////////////////////////////////
+//myCalendar
+//////////////////////////////////////////////////////////////////////////////////
+
+<insertRequest select="/" xmlns="http://schemas.microsoft.com/hs/2001/10/core">
+<event xmlns="http://schemas.microsoft.com/hs/2001/10/myCalendar">
+<body>
+<title xml:lang="en">get oil changed</title>
+<startTime>2002-01-18T15:23:17.0000000-07:00</startTime>
+<endTime>2002-01-18T16:23:17.0000000-07:00</endTime>
+</body>
+</event>
+<event xmlns="http://schemas.microsoft.com/hs/2001/10/myCalendar">
+<body>
+<title xml:lang="en">dallas .NET user group meeting</title>
+<startTime>2002-01-17T15:23:17.0000000-07:00</startTime>
+<endTime>2002-01-17T16:23:17.0000000-07:00</endTime>
+</body>
+</event>
+<event xmlns="http://schemas.microsoft.com/hs/2001/10/myCalendar">
+<body>
+<title xml:lang="en">haircut</title>
+<startTime>2002-01-19T15:23:17.0000000-07:00</startTime>
+<endTime>2002-01-19T16:23:17.0000000-07:00</endTime>
+</body>
+</event>
+<event xmlns="http://schemas.microsoft.com/hs/2001/10/myCalendar">
+<body>
+<title xml:lang="en">hot date</title>
+<startTime>2002-01-20T15:23:17.0000000-07:00</startTime>
+<endTime>2002-01-20T16:23:17.0000000-07:00</endTime>
+</body>
+</event>
+</insertRequest>
+
+//generic
+<queryRequest xmlns="http://schemas.microsoft.com/hs/2001/10/core">
+<xpQuery select="/m:myCalendar/m:event" />
+</queryRequest>
+
+//command line
+<m:getCalendarDaysRequest 
+  xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core" 
+  xmlns:m="http://schemas.microsoft.com/hs/2001/10/myCalendar">
+  <m:startTime>2002-01-14T15:23:17.0000000-07:00</m:startTime>
+  <m:endTime>2002-01-21T16:23:17.0000000-07:00</m:endTime>
+</m:getCalendarDaysRequest>
+
+//web
+<getCalendarDaysRequest 
+  xmlns="http://schemas.microsoft.com/hs/2001/10/myCalendar">
+  <startTime>2002-01-14T15:23:17.0000000-07:00</startTime>
+  <endTime>2002-01-21T16:23:17.0000000-07:00</endTime>
+</getCalendarDaysRequest>
+
+<deleteRequest select="/m:myCalendar/m:event" xmlns="http://schemas.microsoft.com/hs/2001/10/core" />
+
+//////////////////////////////////////////////////////////////////////////////////
+//myContacts
+//////////////////////////////////////////////////////////////////////////////////
+
+<insertRequest select="/" xmlns="http://schemas.microsoft.com/hs/2001/10/core">
+<contact synchronize="no" xmlns="http://schemas.microsoft.com/hs/2001/10/myContacts">
+<name>
+<givenName xml:lang="en" xmlns="http://schemas.microsoft.com/hs/2001/10/myProfile">casey</givenName>
+<surname xml:lang="en" xmlns="http://schemas.microsoft.com/hs/2001/10/myProfile">chesnut</surname>
+</name>
+<emailAddress>
+<email xmlns="http://schemas.microsoft.com/hs/2001/10/myProfile">casey@brains-N-brawn.com</email>
+</emailAddress>
+<screenName>
+<name xml:lang="en" xmlns="http://schemas.microsoft.com/hs/2001/10/myProfile">kcchesnut@hotmail.com</name>
+</screenName>
+<telephoneNumber>
+<nationalCode xmlns="http://schemas.microsoft.com/hs/2001/10/core">214</nationalCode>
+<number xmlns="http://schemas.microsoft.com/hs/2001/10/core">2821556</number>
+</telephoneNumber>
+</contact>
+<contact synchronize="no" xmlns="http://schemas.microsoft.com/hs/2001/10/myContacts">
+<name>
+<givenName xml:lang="en" xmlns="http://schemas.microsoft.com/hs/2001/10/myProfile">jefrem</givenName>
+<surname xml:lang="en" xmlns="http://schemas.microsoft.com/hs/2001/10/myProfile">iwaniw</surname>
+</name>
+<emailAddress>
+<email xmlns="http://schemas.microsoft.com/hs/2001/10/myProfile">jiwaniw@iigo.com</email>
+</emailAddress>
+<screenName>
+<name xml:lang="en" xmlns="http://schemas.microsoft.com/hs/2001/10/myProfile">jiwaniw@hotmail.com</name>
+</screenName>
+<telephoneNumber>
+<nationalCode xmlns="http://schemas.microsoft.com/hs/2001/10/core">817</nationalCode>
+<number xmlns="http://schemas.microsoft.com/hs/2001/10/core">6149729</number>
+</telephoneNumber>
+</contact>
+</insertRequest>
+
+//value
+<queryRequest 
+  xmlns="http://schemas.microsoft.com/hs/2001/10/core" 
+  xmlns:mc="http://schemas.microsoft.com/hs/2001/10/myContacts"
+  xmlns:mp="http://schemas.microsoft.com/hs/2001/10/myProfile">
+  <xpQuery select="/mc:myContacts/mc:contact" />
+  <xpQuery select="/mc:myContacts/mc:contact[./mc:name/mp:surname='chesnut']" />
+</queryRequest>
+
+//substring
+<queryRequest 
+  xmlns="http://schemas.microsoft.com/hs/2001/10/core" 
+  xmlns:mc="http://schemas.microsoft.com/hs/2001/10/myContacts"
+  xmlns:mp="http://schemas.microsoft.com/hs/2001/10/myProfile">
+  <xpQuery select="/mc:myContacts/mc:contact[substring(string(./mc:name/mp:surname),1,1) = 'c']" />
+</queryRequest>
+
+<deleteRequest select="/m:myContacts/m:contact" xmlns="http://schemas.microsoft.com/hs/2001/10/core" />
+
+//////////////////////////////////////////////////////////////////////////////////
+//myLists
+//////////////////////////////////////////////////////////////////////////////////
+
+<insertRequest select="/" xmlns="http://schemas.microsoft.com/hs/2001/10/core">
+<list idName="to do" xmlns="http://schemas.microsoft.com/hs/2001/10/myLists">
+<title xml:lang="en">to do</title>
+</list>
+<list idName="grocery" xmlns="http://schemas.microsoft.com/hs/2001/10/myLists">
+<title xml:lang="en">grocery</title>
+</list>
+</insertRequest>
+
+//returned
+<m:list idName="to do" id="D0FF71AF-74F4-4D60-A1E5-718A5B5B04A8">
+<m:list idName="grocery" id="9CA876CA-0B8C-454B-B6F7-EDA428FDC441">
+
+<insertRequest select="/" xmlns="http://schemas.microsoft.com/hs/2001/10/core">
+<item xmlns="http://schemas.microsoft.com/hs/2001/10/myLists">
+<title xml:lang="en">workout</title>
+<listRef order="1" ref="D0FF71AF-74F4-4D60-A1E5-718A5B5B04A8"/>
+</item>
+<item xmlns="http://schemas.microsoft.com/hs/2001/10/myLists">
+<title xml:lang="en">get a job</title>
+<listRef order="2" ref="D0FF71AF-74F4-4D60-A1E5-718A5B5B04A8"/>
+</item>
+<item xmlns="http://schemas.microsoft.com/hs/2001/10/myLists">
+<title xml:lang="en">code</title>
+<listRef order="3" ref="D0FF71AF-74F4-4D60-A1E5-718A5B5B04A8"/>
+</item>
+<item xmlns="http://schemas.microsoft.com/hs/2001/10/myLists">
+<title xml:lang="en">milk</title>
+<listRef order="1" ref="9CA876CA-0B8C-454B-B6F7-EDA428FDC441"/>
+</item>
+<item xmlns="http://schemas.microsoft.com/hs/2001/10/myLists">
+<title xml:lang="en">cereal</title>
+<listRef order="2" ref="9CA876CA-0B8C-454B-B6F7-EDA428FDC441"/>
+</item>
+<item xmlns="http://schemas.microsoft.com/hs/2001/10/myLists">
+<title xml:lang="en">v8 juice</title>
+<listRef order="3" ref="9CA876CA-0B8C-454B-B6F7-EDA428FDC441"/>
+</item>
+</insertRequest>
+
+<queryRequest xmlns="http://schemas.microsoft.com/hs/2001/10/core">
+<xpQuery select="/m:myLists/m:list" />
+<xpQuery select="/m:myLists/m:item[./m:listRef/@ref='9CA876CA-0B8C-454B-B6F7-EDA428FDC441']" />
+</queryRequest>
+
+<deleteRequest select="/m:myLists/m:list" xmlns="http://schemas.microsoft.com/hs/2001/10/core" />
+<deleteRequest select="/m:myLists/m:item" xmlns="http://schemas.microsoft.com/hs/2001/10/core" />
+
+//////////////////////////////////////////////////////////////////////////////////
+//myFavorites
+//////////////////////////////////////////////////////////////////////////////////
+
+<insertRequest select="/" xmlns="http://schemas.microsoft.com/hs/2001/10/core">
+   <favoriteWebSite xmlns="http://schemas.microsoft.com/hs/2001/10/myFavoriteWebSites">
+      <cat ref="system" />
+      <title xml:lang="en">brains-N-brawn.com</title>
+      <url>http://www.brains-N-brawn.com</url>
+   </favoriteWebSite>
+</insertRequest>
+
+<queryRequest xmlns="http://schemas.microsoft.com/hs/2001/10/core">
+   <xpQuery select="/m:myFavoriteWebSites/m:favoriteWebSite" />
+</queryRequest>
+
+<deleteRequest select="/m:myFavorites/m:favoriteWebSite" xmlns="http://schemas.microsoft.com/hs/2001/10/core" />

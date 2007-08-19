@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Commanigy.Iquomi.Api.Properties" GeneratedClassName="Settings">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings>
+    <Setting Name="Commanigy_Iquomi_Services_Services_IqAlerts" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:4081/webservices/IqAlerts.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s3="http://schemas.iquomi.com/2004/01/iqAlerts/Notify.xsd" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:yml="http://www.contoso.com/yml" xmlns:s1="http://schemas.iquomi.com/2004/01/iqAlerts" xmlns:s4="http://services.iquomi.com/2004/01/core" xmlns:tns="http://services.iquomi.com/2004/01/iqAlerts" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://schemas.iquomi.com/2004/01/core" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://services.iquomi.com/2004/01/iqAlerts" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">IqAlerts</wsdl:documentation>
+  <wsdl:types>
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s2:TheillTest />
+    <s:schema elementFormDefault="qualified" targetNamespace="http://services.iquomi.com/2004/01/iqAlerts">
+      <s:import namespace="http://schemas.iquomi.com/2004/01/iqAlerts" />
+      <s:import namespace="http://schemas.iquomi.com/2004/01/iqAlerts/Notify.xsd" />
+      <s:import namespace="http://schemas.iquomi.com/2004/01/core" />
+      <s:element name="Void">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="a" type="s1:IqAlertsType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VoidResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Notify">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s3:Notify" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NotifyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s3:NotifyResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DebugListUsers">
+        <s:complexType />
+      </s:element>
+      <s:element name="DebugListUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DebugListUsersResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Insert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:InsertRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:InsertResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:DeleteRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:DeleteResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Replace">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:ReplaceRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReplaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:ReplaceResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:UpdateRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:UpdateResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Query">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:QueryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:QueryResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:ListenTrigger" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListenResponseResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.iquomi.com/2004/01/iqAlerts">
+      <s:import namespace="http://schemas.iquomi.com/2004/01/core" />
+      <s:complexType name="IqAlertsType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Stream" type="s1:StreamType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Connection" type="s1:ConnectionType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Subscription" type="s2:SubscriptionType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StreamType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Class" type="s1:StreamClassType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Expiration" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Position" type="s1:StreamPositionType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ArgotQuery" type="s1:NotificationQueryType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Argot" type="s1:ArgotType" />
+        </s:sequence>
+        <s:attribute ref="s2:ChangeNumber" />
+        <s:attribute ref="s2:Id" />
+        <s:attribute ref="s2:Creator" />
+      </s:complexType>
+      <s:simpleType name="StreamClassType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Buffer" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="StreamPositionType">
+        <s:restriction base="s:string">
+          <s:enumeration value="AtFront" />
+          <s:enumeration value="AtEnd" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="NotificationQueryType">
+        <s:restriction base="s:string">
+          <s:enumeration value="*" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArgotType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+        </s:sequence>
+        <s:attribute name="ArgotURI" type="s:anyURI" />
+      </s:complexType>
+      <s:complexType name="ConnectionType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Class" type="s1:ConnectionClassType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s1:ConnectionStatusType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Characteristics" type="s1:ConnectionCharacteristicsType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Expiration" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ArgotQuery" type="s1:NotificationQueryType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Argot" type="s1:ArgotType" />
+        </s:sequence>
+        <s:attribute ref="s2:ChangeNumber" />
+        <s:attribute ref="s2:Id" />
+        <s:attribute ref="s2:Creator" />
+      </s:complexType>
+      <s:simpleType name="ConnectionClassType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Push_http" />
+          <s:enumeration value="Pull_http" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ConnectionStatusType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Active" />
+          <s:enumeration value="Inactive" />
+          <s:enumeration value="Busy" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ConnectionCharacteristicsType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Reliable" />
+          <s:enumeration value="Unreliable" />
+          <s:enumeration value="ConnectionPoll" />
+          <s:enumeration value="UserAgentPoll" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.iquomi.com/2004/01/core">
+      <s:attribute name="ChangeNumber" type="s:nonNegativeInteger" />
+      <s:attribute name="Id" type="s:string" />
+      <s:attribute name="Creator" type="s:hexBinary" />
+      <s:complexType name="SubscriptionType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Trigger">
+            <s:complexType>
+              <s:attribute form="qualified" name="Select" type="s:string" />
+              <s:attribute form="qualified" name="Mode" use="required">
+                <s:simpleType>
+                  <s:restriction base="s:string">
+                    <s:enumeration value="IncludeData" />
+                    <s:enumeration value="ExcludeData" />
+                  </s:restriction>
+                </s:simpleType>
+              </s:attribute>
+              <s:attribute form="qualified" name="BaseChangeNumber" type="s:nonNegativeInteger" />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="ExpiresAt" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Context">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" />
+              </s:sequence>
+              <s:attribute form="qualified" name="Uri" type="s:anyURI" />
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="To" type="s:anyURI" />
+        </s:sequence>
+        <s:attribute form="qualified" name="ChangeNumber" type="s:nonNegativeInteger" />
+        <s:attribute form="qualified" name="Id" type="s:string" />
+        <s:attribute form="qualified" name="Creator" type="s:hexBinary" />
+      </s:complexType>
+      <s:complexType name="RequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Key">
+            <s:complexType>
+              <s:attribute name="Puid" type="s:string" />
+              <s:attribute name="Instance" type="s:string" />
+              <s:attribute name="Cluster" type="s:string" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+        <s:attribute name="Service" type="s:string" />
+        <s:attribute name="Document" use="required">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="Content" />
+              <s:enumeration value="RoleList" />
+              <s:enumeration value="NotifyList" />
+              <s:enumeration value="Policy" />
+              <s:enumeration value="System" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+        <s:attribute name="Method" use="required">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="Insert" />
+              <s:enumeration value="Delete" />
+              <s:enumeration value="Replace" />
+              <s:enumeration value="Update" />
+              <s:enumeration value="Query" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+        <s:attribute name="GenResponse" use="required">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="Always" />
+              <s:enumeration value="Never" />
+              <s:enumeration value="FaultOnly" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+      </s:complexType>
+      <s:element name="InsertRequest" type="s2:InsertRequestType" />
+      <s:complexType name="InsertRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Options" type="s2:InsertRequestOptionsType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Attributes" type="s2:RedAttributeType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="1" name="Items" type="s2:ArrayOfAnyType" />
+        </s:sequence>
+        <s:attribute name="Select" type="s:string" />
+        <s:attribute name="UseClientIds" type="s:boolean" />
+        <s:attribute name="MinOccurs" type="s:int" />
+        <s:attribute name="MaxOccurs" type="s:int" />
+      </s:complexType>
+      <s:complexType name="InsertRequestOptionsType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RedAttributeType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InsertResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NewBlueId" type="s2:NewBlueIdType" />
+        </s:sequence>
+        <s:attribute name="NewChangeNumber" type="s:nonNegativeInteger" />
+        <s:attribute name="SelectedNodeCount" type="s:int" />
+        <s:attribute name="Message" type="s:string" />
+        <s:attribute name="Status" type="s2:ResponseStatus" use="required" />
+      </s:complexType>
+      <s:complexType name="NewBlueIdType">
+        <s:attribute name="Id" type="s:string" />
+      </s:complexType>
+      <s:simpleType name="ResponseStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="Failure" />
+          <s:enumeration value="Rollback" />
+          <s:enumeration value="NotAttempted" />
+          <s:enumeration value="AccessDenied" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="InsertResponse" type="s2:InsertResponseType" />
+      <s:element name="DeleteRequest" type="s2:DeleteRequestType" />
+      <s:complexType name="DeleteRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Options" type="s2:DeleteRequestOptionsType" />
+        </s:sequence>
+        <s:attribute name="Select" type="s:string" />
+        <s:attribute name="MinOccurs" type="s:int" />
+        <s:attribute name="MaxOccurs" type="s:int" />
+      </s:complexType>
+      <s:complexType name="DeleteRequestOptionsType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeleteResponseType">
+        <s:attribute name="NewChangeNumber" type="s:nonNegativeInteger" />
+        <s:attribute name="SelectedNodeCount" type="s:int" />
+        <s:attribute name="Message" type="s:string" />
+        <s:attribute name="Status" type="s2:ResponseStatus" use="required" />
+      </s:complexType>
+      <s:element name="DeleteResponse" type="s2:DeleteResponseType" />
+      <s:element name="ReplaceRequest" type="s2:ReplaceRequestType" />
+      <s:complexType name="ReplaceRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Options" type="s2:ReplaceRequestOptionsType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Attributes" type="s2:RedAttributeType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="1" name="Items" type="s2:ArrayOfAnyType" />
+        </s:sequence>
+        <s:attribute name="Select" type="s:string" />
+        <s:attribute name="UseClientIds" type="s:boolean" />
+        <s:attribute name="MinOccurs" type="s:int" />
+        <s:attribute name="MaxOccurs" type="s:int" />
+      </s:complexType>
+      <s:complexType name="ReplaceRequestOptionsType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ReplaceResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NewBlueId" type="s2:NewBlueIdType" />
+        </s:sequence>
+        <s:attribute name="NewChangeNumber" type="s:nonNegativeInteger" />
+        <s:attribute name="SelectedNodeCount" type="s:int" />
+        <s:attribute name="Message" type="s:string" />
+        <s:attribute name="Status" type="s2:ResponseStatus" use="required" />
+      </s:complexType>
+      <s:element name="ReplaceResponse" type="s2:ReplaceResponseType" />
+      <s:element name="UpdateRequest" type="s2:UpdateRequestType" />
+      <s:complexType name="UpdateRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UpdateBlock" type="s2:UpdateBlockType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UpdateBlockType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InsertRequest" type="s2:InsertRequestType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeleteRequest" type="s2:DeleteRequestType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReplaceRequest" type="s2:ReplaceRequestType" />
+        </s:sequence>
+        <s:attribute name="Select" type="s:string" />
+        <s:attribute name="OnError" use="required">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="RollbackBlockAndFail" />
+              <s:enumeration value="RollbackBlockAndContinue" />
+              <s:enumeration value="Ignore" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+      </s:complexType>
+      <s:complexType name="UpdateResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UpdateBlockStatus" type="s2:UpdateBlockStatusType" />
+        </s:sequence>
+        <s:attribute name="NewChangeNumber" type="s:nonNegativeInteger" />
+      </s:complexType>
+      <s:complexType name="UpdateBlockStatusType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InsertResponse" type="s2:InsertResponseType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeleteResponse" type="s2:DeleteResponseType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReplaceResponse" type="s2:ReplaceResponseType" />
+        </s:sequence>
+        <s:attribute name="SelectedNodeCount" type="s:int" />
+        <s:attribute name="Message" type="s:string" />
+        <s:attribute name="Status" type="s2:ResponseStatus" use="required" />
+      </s:complexType>
+      <s:element name="UpdateResponse" type="s2:UpdateResponseType" />
+      <s:element name="QueryRequest" type="s2:QueryRequestType" />
+      <s:complexType name="QueryRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="XpQuery" type="s2:XpQueryType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ChangeQuery" type="s2:ChangeQueryType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="XpQueryType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Options" type="s2:QueryOptionsType" />
+        </s:sequence>
+        <s:attribute name="Select" type="s:string" />
+        <s:attribute name="MinOccurs" type="s:int" />
+        <s:attribute name="MaxOccurs" type="s:int" />
+      </s:complexType>
+      <s:complexType name="QueryOptionsType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Sort" type="s2:SortType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Range" type="s2:RangeType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shape" type="s2:ShapeType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SortType">
+        <s:attribute default="Ascending" name="Direction">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="Ascending" />
+              <s:enumeration value="Descending" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+        <s:attribute name="Key" type="s:string" />
+      </s:complexType>
+      <s:complexType name="RangeType">
+        <s:attribute name="First" type="s:string" />
+        <s:attribute name="Count" type="s:int" use="required" />
+      </s:complexType>
+      <s:complexType name="ShapeType">
+        <s:attribute form="qualified" name="Type" use="required">
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="Include" />
+              <s:enumeration value="Exclude" />
+            </s:restriction>
+          </s:simpleType>
+        </s:attribute>
+        <s:attribute form="qualified" name="Select" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ChangeQueryType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Options" type="s2:QueryOptionsType" />
+        </s:sequence>
+        <s:attribute name="Select" type="s:string" />
+        <s:attribute name="BaseChangeNumber" type="s:nonNegativeInteger" />
+      </s:complexType>
+      <s:complexType name="QueryResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="XpQueryResponse" type="s2:XpQueryResponseType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ChangeQueryResponse" type="s2:ChangeQueryResponseType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="XpQueryResponseType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="1" name="Items" type="s2:ArrayOfAnyType" />
+        </s:sequence>
+        <s:attribute name="SelectedNodeCount" type="s:int" />
+        <s:attribute name="Message" type="s:string" />
+        <s:attribute name="Status" type="s2:ResponseStatus" use="required" />
+      </s:complexType>
+      <s:complexType name="ChangeQueryResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ChangedBlue" type="s2:ChangedBlueType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeletedBlue" type="s2:DeletedBlueType" />
+        </s:sequence>
+        <s:attribute name="BaseChangeNumber" type="s:nonNegativeInteger" />
+        <s:attribute name="SelectedNodeCount" type="s:int" />
+        <s:attribute name="Message" type="s:string" />
+        <s:attribute name="Status" type="s2:ResponseStatus" use="required" />
+      </s:complexType>
+      <s:complexType name="ChangedBlueType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+          <s:element minOccurs="0" maxOccurs="1" name="Items" type="s2:ArrayOfAnyType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeletedBlueType">
+        <s:attribute name="Id" type="s:string" />
+      </s:complexType>
+      <s:element name="QueryResponse" type="s2:QueryResponseType" />
+      <s:element name="ListenTrigger" type="s2:ListenTriggerType" />
+      <s:complexType name="ListenTriggerType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TriggerData">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="ChangedBlue" type="s2:ChangedBlueType" />
+                <s:element minOccurs="0" maxOccurs="1" name="DeletedBlue" type="s2:DeletedBlueType" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="Context">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" />
+                <s:element minOccurs="0" maxOccurs="1" name="Items" type="s2:ArrayOfAnyType" />
+              </s:sequence>
+              <s:attribute name="Uri" type="s:anyURI" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.iquomi.com/2004/01/iqAlerts/Notify.xsd">
+      <s:element name="Notify" type="s3:NotifyType" />
+      <s:complexType name="NotifyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s3:ViewType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Meta" type="s3:MetaType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ViewType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ContentType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceHint" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MetaType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ActionUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BaseUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IconUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubscriptionUrl" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="NotifyResponse" type="s3:NotifyResponseType" />
+      <s:complexType name="NotifyResponseType">
+        <s:attribute name="Status" type="s3:ResponseStatusType" use="required" />
+      </s:complexType>
+      <s:simpleType name="ResponseStatusType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="Failure" />
+          <s:enumeration value="Rollback" />
+          <s:enumeration value="NotAttempted" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://services.iquomi.com/2004/01/core">
+      <s:import namespace="http://schemas.iquomi.com/2004/01/core" />
+      <s:element name="SoapAuthenticationType" type="s4:SoapAuthenticationType" />
+      <s:complexType name="SoapAuthenticationType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Iqid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="SoapRequestType" type="s4:SoapRequestType" />
+      <s:complexType name="SoapRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s2:RequestType" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="VoidSoapIn">
+    <wsdl:part name="parameters" element="tns:Void" />
+  </wsdl:message>
+  <wsdl:message name="VoidSoapOut">
+    <wsdl:part name="parameters" element="tns:VoidResponse" />
+  </wsdl:message>
+  <wsdl:message name="NotifySoapIn">
+    <wsdl:part name="parameters" element="tns:Notify" />
+  </wsdl:message>
+  <wsdl:message name="NotifySoapOut">
+    <wsdl:part name="parameters" element="tns:NotifyResponse" />
+  </wsdl:message>
+  <wsdl:message name="NotifySoapAuthenticationType">
+    <wsdl:part name="SoapAuthenticationType" element="s4:SoapAuthenticationType" />
+  </wsdl:message>
+  <wsdl:message name="NotifySoapRequestType">
+    <wsdl:part name="SoapRequestType" element="s4:SoapRequestType" />
+  </wsdl:message>
+  <wsdl:message name="DebugListUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:DebugListUsers" />
+  </wsdl:message>
+  <wsdl:message name="DebugListUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:DebugListUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert" />
+  </wsdl:message>
+  <wsdl:message name="InsertSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertSoapAuthenticationType">
+    <wsdl:part name="SoapAuthenticationType" element="s4:SoapAuthenticationType" />
+  </wsdl:message>
+  <wsdl:message name="InsertSoapRequestType">
+    <wsdl:part name="SoapRequestType" element="s4:SoapRequestType" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapAuthenticationType">
+    <wsdl:part name="SoapAuthenticationType" element="s4:SoapAuthenticationType" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapRequestType">
+    <wsdl:part name="SoapRequestType" element="s4:SoapRequestType" />
+  </wsdl:message>
+  <wsdl:message name="ReplaceSoapIn">
+    <wsdl:part name="parameters" element="tns:Replace" />
+  </wsdl:message>
+  <wsdl:message name="ReplaceSoapOut">
+    <wsdl:part name="parameters" element="tns:ReplaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReplaceSoapAuthenticationType">
+    <wsdl:part name="SoapAuthenticationType" element="s4:SoapAuthenticationType" />
+  </wsdl:message>
+  <wsdl:message name="ReplaceSoapRequestType">
+    <wsdl:part name="SoapRequestType" element="s4:SoapRequestType" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapAuthenticationType">
+    <wsdl:part name="SoapAuthenticationType" element="s4:SoapAuthenticationType" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapRequestType">
+    <wsdl:part name="SoapRequestType" element="s4:SoapRequestType" />
+  </wsdl:message>
+  <wsdl:message name="QuerySoapIn">
+    <wsdl:part name="parameters" element="tns:Query" />
+  </wsdl:message>
+  <wsdl:message name="QuerySoapOut">
+    <wsdl:part name="parameters" element="tns:QueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="QuerySoapAuthenticationType">
+    <wsdl:part name="SoapAuthenticationType" element="s4:SoapAuthenticationType" />
+  </wsdl:message>
+  <wsdl:message name="QuerySoapRequestType">
+    <wsdl:part name="SoapRequestType" element="s4:SoapRequestType" />
+  </wsdl:message>
+  <wsdl:message name="ListenResponseSoapIn">
+    <wsdl:part name="parameters" element="tns:ListenResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListenResponseSoapOut">
+    <wsdl:part name="parameters" element="tns:ListenResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListenResponseSoapAuthenticationType">
+    <wsdl:part name="SoapAuthenticationType" element="s4:SoapAuthenticationType" />
+  </wsdl:message>
+  <wsdl:message name="ListenResponseSoapRequestType">
+    <wsdl:part name="SoapRequestType" element="s4:SoapRequestType" />
+  </wsdl:message>
+  <wsdl:portType name="IqAlertsSoap">
+    <wsdl:operation name="Void">
+      <wsdl:input message="tns:VoidSoapIn" />
+      <wsdl:output message="tns:VoidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Notify">
+      <wsdl:input message="tns:NotifySoapIn" />
+      <wsdl:output message="tns:NotifySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DebugListUsers">
+      <wsdl:input message="tns:DebugListUsersSoapIn" />
+      <wsdl:output message="tns:DebugListUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert">
+      <wsdl:input message="tns:InsertSoapIn" />
+      <wsdl:output message="tns:InsertSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input message="tns:DeleteSoapIn" />
+      <wsdl:output message="tns:DeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Replace">
+      <wsdl:input message="tns:ReplaceSoapIn" />
+      <wsdl:output message="tns:ReplaceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input message="tns:UpdateSoapIn" />
+      <wsdl:output message="tns:UpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <wsdl:input message="tns:QuerySoapIn" />
+      <wsdl:output message="tns:QuerySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListenResponse">
+      <wsdl:input message="tns:ListenResponseSoapIn" />
+      <wsdl:output message="tns:ListenResponseSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IqAlertsSoap" type="tns:IqAlertsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Void">
+      <soap:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/Void" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Notify">
+      <soap:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/Notify" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:NotifySoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap:header message="tns:NotifySoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DebugListUsers">
+      <soap:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/DebugListUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert">
+      <soap:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/Insert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:InsertSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap:header message="tns:InsertSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DeleteSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap:header message="tns:DeleteSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Replace">
+      <soap:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/Replace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ReplaceSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap:header message="tns:ReplaceSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap:header message="tns:UpdateSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <soap:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/Query" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:QuerySoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap:header message="tns:QuerySoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListenResponse">
+      <soap:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/ListenResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ListenResponseSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap:header message="tns:ListenResponseSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IqAlertsSoap12" type="tns:IqAlertsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Void">
+      <soap12:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/Void" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Notify">
+      <soap12:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/Notify" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:NotifySoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap12:header message="tns:NotifySoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DebugListUsers">
+      <soap12:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/DebugListUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert">
+      <soap12:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/Insert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InsertSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap12:header message="tns:InsertSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap12:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DeleteSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap12:header message="tns:DeleteSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Replace">
+      <soap12:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/Replace" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ReplaceSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap12:header message="tns:ReplaceSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap12:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/Update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap12:header message="tns:UpdateSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <soap12:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/Query" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:QuerySoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap12:header message="tns:QuerySoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListenResponse">
+      <soap12:operation soapAction="http://services.iquomi.com/2004/01/iqAlerts/ListenResponse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ListenResponseSoapAuthenticationType" part="SoapAuthenticationType" use="literal" />
+        <soap12:header message="tns:ListenResponseSoapRequestType" part="SoapRequestType" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IqAlerts">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">IqAlerts</wsdl:documentation>
+    <wsdl:port name="IqAlertsSoap" binding="tns:IqAlertsSoap">
+      <soap:address location="http://localhost:4081/webservices/iqalerts.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IqAlertsSoap12" binding="tns:IqAlertsSoap12">
+      <soap12:address location="http://localhost:4081/webservices/iqalerts.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,861 @@
+<html><head><title>XML Magazine - A Journey Through .Net My Services</title><!-- Start META Tags -->
+    
+
+    
+<meta name="Keywords" content="XML &amp; Web Services, Global XML Web Services Architecture, GXA, HailStorm, HSDL, .Net Calendar,  .Net My Passport, .Net Profile, .Net My Services, .Net Wallet, SOAP, Visual Studio .Net, WSDL, XPath">
+<meta name="DESCRIPTION" content="Let users access data through any system by employing the .Net My Services SDK to build  user-centric Web services.">
+	  <meta name="Issue" content="April/May 2002"><!-- End META Tags -->
+    
+
+    <link rel="stylesheet" type="text/css" href="default_pf.aspx_files/global.css"><!-- Start Page Number Function --><!-----------------------------------------------------------------
+      This function builds the numbering scheme for multipage features.
+      It takes 2 parameters:
+      
+      currentPage  the page you are currently on (will not have a link)
+      totalPages   the total number of pages in this feature
+
+      
+      Usage Example:
+      
+      <script language="javascript">
+        buildPageNumbers(7, 10)
+      </script>
+    ------------------------------------------------------------------>
+
+    
+        
+
+    <style type="text/css">
+    a.buildpagenumbersunderline
+    {
+      font: 10pt arial;
+      color: #003399;
+      text-decoration: underline
+    } 
+    
+    .buildpagenumbersbold
+    {
+      font: 10pt arial;
+      font-weight: bold;
+      color: #000000;
+      text-decoration: none
+    } 
+    </style>
+
+    <script language="javascript">
+      function buildPageNumbers(currentPage, totalPages)
+      {
+        <!-- If there is a previous page, display it -->
+        if(currentPage!=1)
+        { 
+          if (currentPage!=2)
+          {
+            document.write("<a href='page" + (currentPage-1) + ".asp' class='buildpagenumbersunderline'>Previous</a> ")
+          }
+          else
+          {
+            document.write("<a href='default.asp' class='buildpagenumbersunderline'>Previous</a> ")
+          }
+        }
+
+        <!-- Loop through the pages and build links -->
+        for(i=1; i<=totalPages; i++)
+        {
+          if (i==currentPage)
+          {
+            document.write("<span class='buildpagenumbersbold'>" + i + "</span> ")
+          }
+          else if (i!=1)
+          {
+            document.write("<a href='page" + i + ".asp' class='buildpagenumbersunderline'>" + i + "</a> ")
+          }
+          else
+          {
+            document.write("<a href='default.asp' class='buildpagenumbersunderline'>" + i + "</a> ")
+          }
+        } 
+
+        <!-- If there is a next page, display it -->
+        if(currentPage!=totalPages)
+        { 
+          document.write("<a href='page" + (currentPage+1) + ".asp' class='buildpagenumbersunderline'>Next</a>")
+        }
+      }      
+    </script><!-- End Page Number Function -->
+    
+
+    <script language="JavaScript">
+    <!-- hide JavaScript
+    function openWindowRes()
+    {
+      popupWin = window.open('popup1.aspx', 'popup1', 'scrollbars,resizable,width=512,height=410')
+    }
+
+	 function openWindow1()
+    {
+      popupWin = window.open('listing1.aspx', 'Listing1', 'scrollbars,resizable,width=640,height=480')
+    }
+	
+	 function openWindow2()
+    {
+      popupWin = window.open('listing2.aspx', 'Listing2', 'scrollbars,resizable,width=640,height=480')
+    }
+	
+	 function openWindow3()
+    {
+      popupWin = window.open('listing3.aspx', 'Listing3', 'scrollbars,resizable,width=640,height=480')
+    }
+	
+	 function openWindow4()
+    {
+      popupWin = window.open('listing4.aspx', 'Listing4', 'scrollbars,resizable,width=640,height=480')
+    }
+	
+	 function openWindow5()
+    {
+      popupWin = window.open('listing5.aspx', 'Listing5', 'scrollbars,resizable,width=640,height=480')
+    }
+	
+	 function openWindow6()
+    {
+      popupWin = window.open('figure1.aspx', 'figure1', 'scrollbars,resizable,width=640,height=480')
+    }
+	
+	 function openWindow7()
+    {
+      popupWin = window.open('figure2.aspx', 'figure2', 'scrollbars,resizable,width=640,height=480')
+    }
+	
+	 function openWindow8()
+    {
+      popupWin = window.open('figure3.aspx', 'figure3', 'scrollbars,resizable,width=640,height=480')
+    }
+	
+		 function openWindow9()
+    {
+      popupWin = window.open('table1.aspx', 'table1', 'scrollbars,resizable,width=640,height=480')
+    }
+	
+			 function openWindow10()
+    {
+      popupWin = window.open('listing6.aspx', 'Listing6', 'scrollbars,resizable,width=640,height=480')
+    }
+	
+				 function openWindow11()
+    {
+      popupWin = window.open('listing7.aspx', 'Listing7', 'scrollbars,resizable,width=640,height=480')
+    }
+	
+	
+	
+    // done hiding -->
+    </script></head>
+
+  <body marginwidth="0" marginheight="0" topmargin="0" leftmargin="0">
+    <a name="top"></a>
+<form name="ftp_form" method="post" action="default_pf.aspx" id="ftp_form">
+<input type="hidden" name="__VIEWSTATE" value="dDwtMTU4NjEwMjU4ODs7PreqpHgnZjksZ//jeBtPNJ8xU2TW">
+
+
+
+    <!-- Start Outer Table -->
+	
+    <table width="610" cellpadding="0" cellspacing="0" border="0">
+      <tbody><tr>
+        <td colspan="2">
+          <!-- Start Header Table -->
+
+<table class="header" width="610" cellpadding="0" cellspacing="0" border="0">
+	<tbody><tr>
+		<td colspan="2" align="center"> <!-- Start Banner Ads -->
+			<table cellpadding="0" cellspacing="0">
+				<tbody><tr>
+					<td width="468" height="60" valign="middle"> <!-- Start Banner 1 --> 
+
+<table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td height="60">
+<script style="display: none;" language="JavaScript1.1" src="default_pf.aspx_files/a.js">
+</script> 
+ 
+<script> 
+
+if ((!document.images && navigator.userAgent.indexOf('Mozilla/2.') >= 0)  || navigator.userAgent.indexOf("WebTV")>= 0) {
+document.write('<A HREF="http://ad.doubleclick.net/jump/xmlmagazine.dart/;sz=468x60;ord=ord=2004022102190316fa?">');
+document.write('<IMG SRC="http://ad.doubleclick.net/ad/xmlmagazine.dart/;sz=468x60;ord=ord=2004022102190316fa?" border="0" height="60" width="468"></A>') 
+} 
+
+</script> 
+
+<noscript> <table border="0" cellspacing="0" cellpadding="0"><tr><td
+height="60"><A
+HREF="http://ad.doubleclick.net/jump/xmlmagazine.dart/;sz=468x60;ord=ord=2004022102190316fa?"
+>
+<IMG
+SRC="http://ad.doubleclick.net/ad/xmlmagazine.dart/;sz=468x60;ord=ord=2004022102190316fa?"
+border="0" height="60" width="468"></a></td></tr></table>
+</noscript>
+
+</td></tr></tbody></table>
+  <!-- End Banner 1 -->
+					</td>
+				</tr>
+			</tbody></table> <!-- End Banner Ads -->
+		</td>
+	</tr>
+	<tr valign="middle">
+		<td width="205">
+			<br>
+			<img src="default_pf.aspx_files/logo_xml_ws.gif" alt="" border="0">
+		</td>
+		<td class="header">
+			&nbsp;
+		</td>
+	</tr>
+</tbody></table> <!-- End Title Table -->
+
+
+<!-- End Header Table --></td></tr>
+
+          <!-- Start Big Table Containing Leftnav, Main Content -->
+   
+            <tr>
+              <!-- Start left margin -->
+             <td width="5">&nbsp;</td>
+			 <!-- End left margin -->
+              <!--  Start Main Content Area -->
+              <td width="440" valign="top">
+               <!-- Start Main Content Table -->
+                <table width="605" cellpadding="0" cellspacing="0" border="0">
+                  <tbody><tr>
+                    <td valign="top">
+                 <img src="default_pf.aspx_files/spacer.gif" width="435" height="1" border="0">
+              
+                      <!-- Start Feature Article -->
+               
+					  <!-- Close Window -->
+			
+					       
+<table width="178" border="0" cellspacing="0" cellpadding="0" align="right">
+	<tbody><tr>
+		<td>
+<table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td height="39">
+<script style="display: none;" language="JavaScript1.1" src="default_pf.aspx_files/archive.js">
+</script> 
+ 
+<script> 
+
+if ((!document.images && navigator.userAgent.indexOf('Mozilla/2.') >= 0)  || navigator.userAgent.indexOf("WebTV")>= 0) {
+document.write('<A HREF="http://ad.doubleclick.net/jump/xmlmagazine.dart/archive;sz=174x39;ord=ord=2004022102190316fa?">');
+document.write('<IMG SRC="http://ad.doubleclick.net/ad/xmlmagazine.dart/archive;sz=174x39;ord=ord=2004022102190316fa?" border="0" height="39" width="174"></A>') 
+} 
+
+</script> 
+
+<noscript> <table border="0" cellspacing="0" cellpadding="0"><tr><td
+height="39"><A
+HREF="http://ad.doubleclick.net/jump/xmlmagazine.dart/archive;sz=174x39;ord=ord=2004022102190316fa?"
+>
+<IMG
+SRC="http://ad.doubleclick.net/ad/xmlmagazine.dart/archive;sz=174x39;ord=ord=2004022102190316fa?"
+border="0" height="39" width="174"></a></td></tr></table>
+</noscript>
+
+</td></tr></tbody></table>
+</td>
+	</tr>
+	<tr>
+		<td>
+			<br>
+			<script language="JavaScript">
+				if(navigator.platform=="Win32"){
+	document.write("<table width='100' align='right' cellpadding='0' cellspacing='0'><tr><td>");
+	document.write("<a href='#' onClick='javascript:window.print();'><img src='/javapro/images/icon_printer.gif' height='18' width='18' border='0'></a></td>");
+document.write("<td class='black8pt'><a href='#' onClick='javascript:window.print();'>Print Article</a></td></tr></table>");
+	}</script><table width="100" align="right" cellpadding="0" cellspacing="0"><tbody><tr><td><a href="#" onclick="javascript:window.print();"><img src="default_pf.aspx_files/icon_printer.gif" height="18" width="18" border="0"></a></td><td class="black8pt"><a href="#" onclick="javascript:window.print();">Print Article</a></td></tr></tbody></table>
+		</td>
+	</tr>
+</tbody></table>
+
+
+
+
+                      <!-- ADD Content Here -->
+					
+					<p class="FeatureHead">A Journey Through .Net My Services<br>
+<span class="FeatureDek">Use the SDK for Microsoft's new Web services architecture 
+to let users access data from any system
+</span><br>
+<span class="AboutAuthor"><em>by Dale Michalk</em></span></p>
+
+<p><span class="DropCap">T</span>he next big thing in the continuously
+changing landscape of distributed technologies is the growth of Web
+services. The hypertext transport protocol (HTTP), the universal
+data-transfer syntax of XML, and the messaging structure of the Simple
+Object Access Protocol (SOAP) enable programmers to leverage the
+capabilities of remote network applications quickly and effortlessly
+regardless of platform or vendor. This scenario can work across the
+Internet for, say, tax calculation or across an intranet to a disparate
+line of business applications. The possibility of integrating a myriad
+of devices and systems is almost limitless.
+</p><p>Microsoft is building a unique Web service architecture around
+identity-centric information that takes advantage of the universal
+access and reach of the Web service protocols. Data, instead of being
+inaccessible in individual PCs, Web sites, or mobile devices, is
+available to any system that can authenticate with .Net Passport and
+communicate with a Web service. The convenience factor for end users is
+high with this type of environment: they no longer have to remember
+which password goes with which Web site or e-mail system, and they can
+get data they need even if all they have on hand is a cell phone.
+Instead of the user conforming to the needs of devices, the devices
+become part of one cohesive system at the service of the user. </p>
+<p>Microsoft christened this architecture (initially known by the code
+name HailStorm) .Net My Services to reflect its user-centric nature.
+The first public view of the technology was an alpha software
+development kit (SDK) released to the public at the Microsoft
+Professional Developer's Conference (PDC) in October 2001. Let's look
+at the technology as of the PDC release; expect changes in the service
+offerings and technical details by the time you read this.</p>
+<p>As an example of .Net My Services in action, imagine a scenario with a user browsing an auction Web site (see <a href="javascript:openWindow6();">Figure 1</a>).
+The first step in browsing a Web site participating in the .Net My
+Services cloud is authentication with the .Net Passport service. .Net
+Passport provides a single sign-on service that allows the user to use
+the same login information with multiple participating Web sites in a
+secure manner. All the data stored in .Net My Services correlates to
+the Passport User ID (PUID) of the customer. Gone are the days of using
+the same username/password pair for each site. You sign in once, and
+all the services on the network are available to you in a seamless,
+secure environment.</p>
+
+<table width="227" border="0" cellspacing="0" cellpadding="2" align="right"><tbody><tr><td width="12" rowspan="2" bgcolor="#ffffff">&nbsp;</td><td><a href="javascript:openWindow6();">
+<img src="default_pf.aspx_files/dm0203XML_f1_t.gif" width="215" height="132" alt="" border="0">
+</a></td></tr>
+<tr><td class="figtable"><span class="FigureCap">Figure 1.</span>  Browsing with .Net My Services<a class="FigureCap" href="javascript:openWindow6();"> Click here</a>.</td></tr></tbody></table>
+
+
+<p>Once authenticated and browsing items are up for auction, the user
+decides to place a bid for a lava lamp. The auction Web site provides
+the means for the user to opt into changes to his or her personal
+calendar on the .Net Calendar service and post the span of days for the
+auction. The user can also choose to have his or her MSN Messenger
+instant messaging client notified by the .Net Alerts service when the
+user is outbid for an item. </p>
+<p>When the user finishes with the bid process, he or she types in the
+URL of a favorite online bookstore. The user uses .Net Passport to sign
+into the online bookstore and begin browsing for a title on programming
+with .Net My Services. Once he or she finds the book and begins the
+checkout, the user can call up previously entered address information
+from his or her .Net Profile service and payment information from .Net
+Wallet. As a final part of the checkout, the bookstore sets up the .Net
+Alerts service to notify the user with an instant message when the book
+has shipped.</p>
+
+
+
+<p>Meanwhile, back on the auction site, the auction ends and the Web
+site sends an alert to the bidder through the .Net Alerts service. The
+user, who now transitions from using a PC to using his or her cell
+phone, has communicated that pertinent fact with the .Net Presence
+service. .Net My Services is smart enough to route the instant message
+to the cell phone service provider gateway instead of the PC with the
+MSN Messenger client used before (see <a href="javascript:openWindow7();">Figure 2</a>).
+The smart cell phone also has an integrated Web browser, so the user
+can go back to the auction site on the phone and complete the payment
+process using the .Net Profile and .Net Wallet services. The user
+doesn't need to go back to the PC to get the address and payment
+information, because it's stored in the .Net My Services cloud to make
+it securely and easily available from any device.</p>
+
+<table width="227" border="0" cellspacing="0" cellpadding="2" align="right"><tbody><tr><td width="12" rowspan="2" bgcolor="#ffffff">&nbsp;</td><td><a href="javascript:openWindow7();">
+<img src="default_pf.aspx_files/dm0203XML_f2_t.gif" width="215" height="159" alt="" border="0">
+</a></td></tr>
+<tr><td class="figtable"><span class="FigureCap">Figure 2.</span>  Accessing Services from a Cell Phone<a class="FigureCap" href="javascript:openWindow7();"> Click here</a>.</td></tr></tbody></table>
+
+
+<p>This simple example gives you but a glimpse of the services .Net My Services makes possible. See  the <a href="javascript:openWindow9();">Planned .Net My Services Web Services table</a> for more detail on each service slated for completion in the first release of .Net My Services.</p>
+
+<p><span class="SubHead">Web Services Paradigms</span><br>
+Now that you've seen a view of the .Net My Services architecture from a
+customer standpoint, I'll drill down into the technology from a
+programmer's point of view. To provide context for the journey, I'll
+start by reviewing how to build a typical Web service with a modern Web
+service toolkit. </p>
+<p>Web service frameworks such as the SOAP Toolkit and Visual Studio
+.Net make it easy to take an existing object and generate a compatible
+SOAP messaging system. They abstract the details of XML serialization
+and SOAP message construction through code generators and support
+classes to make the service invocation look like a normal procedure
+call. The focus of the programming is on the method called and the
+business logic executed. This code is the corresponding client for the
+prototypical stock quote Web service (see <a href="javascript:openWindow1();">Listing 1</a>) that consumes this Web service's functionality using the .Net framework and C#:</p>
+
+<pre class="snippet">using System;
+namespace XMLMagHSConsoleClient
+{
+class StockTickerClient
+{
+	[STAThread]
+	static void Main(string[] args)
+	{
+		localticker.StockTicker 
+			tickersvc = new
+			localticker.StockTicker();
+		decimal price = 
+			tickersvc.GetStockPrice(
+			args[0]);
+
+	Console.WriteLine(
+		"Symbol:" + args[0]);
+	Console.WriteLine(
+		"Price:" + price.ToString(
+		"C"));
+	}
+}
+}</pre>
+
+
+<p>The Web service client SOAP request looks like this:</p>
+
+<pre class="snippet">&lt;?xml version=
+	"1.0" encoding="utf-8" ?&gt; 
+&lt;soap:Envelope 
+	xmlns:soap=
+		"http://schemas.xmlsoap.org/
+		soap/envelope/" 
+	xmlns:xsi=
+		"http://www.w3.org/2001/
+		XMLSchema-instance" 
+	xmlns:xsd=
+		"http://www.w3.org/2001/
+		XMLSchema"&gt;
+&lt;soap:Body&gt;
+	&lt;GetStockPrice xmlns=
+		"http://hailstormcoder.com/"&gt;
+		&lt;symbol&gt;MSFT&lt;/symbol&gt; 
+	&lt;/GetStockPrice&gt;
+&lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</pre>
+
+<p>and the Web service SOAP response looks like this:</p>
+
+<pre class="snippet">&lt;?xml version="1.0" encoding=
+	"utf-8" ?&gt; 
+&lt;soap:Envelope 
+	xmlns:soap=
+		"http://schemas.xmlsoap.org/
+		soap/envelope/" 
+	xmlns:xsi=
+		"http://www.w3.org/2001/
+		XMLSchema-instance" 
+	xmlns:xsd=
+		"http://www.w3.org/2001/
+		XMLSchema"&gt;
+&lt;soap:Body&gt;
+	&lt;GetStockPriceResponse xmlns=
+		"http://tempuri.org/"&gt;
+		&lt;GetStockPriceResult&gt;63
+		&lt;/GetStockPriceResult&gt; 
+	&lt;/GetStockPriceResponse&gt;
+&lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</pre>
+
+<p>The XML and SOAP messages are a means to an end: they exist to
+communicate typed data between the bodies of code in a transparent
+manner. The programmer thinks in terms of objects, not of XML.</p>
+
+
+
+<p><span class="SubHead">Document Centricity</span><br>
+.Net My Services operates under a different paradigm in the design of
+its Web services. Instead of hiding the XML work behind a facade, it
+elevates it to first-class status by factoring Web services in a
+document-centric manner (see <a href="javascript:openWindow8();">Figure 3</a>). The XML is the service and data is king. </p>
+<p>Each .Net My Services Web service is an entry point to a set of
+hosted XML documents representing user information keyed to a Passport
+User ID. The Passport User ID can represent a customer identity or the
+identity of a group of customers. The content document holds the user
+data, the roleList document determines who can access and change the
+content document, and a system document helps the infrastructure
+maintain the service.</p>
+<p>To manipulate the XML user data, all services support the common
+data access methods that make up the HSDL: query, insert, replace,
+delete, and update. In addition, services can expose custom commands to
+help work with information that is difficult to describe; an example is
+the getFreeBusyDays command of the .Net Calendar service.</p>
+
+<table width="227" border="0" cellspacing="0" cellpadding="2" align="right"><tbody><tr><td width="12" rowspan="2" bgcolor="#ffffff">&nbsp;</td><td><a href="javascript:openWindow8();">
+<img src="default_pf.aspx_files/dm0203XML_f3_t.gif" width="215" height="136" alt="" border="0">
+</a></td></tr>
+<tr><td class="figtable"><span class="FigureCap">Figure 3.</span>  Document-Centric Architecture<a class="FigureCap" href="javascript:openWindow8();"> Click here</a>.</td></tr></tbody></table>
+
+
+<p>The entry point to development with .Net My Services is the .Net My
+Services SDK. It provides a host of tools and a sample service
+infrastructure to help you work with the technology in a development
+environment that mimics the eventual production characteristics. The
+toolkit should be publicly available as a downloadable SDK for your
+perusal sometime around the time this article hits the shelves. </p>
+<p>The .Net My Services SDK installation process creates a directory
+structure holding tools and supporting documents, and it sets up a Web
+server environment including an Internet Information Server (IIS) Web
+application for each service. Each Web service takes on the form of a
+set of ISAPI DLLs, installed at the outset with the rest of the SDK,
+that translate HSDL commands into the appropriate actions upon a
+back-end SQL Server database.</p>
+<p>The tool for setting up a service to support an identity is hsprov,
+and hspost packages HSDL commands and transmits them to the .Net My
+Services infrastructure from a convenient command-line tool. It handles
+many tasks that would otherwise be a lot of work for someone testing
+and prototyping code with a service: network communication over HTTP,
+service-location lookup, user authentication, and SOAP header creation
+and message packaging. This hsprov syntax provisions the .Net Profile
+service to support the currently logged-in user, creating the necessary
+content and roleList documents as a starting point for allowing other
+tools to manipulate data:</p>
+
+<pre class="snippet">C:\hsprov -v -s myProfile -l http://
+	localhost
+myProfile service successfully 
+	provisioned</pre>
+	
+
+<p>The hspost -p option is interesting because it shows the fake PUID
+generated by the SDK to stand in as a placeholder for a full security
+ticket or certificate in the future. It's a numeric value generated by
+a hash of the identity name. Here hspost -p generates the PUID for my
+administrator account: </p>
+
+<pre class="snippet">C:\hspost -p
+Your username is Administrator - 
+	PUID = 13971</pre>
+
+<p>The next version of the SDK should have full support for a test
+environment using Kerberos authentication and allow encryption and
+signing of messages.</p>
+<p>The SDK provides documentation and code samples on programming with
+the test infrastructure. The primary information source is the XMI
+manual containing the XML document schema of each service and material
+on how to use it effectively, along with a tutorial on HSDL. The code
+examples in the SDK show several ways to communicate with different
+types of clients, both managed and unmanaged. We begin our tour using
+the hspost tool to work through the basic concepts of HSDL.</p>
+
+<p><span class="SubHead">Inserting into .Net Profile</span><br>
+.Net My Services Web services all start with blank documents after
+provisioning and need user data to make them interesting. As a first
+example, I instruct hspost to insert name and e-mail information into
+the .Net Profile service: </p>
+
+<pre class="snippet">&lt;hs:insertRequest 
+	xmlns:hs=
+		"http://schemas.microsoft.com/
+		hs/2001/10/core" 
+	xmlns:m=
+		"http://schemas.microsoft.com/
+		hs/2001/10/myProfile"
+	select="/m:myProfile"&gt;
+	&lt;m:name&gt;
+		&lt;m:givenName xml:lang="en-us"&gt;
+			Dale&lt;/m:givenName&gt;
+		&lt;m:surname xml:lang="en-us"&gt;
+			Michalk&lt;/m:surname&gt;
+	&lt;/m:name&gt;
+	&lt;m:emailAddress&gt;
+		&lt;m:email&gt;dale@hailstormcoder.com
+		&lt;/m:email&gt;
+		&lt;m:name xml:lang="en-us"&gt;
+			Dale Michalk&lt;/m:name&gt;
+	&lt;/m:emailAddress&gt;
+&lt;/hs:insertRequest&gt;</pre>
+
+<p>The insert HSDL command takes on the form of an XML element shell
+surrounding the content needing insertion. The select attribute of the
+insertRequest element specifies the insertion point into the content
+document. It can match a single node location or a set of nodes if the
+desired outcome is multiple insertions of data. To produce full output
+of XML messages in both directions and help the troubleshooting
+process, we use the -v option of hspost.</p>
+<p>The insertResponse message indicates through the status attribute
+that the operation was a success and gives primary key information in
+the form of the newBlueId elements (see <a href="javascript:openWindow2();">Listing 2</a>).
+The selectedNodeCount indicates the number of nodes matched in the
+content document by the select attribute of the insertRequest. </p>
+
+
+<p>A quick detour is in order to explain what's happening with the
+header information in the SOAP messages. The header elements are part
+of the Global XML Web Services Architecture (GXA) Microsoft is
+proposing as a set of cross-platform, standard, and modular header
+extensions to the base SOAP protocol to enhance its functionality
+beyond simple message passing. (The word "simple" in the SOAP acronym
+is perhaps becoming an oxymoron.)</p>
+<p>GXA includes in part WS-Security for credential passing, message
+integrity, and message confidentiality; WS-Licenses for carrying
+authentication credentials such as Kerberos tickets and X.509
+certificates; and WS-Routing for allowing message identification,
+flexible routing, multiple transports, and the ability to handle
+synchronous or asynchronous communications. </p>
+<p>The <a href="javascript:openWindow10();">SOAP header path element</a>
+maps to the WS-Routing specification of GXA. The action element has
+textual content identifying the role the message plays: request,
+response, fault, or notification. This decouples the SOAP message from
+a model of synchronous request-response transports or asynchronous
+one-way transports. The message is addressed to the URL specified by
+the to element. The fwd and rev elements route the document through a
+specific path if they are present. The via node lists the stops on the
+journey to the final destination inside of the fwd or rev blocks.</p>
+<p>In <a href="javascript:openWindow2();">Listing 2</a> the default
+forward path is taken because of the absence of a fwd element. The
+reverse path piggybacks the Web service response on top of the HTTP
+response through a blank via element to the rev element. The final
+element in the path header block is the id element, which is used to
+identify the message in a unique manner for allowing message
+correlation in an asynchronous messaging environment such as SMTP. </p>
+<p>The licenses element block forms the core of the WS-Licenses
+specification and establishes proof of client authentication through
+the presentation of a Kerberos ticket or X.509 certificate. Because
+we're using the early version of the SDK, Listing 2 shows the
+simplistic hashed username PUID. Expect to see a full-featured
+implementation of security-related SOAP messaging in the beta release
+of the SDK.</p>
+<p>The request element is not a proposed XML specification, but is an
+integral way for the .Net My Services infrastructure to process client
+requests efficiently. It identifies the service, the type of document,
+the HSDL command to invoke, and whether or not a message response is
+desired. This feature helps to decouple service invocation from
+protocol-specific header mechanisms such as the HTTP header.</p>
+
+
+<p>Back from our detour examining the SOAP header, I continue the quest
+for user data by using the HSDL query command to reveal the fruits of
+my insert labor. This document fragment submitted to hspost has an
+xpQuery element with a select XPath attribute:</p>
+
+<pre class="snippet">&lt;hs:queryRequest
+	xmlns:hs=
+		"http://schemas.microsoft.com/
+		hs/2001/10/core" 
+	xmlns:m=
+		"http://schemas.microsoft.com/
+		hs/2001/10/myProfile"&gt;
+	&lt;hs:xpQuery select=
+		"/m:myProfile" /&gt;    
+&lt;/hs:queryRequest&gt;</pre>
+
+<p>You can include multiple xpQuery elements under the queryRequest to
+select a variety of node sets from different locations in the content
+document. </p><p>
+</p><p>You can see a truncated result document including the request and response portions of XML content (see <a href="javascript:openWindow3();">Listing 3</a>).
+The remaining examples with HSDL will do the same. The response message
+confirms the reported success of the insert operation.</p>
+<p>Instead of treating the XML documents of a service as large blobs,
+.Net My Services partitions the document through a color scheme to make
+manipulation efficient and granular to support indexing, caching, and
+shredding for storage to a database. Blue nodes are the primary blocks
+of a service document and are the primary target of HSDL manipulations.
+The XPath selections in the HSDL commands all must anchor their
+operations on a blue node. Red attributes exist as adornments in aiding
+in the selection of blue elements and are permissible as predicates to
+help blue selection in an XPath statement. You can insert a red node,
+like a blue node, into a service document, but you must do so in the
+context of a blue node. Black nodes are the remaining nodes that don't
+fall into either the blue or red node camp. The .Net infrastructure
+treats them as opaque content for HSDL processing. <a href="javascript:openWindow4();">Listing 4</a> provides a colorized version of the document received from the query command in <a href="javascript:openWindow3();">Listing 3</a>.</p>
+<p>An extra addition is the {any} notation to show the location of
+extensibility points built into portions of the service document. This
+allows third-party developers to insert content into the content
+document as long as it is well-formed, schema-valid content scoped
+properly by a namespace. The top-level element and attributes of {any}
+content is implicitly red content with child XML content taking on
+black colorization. </p>
+<p>The use of colorization has an impact of the granularity of nodes
+you use when working with documents. The red attributes are hooks to
+identity and gather up blues; the id attribute is the primary key used
+when multiple nodes exist for an element type. Blue nodes are retrieval
+and update boundaries; in the example the email, name, and other child
+elements all need to be bundled together any time the emailAddress
+address blue is loaded or updated. </p>
+
+<p>The replace command is really two commands rolled into one atomic
+operation: a delete followed by an insert. This code illustrates how to
+change our emailAddress in the .Net Profile service to my MSN hotmail
+address: </p>
+
+<pre class="snippet">&lt;hs:replaceRequest 
+	xmlns:hs=
+		"http://schemas.microsoft.com/hs/
+		2001/10/core" 
+	xmlns:m=
+		"http://schemas.microsoft.com/
+		hs/2001/10/myProfile"
+	select="/m:myProfile/
+		m:emailAddress[@id=
+		"F2D6F211-51BC-4127-8329-
+		E9926CA9ED19']" 
+	minOccurs="1" maxOccurs="1"
+	&lt;m:emailAddress&gt;
+		&lt;m:email&gt;demichalk@hotmail.com
+		&lt;/m:email&gt;
+		&lt;m:name xml:lang="en-us"&gt;
+			Dale Michalk&lt;/m:name&gt;
+	&lt;/m:emailAddress&gt;
+&lt;/hs:replaceRequest&gt;</pre>
+
+<p>This code shows the hspost output:</p>
+
+<pre class="snippet">&lt;hs:replaceResponse   
+	xmlns:hs=
+		"http://schemas.microsoft.com/hs/
+			2001/10/core" 
+	status="success" selectedNodeCount=
+		"1"
+		newChangeNumber="412"/&gt;</pre>
+
+<p>The output element replaceResponse contains attributes necessary to
+figure out the status of the operation. The status attribute is
+normally set to success unless we commit an egregious error in
+formulating the XPath select. Error conditions generally rise from
+poorly formed XML or improper node selection in an XPath statement. We
+can augment the error checking by setting up attributes on the
+replaceRequest message. We'd set the minOccurs and maxOccurs attributes
+equal to one. Had the selectedNodeCount not equaled one, a failure
+status would have been generated.</p>
+
+
+<p>Delete operations are probably the easiest HSDL commands to execute.
+Here's how to delete the e-mail address in the .Net Profile service: </p>
+
+<pre class="snippet">&lt;hs:deleteRequest
+	xmlns:hs=
+		"http://schemas.microsoft.com/hs/
+		2001/10/core" 
+	xmlns:m=
+		"http://schemas.microsoft.com/
+		hs/2001/10/myProfile"
+	select=
+		"/m:myProfile/m:emailAddress"&gt;
+&lt;/hs:deleteRequest&gt;</pre>
+
+<p>This XML fragment shows the result of a successful deletion:</p>
+
+<pre class="snippet">&lt;hs:deleteResponse   
+	xmlns:hs=
+		"http://schemas.microsoft.com/hs/
+		2001/10/core" 
+	status="success" selectedNodeCount=
+		"1" 
+		newChangeNumber="412"/&gt;</pre>
+
+<p>The most complicated HSDL command is the update operation. It's not
+a separate function of its own, but instead is a container of multiple
+operations, analogous to a SQL batch containing multiple SQL
+statements. The update command allows the transmission of multiple
+insert, update, and delete commands in a single round-trip. </p>
+<p>The updateBlock is the main structure inside of an update operation.
+It provides a means for packaging and for error handling, including a
+rollback mechanism. The onError attribute of updateBlock can take on
+the following values: rollbackBlockAndFail, rollbackBlockAndContinue,
+and ignore. The rollbackBlockAndFail value will roll back the
+operations in an updateBlock and cause the entire request to fail. The
+rollbackBlockAndFail value will do the rollback but will cause the
+execution to continue at the next updateBlock. With ignore, processing
+will continue without attempting a rollback.</p>
+<p>The XML fragment in <a href="javascript:openWindow5();">Listing 5</a>
+shows an updateRequest message attempting to delete an emailAddress
+with an invalid ID while simultaneously trying to insert an
+emailAddress into the main document. The updateRequest has the
+rollbackBlockAndFail onError attribute. It also has a custom node named
+comment slated for insertion into the {any} location of the
+telephoneNumber blue element. This technique allows you to supplement
+the default .Net Profile XML schema with namespace-qualified,
+well-formed data to fit the needs of an application.</p>
+<p>You can see the <a href="javascript:openWindow11();">output for the failure and rollback of the first update block</a> that is shown in <a href="javascript:openWindow5();">Listing 5</a>.</p>
+
+
+<p>The second update block is never attempted because the first failure
+causes termination of the request message. Modifying the onError
+attribute to rollbackBlockAndContinue gives the second updateBlock a
+chance to operate. This fragment shows the updated result with the
+success status and the generation of a blue element with a new ID:</p>
+
+<pre class="snippet">&lt;hs:updateResponse  
+	xmlns:hs=
+		"http://schemas.microsoft.com/hs/
+		2001/10/core"  
+	newChangeNumber="422"&gt;
+&lt;hs:updateBlockStatus status=
+	"rollback" selectedNodeCount="1"&gt;
+	&lt;hs:deleteResponse status=
+
+		"failure" selectedNodeCount="0"/&gt;
+&lt;/hs:updateBlockStatus&gt;
+&lt;hs:updateBlockStatus status=
+	"success" selectedNodeCount="1"&gt;
+	&lt;hs:insertResponse status=
+	"success" selectedNodeCount="1"&gt;
+		&lt;hs:newBlueId id=
+			"220B5BF8-55EF-41D7-B8FC-
+			BBCC07E80A6C"/&gt;
+	&lt;/hs:insertResponse&gt;
+&lt;/hs:updateBlockStatus&gt;
+&lt;/hs:updateResponse&gt;</pre>
+
+<p>The document-centric nature of .Net My Services and the HSDL command
+set should be familiar to coders who've worked with tools such as XML
+parsers and XSLT. Programmers who prefer a more traditional typed
+approach to programming might have to spend a little more time working
+with the system to appreciate its power and flexibility. Regardless of
+the challenges, .Net My Services opens new doors and opportunities for
+developers building user-centric applications.</p>
+
+<p><span class="AboutAuthor">About the Author</span><br>
+Dale Michalk is an application development consultant for Microsoft
+Premier Support in Charlotte, NC. He helps organizations develop
+applications on the Microsoft platform and take full advantage of new
+technologies such as .Net Passport and .Net My Services. He is writing
+a book for Apress on .Net My Services, due for release in June 2002.
+Reach Dale at <a href="mailto:dalemi@microsoft.com">dalemi@microsoft.com</a>. </p>
+					
+					
+					
+
+                      <!-- End Content Here -->
+<!-- Close Window Table -->
+                           <!--    <table width="100" align="right" cellpadding="0" cellspacing="0"><tr><td class="black8pt"><a href="#" onClick="javascript:window.close();">Close Window</a></td></tr></table>  -->
+                      
+                      <br><br>
+                      <!-- End Feature Article -->
+                    </td>
+					
+                  </tr>
+                
+                  
+                </tbody></table>
+                <!-- End Main Content Table -->
+
+            
+
+           </td>
+		  
+      </tr>
+    </tbody></table>
+
+    <!-- Start Footer Table -->
+    <table width="610" cellpadding="0" cellspacing="0" border="0">
+      
+      <tbody><tr>
+        <td class="footer" colspan="3">
+          © Copyright 2001-2003
+          <a href="http://www.fawcette.com/" class="footerbold">Fawcette Technical Publications</a>
+          |
+          <a href="http://www.fawcette.com/privacy/default.asp" target="_blank" class="footerbold">Privacy Policy</a>
+          |
+          <a href="http://www.fawcette.com/customerservice.asp" target="_blank" class="footerbold">Contact Us</a>
+        </td>
+      </tr>
+    </tbody></table>
+    <!-- End Footer Table -->
+
+  <!-- Begin CodePage Form -->
+<input type="hidden" name="loccode" value="xm0203XX">
+<!-- End CodePage Form -->
+</form>
+</body></html>

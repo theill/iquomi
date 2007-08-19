@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<disco:discovery xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:disco="http://schemas.xmlsoap.org/disco/" xmlns:scl="http://schemas.xmlsoap.org/disco/scl/" xmlns:soap="http://schemas.xmlsoap.org/disco/soap/">
+    <scl:contractRef ref="http://services.iquomi.com/IqCore.asmx?wsdl" docRef="http://services.iquomi.com/IqCore.asmx"  />
+    <!--
+    <soap:soap address="http://services.iquomi.com/IqCore.asmx" xmlns:iq="http://services.iquomi.com/2004/01/core" binding="iq:IqCoreSoap" />
+    -->
+    
+    <scl:contractRef ref="http://services.iquomi.com/IqAlerts.asmx?wsdl" docRef="http://services.iquomi.com/IqAlerts.asmx" />
+    <scl:contractRef ref="http://services.iquomi.com/IqProfile.asmx?wsdl" docRef="http://services.iquomi.com/IqAlerts.asmx" />
+    <scl:contractRef ref="http://services.iquomi.com/IqPresence.asmx?wsdl" docRef="http://services.iquomi.com/IqPresence.asmx" />
+
+    <scl:contractRef ref="http://services.iquomi.com/IqContacts.asmx?wsdl" docRef="http://localhost:4081/webservices/IqContacts.asmx" />
+    <!--
+    <soap:soap address="http://services.iquomi.com/IqContacts.asmx" xmlns:q1="http://services.iquomi.com/2004/01/core" binding="q1:IqContactsSoap" />
+    <soap:soap address="http://services.iquomi.com/IqContacts.asmx" xmlns:q2="http://services.iquomi.com/2004/01/core" binding="q2:IqContactsSoap12" />
+    -->
+    
+    <!--
+    <disco:discoveryRef ref="IqContacts.disco" />
+    <disco:discoveryRef ref="IqAlerts.disco" />
+    -->
+</disco:discovery>

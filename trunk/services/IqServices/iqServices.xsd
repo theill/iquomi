@@ -1,0 +1,223 @@
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:xdb="urn:schemas-iquomi-com:xdb"
+	xmlns:iq="http://schemas.iquomi.com/2004/01/core" 
+    targetNamespace="http://schemas.iquomi.com/2004/01/iqServices"
+    xmlns="http://schemas.iquomi.com/2004/01/iqServices"
+	elementFormDefault="qualified" 
+	version="1.0">
+
+    <xsd:annotation>
+        <xsd:documentation>
+            Schema for Iquomi&#174; Services service.
+            Copyright (c) 2004 Iquomi. All rights reserved.
+        </xsd:documentation>
+
+        <xsd:appinfo>
+            <xdb:blue select="/iqServices"/>
+            <xdb:blue select="/iqServices/*"/>
+
+            <xdb:red select="//@changeNumber"/>
+            <xdb:red select="//@id"/>
+            <xdb:red select="//@creator"/>
+            <xdb:red select="//cat/@ref"/>
+            <xdb:red select="/iqServices/service/@name"/>
+            <xdb:red select="/iqServices/service/$any"/>
+
+            <xdb:namespaceMap>
+                <xdb:mapping uri="http://schemas.iquomi.com/2004/01/iqServices" alias="m"/>
+                <xdb:mapping uri="http://schemas.iquomi.com/2004/01/core" alias="iq"/>
+            </xdb:namespaceMap>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:import namespace="http://schemas.iquomi.com/2004/01/core" schemaLocation="http://schemas.iquomi.com/2004/01/core/iqcommon.xsd" />
+
+
+    <!--
+    //
+    // iqServices
+    //  - root element for the iqServices service
+    //
+    -->
+    <xsd:element name="iqServices">
+        <xsd:complexType>
+            <xsd:annotation>
+                <xsd:documentation>
+					This element encapsulates the content document for the service.
+                </xsd:documentation>
+            </xsd:annotation>
+
+            <xsd:sequence>
+                <xsd:element
+                    name="service"
+                    type="serviceType"
+                    minOccurs="0"
+                    maxOccurs="unbounded"
+                />
+
+                <xsd:any
+                    processContents="skip"
+                    namespace="##other"
+                    minOccurs="0"
+                    maxOccurs="unbounded"
+                />
+            </xsd:sequence>
+            <xsd:attributeGroup ref="iq:DocumentRootAttributeGroup"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--
+    //
+    // serviceType
+    //
+    //-->
+    <xsd:complexType name="serviceType">
+        <xsd:annotation>
+            <xsd:documentation>
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+
+            <xsd:element
+                name="cat"
+                type="iq:CatType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+            <xsd:element
+                name="key"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies key information used to zoom in on the document being manipulated.
+                    This information includes the PUID that owns the document, the instance id of the document,
+                    and the cluster or partition key used to locate the machine resources that hold the document.
+                    <p/>
+                    In certain situations, a client will want to send the same message to a number a instances of a particular
+                    service. In order to do this, the client may repeat this element multiple times. The cluster
+                    attributes in all elements must match each other, but the puid and instance attributes may differ. A
+                    unique response message is generated for each key specified.
+                    <p/>
+                    The entire contents of this element come from the .NET Services service.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+
+                    <xsd:attribute
+                        name="puid"
+                        type="iq:PuidType"
+                        use="required"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This element specifies the PUID of the entity that "owns" the service being accessed. In
+                            the case of a "myProfile" service, this element is equivalent to the "my".
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+
+                    <xsd:attribute
+                        name="instance"
+                        type="iq:String"
+                        use="required"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This element specifies the particular instance of the service for this id being accessed.
+                            For example, if a given id is provisioned with multiple iqCalendar documents on the same
+                            cluster and in the same data center, the documents would differ only by this value.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+
+                    <xsd:attribute
+                        name="cluster"
+                        type="iq:String"
+                        use="required"
+                        >
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This element specifies information used by Iquomi system to locate the document on
+                            a particular back-end server or database. It is used as the virtual partition key for the
+                            document being addressed. This technique is preferable to computing this partition key based
+                            on some hash of the puid/instance.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element
+                name="refer"
+                type="iq:String"
+                minOccurs="0"
+                maxOccurs="1"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies that the fields below are for a referral.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="to"
+                type="iq:String"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies to the to destination URL.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="spn"
+                type="iq:String"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the spn in question.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element
+                name="realm"
+                type="iq:String"
+                >
+                <xsd:annotation>
+                    <xsd:documentation>
+                    This element specifies the authentication realm for the spn in question.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:any
+                processContents="skip"
+                namespace="##other"
+                minOccurs="0"
+                maxOccurs="unbounded"
+            />
+        </xsd:sequence>
+
+        <xsd:attribute
+            name="name"
+            type="iq:String"
+            use="required"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This element contains the name of the service being accessed by this request message. For example,
+                to access the Profile service, this attribute will have the value "iqProfile".
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attributeGroup ref="iq:StandardBlueAttributeGroup"/>
+    </xsd:complexType>
+
+</xsd:schema>

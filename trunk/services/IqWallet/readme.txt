@@ -1,0 +1,1 @@
+Receipts, payment instruments, coupons, and other transaction records.

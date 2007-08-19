@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="Commanigy.Iquomi.Services.IqAlerts.IqAlerts">
+    <Position X="1.25" Y="4" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqAlerts.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAEAgAAAAAAQAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="Commanigy.Iquomi.Services.IqAlerts.IqAlertsType" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.75" Y="3.067" />
+        <Point X="1.75" Y="4" />
+      </Path>
+    </InheritanceLine>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqAlerts.IqAlertsType">
+    <Position X="1.25" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqAlerts.cs</FileName>
+      <HashCode>AAAQAAAEAIAAAAEAAAAAAAAAAAAIIAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Connection" />
+      <Property Name="Stream" />
+      <Property Name="Subscription" />
+    </ShowAsAssociation>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Subscription" Type="Commanigy.Iquomi.Services.IqAlerts.SubscriptionType" ManuallyRouted="true">
+      <Path>
+        <Point X="3.25" Y="2.702" />
+        <Point X="3.944" Y="2.702" />
+        <Point X="3.944" Y="5.76" />
+        <Point X="4.5" Y="5.76" />
+      </Path>
+    </AssociationLine>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqAlerts.StreamType">
+    <Position X="4.5" Y="7" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqAlerts.cs</FileName>
+      <HashCode>gIACQAAAAAAgAAAgCIIIACAABAAACCAEEgAAABAAAIQ=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Argot" />
+      <Property Name="ArgotQuery" />
+      <Property Name="Class" />
+      <Property Name="Position" />
+    </ShowAsAssociation>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="ArgotQuery" Type="Commanigy.Iquomi.Services.IqAlerts.NotificationQueryType" ManuallyRouted="true">
+      <Path>
+        <Point X="6.5" Y="8.622" />
+        <Point X="7.2" Y="8.622" />
+        <Point X="7.2" Y="4.156" />
+        <Point X="11" Y="4.156" />
+      </Path>
+    </AssociationLine>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqAlerts.ArgotType">
+    <Position X="8" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>iqAlerts.cs</FileName>
+      <HashCode>IAAQAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqAlerts.SubscriptionType">
+    <Position X="4.5" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqAlerts.cs</FileName>
+      <HashCode>AAACAAEAAgAAABAACAAAAAEAABAIACAEkgAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Context" />
+      <Property Name="Trigger" />
+    </ShowAsAssociation>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqAlerts.SubscriptionTypeTrigger">
+    <Position X="8" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqAlerts.cs</FileName>
+      <HashCode>AAAEgAAAAICAAAAAAAAAAAAAAAAAAAABAAAAQAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Mode" />
+    </ShowAsAssociation>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqAlerts.SubscriptionTypeContext">
+    <Position X="8" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqAlerts.cs</FileName>
+      <HashCode>IAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAEAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Commanigy.Iquomi.Services.IqAlerts.ConnectionType">
+    <Position X="4.5" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqAlerts.cs</FileName>
+      <HashCode>AIACQAAEAAAgQAAACAIIAAAABAAAACAEEgAAABAAIAQ=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Argot" />
+      <Property Name="ArgotQuery" />
+      <Property Name="Characteristics" />
+      <Property Name="Class" />
+      <Property Name="Status" />
+    </ShowAsAssociation>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="ArgotQuery" Type="Commanigy.Iquomi.Services.IqAlerts.NotificationQueryType" ManuallyRouted="true">
+      <Path>
+        <Point X="5.5" Y="3.942" />
+        <Point X="5.5" Y="4.506" />
+        <Point X="6.792" Y="4.506" Type="JumpStart" />
+        <Point X="6.958" Y="4.506" Type="JumpEnd" />
+        <Point X="7.116" Y="4.506" Type="JumpStart" />
+        <Point X="7.283" Y="4.506" Type="JumpEnd" />
+        <Point X="9.185" Y="4.506" />
+        <Point X="9.185" Y="4.375" />
+        <Point X="11" Y="4.375" />
+      </Path>
+    </AssociationLine>
+  </Class>
+  <Enum Name="Commanigy.Iquomi.Services.IqAlerts.StreamClassType">
+    <Position X="11" Y="8" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>iqAlerts.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Commanigy.Iquomi.Services.IqAlerts.StreamPositionType">
+    <Position X="11" Y="9" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>iqAlerts.cs</FileName>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Commanigy.Iquomi.Services.IqAlerts.NotificationQueryType">
+    <Position X="11" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>iqAlerts.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Commanigy.Iquomi.Services.IqAlerts.SubscriptionTypeTriggerMode">
+    <Position X="11" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>iqAlerts.cs</FileName>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Commanigy.Iquomi.Services.IqAlerts.ConnectionClassType">
+    <Position X="3.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqAlerts.cs</FileName>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Commanigy.Iquomi.Services.IqAlerts.ConnectionStatusType">
+    <Position X="5.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>iqAlerts.cs</FileName>
+      <HashCode>AAAACAAABAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Commanigy.Iquomi.Services.IqAlerts.ConnectionCharacteristicsType">
+    <Position X="11" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>iqAlerts.cs</FileName>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQAAAAAAgAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+</ClassDiagram>

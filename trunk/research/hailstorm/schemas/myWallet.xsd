@@ -1,0 +1,555 @@
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xdb="urn:schemas-microsoft-com:xdb"
+    xmlns:hs="http://schemas.microsoft.com/hs/2001/10/core"
+    targetNamespace="http://schemas.microsoft.com/hs/2001/10/myWallet"
+    xmlns="http://schemas.microsoft.com/hs/2001/10/myWallet"
+    elementFormDefault="qualified"
+    version="1.0">
+
+    <xsd:annotation>
+        <xsd:documentation>
+        Schema for .NET Wallet service.
+        Copyright (c) 2001 Microsoft Corporation. All rights reserved.
+        </xsd:documentation>
+
+        <xsd:appinfo>
+            <!--  // blue nodes  -->
+
+            <xdb:blue select="/myWallet"/>
+
+            <xdb:blue select="/myWallet/card"/>
+            <xdb:blue select="/myWallet/account"/>
+
+            <xdb:blue select="/myWallet/subscription"/>
+
+            <!--    // red nodes -->
+
+            <xdb:red select="//@creator"/>
+
+            <xdb:red select="//@changeNumber"/>
+            <xdb:red select="//@id"/>
+
+			<xdb:red select="/myWallet/card/$any"/>
+			<xdb:red select="/myWallet/account/$any"/>
+
+            <xdb:red select="/myWallet/card/cat/@ref"/>
+            <xdb:red select="/myWallet/card/cat"/>
+
+            <xdb:red select="/myWallet/card/networkBrand"/>
+            <xdb:red select="/myWallet/card/typeOfCard"/>
+
+            <xdb:red select="/myWallet/card/affiliateBrand"/>
+
+            <xdb:red select="/myWallet/account/cat/@ref"/>
+            <xdb:red select="/myWallet/account/cat"/>
+            <xdb:red select="/myWallet/account/typeOfAccount"/>
+
+            <xdb:namespaceMap>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/myWallet" alias="m"/>
+                <xdb:mapping uri="http://schemas.microsoft.com/hs/2001/10/core" alias="hs"/>
+            </xdb:namespaceMap>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:import namespace="http://schemas.microsoft.com/hs/2001/10/core" schemaLocation="hscommon.xsd"/>
+
+
+
+<!--
+//
+// myWallet
+//  - root element for the .NET Wallet service
+//
+-->
+    <xsd:element
+        name="myWallet"
+        type="myWalletType"
+    />
+
+<!--
+    //  MyWalletType
+-->
+
+    <xsd:complexType name="myWalletType">
+        <xsd:sequence>
+        <xsd:element
+            name="card"
+            type="cardType"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+            <xsd:documentation>
+                This element encapsulates information associated with the card, such as payment instruments.
+            </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="account"
+            type="accountType"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                    This element encapsulates information associated with the account, such as payment instruments.
+					A payment instrument can be a traditional bank account or one in which
+					charges to the account are accumulated and billed to the account holder on a regular basis, such as phone or Internet service provider (ISP) bills.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+            <xsd:element
+                name="subscription"
+                type="hs:subscriptionType"
+                minOccurs="0"
+                maxOccurs="unbounded"
+                />
+
+        </xsd:sequence>
+        <!-- standard attributes for the root element -->
+        <xsd:attributeGroup ref="hs:documentRootAttributeGroup"/>
+</xsd:complexType>
+
+
+
+
+
+
+
+<!--
+    //
+    // CardType
+    //
+    //
+-->
+
+    <xsd:complexType
+        name="cardType"
+        >
+        <xsd:annotation>
+            <xsd:documentation>
+            This element encapsulates information associated with the card.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+
+        <xsd:any
+            processContents="skip"
+            namespace="##other"
+            minOccurs="0"
+            maxOccurs="unbounded"
+        />
+
+        <xsd:element
+            name="cat"
+            type="hs:catType"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+        </xsd:element>
+
+        <xsd:element
+            name="typeOfCard"
+            type="typeOfCardType"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+        <xsd:annotation>
+            <xsd:documentation>
+            This required element is designed to store the card type (for example, credit, debit, and so on).
+			Valid values are defined in the enumeration list in the schema.
+            </xsd:documentation>
+        </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="networkBrand"
+            type="xsd:anyURI"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This required element is designed to store a reference to the global or regional/national well-recognized and accepted card brand, also known as card type, such as VISA, MasterCard, American Express, Discover, Diners Club, and so on. A naming convention among applications and services ensures that data can be used across these applications and/or services. Applications can use the values defined in myWallet system document, networkBrand.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="affiliateBrand"
+            type="hs:string"
+            minOccurs="0"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This optional element is designed to store the affiliated brand (that is, sub-brand) or private brand for the card. Examples of affiliated brand cards include Carte Bleue (a cobranded VISA debit card used in France), NHL Platinum credit card (a cobranded MasterCard issued by MBNA), Sears, Starbucks, and so on. The .NET Wallet service will not restrict the list.  The application must validate and define a list of supported cards.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="cardNumber"
+            type="hs:string"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                The card number is required. The following are the validation rules for listed <b>networkBrand</b> types:
+                <ul>
+                    <li>VISA -- prefix 4, card# length 16 or 13, Luhn mod 10 check sum</li>
+                    <li>Mastercard -- prefix 51-55, card# length 16, Luhn mod 10 check sum</li>
+                    <li>American Express, prefix 34 or 37, card# length 15, Luhn mod 10 check sum</li>
+                    <li>Discover, prefix 6011, card# length 16, Luhn mod 10 check sum</li>
+                    <li>Diners Club, prefix 300-305 or 36 or 38, card# length 14, Luhn mod 10 check sum</li>
+                    <li>JCB, prefix 3, card# length 16, Luhn mod 10 check sum</li>
+                </ul>
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="displayNumber"
+            type="hs:string"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                The last four digits of the card number are required. This will be a read-only field that is derived from the
+				card number by the system.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="nameOnCard"
+            type="hs:localizableString"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                The card holder's name. Mandatory.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="description"
+            type="hs:localizableString"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This required element contains a short description of the card for easy reference (for example, my bank VISA, my corporate American Express, and so on). 
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="expirationDate"
+            type="xsd:dateTime"
+            minOccurs="0"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This optional element contains the expiration date of a card. 
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="issueDate"
+            type="xsd:dateTime"
+            minOccurs="0"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                The optional element contains the date that this card was issued. 
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="validFromDate"
+            type="xsd:dateTime"
+            minOccurs="0"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This optional element contains the date from which the card is valid. 
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="issueNumber"
+            type="hs:string"
+            minOccurs="0"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This optional element contains the issue number of the card, which is used by some debit cards (for example, Switch). 
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="currency"
+            type="currencyType"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This optional element contains the billing currency of this card. 
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="billingAddress"
+            type="hs:addressType"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This required element contains the billing address of the card. 
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="paymentInstrumentsIssuerPuid"
+			type="hs:puidType"
+            minOccurs="0"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This optional element is intended to store the Microsoft&#174; .NET Passport User ID (PUID) of the issuer for this card. An issuer for a card is usually a financial institution.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+
+    </xsd:complexType>
+
+<!--
+    //
+    //  accountType
+    //
+    //
+ -->
+
+    <xsd:complexType name="accountType">
+
+    <xsd:sequence>
+
+        <xsd:any
+            processContents="skip"
+            namespace="##other"
+            minOccurs="0"
+            maxOccurs="unbounded"
+        />
+
+        <xsd:element
+            name="cat"
+            type="hs:catType"
+            minOccurs="0"
+            maxOccurs="unbounded"
+            >
+        </xsd:element>
+
+        <xsd:element
+            name="typeOfAccount"
+            type="typeOfAccountType"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This required element is designed to store the account type (for example checking, savings,
+				stored value and billToAccount). Valid values are defined in the enumeration list in the schema.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="accountRoutingNumber"
+            type="hs:string"
+            minOccurs="0"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This optional element contains the number that identifies the issuer of this account in a banking system.
+				In the United States, it is the ACH routing transit number. This applies only to traditional banking.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="accountNumber"
+            type="hs:localizableString"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This required element contains the account number. 
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="displayNumber"
+            type="hs:string"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This required element contains the last four characters or digits of the account number. This will be a read-only field derived	by the system from the account number.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="nameOnAccount"
+            type="hs:localizableString"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                The account holder name.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="description"
+            type="hs:localizableString"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This required element contains a short description of the account for easy reference (for example, my bank checking). 
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="currency"
+            type="currencyType"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This optional element contains the currency of this account. 
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element
+            name="accountAddress"
+            type="hs:addressType"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                The account address.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+
+		<xsd:element
+            name="paymentInstrumentsIssuerPuid"
+			type="hs:puidType"
+            minOccurs="0"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                This optional element is meant to store the PUID of the issuer for this account. For traditional bank accounts, an issuer for an account can be a financial institution. For stored value accounts, it can be a service provider.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+        </xsd:sequence>
+
+       <xsd:attributeGroup ref="hs:standardBlueAttributeGroup"/>
+
+</xsd:complexType>
+
+<!--    // simple numeration types
+        // cardType
+        // accountType
+        // currency
+-->
+
+
+<!--
+    //
+    // typeOfAccount -->
+
+<xsd:simpleType name="typeOfAccountType">
+    <xsd:restriction base="hs:string">
+        <xsd:enumeration value="saving"/>
+        <xsd:enumeration value="checking"/>
+        <xsd:enumeration value="stored value account"/>
+        <xsd:enumeration value="billToAccount"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<!--
+    //
+    // typeOfCard -->
+
+<xsd:simpleType name="typeOfCardType">
+    <xsd:restriction base="hs:string">
+        <xsd:enumeration value="credit card"/>
+        <xsd:enumeration value="debit card"/>
+        <xsd:enumeration value="stored value card"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+
+<!--
+    //
+    // currencyType  -->
+
+<xsd:complexType name="currencyType">
+    <xsd:sequence>
+    <xsd:element
+            name="currencyCode"
+            type="hs:string"
+            minOccurs="1"
+            maxOccurs="1"
+            >
+            <xsd:annotation>
+                <xsd:documentation>
+                    The three letter ISO 4217 currency code (for example, USD for the U.S .dollar or GBP for the United Kingdom pound).
+                </xsd:documentation>
+            </xsd:annotation>
+    </xsd:element>
+    </xsd:sequence>
+</xsd:complexType>
+
+</xsd:schema>
