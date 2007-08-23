@@ -97,14 +97,13 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\sdk\Commanigy.Iquomi.Sdk.csproj">
-      <Project>{9DA163A8-5A9C-422E-88C7-E76ACB23B144}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-      <Name>Commanigy.Iquomi.Sdk</Name>
-    </ProjectReference>
+    <Content Include="DatabaseDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DatabaseDiagram.cd" />
+    <ProjectReference Include="..\..\Commanigy.Iquomi.Sdk\Commanigy.Iquomi.Sdk.csproj">
+      <Project>{9DA163A8-5A9C-422E-88C7-E76ACB23B144}</Project>
+      <Name>Commanigy.Iquomi.Sdk</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
 </Project>
