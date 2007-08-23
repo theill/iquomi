@@ -15,8 +15,8 @@ namespace Commanigy.Iquomi.Data {
 	/// </summary>
 	[DataObject()]
 	public class DbSubscriptionListener : SubscriptionListener, IDbObject<DbSubscriptionListener> {
-		public static readonly string StateRunning		= "R";
-		public static readonly string StateSuspended	= "S";
+		public static readonly string StateRunning = "R";
+		public static readonly string StateSuspended = "S";
 
 		public DbSubscriptionListener() {
 			;
