@@ -1,22 +1,10 @@
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "server\data\Server.csproj", "{5C80C065-5648-4611-A320-451F562671F3}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdk", "sdk\Sdk.csproj", "{9DA163A8-5A9C-422E-88C7-E76ACB23B144}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AC6C793D-698C-4C99-A901-854DED4E7546}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 	ProjectSection(SolutionItems) = preProject
 		history.txt = history.txt
 		readme.txt = readme.txt
@@ -24,108 +12,54 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		todo.txt = todo.txt
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\webservices\", "webservices\", "{AE69D3D1-DB01-4E0B-9F41-BA4E9BAFBF3B}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\iquomi.googlecode.com\webservices\", "webservices\", "{AE69D3D1-DB01-4E0B-9F41-BA4E9BAFBF3B}"
 	ProjectSection(WebsiteProperties) = preProject
 		SccProjectName = ""
 		SccAuxPath = ""
 		SccLocalPath = ""
 		SccProvider = ""
 		ProjectReferences = "{9DA163A8-5A9C-422E-88C7-E76ACB23B144}|Commanigy.Iquomi.Sdk.dll;{5C80C065-5648-4611-A320-451F562671F3}|Commanigy.Iquomi.dll;{18DDA75E-11ED-47FC-AEE7-D18D6760D13B}|Commanigy.Iquomi.Services.IqAlerts.Server.dll;{4DFE7946-2FEA-4481-A8EE-3D0A710F9A48}|Commanigy.Iquomi.Services.IqContacts.Server.dll;{ADF55EF1-0678-481B-8DA2-801E9A143465}|Commanigy.Iquomi.Services.IqPresence.Server.dll;{DB5A2DE8-3B2D-483A-955D-56AEBF85FBF3}|Commanigy.Iquomi.Services.IqProfile.Server.dll;{BA61FFC3-D36E-4BAE-BB45-7F50B9BC4F52}|Commanigy.Iquomi.Services.IqProfile.Sdk.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/webservices"
+		Debug.AspNetCompiler.VirtualPath = "/temp"
 		Debug.AspNetCompiler.PhysicalPath = "webservices\"
-		Debug.AspNetCompiler.TargetPath = "\\ichi\c$\hosting\iquomi\webservices\"
+		Debug.AspNetCompiler.TargetPath = "..\temp\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "true"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/webservices"
+		Release.AspNetCompiler.VirtualPath = "/temp"
 		Release.AspNetCompiler.PhysicalPath = "webservices\"
-		Release.AspNetCompiler.TargetPath = "\\ichi\c$\hosting\iquomi\webservices\"
+		Release.AspNetCompiler.TargetPath = "..\temp\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "true"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "4081"
-		VWDDynamicPort = "false"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.DataAccess", "server\dataaccess\Server.DataAccess.csproj", "{BA1A3AEA-C6B9-4FB3-9963-DD9C2AB47BAB}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.XmlStore", "server\xmlstore\Server.XmlStore.csproj", "{2A88C5D8-DE00-4697-89B9-993019BD46EA}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{4F174C21-8C12-11D0-8340-0000F80270F8}") = "Database", "database\Database.dbp", "{2F3F7654-E745-4100-8E39-A3DEAE68A53D}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.IqAlerts.Server", "services\IqAlerts\server\Services.IqAlerts.Server.csproj", "{18DDA75E-11ED-47FC-AEE7-D18D6760D13B}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.IqAlerts.Sdk", "services\IqAlerts\sdk\Services.IqAlerts.Sdk.csproj", "{591494EC-00A4-4123-B415-1B6D0E51432B}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Sdk", "services\sdk\Services.Sdk.csproj", "{1CEC9404-4A79-4E31-A7A5-F5D7C383823B}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.IqContacts.Server", "services\IqContacts\server\Services.IqContacts.Server.csproj", "{4DFE7946-2FEA-4481-A8EE-3D0A710F9A48}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.IqContacts.Sdk", "services\IqContacts\sdk\Services.IqContacts.Sdk.csproj", "{38F544A9-DE4F-4479-8F76-FB5677E2B162}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.IqPresence.Server", "services\IqPresence\server\Services.IqPresence.Server.csproj", "{ADF55EF1-0678-481B-8DA2-801E9A143465}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.IqPresence.Sdk", "services\IqPresence\sdk\Services.IqPresence.Sdk.csproj", "{A74FCC43-E034-48BD-91C7-789D0CA3E1F4}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.IqProfile.Sdk", "services\IqProfile\sdk\Services.IqProfile.Sdk.csproj", "{BA61FFC3-D36E-4BAE-BB45-7F50B9BC4F52}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.IqProfile.Server", "services\IqProfile\server\Services.IqProfile.Server.csproj", "{DB5A2DE8-3B2D-483A-955D-56AEBF85FBF3}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server Test Units", "server\test\Server Test Units.csproj", "{38E77D9A-873E-45B5-B488-9B8860513EA2}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

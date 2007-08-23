@@ -177,7 +177,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <Content Include="App.ico" />
-    <Content Include="ClientWindows.sdm" />
     <Content Include="gfx\secured.ico" />
     <Content Include="todo.htm" />
     <None Include="log4net.config" />
