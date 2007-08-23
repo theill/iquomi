@@ -114,11 +114,6 @@
       <Name>System.XML</Name>
       <HintPath>C:\WIN.NET\Microsoft.NET\Framework\v1.0.3705\System.XML.dll</HintPath>
     </Reference>
-    <ProjectReference Include="..\..\sdk\Commanigy.Iquomi.Sdk.csproj">
-      <Name>Commanigy.Iquomi.Sdk</Name>
-      <Project>{9DA163A8-5A9C-422E-88C7-E76ACB23B144}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs">
