@@ -187,6 +187,16 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Commanigy.Iquomi.Sdk\Commanigy.Iquomi.Sdk.csproj">
+      <Project>{9DA163A8-5A9C-422E-88C7-E76ACB23B144}</Project>
+      <Name>Commanigy.Iquomi.Sdk</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commanigy.Iquomi.Data\Commanigy.Iquomi.Data.csproj">
+      <Project>{BA1A3AEA-C6B9-4FB3-9963-DD9C2AB47BAB}</Project>
+      <Name>Commanigy.Iquomi.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <PropertyGroup>
     <PreBuildEvent>

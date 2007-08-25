@@ -1,8 +1,10 @@
+#region Using directives
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Text; 
+#endregion
 
-namespace Commanigy.Iquomi.Api {
+namespace Commanigy.Iquomi.Client.Sdk {
 	interface IPlugin0x01 : IPlugin {
 		void OnLoad();
 		void OnUnload();

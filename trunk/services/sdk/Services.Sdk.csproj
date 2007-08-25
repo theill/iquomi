@@ -74,13 +74,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\sdk\Sdk.csproj">
-      <Project>{9DA163A8-5A9C-422E-88C7-E76ACB23B144}</Project>
-      <Name>Sdk</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\server\dataaccess\Server.DataAccess.csproj">
+    <ProjectReference Include="..\..\server\Commanigy.Iquomi.Data\Commanigy.Iquomi.Data.csproj">
       <Project>{BA1A3AEA-C6B9-4FB3-9963-DD9C2AB47BAB}</Project>
-      <Name>Server.DataAccess</Name>
+      <Name>Commanigy.Iquomi.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\server\xmlstore\Server.XmlStore.csproj">
       <Project>{2A88C5D8-DE00-4697-89B9-993019BD46EA}</Project>

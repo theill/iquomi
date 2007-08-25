@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://services.iquomi.com/2004/01/core" xmlns:s1="http://schemas.iquomi.com/2004/01/core" xmlns:yml="http://www.contoso.com/yml" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://services.iquomi.com/2004/01/core" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://services.iquomi.com/2004/01/core" xmlns:s1="http://schemas.iquomi.com/2004/01/core" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://services.iquomi.com/2004/01/core" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">IqCore</wsdl:documentation>
   <wsdl:types>
-    <s:Xschema />
-    <s:Xschema />
-    <s:Xschema />
-    <s:Xschema />
-    <s:Xschema />
-    <s:Xschema />
-    <s:Xschema />
-    <s:Xschema />
-    <s:Xschema />
-    <s:Xschema />
-    <s:Xschema />
-    <s:Xschema />
     <s:schema elementFormDefault="qualified" targetNamespace="http://services.iquomi.com/2004/01/core">
       <s:import namespace="http://schemas.iquomi.com/2004/01/core" />
       <s:element name="Insert">
@@ -650,10 +638,10 @@
   <wsdl:service name="IqCore">
     <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">IqCore</wsdl:documentation>
     <wsdl:port name="IqCoreSoap" binding="tns:IqCoreSoap">
-      <soap:address location="http://localhost:4081/webservices/IqCore.asmx" />
+      <soap:address location="http://services.iquomi.com/IqCore.asmx" />
     </wsdl:port>
     <wsdl:port name="IqCoreSoap12" binding="tns:IqCoreSoap12">
-      <soap12:address location="http://localhost:4081/webservices/IqCore.asmx" />
+      <soap12:address location="http://services.iquomi.com/IqCore.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

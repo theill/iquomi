@@ -1,9 +1,7 @@
 #region Using directives
-
 using System;
 
-using Commanigy.Iquomi.Api;
-
+using Commanigy.Iquomi.Client.Sdk;
 #endregion
 
 namespace Commanigy.Iquomi.Services.IqFavorites {

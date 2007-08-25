@@ -10,8 +10,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Text;
 
-using Commanigy.Iquomi.Api;
-using Commanigy.Iquomi.Api.Services;
+using Commanigy.Iquomi.Client.Sdk;
 
 #endregion
 

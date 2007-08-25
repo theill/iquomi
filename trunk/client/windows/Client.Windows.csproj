@@ -159,14 +159,17 @@
       <Lcid>0</Lcid>
       <WrapperTool>tlbimp</WrapperTool>
     </COMReference>
-    <ProjectReference Include="..\..\api\Api.csproj">
-      <Name>Api</Name>
+    <ProjectReference Include="..\..\Commanigy.Iquomi.Client.Sdk\Commanigy.Iquomi.Client.Sdk.csproj">
       <Project>{40135D88-6319-45C1-A235-9BC594A78AB5}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+      <Name>Commanigy.Iquomi.Client.Sdk</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\sdk\Sdk.csproj">
+    <ProjectReference Include="..\..\Commanigy.Iquomi.Sdk\Commanigy.Iquomi.Sdk.csproj">
       <Project>{9DA163A8-5A9C-422E-88C7-E76ACB23B144}</Project>
-      <Name>Sdk</Name>
+      <Name>Commanigy.Iquomi.Sdk</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\server\Commanigy.Iquomi.Data\Commanigy.Iquomi.Data.csproj">
+      <Project>{EA3999F9-6B04-4265-9C7B-BE0F1D4392FD}</Project>
+      <Name>Commanigy.Iquomi.Data</Name>
     </ProjectReference>
     <ProjectReference Include="resources\Client.Windows.Resources.csproj">
       <Name>Client.Windows.Resources</Name>
@@ -279,6 +282,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBrowser.resx">
       <DependentUpon>FrmBrowser.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmIquomi.resx">
       <DependentUpon>FrmIquomi.cs</DependentUpon>
@@ -290,6 +294,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProfileName.resx">
       <DependentUpon>FrmProfileName.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSignIn.resx">
       <DependentUpon>FrmSignIn.cs</DependentUpon>
@@ -297,9 +302,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSignUp.resx">
       <DependentUpon>FrmSignUp.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmToolbox.resx">
       <DependentUpon>FrmToolbox.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Messages.resources" />
     <None Include="Web References\IqServicesRef\IqAlerts.wsdl" />

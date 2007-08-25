@@ -1,7 +1,7 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>8.0.50215</ProductVersion>
+    <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9A0E4ABE-1398-4A0D-A62C-C4B6DD3C68DA}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -127,9 +127,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\api\Api.csproj">
+    <ProjectReference Include="..\..\..\..\Commanigy.Iquomi.Client.Sdk\Commanigy.Iquomi.Client.Sdk.csproj">
       <Project>{40135D88-6319-45C1-A235-9BC594A78AB5}</Project>
-      <Name>Api</Name>
+      <Name>Commanigy.Iquomi.Client.Sdk</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

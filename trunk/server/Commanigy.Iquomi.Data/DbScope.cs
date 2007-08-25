@@ -1,13 +1,16 @@
+#region Using directives
 using System;
 using System.Data;
-
-using Commanigy.Iquomi.Api;
 using System.ComponentModel;
+
+using Commanigy.Iquomi.Api; 
+#endregion
 
 namespace Commanigy.Iquomi.Data {
 	/// <summary>
 	/// 
 	/// </summary>
+	/// <see cref="Commanigy.Iquomi.Sdk.Scope" />
 	[DataObject()]
 	public class DbScope : Scope, IDbObject<DbScope> {
 

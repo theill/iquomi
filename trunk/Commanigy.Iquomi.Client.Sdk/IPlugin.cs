@@ -1,4 +1,4 @@
-namespace Commanigy.Iquomi.Api {
+namespace Commanigy.Iquomi.Client.Sdk {
 	/// <summary>
 	/// Summary description for IPlugin.
 	/// </summary>

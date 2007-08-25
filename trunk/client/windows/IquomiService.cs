@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Net;
 using System.IO;
 
-using Commanigy.Iquomi.Api;
+using Commanigy.Iquomi.Client.Sdk;
 
 #endregion
 

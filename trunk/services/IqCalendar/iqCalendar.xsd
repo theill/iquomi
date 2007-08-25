@@ -2988,7 +2988,7 @@
         <xsd:annotation>
             <xsd:documentation>
                 This field identifies an enumeration which determines the kind
-                of calendar event this is.  <b>.NET My Services v1 will only support HSCAL_GREGORIAN_US.</b>
+                of calendar event this is.  <b>Iquomi Services v1.0 will only support HSCAL_GREGORIAN_US.</b>
                 <br/><a href="http://msdn.microsoft.com/library/psdk/winbase/nls_9bg8.htm">http://msdn.microsoft.com/library/psdk/winbase/nls_9bg8.htm</a>
                 plus several others:
                 <br/><br/>
