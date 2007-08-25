@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50215</ProductVersion>
+    <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{4DFE7946-2FEA-4481-A8EE-3D0A710F9A48}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -52,10 +52,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\sdk\Sdk.csproj">
-      <Project>{9DA163A8-5A9C-422E-88C7-E76ACB23B144}</Project>
-      <Name>Sdk</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\server\xmlstore\Server.XmlStore.csproj">
       <Project>{2A88C5D8-DE00-4697-89B9-993019BD46EA}</Project>
       <Name>Server.XmlStore</Name>

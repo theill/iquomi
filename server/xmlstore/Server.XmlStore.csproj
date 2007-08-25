@@ -86,16 +86,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\sdk\Sdk.csproj">
-      <Project>{9DA163A8-5A9C-422E-88C7-E76ACB23B144}</Project>
-      <Name>Sdk</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dataaccess\Server.DataAccess.csproj">
-      <Project>{BA1A3AEA-C6B9-4FB3-9963-DD9C2AB47BAB}</Project>
-      <Name>Server.DataAccess</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +159,12 @@
     <None Include="Web References\IqCoreRef\UpdateResponseType.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Commanigy.Iquomi.Data\Commanigy.Iquomi.Data.csproj">
+      <Project>{BA1A3AEA-C6B9-4FB3-9963-DD9C2AB47BAB}</Project>
+      <Name>Commanigy.Iquomi.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
 </Project>

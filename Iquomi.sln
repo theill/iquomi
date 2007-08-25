@@ -1,7 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "server\data\Server.csproj", "{5C80C065-5648-4611-A320-451F562671F3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server Test Units", "server\test\Server Test Units.csproj", "{38E77D9A-873E-45B5-B488-9B8860513EA2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Client.Windows.Outlook.Notes", "client\samples\vba\outlook\Services.Client.Windows.Outlook.Notes.csproj", "{7064FB56-5E96-4C49-B164-6419FE19B909}"
@@ -9,8 +7,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Client.Windows.IqFavorites", "services\IqFavorites\client\windows\Services.Client.Windows.IqFavorites.csproj", "{9A0E4ABE-1398-4A0D-A62C-C4B6DD3C68DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoapExtensions", "server\soapextensions\SoapExtensions.csproj", "{D824E807-22AD-4684-A0AA-C698EDCD49C3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdk", "sdk\Sdk.csproj", "{9DA163A8-5A9C-422E-88C7-E76ACB23B144}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "services\Services.csproj", "{F70B9DEA-4756-4AE5-98EE-410DAD6B32AA}"
 EndProject
@@ -34,7 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		todo.txt = todo.txt
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\webservices\", "webservices\", "{AE69D3D1-DB01-4E0B-9F41-BA4E9BAFBF3B}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\iquomi.googlecode.com\webservices\", "webservices\", "{AE69D3D1-DB01-4E0B-9F41-BA4E9BAFBF3B}"
 	ProjectSection(WebsiteProperties) = preProject
 		SccProjectName = ""
 		SccAuxPath = ""
@@ -55,11 +51,9 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\webservices\", "webs
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "true"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "4081"
-		VWDDynamicPort = "false"
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\mobile\", "mobile\", "{52AB575D-7CA9-469D-B3FC-A042D82A7946}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\iquomi.googlecode.com\mobile\", "mobile\", "{52AB575D-7CA9-469D-B3FC-A042D82A7946}"
 	ProjectSection(WebsiteProperties) = preProject
 		SccProjectName = ""
 		SccAuxPath = ""
@@ -84,7 +78,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\mobile\", "mobile\",
 		VWDDynamicPort = "false"
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\site\", "site\", "{1D658C9B-CFAC-4D3D-9CE7-85AEFF222608}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\iquomi.googlecode.com\site\", "site\", "{1D658C9B-CFAC-4D3D-9CE7-85AEFF222608}"
 	ProjectSection(WebsiteProperties) = preProject
 		SccProjectName = ""
 		SccAuxPath = ""
@@ -105,8 +99,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\site\", "site\", "{1
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "true"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "4080"
-		VWDDynamicPort = "false"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.IqAlerts.Sdk", "services\IqAlerts\sdk\Services.IqAlerts.Sdk.csproj", "{591494EC-00A4-4123-B415-1B6D0E51432B}"
@@ -147,6 +139,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdk.WindowsMobile", "sdk-wi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.IqSms.Client.WindowsMobile", "services\IqSms\client\windowsmobile\Services.IqSms.Client.WindowsMobile.csproj", "{20DC3964-F02A-46C2-A7D8-6EF713A115A3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commanigy.Iquomi.Sdk", "Commanigy.Iquomi.Sdk\Commanigy.Iquomi.Sdk.csproj", "{9DA163A8-5A9C-422E-88C7-E76ACB23B144}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commanigy.Iquomi.Data", "server\Commanigy.Iquomi.Data\Commanigy.Iquomi.Data.csproj", "{EA3999F9-6B04-4265-9C7B-BE0F1D4392FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -155,14 +151,6 @@ Global
 		Release|Mixed platforms = Release|Mixed platforms
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5C80C065-5648-4611-A320-451F562671F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C80C065-5648-4611-A320-451F562671F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C80C065-5648-4611-A320-451F562671F3}.Debug|Mixed platforms.ActiveCfg = Debug|Any CPU
-		{5C80C065-5648-4611-A320-451F562671F3}.Debug|Mixed platforms.Build.0 = Debug|Any CPU
-		{5C80C065-5648-4611-A320-451F562671F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C80C065-5648-4611-A320-451F562671F3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5C80C065-5648-4611-A320-451F562671F3}.Release|Mixed platforms.ActiveCfg = Release|Any CPU
-		{5C80C065-5648-4611-A320-451F562671F3}.Release|Mixed platforms.Build.0 = Release|Any CPU
 		{38E77D9A-873E-45B5-B488-9B8860513EA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{38E77D9A-873E-45B5-B488-9B8860513EA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38E77D9A-873E-45B5-B488-9B8860513EA2}.Debug|Mixed platforms.ActiveCfg = Debug|Any CPU
@@ -194,14 +182,6 @@ Global
 		{D824E807-22AD-4684-A0AA-C698EDCD49C3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D824E807-22AD-4684-A0AA-C698EDCD49C3}.Release|Mixed platforms.ActiveCfg = Release|Any CPU
 		{D824E807-22AD-4684-A0AA-C698EDCD49C3}.Release|Mixed platforms.Build.0 = Release|Any CPU
-		{9DA163A8-5A9C-422E-88C7-E76ACB23B144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9DA163A8-5A9C-422E-88C7-E76ACB23B144}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9DA163A8-5A9C-422E-88C7-E76ACB23B144}.Debug|Mixed platforms.ActiveCfg = Debug|Any CPU
-		{9DA163A8-5A9C-422E-88C7-E76ACB23B144}.Debug|Mixed platforms.Build.0 = Debug|Any CPU
-		{9DA163A8-5A9C-422E-88C7-E76ACB23B144}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9DA163A8-5A9C-422E-88C7-E76ACB23B144}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9DA163A8-5A9C-422E-88C7-E76ACB23B144}.Release|Mixed platforms.ActiveCfg = Release|Any CPU
-		{9DA163A8-5A9C-422E-88C7-E76ACB23B144}.Release|Mixed platforms.Build.0 = Release|Any CPU
 		{F70B9DEA-4756-4AE5-98EE-410DAD6B32AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F70B9DEA-4756-4AE5-98EE-410DAD6B32AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F70B9DEA-4756-4AE5-98EE-410DAD6B32AA}.Debug|Mixed platforms.ActiveCfg = Debug|Any CPU
@@ -411,6 +391,22 @@ Global
 		{20DC3964-F02A-46C2-A7D8-6EF713A115A3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{20DC3964-F02A-46C2-A7D8-6EF713A115A3}.Release|Mixed platforms.ActiveCfg = Release|Any CPU
 		{20DC3964-F02A-46C2-A7D8-6EF713A115A3}.Release|Mixed platforms.Build.0 = Release|Any CPU
+		{9DA163A8-5A9C-422E-88C7-E76ACB23B144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DA163A8-5A9C-422E-88C7-E76ACB23B144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DA163A8-5A9C-422E-88C7-E76ACB23B144}.Debug|Mixed platforms.ActiveCfg = Debug|Any CPU
+		{9DA163A8-5A9C-422E-88C7-E76ACB23B144}.Debug|Mixed platforms.Build.0 = Debug|Any CPU
+		{9DA163A8-5A9C-422E-88C7-E76ACB23B144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DA163A8-5A9C-422E-88C7-E76ACB23B144}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DA163A8-5A9C-422E-88C7-E76ACB23B144}.Release|Mixed platforms.ActiveCfg = Release|Any CPU
+		{9DA163A8-5A9C-422E-88C7-E76ACB23B144}.Release|Mixed platforms.Build.0 = Release|Any CPU
+		{EA3999F9-6B04-4265-9C7B-BE0F1D4392FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA3999F9-6B04-4265-9C7B-BE0F1D4392FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA3999F9-6B04-4265-9C7B-BE0F1D4392FD}.Debug|Mixed platforms.ActiveCfg = Debug|Any CPU
+		{EA3999F9-6B04-4265-9C7B-BE0F1D4392FD}.Debug|Mixed platforms.Build.0 = Debug|Any CPU
+		{EA3999F9-6B04-4265-9C7B-BE0F1D4392FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA3999F9-6B04-4265-9C7B-BE0F1D4392FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA3999F9-6B04-4265-9C7B-BE0F1D4392FD}.Release|Mixed platforms.ActiveCfg = Release|Any CPU
+		{EA3999F9-6B04-4265-9C7B-BE0F1D4392FD}.Release|Mixed platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

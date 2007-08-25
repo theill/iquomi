@@ -102,9 +102,9 @@ namespace Commanigy.Iquomi.Web {
 				// enable only on creation
 				DdlMethodTypes.Enabled = !Updating;
 
-				//DbServiceScope ss = new DbServiceScope();
-				//ss.ServiceId = UiService.Get().Id;
-				//dt = ss.DbFindAllForService();
+				DbServiceScope ss = new DbServiceScope();
+				ss.ServiceId = UiService.Get().Id;
+				dt = ss.DbFindAllForService();
 
 				// insert empty element since it's possible no scopes will
 				// be selected upon creation

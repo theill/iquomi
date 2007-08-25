@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50215</ProductVersion>
+    <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FB2181FB-7FFA-4AF3-BDE8-797C9D9A9322}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -64,10 +64,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\api\Api.csproj">
+    <ProjectReference Include="..\..\..\..\Commanigy.Iquomi.Client.Sdk\Commanigy.Iquomi.Client.Sdk.csproj">
       <Project>{40135D88-6319-45C1-A235-9BC594A78AB5}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-      <Name>Api</Name>
+      <Name>Commanigy.Iquomi.Client.Sdk</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\sdk\Services.IqAlerts.Sdk.csproj">
       <Project>{591494EC-00A4-4123-B415-1B6D0E51432B}</Project>
@@ -124,6 +123,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />

@@ -1,4 +1,4 @@
-namespace Commanigy.Iquomi.Api {
+namespace Commanigy.Iquomi.Client.Sdk {
 	/// <summary>
 	/// This class contains additional information about the event fired to
 	/// all services when the main Iquomi application is being shut down.

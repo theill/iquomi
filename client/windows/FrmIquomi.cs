@@ -17,6 +17,7 @@ using System.Web.Services.Protocols;
 using log4net;
 
 using Commanigy.Iquomi.Api;
+using Commanigy.Iquomi.Client.Sdk;
 //using Commanigy.Iquomi.Api.Services;
 //using Commanigy.Iquomi.Services; // xsd generated classes are in this scope
 
@@ -557,67 +558,67 @@ namespace Commanigy.Iquomi.Client {
 			}
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="path"></param>
-		/// <returns></returns>
-		private ArrayList SearchFolder(string path) {
+		///// <summary>
+		///// 
+		///// </summary>
+		///// <param name="path"></param>
+		///// <returns></returns>
+		//private ArrayList SearchFolder(string path) {
 
-			DirectoryInfo di = new DirectoryInfo(path);
-			if (!di.Exists) {
-				return null;
-			}
+		//    DirectoryInfo di = new DirectoryInfo(path);
+		//    if (!di.Exists) {
+		//        return null;
+		//    }
 
-			ArrayList list = new ArrayList();
+		//    ArrayList list = new ArrayList();
 
-			FileInfo[] files = di.GetFiles("*.dll");
+		//    FileInfo[] files = di.GetFiles("*.dll");
 
-			foreach (FileInfo info in files) {
-				list.Add(info);
-			}
+		//    foreach (FileInfo info in files) {
+		//        list.Add(info);
+		//    }
 
-			DirectoryInfo[] subdirs = di.GetDirectories();
-			foreach (DirectoryInfo info in subdirs) {
-				list.AddRange(SearchFolder(info.FullName));
-			}
+		//    DirectoryInfo[] subdirs = di.GetDirectories();
+		//    foreach (DirectoryInfo info in subdirs) {
+		//        list.AddRange(SearchFolder(info.FullName));
+		//    }
 
-			return list;
-		}
+		//    return list;
+		//}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="path"></param>
-		/// <returns></returns>
-		private FileInfo[] SearchForServices(string path) {
-			ArrayList list = SearchFolder(path);
+		///// <summary>
+		///// 
+		///// </summary>
+		///// <param name="path"></param>
+		///// <returns></returns>
+		//private FileInfo[] SearchForServices(string path) {
+		//    ArrayList list = SearchFolder(path);
 
-			return new FileInfo[] {
-									  new FileInfo(@"..\..\..\NotesService\bin\Debug\NotesService.dll"),
-									  new FileInfo(@"..\..\..\FavoritesService\bin\Debug\FavoritesService.dll")
-								  };
-			//			return (FileInfo[])list.ToArray(typeof(FileInfo));
-		}
+		//    return new FileInfo[] {
+		//                              new FileInfo(@"..\..\..\NotesService\bin\Debug\NotesService.dll"),
+		//                              new FileInfo(@"..\..\..\FavoritesService\bin\Debug\FavoritesService.dll")
+		//                          };
+		//    //			return (FileInfo[])list.ToArray(typeof(FileInfo));
+		//}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		private IquomiService[] LoadAvailableServices() {
+		///// <summary>
+		///// 
+		///// </summary>
+		///// <returns></returns>
+		//private IquomiService[] LoadAvailableServices() {
 
-			FileInfo[] locations = SearchForServices(@"..\..\..");
+		//    FileInfo[] locations = SearchForServices(@"..\..\..");
 
-			ArrayList list = new ArrayList(locations.Length);
-			foreach (FileInfo fi in locations) {
-				IquomiService service = new IquomiService(fi.FullName);
-				if (service.IsValid) {
-					list.Add(service);
-				}
-			}
+		//    ArrayList list = new ArrayList(locations.Length);
+		//    foreach (FileInfo fi in locations) {
+		//        IquomiService service = new IquomiService(fi.FullName);
+		//        if (service.IsValid) {
+		//            list.Add(service);
+		//        }
+		//    }
 
-			return (IquomiService[])list.ToArray(typeof(IquomiService));
-		}
+		//    return (IquomiService[])list.ToArray(typeof(IquomiService));
+		//}
 
 		private void FrmIquomi_Load(object sender, System.EventArgs e) {
 
@@ -681,31 +682,37 @@ namespace Commanigy.Iquomi.Client {
 
 		
 		/// <summary>
-		/// 
+		/// Signs in user by updating presence service with information about
+		/// a logged on request from Iquomi Messenger.
 		/// </summary>
 		private void SignIn() {
-//			QueryServices();
-
+			// get reference to presence service
 			IqPresenceRef.IqPresence myPresence = (IqPresenceRef.IqPresence)ServiceLocator.GetService(
 				typeof(IqPresenceRef.IqPresence),
 				this.Iqid
 				);
 
-			// Update users messenger status (on all endpoints)
+			// update users messenger status (on all endpoints)
 			IqPresenceRef.ReplaceRequestType req = new IqPresenceRef.ReplaceRequestType();
-			req.Select = "/m:IqPresence/m:Endpoint/m:Argot[@Name='Iquomi Messenger']/*[local-name(.)='MessengerArgot']/@status";
+			req.Select = "/m:IqPresence/m:Endpoint/m:Argot[@Name='Iquomi Messenger']/*[local-name(.)='MessengerArgot']/@Status";
 			req.MinOccurs = 1;
 			req.MinOccursSpecified = true;
 
 			IqPresenceRef.RedAttributeType ra = new IqPresenceRef.RedAttributeType();
-			ra.Name = "status";
-			ra.Value = "online";
+			ra.Name = "Status";
+			ra.Value = "Online";
 			req.Attributes = new IqPresenceRef.RedAttributeType[] { ra };
 
 			myPresence.ReplaceCompleted += new Commanigy.Iquomi.Client.IqPresenceRef.ReplaceCompletedEventHandler(OnSignInResponse);
 			myPresence.ReplaceAsync(req);
 		}
 
+
+		/// <summary>
+		/// Called when [sign in response].
+		/// </summary>
+		/// <param name="sender">The sender.</param>
+		/// <param name="e">The <see cref="Commanigy.Iquomi.Client.IqPresenceRef.ReplaceCompletedEventArgs"/> instance containing the event data.</param>
 		private void OnSignInResponse(object sender, IqPresenceRef.ReplaceCompletedEventArgs e) {
 			if (e.Result != null && e.Result.Status == IqPresenceRef.ResponseStatus.Success) {
 				NotifySignIn();
@@ -720,20 +727,21 @@ namespace Commanigy.Iquomi.Client {
 		/// 
 		/// </summary>
 		private void SignOut() {
+			// get reference to presence service
 			IqPresenceRef.IqPresence myPresence = (IqPresenceRef.IqPresence)ServiceLocator.GetService(
 				typeof(IqPresenceRef.IqPresence),
 				this.Iqid
 				);
 
-			// Update users messenger status (on all endpoints)
+			// update users messenger status (on all endpoints)
 			IqPresenceRef.ReplaceRequestType req = new IqPresenceRef.ReplaceRequestType();
-			req.Select = "/m:IqPresence/m:Endpoint/m:Argot[@Name='Iquomi Messenger']/*[local-name(.)='MessengerArgot']/@status";
+			req.Select = "/m:IqPresence/m:Endpoint/m:Argot[@Name='Iquomi Messenger']/*[local-name(.)='MessengerArgot']/@Status";
 			req.MinOccurs = 1;
 			req.MinOccursSpecified = true;
 
 			IqPresenceRef.RedAttributeType ra = new IqPresenceRef.RedAttributeType();
-			ra.Name = "status";
-			ra.Value = "offline";
+			ra.Name = "Status";
+			ra.Value = "Offline";
 			req.Attributes = new IqPresenceRef.RedAttributeType[] { ra };
 
 			myPresence.ReplaceCompleted += new IqPresenceRef.ReplaceCompletedEventHandler(OnSignOutResponse);
@@ -869,14 +877,14 @@ namespace Commanigy.Iquomi.Client {
 */
 		
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void ServicesRefresh_Click(object sender, System.EventArgs e) {
-//			InitServicesMenu();
-		}
+		///// <summary>
+		///// 
+		///// </summary>
+		///// <param name="sender"></param>
+		///// <param name="e"></param>
+		//private void ServicesRefresh_Click(object sender, System.EventArgs e) {
+		//    InitServicesMenu();
+		//}
 
 
 		/// <summary>
@@ -1012,44 +1020,12 @@ namespace Commanigy.Iquomi.Client {
 			}
 		}
 
-
-		private void menuItem5_Click(object sender, System.EventArgs e) {
-			RunPlugin(@"D:\svn.commanigy.com\iquomi\trunk\services\IqFavorites\client\windows\obj\Debug\Services.Client.Windows.IqFavorites.dll");
-
-/*
-			System.Reflection.Assembly a = System.Reflection.Assembly.LoadFrom(
-				@"D:\cvs.commanigy.com\iquomi\lab\client\FavoritesService\obj\Debug\FavoritesService.dll"
-				);
-			System.Type[] types = a.GetTypes();
-			foreach (Type t in types) {
-				if (t.IsSubclassOf(typeof(ServiceForm))) {
-					ServiceForm form = (ServiceForm)a.CreateInstance(t.FullName);
-					form.MdiParent = this;
-					form.WindowState = FormWindowState.Maximized;
-					form.Show();
-					return;
-				}
-			}
-*/
-		}
-
 		private void miFile_Popup(object sender, System.EventArgs e) {
 			signInToolStripMenuItem.Enabled = (OnlineStatus == OnlineStatus.Offline);
 			signOutToolStripMenuItem.Enabled = !signInToolStripMenuItem.Enabled;
 			tsmMyStatus.Enabled = !signInToolStripMenuItem.Enabled;
 		}
 
-		private void menuItem11_Click(object sender, System.EventArgs e) {
-//			try {
-//				ServiceForm f = new FrmBrowser();
-//				f.MdiParent = this;
-//				f.WindowState = FormWindowState.Maximized;
-//				f.Show();
-//			}
-//			catch (Exception ex) {
-//				MessageBox.Show("It was not possible to execute the specific service:\n\n" + ex);
-//			}
-		}
 
 		private void OpenMyPage_Click(object sender, System.EventArgs e) {
 			MessageBox.Show(_("Go to \"My Iquomi Page\"."));

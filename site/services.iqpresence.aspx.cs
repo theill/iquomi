@@ -45,7 +45,15 @@ namespace Commanigy.Iquomi.Web {
 			QueryRequestType q = new QueryRequestType();
 			q.XpQuery = new XpQueryType[] { new XpQueryType(), new XpQueryType() };
 			q.XpQuery[0].Select = "/m:IqPresence/m:Endpoint[@Name='Home Computer']/m:Argot[@Name='Iquomi Messenger']";
+			q.XpQuery[0].MinOccursSpecified = true;
+			q.XpQuery[0].MinOccurs = 1;
+			q.XpQuery[0].MaxOccursSpecified = true;
+			q.XpQuery[0].MaxOccurs = 1;
 			q.XpQuery[1].Select = "/m:IqPresence/m:Endpoint[@Name='Work Computer']/m:Argot[@Name='Iquomi Messenger']";
+			q.XpQuery[1].MinOccursSpecified = true;
+			q.XpQuery[1].MinOccurs = 0;
+			q.XpQuery[1].MaxOccursSpecified = true;
+			q.XpQuery[1].MaxOccurs = 1;
 
 			try {
 				QueryResponseType response = myService.Query(q);

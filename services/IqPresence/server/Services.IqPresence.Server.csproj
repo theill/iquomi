@@ -75,11 +75,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\sdk\Sdk.csproj">
-      <Project>{9DA163A8-5A9C-422E-88C7-E76ACB23B144}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-      <Name>Sdk</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\IqAlerts\sdk\Services.IqAlerts.Sdk.csproj">
       <Project>{591494EC-00A4-4123-B415-1B6D0E51432B}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>

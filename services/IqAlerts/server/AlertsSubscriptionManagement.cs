@@ -46,6 +46,11 @@ namespace Commanigy.Iquomi.Services.IqAlerts {
 		}
 
 		public AlertHandler GetChannel(string iqid) {
+			if (string.IsNullOrEmpty(iqid)) {
+				log.Debug("Unable to lookup channel with no iqid specified");
+				return null;
+			}
+
 			return users.ContainsKey(iqid) ? users[iqid] : null;
 		}
 

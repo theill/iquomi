@@ -2,7 +2,10 @@ using System;
 
 namespace Commanigy.Iquomi.Api {
 	/// <summary>
-	/// 
+	/// A scope defines a base of either true or nil with an associated list
+	/// of shapes filtering base e.g. base T with an exclude shape of 
+	/// //*[@Level='Private'] will include everything except any nodes 
+	/// with a level attribute of 'Private'.
 	/// </summary>
 	[Serializable()]
 	public class Scope {

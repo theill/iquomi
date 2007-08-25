@@ -93,15 +93,9 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
-    <ProjectReference Include="..\..\sdk\Sdk.csproj">
-      <Name>Sdk</Name>
-      <Project>{9DA163A8-5A9C-422E-88C7-E76ACB23B144}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
-    <ProjectReference Include="..\dataaccess\Server.DataAccess.csproj">
+    <ProjectReference Include="..\Commanigy.Iquomi.Data\Commanigy.Iquomi.Data.csproj">
       <Project>{BA1A3AEA-C6B9-4FB3-9963-DD9C2AB47BAB}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-      <Name>Server.DataAccess</Name>
+      <Name>Commanigy.Iquomi.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\xmlstore\Server.XmlStore.csproj">
       <Project>{2A88C5D8-DE00-4697-89B9-993019BD46EA}</Project>

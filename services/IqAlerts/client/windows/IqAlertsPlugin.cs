@@ -10,8 +10,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Xml;
 
-//using Commanigy.Iquomi.Api;
-
+using Commanigy.Iquomi.Client.Sdk;
 using Commanigy.Iquomi.Services.IqAlerts.IqAlertsRef;
 
 #endregion
@@ -20,8 +19,8 @@ namespace Commanigy.Iquomi.Services.IqAlerts {
 	/// <summary>
 	/// Summary description for IqAlertsPlugin.
 	/// </summary>
-	public class IqAlertsPlugin : Api.IPlugin {
-		private Api.IPluginHost pluginHost;
+	public class IqAlertsPlugin : IPlugin {
+		private IPluginHost pluginHost;
 		private IAlert alert;
 		private AlertHandler OnAlerts;
 
@@ -29,7 +28,7 @@ namespace Commanigy.Iquomi.Services.IqAlerts {
 
 		}
 
-		public Api.IPluginHost Host {
+		public IPluginHost Host {
 			get {
 				return pluginHost;
 			}

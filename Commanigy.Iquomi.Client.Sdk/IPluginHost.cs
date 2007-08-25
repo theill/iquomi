@@ -6,7 +6,7 @@ using System.Xml;
 
 #endregion
 
-namespace Commanigy.Iquomi.Api {
+namespace Commanigy.Iquomi.Client.Sdk {
 	public delegate void AppShuttingdownEventHandler(object sender, AppShuttingdownEventArgs e);
 	public delegate void SignInEventHandler(object sender, SignInEventArgs e);
 	public delegate void SignOutEventHandler(object sender, SignOutEventArgs e);
