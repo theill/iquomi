@@ -64,7 +64,7 @@ namespace Commanigy.Iquomi.Web {
 			IqAlertsRef.NotifyType notify = new IqAlertsRef.NotifyType();
 			notify.Content = new IqAlertsRef.ViewType();
 			notify.Content.ContentType = DdlContentType.SelectedValue;
-			notify.Content.Subject = "A test alert";
+			notify.Content.Subject = "Alert from web site";
 			notify.Content.Value = TbxMessage.Text;
 			notify.Meta = new IqAlertsRef.MetaType();
 			notify.Meta.Subject = "Meta subject";

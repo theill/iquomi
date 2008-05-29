@@ -18,7 +18,7 @@ namespace Commanigy.Iquomi.Api {
 		}
 
 		public override string ToString() {
-			return "[id=" + Id + ",Name=" + Name + ",Priority=" + Priority + "]" + base.ToString();
+			return "[ID=" + Id + ",Name=" + Name + ",Priority=" + Priority + "]" + base.ToString();
 		}
 
 	}

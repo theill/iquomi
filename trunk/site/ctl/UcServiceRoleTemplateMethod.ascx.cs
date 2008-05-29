@@ -103,7 +103,7 @@ namespace Commanigy.Iquomi.Web {
 				DdlMethodTypes.Enabled = !Updating;
 
 				DbServiceScope ss = new DbServiceScope();
-				ss.ServiceId = UiService.Get().Id;
+				//ss.ServiceId = UiService.Get().Id;
 				dt = ss.DbFindAllForService();
 
 				// insert empty element since it's possible no scopes will
