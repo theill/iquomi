@@ -67,7 +67,7 @@ namespace Commanigy.Iquomi.Services.IqAlerts {
 			argot.Language = new HumanReadableLanguage[] { new HumanReadableLanguage() };
 			argot.Language[0].IconUrl = "";
 			argot.Language[0].lang = "en-US";
-			argot.Language[0].Text = "asdf";
+			argot.Language[0].Text = "English";
 
 			ConnectionType connection = new ConnectionType();
 			connection.Creator = new byte[] { 0x00, 0x01, 0x02, 0x03};
