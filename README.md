@@ -9,4 +9,4 @@ These components are
 * Scripting / Object Libraries
 * Reporting
 
-Refer to [designs](designs) folder for more details.
+Refer to [design](design) folder for more details.
