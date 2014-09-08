@@ -45,7 +45,7 @@ namespace Commanigy.Iquomi.Services.IqPresence {
 			}
 
 			messenger.Credentials.Account = "messenger@theill.com";
-			messenger.Credentials.Password = "uvsraCFR";
+			messenger.Credentials.Password = "uvsra123456qazwsx";
 			SetStatus("Signing in...");
 			messenger.Connect();
 		}
